@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ProofX — Symbolic AI for the Edge of Mathematics</title>
+  <meta name="description" content="ProofX builds research-grade symbolic AI systems for mathematics, proof synthesis, and verification." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="icon" href="/assets/favicon.ico">
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="ProofX — Symbolic AI for the Edge of Mathematics">
+  <meta property="og:description" content="Research-lab-grade symbolic AI for proof generation, verification, and dashboards.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.proofx.org/">
+  <meta property="og:image" content="https://www.proofx.org/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"ProofX",
+    "url":"https://www.proofx.org",
+    "logo":"https://www.proofx.org/assets/logo.png",
+    "sameAs":["https://www.instagram.com/proofx_org","https://www.linkedin.com/in/alkindi_network"]
+  }
+  </script>
+</head>
+<body>
+  <header class="nav">
+    <div class="container">
+      <a class="brand" href="/">ProofX</a>
+      <nav>
+        <a href="#systems">Systems</a>
+        <a href="#research">Research</a>
+        <a href="#updates">Updates</a>
+        <a class="cta" href="mailto:ceo@proofx.org">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Symbolic AI for the Edge of Mathematics</h1>
+        <p class="sub">Production-grade proof engines, verification pipelines, and real-time dashboards — built to push frontiers, not pixels.</p>
+        <div class="actions">
+          <a class="btn primary" href="#systems">Explore Systems</a>
+          <a class="btn ghost" href="#research">Read the Research</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="systems" class="grid">
+      <div class="container">
+        <h2>Systems</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>ProofX Core</h3>
+            <p>Multi-prover orchestration, SMT + finite model testing, theorem synthesis, entropy scoring.</p>
+          </article>
+          <article class="card">
+            <h3>GödelLab</h3>
+            <p>Symbolic engine for first-order logic with full evaluation traces and counterexamples.</p>
+          </article>
+          <article class="card">
+            <h3>CollatzX</h3>
+            <p>Distributed numeric/symbolic exploration with real-time dashboards and anomaly detection.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="research" class="split">
+      <div class="container">
+        <h2>Research</h2>
+        <p>We operate at the intersection of symbolic AI, number theory, and verification. Preprints, dashboards, and benchmarks are released on a rolling basis.</p>
+        <ul class="bullets">
+          <li>Goodstein / Paris–Harrington benchmarks</li>
+          <li>Entropy scoring & symbolic decay maps</li>
+          <li>GUE conformity and spacing statistics</li>
+        </ul>
+        <a class="btn" href="mailto:research@proofx.org">Collaborate</a>
+      </div>
+    </section>
+
+    <section id="updates" class="updates">
+      <div class="container">
+        <h2>Updates</h2>
+        <p>News and technical notes drop here. RSS coming soon.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span>© <span id="y"></span> ProofX</span>
+      <a href="mailto:contact@proofx.org">contact@proofx.org</a>
+    </div>
+  </footer>
+
+  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
+  <script src="/js/app.js" defer></script>
+
+  <!-- Analytics (drop GA or Plausible here) -->
+</body>
+</html>
