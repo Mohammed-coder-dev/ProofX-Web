@@ -14,7 +14,7 @@
   <link rel="icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <!-- Optional (uncomment if you upload these) -->
+  <!-- Optional (uncomment when added) -->
   <!-- <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"> -->
   <!-- <link rel="manifest" href="/assets/site.webmanifest"> -->
 
@@ -70,6 +70,7 @@
 
       <nav id="site-nav" class="links" role="navigation">
         <a href="#systems">Systems</a>
+        <a href="#core-engines">Core Engines</a>
         <a href="#architecture">Architecture</a>
         <a href="#research">Research</a>
         <a href="#roadmap">Roadmap</a>
@@ -141,55 +142,137 @@
       </div>
     </section>
 
-    <!-- SYSTEMS -->
+    <!-- SYSTEMS (updated: ProofX Core, CollatzX, RiemannX) -->
     <section id="systems" class="section" aria-labelledby="systems-title">
       <div class="container">
         <div class="section-head">
           <h2 id="systems-title">Systems</h2>
-          <p class="kicker">Modular, observable, and battle-tested.</p>
+          <p class="kicker">Orchestrated, observable, and built for frontier proofs.</p>
         </div>
+
         <div class="cards">
+
+          <!-- ProofX Core -->
           <article class="card">
             <div class="card-top">
               <h3>ProofX Core</h3>
               <span class="badge">Orchestrator</span>
             </div>
-            <p>Multi-prover orchestration, SMT + finite model testing, theorem synthesis, entropy scoring.</p>
+            <p>
+              The control plane. Multi-prover orchestration with deterministic pipelines for SMT + finite model testing,
+              theorem synthesis, and entropy-guided scheduling. Every attempt emits structured traces for audit-grade replay.
+            </p>
+            <ul class="bullets" aria-label="Core capabilities">
+              <li>Curriculum runs & priority queues</li>
+              <li>Counterexample harvesting</li>
+              <li>Evaluation walls & trace compression</li>
+            </ul>
             <div class="card-cta">
               <a href="#" aria-disabled="true">Overview</a>
               <a href="#" aria-disabled="true">Docs</a>
             </div>
           </article>
 
+          <!-- CollatzX -->
           <article class="card">
             <div class="card-top">
-              <h3>GödelLab</h3>
-              <span class="badge">FOL Engine</span>
+              <h3>CollatzX</h3>
+              <span class="badge">Distributed</span>
             </div>
-            <p>Symbolic engine for first-order logic with evaluation traces and counterexample generation.</p>
+            <p>
+              A distributed numeric/symbolic explorer for chaotic regimes. Streams telemetry in real time, flags anomalies,
+              and maps symbolic decay—so researchers can steer runs instead of babysitting them.
+            </p>
+            <ul class="bullets" aria-label="CollatzX capabilities">
+              <li>Shardable search with backpressure</li>
+              <li>Realtime anomaly detection & rollups</li>
+              <li>Dashboards with entropy/decay overlays</li>
+            </ul>
+            <div class="card-cta">
+              <a href="#" aria-disabled="true">Dashboard</a>
+              <a href="#" aria-disabled="true">Whitepaper</a>
+            </div>
+          </article>
+
+          <!-- RiemannX -->
+          <article class="card">
+            <div class="card-top">
+              <h3>RiemannX</h3>
+              <span class="badge">Spectral</span>
+            </div>
+            <p>
+              Analytic-number-theory engine for the critical line. Spectral methods for zeta/L-functions, zero-finding,
+              spacing statistics, and prime-gap probes—wired into ProofX telemetry for reproducible experiments.
+            </p>
+            <ul class="bullets" aria-label="RiemannX capabilities">
+              <li>High-precision zero locators (GPU/CPU hybrid)</li>
+              <li>GUE conformity & pair-correlation stats</li>
+              <li>Experimental APIs for prime-gap heuristics</li>
+            </ul>
             <div class="card-cta">
               <a href="#" aria-disabled="true">Playground</a>
               <a href="#" aria-disabled="true">API</a>
             </div>
           </article>
 
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE ENGINES (deep IP layer) -->
+    <section id="core-engines" class="section section-alt" aria-labelledby="engines-title">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="engines-title">Core Engines</h2>
+          <p class="kicker">The primitives that make ProofX feel inevitable.</p>
+        </div>
+
+        <div class="cards">
           <article class="card">
-            <div class="card-top">
-              <h3>CollatzX</h3>
-              <span class="badge">Distributed</span>
-            </div>
-            <p>Distributed numeric/symbolic exploration with anomaly detection and real-time dashboards.</p>
-            <div class="card-cta">
-              <a href="#" aria-disabled="true">Dashboard</a>
-              <a href="#" aria-disabled="true">Whitepaper</a>
-            </div>
+            <div class="card-top"><h3>Logic Engine</h3><span class="badge">FOL</span></div>
+            <p>First-order logic with quantifier handling, evaluation traces, and counterexample generation.</p>
+            <ul class="bullets">
+              <li>Skolemization & unification toolchain</li>
+              <li>Traceable inference steps</li>
+              <li>Model witnesses on failure</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="card-top"><h3>Verification Kernel</h3><span class="badge">SMT/FMC</span></div>
+            <p>Deterministic pipelines for SMT + finite model checking, SAT bridges, and property proving.</p>
+            <ul class="bullets">
+              <li>Assumption sets & proof obligations</li>
+              <li>Solver portfolios & routing</li>
+              <li>Deterministic replay</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="card-top"><h3>Entropy Engine</h3><span class="badge">Search</span></div>
+            <p>Entropy-guided scheduling, decay maps, and anomaly detection across proof runs.</p>
+            <ul class="bullets">
+              <li>Curriculum & bandit schedulers</li>
+              <li>Entropy/decay overlays</li>
+              <li>Outlier surfacing</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <div class="card-top"><h3>Dashboard Runtime</h3><span class="badge">Realtime</span></div>
+            <p>Operator-grade telemetry: streaming traces, evaluation walls, and drill-down for fast iteration.</p>
+            <ul class="bullets">
+              <li>Live rollups & timelines</li>
+              <li>Run diffs & compare</li>
+              <li>APIs for external viewers</li>
+            </ul>
           </article>
         </div>
       </div>
     </section>
 
     <!-- ARCHITECTURE -->
-    <section id="architecture" class="section section-alt" aria-labelledby="arch-title">
+    <section id="architecture" class="section" aria-labelledby="arch-title">
       <div class="container research-grid">
         <div>
           <h2 id="arch-title">Architecture</h2>
@@ -241,7 +324,7 @@
       <div class="container">
         <div class="section-head">
           <h2 id="roadmap-title">Roadmap</h2>
-          <p class="kicker">Aggressive, testable, sequential.</p>
+        <p class="kicker">Aggressive, testable, sequential.</p>
         </div>
         <div class="cards">
           <article class="card">
@@ -274,7 +357,7 @@
           </article>
           <article class="card">
             <div class="card-top"><h3>What’s the wedge?</h3><span class="badge">Entry</span></div>
-            <p>Deterministic solvers + entropy-aware scheduling + live dashboards — a tighter loop for verification & research than generic LLM stacks.</p>
+            <p>Deterministic solvers + entropy-aware scheduling + live dashboards — a tighter loop than generic LLM stacks for verification and research.</p>
           </article>
           <article class="card">
             <div class="card-top"><h3>How do you win?</h3><span class="badge">Moat</span></div>
