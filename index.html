@@ -5,19 +5,27 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>ProofX — Symbolic AI for the Edge of Mathematics</title>
   <meta name="description" content="ProofX builds research-grade symbolic AI systems for mathematics, proof synthesis, and verification." />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
-  <link rel="stylesheet" href="/css/styles.css" />
-  <link rel="icon" href="/assets/favicon.ico">
 
-  <!-- Open Graph / Twitter -->
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap">
+
+  <!-- Icons / Manifest -->
+  <link rel="icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/assets/site.webmanifest">
+
+  <!-- Social -->
   <meta property="og:title" content="ProofX — Symbolic AI for the Edge of Mathematics">
   <meta property="og:description" content="Research-lab-grade symbolic AI for proof generation, verification, and dashboards.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.proofx.org/">
   <meta property="og:image" content="https://www.proofx.org/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://www.proofx.org/">
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -30,83 +38,175 @@
     "sameAs":["https://www.instagram.com/proofx_org","https://www.linkedin.com/in/alkindi_network"]
   }
   </script>
+
+  <link rel="stylesheet" href="/css/styles.css" />
 </head>
 <body>
-  <header class="nav">
-    <div class="container">
-      <a class="brand" href="/">ProofX</a>
-      <nav>
+  <!-- Backdrop gradient -->
+  <div class="bg"></div>
+
+  <header class="nav" role="banner">
+    <div class="container nav-inner">
+      <a class="brand" href="/" aria-label="ProofX Home">
+        <span class="brand-mark">PX</span>
+        <span class="brand-text">ProofX</span>
+      </a>
+
+      <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false">☰</button>
+
+      <nav id="site-nav" class="links" role="navigation">
         <a href="#systems">Systems</a>
         <a href="#research">Research</a>
         <a href="#updates">Updates</a>
-        <a class="cta" href="mailto:ceo@proofx.org">Contact</a>
+        <a class="btn small" href="mailto:ceo@proofx.org">Contact</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <section class="hero">
-      <div class="container">
-        <h1>Symbolic AI for the Edge of Mathematics</h1>
-        <p class="sub">Production-grade proof engines, verification pipelines, and real-time dashboards — built to push frontiers, not pixels.</p>
-        <div class="actions">
-          <a class="btn primary" href="#systems">Explore Systems</a>
-          <a class="btn ghost" href="#research">Read the Research</a>
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1>Symbolic AI for the Edge of Mathematics</h1>
+          <p class="sub">Production-grade proof engines, verification pipelines, and real-time dashboards — engineered to push frontiers, not pixels.</p>
+          <div class="actions">
+            <a class="btn primary" href="#systems">Explore Systems</a>
+            <a class="btn ghost" href="#research">Read the Research</a>
+          </div>
+          <div class="trust">
+            <span>Benchmarks:</span>
+            <ul>
+              <li>Goodstein</li>
+              <li>Paris–Harrington</li>
+              <li>GUE Conformity</li>
+            </ul>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="stat">
+            <span class="kpi">200k+</span>
+            <span class="label">Lines across ProofX & ProjectX</span>
+          </div>
+          <div class="stat">
+            <span class="kpi">Multi-Prover</span>
+            <span class="label">SMT + Finite Model Checking</span>
+          </div>
+          <div class="stat">
+            <span class="kpi">Realtime</span>
+            <span class="label">Dashboards & Entropy Analytics</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="systems" class="grid">
+    <section id="systems" class="section">
       <div class="container">
-        <h2>Systems</h2>
+        <div class="section-head">
+          <h2>Systems</h2>
+          <p class="kicker">Modular, observable, and battle-tested.</p>
+        </div>
         <div class="cards">
           <article class="card">
-            <h3>ProofX Core</h3>
+            <div class="card-top">
+              <h3>ProofX Core</h3>
+              <span class="badge">Orchestrator</span>
+            </div>
             <p>Multi-prover orchestration, SMT + finite model testing, theorem synthesis, entropy scoring.</p>
+            <div class="card-cta">
+              <a href="#" aria-disabled="true">Overview</a>
+              <a href="#" aria-disabled="true">Docs</a>
+            </div>
           </article>
+
           <article class="card">
-            <h3>GödelLab</h3>
+            <div class="card-top">
+              <h3>GödelLab</h3>
+              <span class="badge">FOL Engine</span>
+            </div>
             <p>Symbolic engine for first-order logic with full evaluation traces and counterexamples.</p>
+            <div class="card-cta">
+              <a href="#" aria-disabled="true">Playground</a>
+              <a href="#" aria-disabled="true">API</a>
+            </div>
           </article>
+
           <article class="card">
-            <h3>CollatzX</h3>
-            <p>Distributed numeric/symbolic exploration with real-time dashboards and anomaly detection.</p>
+            <div class="card-top">
+              <h3>CollatzX</h3>
+              <span class="badge">Distributed</span>
+            </div>
+            <p>Distributed numeric/symbolic exploration with anomaly detection and real-time dashboards.</p>
+            <div class="card-cta">
+              <a href="#" aria-disabled="true">Dashboard</a>
+              <a href="#" aria-disabled="true">Whitepaper</a>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="research" class="split">
-      <div class="container">
-        <h2>Research</h2>
-        <p>We operate at the intersection of symbolic AI, number theory, and verification. Preprints, dashboards, and benchmarks are released on a rolling basis.</p>
-        <ul class="bullets">
-          <li>Goodstein / Paris–Harrington benchmarks</li>
-          <li>Entropy scoring & symbolic decay maps</li>
-          <li>GUE conformity and spacing statistics</li>
-        </ul>
-        <a class="btn" href="mailto:research@proofx.org">Collaborate</a>
+    <section id="research" class="section section-alt">
+      <div class="container research-grid">
+        <div>
+          <h2>Research</h2>
+          <p>We operate at the convergence of symbolic AI, number theory, and verification. Preprints, dashboards, and benchmarks are released on a rolling basis.</p>
+          <ul class="bullets">
+            <li>Goodstein / Paris–Harrington benchmarks</li>
+            <li>Entropy scoring & symbolic decay maps</li>
+            <li>GUE conformity and spacing statistics</li>
+          </ul>
+          <a class="btn" href="mailto:research@proofx.org">Collaborate</a>
+        </div>
+        <div class="panel">
+          <h4>Latest Notes</h4>
+          <ul class="notes">
+            <li><span>Aug ’25</span> Proof synthesis entropy scoring — design doc</li>
+            <li><span>Aug ’25</span> Multi-prover pipeline: orchestration modes</li>
+            <li><span>Jul ’25</span> GUE conformity checks — dashboard spec</li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <section id="updates" class="updates">
+    <section id="updates" class="section">
       <div class="container">
-        <h2>Updates</h2>
-        <p>News and technical notes drop here. RSS coming soon.</p>
+        <div class="section-head">
+          <h2>Updates</h2>
+          <p class="kicker">News and technical notes. RSS soon.</p>
+        </div>
+        <div class="update-feed">
+          <article class="update">
+            <h4>ProofX landing v1 live</h4>
+            <p>Initial public launch on Vercel with domain + SSL. Subdomains for docs/dashboards next.</p>
+          </article>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <span>© <span id="y"></span> ProofX</span>
-      <a href="mailto:contact@proofx.org">contact@proofx.org</a>
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-inner">
+      <div class="left">
+        <span class="brand-text">ProofX</span>
+        <span class="muted">© <span id="y"></span></span>
+      </div>
+      <div class="right">
+        <a href="mailto:contact@proofx.org">contact@proofx.org</a>
+        <a href="https://www.instagram.com/proofx_org" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.linkedin.com/in/alkindi_network" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
     </div>
   </footer>
 
-  <script>document.getElementById('y').textContent = new Date().getFullYear()</script>
-  <script src="/js/app.js" defer></script>
-
-  <!-- Analytics (drop GA or Plausible here) -->
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+    // Mobile nav
+    const btn = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('site-nav');
+    btn.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  </script>
 </body>
 </html>
