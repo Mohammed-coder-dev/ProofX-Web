@@ -1,6 +1,16 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <!-- =============================================================
+       ProofX / ofX — Ultra‑compact, 2100‑style landing (no horiz scroll)
+       Changes per brief:
+       1) Top headers: ofX | Vision | Overview | Engines | Architecture | FAQ | Contact
+       2) Disable horizontal scrolling (only vertical)
+       3) Remove "Visuals" section for now; focus on copy/structure
+       4) Change contact button to a single "Email" button → mailto:alkindi.proofx@gmail.com
+       5) Futuristic (2100) look: neon accents, glass surfaces, micro‑interactions
+       ============================================================= -->
+
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="dark light" />
@@ -101,6 +111,9 @@
 
     /* Reduced motion safety */
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+    /* Fix brand wrap */
+    .brand, .brand * { white-space: nowrap; overflow-wrap: normal; word-break: normal; }
+    .brand .mark { min-width: 36px; padding: 0 6px; }
   </style>
 </head>
 
@@ -110,9 +123,8 @@
   <!-- ================================ NAV ================================ -->
   <header class="nav" role="banner">
     <div class="container nav-inner">
-      <a class="brand" href="#vision" aria-label="ofX Home">
-        <span class="mark mono" aria-hidden="true">ofX</span>
-        <span>ofX</span>
+      <a class="brand" href="#vision" aria-label="ProofX Home">
+        <span class="mark mono" aria-hidden="true">ProofX</span>        <span>ProofX</span>
       </a>
       <nav class="links" role="navigation" aria-label="Primary">
         <a href="#vision">Vision</a>
