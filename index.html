@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
   <!-- =============================================================
-       ProofX / ofX — Ultra‑compact, 2100‑style landing (no horiz scroll)
-       Changes per brief:
-       1) Top headers: ofX | Vision | Overview | Engines | Architecture | FAQ | Contact
-       2) Disable horizontal scrolling (only vertical)
-       3) Remove "Visuals" section for now; focus on copy/structure
-       4) Change contact button to a single "Email" button → mailto:alkindi.proofx@gmail.com
-       5) Futuristic (2100) look: neon accents, glass surfaces, micro‑interactions
+       ProofX — Ultra‑compact, FAANG‑lab tone (vertical only)
+       Spec:
+       • Top headers: ProofX | Vision | Overview | Engines | Architecture | FAQ | Contact
+       • No horizontal scroll
+       • Visuals removed; copy‑first
+       • Single Email button → mailto:alkindi.proofx@gmail.com
+       • Futuristic (2100) aesthetic with credible big‑tech research voice
        ============================================================= -->
 
   <meta charset="utf-8" />
@@ -18,23 +18,21 @@
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
 
-  <title>ProofX — ofX · Symbolic AI for the Edge of Mathematics</title>
-  <meta name="description" content="ProofX (ofX) builds production‑grade symbolic AI for proof generation, verification at scale, and operator‑grade dashboards—engines designed to push frontiers, not pixels." />
-  <meta name="keywords" content="ProofX, ofX, symbolic AI, theorem proving, formal verification, finite model checking, SMT, number theory, dashboards, entropy analytics" />
+  <title>ProofX — Symbolic AI Research Lab for the Edge of Mathematics</title>
+  <meta name="description" content="ProofX builds production‑grade symbolic AI for proof generation, verification at scale, and operator‑grade telemetry—engines designed to push frontiers, not pixels." />
+  <meta name="keywords" content="ProofX, symbolic AI, theorem proving, formal verification, finite model checking, SMT, number theory, dashboards, entropy analytics, research lab" />
   <meta name="author" content="Alkindi" />
   <link rel="canonical" href="https://www.proofx.org/" />
 
-  <!-- Icons & Manifest (optional, keep lightweight) -->
   <link rel="icon" href="/favicon.ico" />
   <link rel="manifest" href="/site.webmanifest" />
 
-  <!-- Typography (system stack + variable monospace accent) -->
   <style>
     /* ===== Global reset / layout guards ===== */
     *, *::before, *::after { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; width: 100%; max-width: 100%; overflow-x: hidden; }
-    /* Prevent sneaky overflow from long words or code chunks */
-    body, p, li, h1, h2, h3, h4 { overflow-wrap: anywhere; }
+    /* Prevent mid‑word breaks except where explicitly allowed */
+    body, p, li, h1, h2, h3, h4 { overflow-wrap: normal; word-break: normal; }
 
     /* ===== Theme ===== */
     :root {
@@ -64,18 +62,16 @@
     .muted { color: var(--muted); }
     .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
 
-    /* ===== Futuristic surface ===== */
+    /* ===== Futuristic surfaces ===== */
     .surface { background: linear-gradient(180deg, var(--glass), transparent); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); backdrop-filter: saturate(120%) blur(6px); }
-
-    /* Neon accent ring */
     .ring { position: relative; }
     .ring::after { content:""; position:absolute; inset:-1px; border-radius: calc(var(--radius) + 2px); pointer-events:none; background: conic-gradient(from 120deg, rgba(0,240,255,.35), rgba(123,108,255,.35), rgba(0,255,163,.35), rgba(0,240,255,.35)); filter: blur(8px); opacity:.35; }
 
     /* ===== Top Nav ===== */
     header.nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px) saturate(120%); background: color-mix(in oklab, var(--bg) 84%, transparent); border-bottom: 1px solid var(--line); }
     .nav-inner { display:flex; align-items:center; justify-content:space-between; gap:12px; height:64px; }
-    .brand { display:flex; align-items:center; gap:10px; font-weight:800; text-decoration:none; color:inherit; letter-spacing:.6px; }
-    .brand .mark { display:grid; place-items:center; width:36px; height:36px; border-radius:10px; border:1px solid var(--line); background: linear-gradient(180deg, var(--glass), transparent); font-weight:900; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:800; text-decoration:none; color:inherit; letter-spacing:.6px; white-space: nowrap; }
+    .brand .mark { display:grid; place-items:center; min-width:36px; height:36px; padding:0 6px; border-radius:10px; border:1px solid var(--line); background: linear-gradient(180deg, var(--glass), transparent); font-weight:900; }
     nav.links { display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
     nav.links a { text-decoration:none; color:inherit; opacity:.9; padding:8px 10px; border-radius:10px; border:1px solid transparent; }
     nav.links a:hover, nav.links a[aria-current="page"] { border-color: var(--line); background: var(--glass); }
@@ -111,9 +107,6 @@
 
     /* Reduced motion safety */
     @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
-    /* Fix brand wrap */
-    .brand, .brand * { white-space: nowrap; overflow-wrap: normal; word-break: normal; }
-    .brand .mark { min-width: 36px; padding: 0 6px; }
   </style>
 </head>
 
@@ -124,7 +117,8 @@
   <header class="nav" role="banner">
     <div class="container nav-inner">
       <a class="brand" href="#vision" aria-label="ProofX Home">
-        <span class="mark mono" aria-hidden="true">ProofX</span>        <span>ProofX</span>
+        <span class="mark mono" aria-hidden="true">PX</span>
+        ProofX
       </a>
       <nav class="links" role="navigation" aria-label="Primary">
         <a href="#vision">Vision</a>
@@ -141,7 +135,7 @@
     <!-- ============================ VISION ============================== -->
     <section id="vision" class="section hero">
       <div class="container surface ring" style="padding:18px;">
-        <p class="mono muted" style="margin:0 0 8px;">Research‑lab rigor → operator‑grade system</p>
+        <p class="mono muted" style="margin:0 0 8px;">ProofX Research Lab · FAANG‑grade systems rigor</p>
         <h1>Symbolic AI for the Edge of Mathematics</h1>
         <p class="sub">Production‑grade proof engines, verification pipelines, and live telemetry—engineered to push frontiers, not pixels. <span class="mono">If a path exists, we find it. If not, we wire the graph and replay it deterministically.</span></p>
         <div class="kpis">
@@ -153,7 +147,7 @@
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <a class="btn primary" href="#overview">Read the Overview</a>
           <a class="btn" href="#engines">Explore Engines</a>
-          <a class="btn" href="#contact">Email</a>
+          <a class="btn" href="#contact">Contact</a>
         </div>
       </div>
     </section>
@@ -164,7 +158,7 @@
         <div class="surface ring card">
           <div style="padding:16px">
             <h2 style="margin:0 0 8px">Overview</h2>
-            <p>ofX unites <strong>formal theorem verification</strong> with <strong>symbolic experimentation</strong>. Modular engines blend GPU‑accelerated numerics with a custom first‑order logic kernel, orchestrated for deterministic, reproducible results.</p>
+            <p>ProofX Research Lab unites <strong>formal theorem verification</strong> with <strong>symbolic experimentation</strong>. Modular engines blend GPU‑accelerated numerics with a custom first‑order logic kernel, orchestrated for deterministic, reproducible results.</p>
             <ul class="bullets">
               <li><strong>Mathematics:</strong> conjecture verification & proof discovery</li>
               <li><strong>Verification:</strong> SMT portfolios, finite model witnesses, property proving</li>
@@ -264,7 +258,7 @@
           <p class="muted" style="margin:0">Pilot, invest, or collaborate. High‑intensity, low‑theatre.</p>
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <a class="btn primary" href="mailto:alkindi.proofx@gmail.com?subject=ofX%20—%20Inquiry" aria-label="Email ofX">Email</a>
+          <a class="btn primary" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20Research%20Lab%20—%20Inquiry" aria-label="Email ProofX">Email</a>
         </div>
       </div>
     </section>
@@ -273,7 +267,7 @@
   <!-- ============================ FOOTER ============================== -->
   <footer class="section-tight" role="contentinfo" style="border-top:1px solid var(--line)">
     <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
-      <div class="mono">ofX · © <span id="y"></span></div>
+      <div class="mono">ProofX · © <span id="y"></span></div>
       <nav style="display:flex;gap:12px;flex-wrap:wrap">
         <a class="muted" href="#vision">Top</a>
         <a class="muted" href="#overview">Overview</a>
