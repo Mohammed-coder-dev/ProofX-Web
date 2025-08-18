@@ -1,5 +1,13 @@
 /* =========================
-   ProofX — Premium UI System (v2)
+   ProofX — Premium UI System (v2.1)
+   Completes styles used by the new index.html
+   - Tokens + base
+   - Navigation (desktop + mobile)
+   - Hero, cards, sections
+   - Tabs, badges, tags, chips
+   - Visual/author helpers (avatar, quote, toc)
+   - A11y: :focus-visible, skip link
+   - Light print rules
    ========================= */
 
 /* ---- Design tokens (lean, modern) ---- */
@@ -51,6 +59,20 @@ body{
 }
 a{color:inherit; text-underline-offset:2px}
 img{max-width:100%; height:auto; display:block}
+ul{padding-left:1.2rem}
+ul.bullets{padding-left:1.2rem; margin:0}
+hr{border:0; height:1px; background:var(--stroke)}
+.muted{color:var(--muted)}
+
+/* Keyboard focus (a11y) */
+:focus{outline:none}
+:focus-visible{box-shadow:var(--ring); border-radius:10px}
+
+/* Skip link (a11y) */
+.skip-link{
+  position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
+}
+.skip-link:focus{left:12px; top:12px; width:auto; height:auto; padding:8px 10px; background:#0c1624; border:1px solid var(--stroke); border-radius:10px; z-index:999}
 
 /* ---- Background field (subtle, expensive) ---- */
 .bg{
@@ -64,6 +86,10 @@ img{max-width:100%; height:auto; display:block}
 
 /* ---- Layout ---- */
 .container{width:min(1080px,92%); margin:0 auto}
+
+/* simple helpers used in HTML */
+.container--wide{width:min(1280px,94%); margin:0 auto}
+.hr{height:1px; background:var(--stroke); margin:var(--s-3) 0}
 
 /* ---- Top nav (glass, disciplined) ---- */
 .nav{
@@ -95,6 +121,9 @@ img{max-width:100%; height:auto; display:block}
 .nav-toggle{display:none; width:38px; height:38px; border:0; background:transparent; color:var(--text)}
 .nav-toggle .bar{display:block; width:20px; height:2px; background:var(--text); margin:4px auto; border-radius:2px}
 
+/* prevent body scroll when mobile menu open (toggled by script) */
+body.nav-open{overflow:hidden}
+
 /* ---- Hero (executive presence) ---- */
 .hero{padding:var(--s-7) 0 var(--s-5)}
 .hero-inner{display:grid; grid-template-columns:1.2fr .8fr; gap:var(--s-4); align-items:center}
@@ -106,6 +135,13 @@ img{max-width:100%; height:auto; display:block}
 .hero-copy .sub{color:var(--muted); max-width:760px}
 .actions{margin-top:var(--s-3); display:flex; gap:var(--s-2); flex-wrap:wrap}
 
+/* Pills used in hero */
+.pill{
+  display:inline-flex; align-items:center; gap:8px; padding:6px 10px;
+  border:1px solid var(--stroke); border-radius:999px;
+  background:rgba(255,255,255,.03); color:var(--text)
+}
+
 /* ---- Buttons (decisive) ---- */
 .btn{
   display:inline-block; padding:12px 16px; border-radius:12px;
@@ -114,7 +150,8 @@ img{max-width:100%; height:auto; display:block}
   will-change:transform;
 }
 .btn:hover{transform:translateY(-1px)}
-.btn:focus{outline:none; box-shadow:var(--ring)}
+.btn:focus-visible{box-shadow:var(--ring)}
+.btn[aria-disabled="true"], .btn:disabled{opacity:.6; cursor:not-allowed}
 .btn.primary{
   background:linear-gradient(180deg, var(--brand), var(--brand-2));
   color:#06121a; border:none; box-shadow:var(--shadow-md)
@@ -147,6 +184,11 @@ img{max-width:100%; height:auto; display:block}
 }
 .kpi{display:block; font-weight:800; font-size:24px}
 .label{color:var(--muted); font-size:.95rem}
+
+/* metrics (used elsewhere too) */
+.metric{display:flex; flex-direction:column; gap:4px; padding:12px; border:1px solid var(--stroke); border-radius:12px; background:rgba(18,26,40,.5)}
+.metric .kpi{font-size:22px}
+.metric .label{font-size:.9rem}
 
 /* ---- Sections ---- */
 .section{padding:var(--s-6) 0}
@@ -231,6 +273,7 @@ img{max-width:100%; height:auto; display:block}
 }
 .faq-grid article summary::-webkit-details-marker{display:none}
 .faq-grid article[open]{border-color:var(--stroke-2)}
+.faq-grid a{color:var(--brand)}
 
 /* ---- Updates ---- */
 .update-feed{display:grid; grid-template-columns:1fr; gap:12px}
@@ -251,13 +294,80 @@ img{max-width:100%; height:auto; display:block}
   transition:background .12s ease, color .12s ease
 }
 .footer a:hover{color:var(--text); background:rgba(255,255,255,.03)}
-.muted{color:var(--muted)}
 
-/* ---- Responsive ---- */
+/* =========================
+   Components the HTML uses
+   ========================= */
+
+/* Tags & chip rows */
+.tag{
+  display:inline-flex; align-items:center; gap:6px;
+  border:1px solid var(--stroke); border-radius:999px;
+  padding:4px 10px; font-size:.85rem;
+  background:rgba(255,255,255,.03)
+}
+.chips{display:flex; flex-wrap:wrap; gap:8px}
+
+/* Callout box */
+.callout{
+  border:1px solid var(--stroke);
+  border-radius:var(--radius);
+  padding:var(--s-3);
+  background:linear-gradient(180deg, rgba(18,24,36,.55), rgba(10,14,22,.55));
+  box-shadow:var(--shadow-sm);
+}
+
+/* Logo shelf (placeholder partners) */
+.logo-shelf{
+  display:grid; gap:14px;
+  grid-template-columns:repeat(6,1fr);
+}
+.logo{
+  height:40px; display:flex; align-items:center; justify-content:center;
+  border:1px dashed var(--stroke); border-radius:12px; color:var(--muted);
+  background:rgba(255,255,255,.02)
+}
+
+/* Tabs (Overview section) */
+.tabbar{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px}
+.tab{
+  border:1px solid var(--stroke); padding:8px 12px; border-radius:10px;
+  background:rgba(255,255,255,.03); cursor:pointer; color:var(--text)
+}
+.tab:hover{background:rgba(255,255,255,.05)}
+.tab[aria-selected="true"]{outline:2px solid var(--brand); background:rgba(87,200,255,.08)}
+.tabpanes > div{display:none}
+.tabpanes > div[aria-hidden="false"]{display:block}
+
+/* Author bits */
+.avatar{width:88px;height:88px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,.2)}
+.quote{font-size:1.05rem;line-height:1.6;border-left:3px solid var(--brand-2);padding-left:12px;color:var(--text);background:rgba(255,255,255,.02);border-radius:6px}
+.toc{display:grid; gap:8px}
+.toc a{
+  display:flex; align-items:center; gap:8px; text-decoration:none; color:inherit;
+  border:1px solid var(--stroke); background:rgba(255,255,255,.03);
+  padding:8px 10px; border-radius:10px;
+}
+.toc a:hover{background:rgba(255,255,255,.05); border-color:var(--stroke-2)}
+
+/* Media wrapper + captions */
+.media{border:1px solid var(--stroke);border-radius:var(--radius);padding:var(--s-2);background:linear-gradient(180deg, rgba(16,24,36,.6), rgba(10,14,22,.6)); box-shadow:var(--shadow-sm)}
+.caption{font-size:.9rem;color:var(--muted);margin-top:6px}
+
+/* KBD badges (already used) */
+.kbd{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+  border:1px solid var(--stroke); padding:.15rem .35rem; border-radius:6px; background:rgba(255,255,255,.05)
+}
+
+/* =========================
+   Responsive
+   ========================= */
 @media (max-width:1024px){
   .hero-inner{grid-template-columns:1fr}
   .cards{grid-template-columns:repeat( auto-fit, minmax(260px,1fr) );}
   .research-grid{grid-template-columns:1fr}
+  .logo-shelf{grid-template-columns:repeat(3,1fr)}
 }
 @media (max-width:720px){
   .links{display:none}
@@ -268,7 +378,19 @@ img{max-width:100%; height:auto; display:block}
     box-shadow:var(--shadow-lg)
   }
   .nav-toggle{display:block}
+  .logo-shelf{grid-template-columns:repeat(2,1fr)}
 }
 
 /* ---- Motion accessibility ---- */
 .prm *{transition:none !important; animation:none !important}
+
+/* =========================
+   Print (basic, quiet)
+   ========================= */
+@media print{
+  body{background:#fff;color:#000}
+  .bg,.nav,.footer{display:none}
+  a{text-decoration:underline;color:#000}
+  .section,.hero{padding:16px 0}
+  .card,.panel,.callout,.media{border:1px solid #999; background:#fff; box-shadow:none}
+}
