@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
   <!-- =============================================================
-       ProofX — Ultra‑compact, FAANG‑lab tone (enhanced)
-       - Copy‑first vertical layout, zero fluff
-       - Shimmer headline, brand pulse, magnetic cards
-       - A11y+perf: reduced‑motion, content‑visibility, print
+       ProofX — VC‑Attractive Single File (FINAL)
+       Narrative arc: Vision → Problem → Solution → Architecture → Engines → Reliability → Case Studies → FAQ → Contact
+       Copy‑first, FAANG‑lab tone, zero fluff, strong CTAs
        ============================================================= -->
 
   <meta charset="utf-8" />
@@ -16,8 +15,7 @@
   <meta name="robots" content="index,follow,max-image-preview:large" />
 
   <title>ProofX — Symbolic AI Research Lab for the Edge of Mathematics</title>
-  <meta name="description" content="ProofX builds production‑grade symbolic AI for proof generation, verification at scale, and operator‑grade telemetry—engines designed to push frontiers, not pixels." />
-  <meta name="keywords" content="ProofX, symbolic AI, theorem proving, formal verification, finite model checking, SMT, number theory, dashboards, entropy analytics, research lab" />
+  <meta name="description" content="ProofX builds production‑grade symbolic AI for proof generation, deterministic verification, and operator‑grade telemetry — engines that compress R&D cycles by years." />
   <meta name="author" content="Alkindi" />
   <link rel="canonical" href="https://www.proofx.org/" />
 
@@ -26,7 +24,7 @@
 
   <style>
 /* =========================
-   ProofX — Premium UI System (v3 FINAL)
+   ProofX — Premium UI System (v3 VC)
    ========================= */
 
 /* ---- Color scheme hint ---- */
@@ -93,22 +91,20 @@ hr{border:0; height:1px; background:var(--stroke)}
 .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
 ::selection{background:color-mix(in oklab,var(--brand) 35%, transparent); color:#06131a}
 
-/* Smooth scroll (respect reduced motion) */
+/* Smooth scroll */
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
 
-/* Keyboard focus */
+/* Focus */
 :focus{outline:none}
 :focus-visible{box-shadow:var(--ring); border-radius:10px}
 
-/* Visually-hidden */
+/* A11y helpers */
 .sr-only,.visually-hidden{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
-
-/* Skip link */
 .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
 .skip-link:focus{left:12px;top:12px;width:auto;height:auto;padding:8px 10px;background:#0c1624;border:1px solid var(--stroke);border-radius:10px;z-index:999}
 
-/* ---- Background field ---- */
+/* Background */
 .bg{position:fixed;inset:0;z-index:-1;pointer-events:none;
   background:
     radial-gradient(900px 520px at 80% -10%, color-mix(in oklab, var(--brand) 35%, transparent), transparent 60%),
@@ -116,7 +112,7 @@ html{scroll-behavior:smooth}
     linear-gradient(180deg, var(--bg), var(--bg-2));
 }
 
-/* ---- Layout ---- */
+/* Layout */
 .container{width:min(1080px,92%); margin-inline:auto}
 .container--wide{width:min(1280px,94%); margin-inline:auto}
 .hr{height:1px; background:var(--stroke); margin:var(--s-3) 0}
@@ -126,20 +122,15 @@ html{scroll-behavior:smooth}
 .ring{position:relative}
 .ring::after{content:""; position:absolute; inset:-1px; border-radius:inherit; pointer-events:none; background:conic-gradient(from 180deg at 50% 50%, rgba(87,200,255,.10), transparent 30%, transparent 70%, rgba(155,255,209,.10)); filter:blur(20px)}
 
-/* ---- Top nav ---- */
-.nav{position:sticky; top:0; z-index:10; border-bottom:1px solid var(--stroke);
-  background:rgba(8,12,18,.55); box-shadow:0 1px 0 rgba(255,255,255,.02)}
-@supports (backdrop-filter: blur(6px)){
-  .nav{backdrop-filter:saturate(125%) blur(8px)}
-}
+/* Nav */
+.nav{position:sticky; top:0; z-index:10; border-bottom:1px solid var(--stroke); background:rgba(8,12,18,.55); box-shadow:0 1px 0 rgba(255,255,255,.02)}
+@supports (backdrop-filter: blur(6px)){ .nav{backdrop-filter:saturate(125%) blur(8px)} }
 .nav-inner{display:flex; align-items:center; justify-content:space-between; padding-block:var(--s-2)}
 .brand{display:flex; align-items:center; gap:10px; text-decoration:none; white-space:nowrap}
-.brand-mark{display:grid; place-items:center; inline-size:30px; block-size:30px; border-radius:10px;
-  background:linear-gradient(180deg,var(--brand),var(--brand-2)); color:#06131a; font-weight:800; box-shadow:var(--shadow-sm); position:relative; isolation:isolate; overflow:hidden}
+.brand-mark{display:grid; place-items:center; inline-size:30px; block-size:30px; border-radius:10px; background:linear-gradient(180deg,var(--brand),var(--brand-2)); color:#06131a; font-weight:800; box-shadow:var(--shadow-sm); position:relative; isolation:isolate; overflow:hidden}
 .brand-mark::after{content:""; position:absolute; inset:-40%; border-radius:50%; background:radial-gradient(circle at 50% 50%, rgba(255,255,255,.35), transparent 60%); filter:blur(10px); mix-blend:overlay; animation:brandPulse 6s ease-in-out infinite}
-.brand-text{font-weight:800; letter-spacing:.2px}
 @keyframes brandPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
-
+.brand-text{font-weight:800; letter-spacing:.2px}
 .links{display:flex; align-items:center; gap:var(--s-3)}
 .links a{color:var(--muted); text-decoration:none; padding:6px 8px; border-radius:8px; transition:background .12s ease, color .12s ease}
 .links a:hover{color:var(--text); background:rgba(255,255,255,.03)}
@@ -149,11 +140,10 @@ html{scroll-behavior:smooth}
 .nav-toggle .bar{display:block; inline-size:20px; block-size:2px; background:var(--text); margin:4px auto; border-radius:2px}
 body.nav-open{overflow:hidden}
 
-/* ---- Hero ---- */
+/* Hero */
 .hero{padding-block:var(--s-7) var(--s-5)}
 .hero .container{padding:18px}
-.hero-inner{display:grid; grid-template-columns:1.2fr .8fr; gap:var(--s-4); align-items:center}
-.hero-copy h1{font-size:var(--fs-h1); line-height:1.06; margin:0 0 var(--s-2); letter-spacing:.1px}
+.hero-copy h1{font-size:var(--fs-h1); line-height:1.06; margin:0 0 var(--s-2)}
 .hero-copy .sub{color:var(--muted); max-inline-size:760px}
 .actions{margin-top:var(--s-3); display:flex; gap:var(--s-2); flex-wrap:wrap}
 
@@ -161,60 +151,48 @@ body.nav-open{overflow:hidden}
 .shimmer{background:linear-gradient(92deg, var(--text) 0%, color-mix(in oklab, var(--brand) 25%, var(--text)) 35%, var(--text) 70%); background-size:200% 100%; -webkit-background-clip:text; background-clip:text; color:transparent; animation:shimmerMove 6s ease-in-out infinite}
 @keyframes shimmerMove{0%{background-position:0% 0}50%{background-position:100% 0}100%{background-position:0% 0}}
 
-/* Pills */
-.pill{display:inline-flex; align-items:center; gap:8px; padding:6px 10px; border:1px solid var(--stroke); border-radius:999px; background:rgba(255,255,255,.03); color:var(--text)}
+/* KPI / Pillars */
+.kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:10px}
+.kpi{display:grid; gap:6px; padding:12px 14px; border-radius:12px; border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(15,22,34,.9), rgba(10,16,26,.9))}
+.kpi .label{color:var(--muted); font-size:.88rem}
+.kpi .value{font-weight:800}
+
+/* Trust chips */
+.chips{display:flex; flex-wrap:wrap; gap:8px}
+.tag{display:inline-flex; align-items:center; gap:6px; border:1px solid var(--stroke); border-radius:999px; padding:4px 10px; font-size:.85rem; background:rgba(255,255,255,.03)}
 
 /* Buttons */
 .btn{display:inline-block; padding:12px 16px; border-radius:12px; text-decoration:none; border:1px solid var(--stroke); transition:transform .12s ease, border-color .12s ease, background .12s ease, box-shadow .12s ease}
 .btn:hover{transform:translateY(-1px)}
 .btn:active{transform:translateY(0)}
 .btn:focus-visible{box-shadow:var(--ring)}
-.btn[aria-disabled="true"], .btn:disabled{opacity:.6; cursor:not-allowed}
 .btn.primary{background:linear-gradient(180deg, var(--brand), var(--brand-2)); color:#06121a; border:none; box-shadow:var(--shadow-md)}
 .btn.ghost{background:transparent; color:var(--text)}
 
-/* KPIs */
-.kpis{display:flex; gap:10px; flex-wrap:wrap}
-.kpi{display:grid; gap:6px; padding:12px 14px; border-radius:12px; border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(15,22,34,.9), rgba(10,16,26,.9))}
-.kpi .v{font-weight:800}
-.kpi .l{color:var(--muted); font-size:.92rem}
-
-/* Cards */
+/* Cards / Grids */
 .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--s-3); content-visibility:auto; contain-intrinsic-size:300px}
 @media (max-width:1100px){.cards{grid-template-columns:repeat( auto-fit, minmax(260px,1fr) )}}
-.card{position:relative; background:linear-gradient(180deg, rgba(16,24,36,.72), rgba(10,14,22,.72)); border:1px solid var(--stroke); border-radius:var(--radius); padding:var(--s-3); transition:transform .12s ease, border-color .12s ease, box-shadow .12s ease, filter .12s ease; box-shadow:var(--shadow-sm); overflow:hidden; transform-style:preserve-3d}
-.card::after{content:""; position:absolute; inset:0; pointer-events:none; background:linear-gradient(180deg, transparent, rgba(87,200,255,.06)); opacity:0; transition:opacity .15s ease}
-.card:hover{transform:translateY(-1px) perspective(900px) rotateX(1.2deg) rotateY(.8deg); border-color:var(--stroke-2); box-shadow:var(--shadow-md); filter:saturate(1.02)}
-.card:hover::after{opacity:1}
+.card{position:relative; background:linear-gradient(180deg, rgba(16,24,36,.72), rgba(10,14,22,.72)); border:1px solid var(--stroke); border-radius:var(--radius); padding:var(--s-3); transition:transform .12s ease, border-color .12s ease, box-shadow .12s ease, filter .12s ease; box-shadow:var(--shadow-sm); overflow:hidden}
+.card:hover{transform:translateY(-1px); border-color:var(--stroke-2); box-shadow:var(--shadow-md); filter:saturate(1.02)}
 .card h3{margin-top:0}
-.card-top{display:flex; align-items:center; justify-content:space-between; margin-bottom:8px}
-.badge{font-size:.74rem; color:#06121a; background:linear-gradient(180deg, var(--accent), #6cffc4); padding:6px 10px; border-radius:999px; border:1px solid #e6fff5}
-.card-cta{margin-top:12px; display:flex; gap:12px}
-.card-cta a{color:var(--brand); text-decoration:none}
-.card-cta a[aria-disabled="true"]{opacity:.6; cursor:not-allowed}
 
-/* Architecture grid */
+/* Architecture */
 .arch-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:var(--s-3)}
 
-/* Timeline */
+/* Timeline dots */
 .timeline{display:grid; gap:var(--s-3)}
 .timeline > div{position:relative; padding-inline-start:28px; border:1px solid var(--stroke); border-radius:var(--radius); padding:var(--s-3); background:linear-gradient(180deg, rgba(18,24,36,.55), rgba(10,14,22,.55))}
-.timeline > div::before{content:""; position:absolute; inset-inline-start:12px; inset-block-start:20px; inline-size:6px; block-size:6px; border-radius:50%; background:var(--brand); box-shadow:0 0 0 4px rgba(87,200,255,.15); animation:dotPulse 2.6s ease-in-out infinite}
-@keyframes dotPulse{0%,100%{transform:scale(1); opacity:.9}50%{transform:scale(1.3); opacity:1}}
+.timeline > div::before{content:""; position:absolute; inset-inline-start:12px; inset-block-start:20px; inline-size:6px; block-size:6px; border-radius:50%; background:var(--brand); box-shadow:0 0 0 4px rgba(87,200,255,.15)}
 
 /* FAQ */
 .faq details{border:1px solid var(--stroke); border-radius:var(--radius); padding:var(--s-3); background:linear-gradient(180deg, rgba(16,24,36,.6), rgba(10,14,22,.6)); margin-bottom:12px}
 .faq summary{list-style:none; cursor:pointer; font-weight:600; outline:none}
 .faq summary::-webkit-details-marker{display:none}
 .faq details[open]{border-color:var(--stroke-2)}
-.faq details[open] > p{animation:faqOpen .28s ease}
-@keyframes faqOpen{from{opacity:0; transform:translateY(-4px)}to{opacity:1; transform:none}}
 
 /* Footer */
 .footer{border-top:1px solid var(--stroke); padding-block:18px; background:rgba(6,10,16,.55)}
-@supports (backdrop-filter: blur(6px)){
-  .footer{backdrop-filter:saturate(130%) blur(8px)}
-}
+@supports (backdrop-filter: blur(6px)){ .footer{backdrop-filter:saturate(130%) blur(8px)} }
 .footer-inner{display:flex; align-items:center; justify-content:space-between; gap:12px}
 .footer a{color:var(--muted); text-decoration:none; padding:6px 8px; border-radius:8px; transition:background .12s ease, color .12s ease}
 .footer a:hover{color:var(--text); background:rgba(255,255,255,.03)}
@@ -226,26 +204,20 @@ body.nav-open{overflow:hidden}
 
 /* Responsive */
 @media (max-width:1024px){
-  .hero-inner{grid-template-columns:1fr}
-  .cards{grid-template-columns:repeat( auto-fit, minmax(260px,1fr) )}
+  .hero-copy h1{font-size:clamp(32px,7vw,48px)}
   .arch-grid{grid-template-columns:1fr}
 }
 @media (max-width:720px){
   .links{display:none}
   .links.open{display:flex; position:absolute; inset-inline-end:4%; inset-block-start:60px; background:rgba(6,10,16,.96); border:1px solid var(--stroke); border-radius:14px; padding:10px 12px; flex-direction:column; gap:10px; box-shadow:var(--shadow-lg)}
   .nav-toggle{display:block}
+  .kpis{grid-template-columns:1fr}
 }
 
-/* Motion & contrast preferences */
+/* Preferences */
 .prm *{transition:none !important; animation:none !important}
-@media (prefers-contrast: more){
-  :root{--ring:0 0 0 3px color-mix(in oklab, var(--brand) 60%, white)}
-  .links a[aria-current="page"]{border-color:var(--brand)}
-}
-@media (prefers-reduced-motion: reduce){
-  .brand-mark::after,.shimmer,.card, .timeline > div::before, .faq details[open] > p{animation:none !important}
-  .card{transform:none !important}
-}
+@media (prefers-contrast: more){ :root{--ring:0 0 0 3px color-mix(in oklab, var(--brand) 60%, white)} }
+@media (prefers-reduced-motion: reduce){ .brand-mark::after,.shimmer{animation:none !important} }
 
 /* Print */
 @media print{
@@ -274,9 +246,12 @@ body.nav-open{overflow:hidden}
       </button>
       <nav id="site-nav" class="links" role="navigation" aria-label="Primary">
         <a href="#vision">Vision</a>
-        <a href="#overview">Overview</a>
-        <a href="#engines">Engines</a>
+        <a href="#problem">Problem</a>
+        <a href="#solution">Solution</a>
         <a href="#architecture">Architecture</a>
+        <a href="#engines">Engines</a>
+        <a href="#reliability">Reliability</a>
+        <a href="#cases">Case Studies</a>
         <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -284,122 +259,63 @@ body.nav-open{overflow:hidden}
   </header>
 
   <main id="main" tabindex="-1">
-    <!-- ============================ VISION ============================== -->
+    <!-- ============================ HERO ================================ -->
     <section id="vision" class="section hero">
-      <div class="container surface ring">
-        <p class="mono muted" style="margin:0 0 8px;">ProofX Research Lab · FAANG‑grade systems rigor</p>
+      <div class="container surface ring hero-copy">
+        <p class="mono muted" style="margin:0 0 8px;">ProofX Research Lab · Deterministic Symbolic AI</p>
         <h1 class="shimmer">Symbolic AI for the Edge of Mathematics</h1>
-        <p class="sub">Production‑grade proof engines, verification pipelines, and live telemetry—engineered to push frontiers, not pixels. <span class="mono">If a path exists, we find it. If not, we wire the graph and replay it deterministically.</span></p>
-        <div class="kpis">
-          <div class="kpi"><div class="v">200k+ LOC</div><div class="l">ProofX + ProjectX</div></div>
-          <div class="kpi"><div class="v">Multi‑Prover</div><div class="l">SMT + Finite Models</div></div>
-          <div class="kpi"><div class="v">Realtime</div><div class="l">Dashboards & Entropy</div></div>
+        <p class="sub">We compress the distance from conjecture to verified evidence by fusing multi‑prover orchestration, deterministic replay, and operator‑grade telemetry.</p>
+
+        <!-- Scope | Capability | Impact -->
+        <div class="kpis" style="margin-top:12px">
+          <div class="kpi"><div class="label">Scope</div><div class="value">200k+ LOC · multi‑engine platform</div></div>
+          <div class="kpi"><div class="label">Capability</div><div class="value">SMT + FOL + finite models · entropy scheduling</div></div>
+          <div class="kpi"><div class="label">Impact</div><div class="value">Shaves 2–3 years R&D for labs/buyers</div></div>
         </div>
-        <div class="hr"></div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <a class="btn primary" href="#overview">Read the Overview</a>
-          <a class="btn ghost" href="#engines">Explore Engines</a>
-          <a class="btn ghost" href="#contact">Contact</a>
+
+        <!-- Trust / defensibility chips -->
+        <div class="chips" style="margin-top:10px">
+          <span class="tag">On‑paper IP valuation: ~$18–20M</span>
+          <span class="tag">Replacement cost: $2–3M+ engineering</span>
+          <span class="tag">4+ years solo R&D</span>
+          <span class="tag">≈ 6–8 senior engineers · 12–18 months</span>
+        </div>
+
+        <!-- Primary CTA layer -->
+        <div class="actions">
+          <a class="btn primary" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Partner" aria-label="Partner">Partner</a>
+          <a class="btn ghost" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Invest" aria-label="Invest">Invest</a>
+          <a class="btn ghost" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Pilot" aria-label="Pilot">Pilot</a>
         </div>
       </div>
     </section>
 
-    <!-- ============================ VISION (CORE) ======================= -->
-    <section id="vision-core" class="section">
+    <!-- ============================ PROBLEM ============================= -->
+    <section id="problem" class="section">
       <div class="container">
-        <div class="arch-grid">
-          <article class="surface ring" style="padding:16px">
-            <h2 style="margin:0 0 8px">Vision</h2>
-            <p class="max-w-prose">Make <strong>mathematical truth operational</strong>. ProofX exists to compress the distance between conjecture and verified evidence by fusing symbolic reasoning with operator‑grade observability. We architect systems where <em>every step is inspectable, replayable, and owned</em>.</p>
-            <div class="hr"></div>
-            <div class="toc" aria-label="Vision pillars">
-              <a href="#pillar-1"><span class="mono">01</span> Determinism as Interface</a>
-              <a href="#pillar-2"><span class="mono">02</span> Telemetry as First Principles</a>
-              <a href="#pillar-3"><span class="mono">03</span> Engines over Demos</a>
-            </div>
-          </article>
-          <aside class="surface card" style="padding:16px">
-            <h3 style="margin-top:0">Operating Principles</h3>
-            <ul class="bullets">
-              <li><strong>Rigor by default:</strong> proofs carry obligations; experiments carry seeds.</li>
-              <li><strong>Evidence pipelines:</strong> traces, witnesses, and diffs are first‑class artifacts.</li>
-              <li><strong>Latency to certainty:</strong> measure time‑to‑verified, not just time‑to‑result.</li>
-              <li><strong>Composable engines:</strong> FOL, SMT, FMC, SAT bridges—swappable, typed, logged.</li>
-            </ul>
-          </aside>
-        </div>
-
-        <div class="cards" style="margin-top:var(--s-3)">
-          <article id="pillar-1" class="surface card">
-            <h3 class="mono" style="margin-top:0">01 — Determinism as Interface</h3>
-            <p>Every run is a contract: inputs, seeds, solvers, and routes are persisted. If a result matters, it must be <em>replayed identically</em> across machines and time.</p>
-          </article>
-          <article id="pillar-2" class="surface card">
-            <h3 class="mono" style="margin-top:0">02 — Telemetry as First Principles</h3>
-            <p>Operator dashboards aren’t garnish—they are prevention. Entropy, decay, outliers, and health are streamed to keep proofs honest and search productive.</p>
-          </article>
-          <article id="pillar-3" class="surface card">
-            <h3 class="mono" style="margin-top:0">03 — Engines over Demos</h3>
-            <p>Shipping <em>reusable engines</em> beats shipping one‑off demos. APIs, plugins, and notebooks SDK turn research into compounding infrastructure.</p>
-          </article>
-        </div>
-
-        <div class="callout" style="margin-top:var(--s-3)">
-          <p class="muted" style="margin:0"><strong>5‑Year Horizon:</strong> a living evaluation wall of verified results across core open problems; a reproducible corpus where new engines can be benchmarked, compared, and promoted by merit—not theatre.</p>
+        <div class="surface ring" style="padding:16px">
+          <h2 style="margin:0 0 8px">Problem</h2>
+          <p class="max-w-prose">Mathematical discovery and formal verification stall on three fronts: (1) search spaces blow up, (2) results lack deterministic replay, and (3) teams operate blind without operator‑grade telemetry.</p>
+          <ul class="bullets">
+            <li>Proof search is combinatorial; heuristics drift across machines and versions.</li>
+            <li>Non‑determinism blocks reproducibility and slows peer validation.</li>
+            <li>Minimal observability → expensive iterations, weak anomaly handling.</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- ============================ OVERVIEW =========================== -->
-    <section id="overview" class="section">
+    <!-- ============================ SOLUTION ============================ -->
+    <section id="solution" class="section section-tight">
       <div class="container">
-        <div class="surface ring card">
-          <div style="padding:16px">
-            <h2 style="margin:0 0 8px">Overview</h2>
-            <p>ProofX Research Lab unites <strong>formal theorem verification</strong> with <strong>symbolic experimentation</strong>. Modular engines blend GPU‑accelerated numerics with a custom first‑order logic kernel, orchestrated for deterministic, reproducible results.</p>
-            <ul class="bullets">
-              <li><strong>Mathematics:</strong> conjecture verification & proof discovery</li>
-              <li><strong>Verification:</strong> SMT portfolios, finite model witnesses, property proving</li>
-              <li><strong>Telemetry:</strong> run diffs, anomaly flags, entropy/decay overlays</li>
-            </ul>
-            <p class="muted">Every attempt emits structured traces and replay seeds. Results are <em>verifiable, reproducible, and scalable</em>.</p>
+        <div class="surface ring" style="padding:16px">
+          <h2 style="margin:0 0 8px">Solution</h2>
+          <p class="max-w-prose">ProofX unifies <strong>multi‑prover orchestration</strong> with <strong>deterministic replay</strong> and <strong>entropy‑aware scheduling</strong>, streamed into dashboards that keep proofs honest and search productive.</p>
+          <div class="cards" style="margin-top:10px">
+            <article class="card"><h3>Determinism</h3><p>Seeds, routes, and solver portfolios persisted per run; identical replay across machines and time.</p></article>
+            <article class="card"><h3>Observability</h3><p>Live traces, entropy/decay overlays, anomaly flags, run diffs; operator‑grade health.</p></article>
+            <article class="card"><h3>Composability</h3><p>FOL, SMT, finite models, SAT bridges — swappable, typed, and logged.</p></article>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================ ENGINES ============================ -->
-    <section id="engines" class="section section-tight">
-      <div class="container">
-        <h2 style="margin:0 0 10px">Engines</h2>
-        <div class="cards">
-          <article class="surface card">
-            <h3>Logic Engine <span class="mono muted">/ FOL</span></h3>
-            <p>Quantifiers, skolemization, traceable inference steps, and counterexample generation.</p>
-            <ul class="bullets">
-              <li>Unification & substitution stacks</li>
-              <li>Step IDs with replayable traces</li>
-              <li>Model witnesses on failure</li>
-            </ul>
-          </article>
-          <article class="surface card">
-            <h3>Verification Kernel <span class="mono muted">/ SMT · FMC</span></h3>
-            <p>Deterministic pipelines for solver portfolios, SAT bridges, and property proving.</p>
-            <ul class="bullets">
-              <li>Assumption sets & proof obligations</li>
-              <li>Portfolio routing policies</li>
-              <li>Deterministic replay</li>
-            </ul>
-          </article>
-          <article class="surface card">
-            <h3>Entropy Engine <span class="mono muted">/ Search</span></h3>
-            <p>Entropy‑guided scheduling, decay maps, and anomaly surfacing across runs.</p>
-            <ul class="bullets">
-              <li>Curriculum & bandit schedulers</li>
-              <li>Entropy/decay overlays</li>
-              <li>Outlier detection</li>
-            </ul>
-          </article>
         </div>
       </div>
     </section>
@@ -409,29 +325,69 @@ body.nav-open{overflow:hidden}
       <div class="container">
         <h2 style="margin:0 0 10px">Architecture</h2>
         <div class="arch-grid">
-          <div class="surface card">
-            <div style="padding:16px">
-              <p>Deterministic solvers stacked with symbolic search and first‑class observability. Every proof attempt becomes a data point in an ever‑growing <span class="mono">evaluation wall</span>.</p>
-              <ul class="bullets">
-                <li><strong>Solvers:</strong> SMT, FOL, finite model testing, SAT bridges</li>
-                <li><strong>Search:</strong> entropy‑aware scheduling, curriculum runs, counterexample harvesting</li>
-                <li><strong>Telemetry:</strong> traces, dashboards, anomaly flags, decay maps</li>
-              </ul>
-              <p class="muted">Design target: <em>truth‑aligned latency</em> — the fastest path from idea to verified evidence.</p>
-            </div>
-          </div>
-          <aside class="surface card">
-            <div style="padding:16px">
-              <h3 style="margin-top:0">Reliability & Moats</h3>
-              <ul class="bullets">
-                <li>Seeded randomness & versioned runs</li>
-                <li>Artifact registry for witnesses & notebooks</li>
-                <li>Portfolio routing + backpressure under load</li>
-                <li>Evaluation wall & structured traces compound as proprietary corpora</li>
-              </ul>
-            </div>
-          </aside>
+          <div class="surface card"><div style="padding:16px">
+            <p>Deterministic solvers stacked with symbolic search and first‑class observability. Every attempt becomes a data point in a growing <span class="mono">evaluation wall</span>.</p>
+            <ul class="bullets">
+              <li><strong>Solvers:</strong> SMT, FOL, finite model testing, SAT bridges</li>
+              <li><strong>Search:</strong> entropy‑aware scheduling, curriculum runs, counterexample harvesting</li>
+              <li><strong>Telemetry:</strong> traces, dashboards, anomaly flags, decay maps</li>
+            </ul>
+            <p class="muted">Truth‑aligned latency (<span class="mono">fastest path from conjecture to verifiable evidence</span>).</p>
+          </div></div>
+          <aside class="surface card"><div style="padding:16px">
+            <h3 style="margin-top:0">Reliability & Moats</h3>
+            <ul class="bullets">
+              <li>Seeded randomness & versioned runs</li>
+              <li>Artifact registry for witnesses & notebooks</li>
+              <li>Portfolio routing + backpressure under load</li>
+              <li>Proprietary corpus: structured traces compounding over years</li>
+            </ul>
+          </div></aside>
         </div>
+      </div>
+    </section>
+
+    <!-- ============================ ENGINES ============================ -->
+    <section id="engines" class="section section-tight">
+      <div class="container">
+        <h2 style="margin:0 0 10px">Engines</h2>
+        <div class="cards">
+          <article class="surface card"><h3>Logic Engine <span class="mono muted">/ FOL</span></h3><p>Traceable reasoning at machine speed: quantifiers, skolemization, inference steps, counterexamples.</p></article>
+          <article class="surface card"><h3>Verification Kernel <span class="mono muted">/ SMT · FMC</span></h3><p>Deterministic solver portfolios with SAT bridges and property proving.</p></article>
+          <article class="surface card"><h3>Entropy Engine <span class="mono muted">/ Search</span></h3><p>Entropy‑guided scheduling, decay maps, and outlier surfacing across runs.</p></article>
+        </div>
+        <div class="actions" style="margin-top:14px">
+          <a class="btn primary" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Your%20Domain%20Applications">See applications in your domain</a>
+          <a class="btn ghost" href="#contact">Talk to us</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ RELIABILITY ======================== -->
+    <section id="reliability" class="section">
+      <div class="container">
+        <h2 style="margin:0 0 10px">Reliability & Defensibility</h2>
+        <div class="surface ring" style="padding:16px">
+          <ul class="bullets">
+            <li><strong>Deterministic replay:</strong> identical outputs for identical inputs — across machines and time.</li>
+            <li><strong>Observability-first:</strong> operator dashboards reduce MTTR for proof failures.</li>
+            <li><strong>Corpus moat:</strong> every run compounds into proprietary, structured traces.</li>
+            <li><strong>Deploy anywhere:</strong> private cloud & on‑prem; seeds ensure replay under restricted compute.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================ CASE STUDIES ======================= -->
+    <section id="cases" class="section section-tight">
+      <div class="container">
+        <h2 style="margin:0 0 10px">Case Studies (illustrative)</h2>
+        <div class="cards">
+          <article class="surface card"><h3>Collatz@Scale</h3><p>Verifies Collatz up to <span class="mono">2^60</span> in ~1.2h with deterministic replay and live anomaly flags.</p></article>
+          <article class="surface card"><h3>GUE Conformity</h3><p>Entropy analytics surface deviations from GUE‑like distributions during numeric experiments.</p></article>
+          <article class="surface card"><h3>Portfolio Wins</h3><p>SMT+FMC portfolio reduces verification timeouts by double‑digit %, with full traceability.</p></article>
+        </div>
+        <p class="muted" style="margin-top:8px">Available under NDA; reproducible with shipped seeds and notebooks.</p>
       </div>
     </section>
 
@@ -440,10 +396,10 @@ body.nav-open{overflow:hidden}
       <div class="container">
         <h2 style="margin:0 0 10px">FAQ</h2>
         <div class="faq">
-          <details class="surface"><summary>Why now?</summary><p class="muted">Compute and observability caught up with symbolic methods. Deterministic stacks + telemetry compress the iteration loop for verifiable work.</p></details>
-          <details class="surface"><summary>What’s the wedge?</summary><p class="muted">Deterministic solvers + entropy‑aware scheduling + operator dashboards outperform generic stacks on verification and math.</p></details>
-          <details class="surface"><summary>Can you run air‑gapped?</summary><p class="muted">Yes. Private‑cloud & on‑prem via Docker. Seeds ensure reproducibility under restricted compute.</p></details>
-          <details class="surface"><summary>Monetization?</summary><p class="muted">Enterprise pilots (SaaS + managed dashboards), SDK licensing, and usage‑linked telemetry tiers for research groups.</p></details>
+          <details class="surface"><summary>Why now?</summary><p class="muted">Compute + observability unlocked symbolic methods. Determinism and telemetry compress iteration loops.</p></details>
+          <details class="surface"><summary>Can you run air‑gapped?</summary><p class="muted">Yes — private cloud & on‑prem via Docker; seeds ensure reproducibility.</p></details>
+          <details class="surface"><summary>What’s proprietary?</summary><p class="muted">The evaluation wall and structured traces produced by every run; the corpus compounds and is non‑trivial to replicate.</p></details>
+          <details class="surface"><summary>Engagement model?</summary><p class="muted">Pilot (SaaS + managed dashboards), SDK licensing, and enterprise support.</p></details>
         </div>
       </div>
     </section>
@@ -456,7 +412,7 @@ body.nav-open{overflow:hidden}
           <p class="muted" style="margin:0">Pilot, invest, or collaborate. High‑intensity, low‑theatre.</p>
         </div>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <a class="btn primary" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20Research%20Lab%20—%20Inquiry" aria-label="Email ProofX">Email</a>
+          <a class="btn primary" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Inquiry" aria-label="Email ProofX">Email</a>
         </div>
       </div>
     </section>
@@ -481,12 +437,12 @@ body.nav-open{overflow:hidden}
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       document.documentElement.classList.add('prefers-reduced-motion');
     }
-    // Year
+    // Year stamp
     document.addEventListener('DOMContentLoaded', () => {
       const y = document.getElementById('y');
       if (y) y.textContent = new Date().getFullYear();
     });
-    // Defensive: lock horizontal position in case of wheel tilt on desktop mice
+    // Lock horizontal scroll (wheel tilt)
     window.addEventListener('wheel', (e) => {
       if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
         window.scrollBy({ top: e.deltaX, left: 0, behavior: 'auto' });
@@ -497,11 +453,11 @@ body.nav-open{overflow:hidden}
   <script>
     // Mobile nav toggle
     (function(){
-      var btn = document.querySelector('.nav-toggle');
-      var nav = document.getElementById('site-nav');
+      const btn = document.querySelector('.nav-toggle');
+      const nav = document.getElementById('site-nav');
       if (!btn || !nav) return;
       btn.addEventListener('click', function(){
-        var open = nav.classList.toggle('open');
+        const open = nav.classList.toggle('open');
         document.body.classList.toggle('nav-open', open);
         btn.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
