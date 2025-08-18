@@ -2,939 +2,304 @@
 <html lang="en">
 <head>
   <!-- =============================================================
-       ProofX — Investor‑grade, accessible, SEO‑tuned landing
-       Notes: critical meta, structured data, preload hints, a11y.
+       ProofX / ofX — Ultra‑compact, 2100‑style landing (no horiz scroll)
+       Changes per brief:
+       1) Top headers: ofX | Vision | Overview | Engines | Architecture | FAQ | Contact
+       2) Disable horizontal scrolling (only vertical)
+       3) Remove "Visuals" section for now; focus on copy/structure
+       4) Change contact button to a single "Email" button → mailto:alkindi.proofx@gmail.com
+       5) Futuristic (2100) look: neon accents, glass surfaces, micro‑interactions
        ============================================================= -->
 
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="dark light" />
-  <meta name="theme-color" content="#070a13" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#080a14" media="(prefers-color-scheme: dark)" />
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
-  
-  <title>ProofX — Symbolic AI for the Edge of Mathematics</title>
-  <meta name="description" content="ProofX builds production-grade symbolic AI for proof generation, verification at scale, and live dashboards—engines designed to push frontiers, not pixels." />
-  <meta name="keywords" content="ProofX, symbolic AI, theorem proving, formal verification, finite model checking, SMT, number theory, dashboards, entropy analytics" />
-  <meta name="author" content="Alkindi" />
 
-  <!-- Canonical -->
+  <title>ProofX — ofX · Symbolic AI for the Edge of Mathematics</title>
+  <meta name="description" content="ProofX (ofX) builds production‑grade symbolic AI for proof generation, verification at scale, and operator‑grade dashboards—engines designed to push frontiers, not pixels." />
+  <meta name="keywords" content="ProofX, ofX, symbolic AI, theorem proving, formal verification, finite model checking, SMT, number theory, dashboards, entropy analytics" />
+  <meta name="author" content="Alkindi" />
   <link rel="canonical" href="https://www.proofx.org/" />
 
-  <!-- Open Graph / Twitter -->
-  <meta property="og:site_name" content="ProofX" />
-  <meta property="og:title" content="ProofX — Symbolic AI for the Edge of Mathematics" />
-  <meta property="og:description" content="Production-grade proof engines, verification pipelines, and real-time dashboards—research-lab power with operator-grade UX." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.proofx.org/" />
-  <meta property="og:image" content="https://www.proofx.org/assets/og-image.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@proofx_org" />
-  <meta property="og:see_also" content="https://www.instagram.com/proofx_org" />
-  <meta property="og:see_also" content="https://www.linkedin.com/in/alkindi-network/" />
-
-  <!-- Fonts: preconnect + swap to avoid FOIT -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..900&display=swap" />
-
-  <!-- Icons & Manifest -->
+  <!-- Icons & Manifest (optional, keep lightweight) -->
   <link rel="icon" href="/favicon.ico" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="/css/styles.css" />
-
-  <!-- Lightweight page-level utilities (scoped) -->
+  <!-- Typography (system stack + variable monospace accent) -->
   <style>
-    :root{--muted:#a6b3c9;}
-    .sr-only{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
-    .skip-link{position:absolute;left:-999px;top:auto;background:#070a13;color:#fff;padding:.6rem 1rem;border-radius:.5rem;z-index:1000}
-    .skip-link:focus{left:1rem;top:1rem}
+    /* ===== Global reset / layout guards ===== */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; width: 100%; max-width: 100%; overflow-x: hidden; }
+    /* Prevent sneaky overflow from long words or code chunks */
+    body, p, li, h1, h2, h3, h4 { overflow-wrap: anywhere; }
 
-    .container--wide{max-width:1400px;margin:0 auto;padding:0 20px}
-    .grid-2{display:grid;grid-template-columns:1fr;gap:18px}
-    .grid-3{display:grid;grid-template-columns:1fr;gap:18px}
-    .grid-4{display:grid;grid-template-columns:1fr;gap:18px}
-    @media(min-width:860px){.grid-2{grid-template-columns:1.2fr .8fr}.grid-3{grid-template-columns:repeat(3,1fr)}.grid-4{grid-template-columns:repeat(4,1fr)}}
-
-    .muted{opacity:.85}
-    .note{font-size:.95rem;color:var(--muted)}
-    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;border:1px solid rgba(255,255,255,.12);padding:.15rem .35rem;border-radius:6px;background:rgba(255,255,255,.05)}
-    .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:6px 10px}
-    .list-dense li{margin:.35rem 0}
-    .media{border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:10px;background:rgba(255,255,255,.04)}
-    .caption{font-size:.9rem;color:var(--muted);margin-top:6px}
-    .hr{height:1px;background:rgba(255,255,255,.12);margin:26px 0}
-    .metric{display:flex;flex-direction:column;gap:4px;padding:12px;border:1px solid rgba(255,255,255,.12);border-radius:14px;background:rgba(255,255,255,.04)}
-    .metric .kpi{font-weight:900;font-size:1.6rem}
-    .metric .label{font-size:.9rem;opacity:.8}
-    .timeline{display:grid;gap:14px}
-    .timeline .milestone{padding:14px;border-left:3px solid var(--a,#00f0ff);background:rgba(255,255,255,.04);border-radius:8px}
-    .milestone h4{margin:0 0 6px 0}
-    .callout{border:1px solid rgba(255,255,255,.12);background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));padding:16px;border-radius:14px}
-    .kbd-row{display:flex;flex-wrap:wrap;gap:8px}
-    .tabbar{display:flex;gap:8px;flex-wrap:wrap}
-    .tab{border:1px solid rgba(255,255,255,.12);padding:8px 12px;border-radius:10px;background:rgba(255,255,255,.04);cursor:pointer}
-    .tab[aria-selected="true"]{outline:2px solid var(--a,#00f0ff)}
-    .tabpanes > div{display:none}
-    .tabpanes > div[aria-hidden="false"]{display:block}
-    .logo-shelf{display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
-    @media(min-width:720px){.logo-shelf{grid-template-columns:repeat(6,1fr)}}
-    .logo{height:36px;display:flex;align-items:center;justify-content:center;border:1px dashed rgba(255,255,255,.15);border-radius:10px;opacity:.75}
-    .accordion details{border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px;background:rgba(255,255,255,.04)}
-    .accordion details summary{cursor:pointer;font-weight:700}
-    .accordion details+details{margin-top:10px}
-    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
-    .tag{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(255,255,255,.12);padding:4px 10px;border-radius:999px;font-size:.85rem}
-    .chips{display:flex;flex-wrap:wrap;gap:8px}
-    .card.kicker-card{display:flex;flex-direction:column;gap:6px}
-    .op{opacity:.6}
-    .avatar{width:88px;height:88px;border-radius:50%;object-fit:cover;border:1px solid rgba(255,255,255,.2)}
-    .quote{font-size:1.1rem;line-height:1.6;border-left:3px solid var(--b,#7b6cff);padding-left:12px}
-    .toc{display:grid;gap:6px}
-    .toc a{display:flex;gap:8px;align-items:center;text-decoration:none;color:inherit;border:1px solid rgba(255,255,255,.12);padding:8px 10px;border-radius:10px;background:rgba(255,255,255,.03)}
-    .badge.badge-green{background:rgba(0,255,163,.1);border-color:rgba(0,255,163,.25)}
-    .badge.badge-cyan{background:rgba(0,240,255,.1);border-color:rgba(0,240,255,.25)}
-
-    /* Reduced motion helpers */
-    .prefers-reduced-motion *{animation:none!important;transition:none!important}
-  </style>
-
-  <!-- Structured Data: Organization / SoftwareApplication / WebSite w/ SearchAction -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "ProofX",
-    "url": "https://www.proofx.org",
-    "logo": "https://www.proofx.org/assets/logo.png",
-    "sameAs": [
-      "https://www.instagram.com/proofx_org",
-      "https://www.linkedin.com/in/alkindi-network/"
-    ],
-    "founder": {
-      "@type": "Person",
-      "name": "Alkindi",
-      "jobTitle": "Founder & Architect",
-      "email": "alkindi.proofx@gmail.com"
-    },
-    "knowsAbout": ["Symbolic AI","Formal Verification","First-Order Logic","Finite Model Checking","Number Theory"]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"SoftwareApplication",
-    "name":"ProofX Core",
-    "applicationCategory":"AI System / Theorem Prover",
-    "operatingSystem":"Docker / Linux",
-    "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
-    "url":"https://www.proofx.org/#systems",
-    "author":{"@type":"Organization","name":"ProofX"}
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "url": "https://www.proofx.org/",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://www.proofx.org/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
+    /* ===== Theme ===== */
+    :root {
+      --bg: #080a14;            /* deep cosmos */
+      --bg-2: #0c0f1f;          /* panel */
+      --ink: #e8eefc;           /* text */
+      --muted: #a4b0c9;         /* secondary */
+      --line: rgba(255,255,255,.08);
+      --glass: rgba(255,255,255,.04);
+      --a: #00f0ff;             /* neon cyan */
+      --b: #7b6cff;             /* ion violet */
+      --g: #00ffa3;             /* quantum green */
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
     }
-  }
-  </script>
+    @media (prefers-color-scheme: light) {
+      :root { --bg:#ffffff; --bg-2:#f4f7ff; --ink:#0b1130; --muted:#4b5572; --line:rgba(0,0,0,.08); --glass:rgba(0,0,0,.03);} 
+    }
+
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, "Noto Sans", Ubuntu, Cantarell, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji"; background: radial-gradient(1200px 800px at 70% -10%, rgba(0,240,255,.08), transparent), radial-gradient(900px 600px at -10% 20%, rgba(123,108,255,.10), transparent), var(--bg); color: var(--ink); line-height: 1.55; }
+
+    /* ===== Utility ===== */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 18px; }
+    .section { padding: 56px 0; }
+    .section-tight { padding: 40px 0; }
+    .hr { height: 1px; background: var(--line); margin: 24px 0; }
+    .muted { color: var(--muted); }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+
+    /* ===== Futuristic surface ===== */
+    .surface { background: linear-gradient(180deg, var(--glass), transparent); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); backdrop-filter: saturate(120%) blur(6px); }
+
+    /* Neon accent ring */
+    .ring { position: relative; }
+    .ring::after { content:""; position:absolute; inset:-1px; border-radius: calc(var(--radius) + 2px); pointer-events:none; background: conic-gradient(from 120deg, rgba(0,240,255,.35), rgba(123,108,255,.35), rgba(0,255,163,.35), rgba(0,240,255,.35)); filter: blur(8px); opacity:.35; }
+
+    /* ===== Top Nav ===== */
+    header.nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px) saturate(120%); background: color-mix(in oklab, var(--bg) 84%, transparent); border-bottom: 1px solid var(--line); }
+    .nav-inner { display:flex; align-items:center; justify-content:space-between; gap:12px; height:64px; }
+    .brand { display:flex; align-items:center; gap:10px; font-weight:800; text-decoration:none; color:inherit; letter-spacing:.6px; }
+    .brand .mark { display:grid; place-items:center; width:36px; height:36px; border-radius:10px; border:1px solid var(--line); background: linear-gradient(180deg, var(--glass), transparent); font-weight:900; }
+    nav.links { display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+    nav.links a { text-decoration:none; color:inherit; opacity:.9; padding:8px 10px; border-radius:10px; border:1px solid transparent; }
+    nav.links a:hover, nav.links a[aria-current="page"] { border-color: var(--line); background: var(--glass); }
+
+    /* ===== Buttons ===== */
+    .btn { display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:12px; border:1px solid var(--line); background: linear-gradient(180deg, var(--glass), transparent); color:inherit; text-decoration:none; cursor:pointer; transition: transform .08s ease; }
+    .btn.primary { border-color: color-mix(in oklab, var(--a) 40%, var(--line)); box-shadow: 0 0 0 1px rgba(0,240,255,.12) inset, 0 8px 24px rgba(0,240,255,.12); }
+    .btn:active { transform: translateY(1px); }
+
+    /* ===== Hero ===== */
+    .hero h1 { font-size: clamp(1.9rem, 2vw + 1.2rem, 3rem); margin: 0 0 10px; letter-spacing: .2px; }
+    .sub { font-size: 1.05rem; color: var(--muted); margin: 10px 0 18px; }
+    .kpis { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; }
+    .kpi { padding: 12px; border:1px solid var(--line); border-radius: 12px; background: var(--glass); text-align:center; }
+    .kpi .v { font-weight:900; font-size: 1.2rem; }
+    .kpi .l { font-size:.85rem; color: var(--muted); }
+
+    /* ===== Grid Cards ===== */
+    .cards { display:grid; grid-template-columns: 1fr; gap: 12px; }
+    @media (min-width: 860px) { .cards { grid-template-columns: repeat(3, 1fr); } }
+    .card { padding: 16px; }
+    .card h3 { margin: 4px 0 6px; }
+    .bullets { padding-left: 18px; margin: 8px 0 0; }
+
+    /* ===== Architecture Panel ===== */
+    .arch-grid { display:grid; grid-template-columns: 1fr; gap: 12px; }
+    @media (min-width: 900px) { .arch-grid { grid-template-columns: 1.2fr .8fr; } }
+
+    /* ===== FAQ ===== */
+    .faq details { padding: 14px; }
+    .faq summary { cursor: pointer; font-weight: 700; }
+    .faq details + details { margin-top: 8px; }
+
+    /* Reduced motion safety */
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+  </style>
 </head>
 
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
-  <div class="bg" aria-hidden="true"></div>
+  <a class="skip-link" href="#main" style="position:absolute;left:-9999px;top:auto;background:var(--bg-2);color:var(--ink);padding:.6rem 1rem;border-radius:.6rem;">Skip to content</a>
 
-  <!-- ============================================================= -->
-  <!-- Global Navigation                                             -->
-  <!-- ============================================================= -->
+  <!-- ================================ NAV ================================ -->
   <header class="nav" role="banner">
     <div class="container nav-inner">
-      <a class="brand" href="/" aria-label="ProofX Home">
-        <span class="brand-mark" aria-hidden="true">PX</span>
-        <span class="brand-text">ProofX</span>
+      <a class="brand" href="#vision" aria-label="ofX Home">
+        <span class="mark mono" aria-hidden="true">ofX</span>
+        <span>ofX</span>
       </a>
-
-      <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-      </button>
-
-      <nav id="site-nav" class="links" role="navigation" aria-label="Primary">
-        <a href="#vision" aria-current="page">Vision</a>
-        <a href="#systems">Systems</a>
-        <a href="#visuals">Visuals</a>
+      <nav class="links" role="navigation" aria-label="Primary">
+        <a href="#vision">Vision</a>
         <a href="#overview">Overview</a>
-        <a href="#core-engines">Core Engines</a>
+        <a href="#engines">Engines</a>
         <a href="#architecture">Architecture</a>
-        <a href="#research">Research</a>
-        <a href="#unicorn">Trajectory</a>
-        <a href="#author">Author</a>
-        <a href="#roadmap">Roadmap</a>
         <a href="#faq">FAQ</a>
-        <a class="btn small" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Contact">Contact</a>
+        <a href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
-  <!-- ============================================================= -->
-  <!-- HERO / VISION                                                 -->
-  <!-- ============================================================= -->
   <main id="main" tabindex="-1">
-    <section id="vision" class="hero" aria-labelledby="hero-title">
-      <div class="container hero-inner">
-        <div class="hero-copy">
-          <p class="pill"><span aria-hidden="true">⚡</span> Research Lab → Operator‑grade System</p>
-          <h1 id="hero-title">Symbolic AI for the Edge of Mathematics</h1>
-          <p class="sub">
-            Production‑grade proof engines, verification pipelines, and live dashboards —
-            engineered to push frontiers, not pixels. <span class="op">If a path exists, we’ll find it.
-            If not, we’ll build the path and replay it deterministically.</span>
-          </p>
-          <div class="actions">
-            <a class="btn primary" href="#systems">Explore Systems</a>
-            <a class="btn ghost" href="mailto:alkindi.proofx@gmail.com?subject=Request%20ProofX%20Deck">Request Deck</a>
-            <a class="btn ghost" href="#unicorn">Investor Thesis</a>
-          </div>
-
-          <div class="grid-3" style="margin-top:18px">
-            <div class="metric">
-              <span class="kpi">200k+</span>
-              <span class="label">Lines across ProofX &amp; ProjectX</span>
-            </div>
-            <div class="metric">
-              <span class="kpi">Multi‑Prover</span>
-              <span class="label">SMT + Finite Model Checking</span>
-            </div>
-            <div class="metric">
-              <span class="kpi">Realtime</span>
-              <span class="label">Dashboards &amp; Entropy Analytics</span>
-            </div>
-          </div>
-
-          <div class="trust note" style="margin-top:12px">
-            <span class="muted">Benchmarks:</span>
-            <span class="tag">Goodstein</span>
-            <span class="tag">Paris–Harrington</span>
-            <span class="tag">GUE Conformity</span>
-          </div>
+    <!-- ============================ VISION ============================== -->
+    <section id="vision" class="section hero">
+      <div class="container surface ring" style="padding:18px;">
+        <p class="mono muted" style="margin:0 0 8px;">Research‑lab rigor → operator‑grade system</p>
+        <h1>Symbolic AI for the Edge of Mathematics</h1>
+        <p class="sub">Production‑grade proof engines, verification pipelines, and live telemetry—engineered to push frontiers, not pixels. <span class="mono">If a path exists, we find it. If not, we wire the graph and replay it deterministically.</span></p>
+        <div class="kpis">
+          <div class="kpi surface"><div class="v">200k+ LOC</div><div class="l">ProofX + ProjectX</div></div>
+          <div class="kpi surface"><div class="v">Multi‑Prover</div><div class="l">SMT + Finite Models</div></div>
+          <div class="kpi surface"><div class="v">Realtime</div><div class="l">Dashboards & Entropy</div></div>
         </div>
-
-        <aside class="hero-card media" aria-label="Hero quick-brief">
-          <div class="card kicker-card">
-            <strong>Symbolic core, industrial posture.</strong>
-            <p class="muted">Every run emits <em>structured traces</em>, <em>replay seeds</em>, and <em>evaluation walls</em>. We compound results, not hype.</p>
-          </div>
-          <div class="hr" aria-hidden="true"></div>
-          <div class="list-dense">
-            <p><span class="kbd">Deterministic</span> + <span class="kbd">Entropy‑aware</span> orchestration.</p>
-            <p>Audit‑grade <span class="kbd">replay</span> · Operator‑grade <span class="kbd">dashboards</span>.</p>
-            <p>Designed for <span class="kbd">safety‑critical</span> and <span class="kbd">frontier math</span>.</p>
-          </div>
-          <div class="hr" aria-hidden="true"></div>
-          <div class="chips">
-            <span class="tag">FOL</span>
-            <span class="tag">SMT</span>
-            <span class="tag">Finite Model Testing</span>
-            <span class="tag">SAT Bridges</span>
-            <span class="tag">Spectral Methods</span>
-            <span class="tag">GPU/CPU Hybrid</span>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <!-- Social Proof (placeholder logos) -->
-    <section class="section section-alt" aria-labelledby="proofx-logos">
-      <div class="container">
-        <div class="section-head">
-          <h2 id="proofx-logos">Trusted where rigor matters</h2>
-          <p class="kicker">Designed for labs, verifiers, and number‑theory explorers.</p>
-        </div>
-        <div class="logo-shelf" role="list" aria-label="Partners & prospective collaborators">
-          <div class="logo" role="listitem" aria-label="logo placeholder">•</div>
-          <div class="logo" role="listitem" aria-label="logo placeholder">•</div>
-          <div class="logo" role="listitem" aria-label="logo placeholder">•</div>
-          <div class="logo" role="listitem" aria-label="logo placeholder">•</div>
-          <div class="logo" role="listitem" aria-label="logo placeholder">•</div>
-          <div class="logo" role="listitem" aria-label="logo placeholder">•</div>
-          <div class="logo" role="listitem" aria-label="logo placeholder">•</div>
-          <div class="logo" role="listitem" aria-label="logo placeholder">•</div>
-          <div class="logo" role="listitem" aria-label="logo placeholder">•</div>
-          <div class="logo" role="listitem" aria-label="logo placeholder">•</div>
-          <div class="logo" role="listitem" aria-label="logo placeholder">•</div>
-          <div class="logo" role="listitem" aria-label="logo placeholder">•</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Where ProofX Compounds -->
-    <section class="section" aria-labelledby="where-title">
-      <div class="container">
-        <div class="section-head">
-          <h2 id="where-title">Where ProofX Compounds</h2>
-          <p class="kicker">Industrial verification, research automation, number‑theory exploration.</p>
-        </div>
-
-        <div class="cards" role="list" aria-label="Use cases">
-          <article class="card" role="listitem">
-            <div class="card-top"><h3>Formal Verification</h3><span class="badge">Safety</span></div>
-            <p>Prove or falsify properties of mission‑critical systems. SMT + FOL pipelines surface counterexamples with full traces and model witnesses.</p>
-            <ul class="bullets list-dense">
-              <li>Invariant discovery &amp; regression guardrails</li>
-              <li>Model construction on failure paths</li>
-              <li>Deterministic replay across solver portfolios</li>
-            </ul>
-          </article>
-
-          <article class="card" role="listitem">
-            <div class="card-top"><h3>Research Copilot</h3><span class="badge">Throughput</span></div>
-            <p>Automate conjecture generation, lemma mining, dataset construction, and ablation study planning with entropy‑aware search.</p>
-            <ul class="bullets list-dense">
-              <li>Curriculum schedulers &amp; bandit exploration</li>
-              <li>Trace compression &amp; replay seeds for comparisons</li>
-              <li>Evaluation walls: instant side‑by‑side diffs</li>
-            </ul>
-          </article>
-
-          <article class="card" role="listitem">
-            <div class="card-top"><h3>Quant Dashboards</h3><span class="badge">Realtime</span></div>
-            <p>Live telemetry over symbolic runs: anomaly detection, decay maps, and operator consoles so researchers steer runs instead of babysitting them.</p>
-            <ul class="bullets list-dense">
-              <li>Roll‑ups with anomaly flags &amp; outlier surfacing</li>
-              <li>Entropy/decay overlays &amp; time‑to‑signal estimates</li>
-              <li>APIs for custom viewers &amp; wall displays</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Systems -->
-    <section id="systems" class="section section-alt" aria-labelledby="systems-title">
-      <div class="container">
-        <div class="section-head">
-          <h2 id="systems-title">Systems</h2>
-          <p class="kicker">Orchestrated, observable, and built for frontier proofs.</p>
-        </div>
-
-        <div class="cards">
-          <article class="card">
-            <div class="card-top">
-              <h3>ProofX Core</h3>
-              <span class="badge">Orchestrator</span>
-            </div>
-            <p>
-              The control plane. Multi‑prover orchestration with deterministic pipelines for SMT + finite model testing,
-              theorem synthesis, and entropy‑guided scheduling. Every attempt emits structured traces for audit‑grade replay.
-            </p>
-            <ul class="bullets list-dense" aria-label="Core capabilities">
-              <li>Curriculum runs &amp; priority queues</li>
-              <li>Counterexample harvesting</li>
-              <li>Evaluation walls &amp; trace compression</li>
-            </ul>
-            <div class="card-cta">
-              <a href="#" aria-disabled="true">Overview</a>
-              <a href="#" aria-disabled="true">Docs</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-top">
-              <h3>CollatzX</h3>
-              <span class="badge">Distributed</span>
-            </div>
-            <p>
-              A distributed numeric/symbolic explorer for chaotic regimes. Streams telemetry in real time, flags anomalies,
-              and maps symbolic decay—so researchers can steer runs instead of babysitting them.
-            </p>
-            <ul class="bullets list-dense" aria-label="CollatzX capabilities">
-              <li>Shardable search with backpressure</li>
-              <li>Realtime anomaly detection &amp; rollups</li>
-              <li>Dashboards with entropy/decay overlays</li>
-            </ul>
-            <div class="card-cta">
-              <a href="#" aria-disabled="true">Dashboard</a>
-              <a href="#" aria-disabled="true">Whitepaper</a>
-            </div>
-          </article>
-
-          <article class="card">
-            <div class="card-top">
-              <h3>RiemannX</h3>
-              <span class="badge">Spectral</span>
-            </div>
-            <p>
-              Analytic‑number‑theory engine for the critical line. Spectral methods for zeta/L‑functions, zero‑finding,
-              spacing statistics, and prime‑gap probes—wired into ProofX telemetry for reproducible experiments.
-            </p>
-            <ul class="bullets list-dense" aria-label="RiemannX capabilities">
-              <li>High‑precision zero locators (GPU/CPU hybrid)</li>
-              <li>GUE conformity &amp; pair‑correlation stats</li>
-              <li>Experimental APIs for prime‑gap heuristics</li>
-            </ul>
-            <div class="card-cta">
-              <a href="#" aria-disabled="true">Playground</a>
-              <a href="#" aria-disabled="true">API</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Visuals -->
-    <section id="visuals" class="section" aria-labelledby="visuals-title">
-      <div class="container">
-        <div class="section-head">
-          <h2 id="visuals-title">Visual Proofs in Motion</h2>
-          <p class="kicker">Live outputs from engines — interpretable, rigorous, and replayable.</p>
-        </div>
-
-        <div class="grid-2">
-          <figure class="media">
-            <img src="/assets/collatz_plot.png" alt="Collatz sequence length distribution (log scale x-axis)" loading="lazy" decoding="async" width="1600" height="900" />
-            <figcaption class="caption">
-              Collatz sequence lengths (up to 10<sup>6</sup>) — hot spots tracked by anomaly flags. The dashboard overlays decay and entropy, making structure legible to the eye.
-            </figcaption>
-          </figure>
-
-          <aside class="callout">
-            <h3>Why visuals matter</h3>
-            <p class="muted">ProofX is not a black box. We ship the pictures and the receipts — visual telemetry plus structured traces. The two together are the shortest path to truth.</p>
-            <ul class="bullets list-dense">
-              <li>Every chart is backed by a <span class="kbd">replay seed</span></li>
-              <li>Every anomaly links to a <span class="kbd">trace</span></li>
-              <li>Every run contributes to the <span class="kbd">evaluation wall</span></li>
-            </ul>
-            <div class="chips" style="margin-top:8px">
-              <span class="tag">Entropy Overlays</span>
-              <span class="tag">Anomaly Flags</span>
-              <span class="tag">Deterministic Seeds</span>
-            </div>
-          </aside>
-        </div>
-
         <div class="hr"></div>
-
-        <div class="grid-3">
-          <figure class="media">
-            <img src="/assets/visuals/riemann-zeros.png" alt="Riemann zeros spectral view placeholder" loading="lazy" decoding="async" width="1200" height="700" />
-            <figcaption class="caption">RiemannX spectral panel — pair‑correlation windows, heatmaps, and spacing statistics.</figcaption>
-          </figure>
-          <figure class="media">
-            <img src="/assets/visuals/eval-wall.png" alt="Evaluation wall comparative panel placeholder" loading="lazy" decoding="async" width="1200" height="700" />
-            <figcaption class="caption">Evaluation wall — side‑by‑side diffs across runs; think operator cockpit for math.</figcaption>
-          </figure>
-          <figure class="media">
-            <img src="/assets/visuals/counterexample.png" alt="Counterexample trace and witness placeholder" loading="lazy" decoding="async" width="1200" height="700" />
-            <figcaption class="caption">Counterexample witness — failure paths with model construction for immediate action.</figcaption>
-          </figure>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn primary" href="#overview">Read the Overview</a>
+          <a class="btn" href="#engines">Explore Engines</a>
+          <a class="btn" href="#contact">Email</a>
         </div>
       </div>
     </section>
 
-    <!-- Overview (PDF) -->
-    <section id="overview" class="section section-alt" aria-labelledby="overview-title">
+    <!-- ============================ OVERVIEW =========================== -->
+    <section id="overview" class="section">
       <div class="container">
-        <div class="section-head">
-          <h2 id="overview-title">ProofX Overview</h2>
-          <p class="kicker">Executive brief — positioning, applications, and philosophy.</p>
-        </div>
-
-        <div class="grid-2">
-          <div>
-            <p>ProofX unites <strong>formal theorem verification</strong> with <strong>symbolic AI</strong> experimentation. Its modular architecture blends GPU‑accelerated numeric pipelines with custom first‑order logic engines, orchestrated for deterministic, reproducible results.</p>
-            <ul class="bullets list-dense">
-              <li><strong>Mathematics:</strong> conjecture verification &amp; proof discovery</li>
-              <li><strong>Verification:</strong> safety properties, SMT portfolios, finite model witnesses</li>
-              <li><strong>Dashboards:</strong> run diffs, anomaly flags, entropy/decay overlays</li>
+        <div class="surface ring card">
+          <div style="padding:16px">
+            <h2 style="margin:0 0 8px">Overview</h2>
+            <p>ofX unites <strong>formal theorem verification</strong> with <strong>symbolic experimentation</strong>. Modular engines blend GPU‑accelerated numerics with a custom first‑order logic kernel, orchestrated for deterministic, reproducible results.</p>
+            <ul class="bullets">
+              <li><strong>Mathematics:</strong> conjecture verification & proof discovery</li>
+              <li><strong>Verification:</strong> SMT portfolios, finite model witnesses, property proving</li>
+              <li><strong>Telemetry:</strong> run diffs, anomaly flags, entropy/decay overlays</li>
             </ul>
-            <p class="muted">Every proof attempt is transparent: visual proof‑path tracers and symbolic heatmaps illuminate key steps, ensuring results are <em>verifiable, reproducible, and scalable</em>.</p>
-            <div class="actions">
-              <a class="btn primary" href="/ProofX Overview.pdf" target="_blank" rel="noopener">Download Overview (PDF)</a>
-              <a class="btn ghost" href="#unicorn">Investor Thesis</a>
-            </div>
+            <p class="muted">Every attempt emits structured traces and replay seeds. Results are <em>verifiable, reproducible, and scalable</em>.</p>
           </div>
-
-          <aside class="media">
-            <div class="tabbar" role="tablist" aria-label="Overview tabs">
-              <button class="tab" role="tab" aria-selected="true" aria-controls="pane1" id="tab1">Thesis</button>
-              <button class="tab" role="tab" aria-selected="false" aria-controls="pane2" id="tab2">Use Cases</button>
-              <button class="tab" role="tab" aria-selected="false" aria-controls="pane3" id="tab3">Principles</button>
-            </div>
-            <div class="tabpanes">
-              <div id="pane1" role="tabpanel" aria-labelledby="tab1" aria-hidden="false">
-                <p><strong>Thesis:</strong> Deterministic solvers + entropy‑aware scheduling + operator telemetry will out‑iterate generic stacks on verifiable tasks. Truth has structure; we expose it.</p>
-                <ul class="bullets list-dense">
-                  <li>Structured traces compound like data assets</li>
-                  <li>Evaluation walls create anti‑fragile feedback loops</li>
-                  <li>Dashboards shorten time‑to‑signal by orders of magnitude</li>
-                </ul>
-              </div>
-              <div id="pane2" role="tabpanel" aria-labelledby="tab2" aria-hidden="true">
-                <ul class="bullets list-dense">
-                  <li>Safety‑critical verification with counterexample harvesting</li>
-                  <li>Number‑theory explorations with spectral probes</li>
-                  <li>Research copilot for ablations, conjectures, and datasets</li>
-                </ul>
-              </div>
-              <div id="pane3" role="tabpanel" aria-labelledby="tab3" aria-hidden="true">
-                <ul class="bullets list-dense">
-                  <li><strong>Reproducibility:</strong> seed everything, log everything</li>
-                  <li><strong>Transparency:</strong> show work, show witnesses</li>
-                  <li><strong>Scalability:</strong> shard where it matters, compress where it counts</li>
-                </ul>
-              </div>
-            </div>
-          </aside>
         </div>
       </div>
     </section>
 
-    <!-- Core Engines -->
-    <section id="core-engines" class="section" aria-labelledby="engines-title">
+    <!-- ============================ ENGINES ============================ -->
+    <section id="engines" class="section section-tight">
       <div class="container">
-        <div class="section-head">
-          <h2 id="engines-title">Core Engines</h2>
-          <p class="kicker">The primitives that make ProofX feel inevitable.</p>
-        </div>
-
+        <h2 style="margin:0 0 10px">Engines</h2>
         <div class="cards">
-          <article class="card">
-            <div class="card-top"><h3>Logic Engine</h3><span class="badge">FOL</span></div>
-            <p>First‑order logic with quantifier handling, skolemization, evaluation traces, and counterexample generation.</p>
-            <ul class="bullets list-dense">
-              <li>Unification &amp; substitution stacks</li>
-              <li>Traceable inference steps with IDs</li>
+          <article class="surface card">
+            <h3>Logic Engine <span class="mono muted">/ FOL</span></h3>
+            <p>Quantifiers, skolemization, traceable inference steps, and counterexample generation.</p>
+            <ul class="bullets">
+              <li>Unification & substitution stacks</li>
+              <li>Step IDs with replayable traces</li>
               <li>Model witnesses on failure</li>
             </ul>
           </article>
-
-          <article class="card">
-            <div class="card-top"><h3>Verification Kernel</h3><span class="badge">SMT/FMC</span></div>
-            <p>Deterministic pipelines for SMT + finite model checking, SAT bridges, and property proving.</p>
-            <ul class="bullets list-dense">
-              <li>Assumption sets &amp; proof obligations</li>
-              <li>Solver portfolios &amp; routing</li>
+          <article class="surface card">
+            <h3>Verification Kernel <span class="mono muted">/ SMT · FMC</span></h3>
+            <p>Deterministic pipelines for solver portfolios, SAT bridges, and property proving.</p>
+            <ul class="bullets">
+              <li>Assumption sets & proof obligations</li>
+              <li>Portfolio routing policies</li>
               <li>Deterministic replay</li>
             </ul>
           </article>
-
-          <article class="card">
-            <div class="card-top"><h3>Entropy Engine</h3><span class="badge">Search</span></div>
-            <p>Entropy‑guided scheduling, decay maps, and anomaly detection across proof runs.</p>
-            <ul class="bullets list-dense">
-              <li>Curriculum &amp; bandit schedulers</li>
+          <article class="surface card">
+            <h3>Entropy Engine <span class="mono muted">/ Search</span></h3>
+            <p>Entropy‑guided scheduling, decay maps, and anomaly surfacing across runs.</p>
+            <ul class="bullets">
+              <li>Curriculum & bandit schedulers</li>
               <li>Entropy/decay overlays</li>
-              <li>Outlier surfacing</li>
-            </ul>
-          </article>
-
-          <article class="card">
-            <div class="card-top"><h3>Dashboard Runtime</h3><span class="badge">Realtime</span></div>
-            <p>Operator‑grade telemetry: streaming traces, evaluation walls, and drill‑down for fast iteration.</p>
-            <ul class="bullets list-dense">
-              <li>Live rollups &amp; timelines</li>
-              <li>Run diffs &amp; compare</li>
-              <li>APIs for external viewers</li>
+              <li>Outlier detection</li>
             </ul>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- Architecture -->
-    <section id="architecture" class="section section-alt" aria-labelledby="arch-title">
-      <div class="container research-grid">
-        <div>
-          <h2 id="arch-title">Architecture</h2>
-          <p>ProofX stacks deterministic solvers with symbolic search and telemetry. Observability is first‑class: every proof attempt is a data point.</p>
-          <ul class="bullets list-dense">
-            <li><strong>Solvers:</strong> SMT, FOL, finite model testing, SAT bridges</li>
-            <li><strong>Search:</strong> entropy‑aware scheduling, curriculum runs, counterexample harvesting</li>
-            <li><strong>Telemetry:</strong> traces, dashboards, anomaly flags, decay maps</li>
-          </ul>
-          <div class="kbd-row" aria-label="Operator shortcuts">
-            <span class="kbd">R</span><span class="note">replay seed</span>
-            <span class="kbd">D</span><span class="note">diff runs</span>
-            <span class="kbd">W</span><span class="note">evaluation wall</span>
-          </div>
-          <p class="muted" style="margin-top:10px">Design target: <em>truth‑aligned latency</em> — the fastest path from idea to verified evidence.</p>
-          <a class="btn" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Architecture%20Deep%20Dive">Architecture Deep Dive</a>
-        </div>
-
-        <div class="panel media" aria-label="Moats">
-          <h4>Moats</h4>
-          <ul class="notes list-dense">
-            <li><span>Data</span> Evaluation walls &amp; structured traces form proprietary corpora over time.</li>
-            <li><span>Ops</span> Deterministic + probabilistic hybrid control: <em>speed with proofs</em>.</li>
-            <li><span>UX</span> Live dashboards that shorten the loop, turning math into an operational practice.</li>
-          </ul>
-          <div class="hr"></div>
-          <h4>Reliability</h4>
-          <ul class="list-dense">
-            <li>Seeded randomness &amp; versioned runs</li>
-            <li>Artifact registry for notebooks &amp; witnesses</li>
-            <li>Backpressure under heavy workloads</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Research -->
-    <section id="research" class="section" aria-labelledby="research-title">
-      <div class="container research-grid">
-        <div>
-          <h2 id="research-title">Research</h2>
-          <p>We operate at the convergence of symbolic AI, number theory, and verification. Preprints, dashboards, and benchmarks are released on a rolling basis.</p>
-          <ul class="bullets list-dense">
-            <li>Goodstein / Paris–Harrington benchmarks</li>
-            <li>Entropy scoring &amp; symbolic decay maps</li>
-            <li>GUE conformity and spacing statistics</li>
-          </ul>
-          <a class="btn" href="mailto:alkindi.proofx@gmail.com?subject=Research%20Collaboration%20with%20ProofX">Collaborate</a>
-        </div>
-
-        <div class="panel" aria-label="Latest notes">
-          <h4>Latest Notes</h4>
-          <ul class="notes list-dense">
-            <li><span>Aug ’25</span> Proof synthesis entropy scoring — design doc</li>
-            <li><span>Aug ’25</span> Multi‑prover pipeline: orchestration modes</li>
-            <li><span>Jul ’25</span> GUE conformity checks — dashboard spec</li>
-          </ul>
-          <div class="hr"></div>
-          <h4>Open Questions</h4>
-          <ul class="list-dense">
-            <li>Minimal sufficient statistics for <em>proof‑likelihood</em> under entropy constraints</li>
-            <li>Counterexample distribution priors for guiding solver portfolios</li>
-            <li>Compression bounds for <em>evaluation walls</em></li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Unicorn Trajectory -->
-    <section id="unicorn" class="section section-alt" aria-labelledby="unicorn-title">
+    <!-- ============================ ARCHITECTURE ======================= -->
+    <section id="architecture" class="section">
       <div class="container">
-        <div class="section-head">
-          <h2 id="unicorn-title">Unicorn Trajectory</h2>
-          <p class="kicker">A research lab that scales like a systems company.</p>
-        </div>
-
-        <div class="grid-2 container--wide">
-          <article class="callout">
-            <h3>Why ProofX wins</h3>
-            <ul class="bullets list-dense">
-              <li><strong>Moat by evidence:</strong> every proof attempt creates assets (traces, witnesses, evaluation diffs).</li>
-              <li><strong>Time‑to‑signal:</strong> dashboards collapse feedback cycles from weeks to hours.</li>
-              <li><strong>Determinism:</strong> reproducibility converts demos into durable compounding data.</li>
-              <li><strong>Portability:</strong> works on chaotic math and safety‑critical verification alike.</li>
-            </ul>
-            <div class="hr"></div>
-            <h4>Market Wedge</h4>
-            <ul class="list-dense">
-              <li>Start: formal verification &amp; research teams with urgent deliverables</li>
-              <li>Expand: number‑theory engines &amp; analytic tooling for frontier labs</li>
-              <li>Platform: evaluation walls &amp; dashboards as the operating system of truth</li>
-            </ul>
-          </article>
-
-          <aside class="media">
-            <h3>Operating Model</h3>
-            <div class="grid-3">
-              <div class="metric"><span class="kpi">$</span><span class="label">Enterprise pilots</span></div>
-              <div class="metric"><span class="kpi">SDK</span><span class="label">Developer access</span></div>
-              <div class="metric"><span class="kpi">Ops</span><span class="label">Managed runs</span></div>
+        <h2 style="margin:0 0 10px">Architecture</h2>
+        <div class="arch-grid">
+          <div class="surface card">
+            <div style="padding:16px">
+              <p>Deterministic solvers stacked with symbolic search and first‑class observability. Every proof attempt becomes a data point in an ever‑growing <span class="mono">evaluation wall</span>.</p>
+              <ul class="bullets">
+                <li><strong>Solvers:</strong> SMT, FOL, finite model testing, SAT bridges</li>
+                <li><strong>Search:</strong> entropy‑aware scheduling, curriculum runs, counterexample harvesting</li>
+                <li><strong>Telemetry:</strong> traces, dashboards, anomaly flags, decay maps</li>
+              </ul>
+              <p class="muted">Design target: <em>truth‑aligned latency</em> — the fastest path from idea to verified evidence.</p>
             </div>
-            <p class="muted" style="margin-top:10px">Licensing + usage‑linked telemetry tiers; private cloud for sensitive workloads.</p>
-            <div class="chips">
-              <span class="tag">Pilot Partners</span>
-              <span class="tag">Private Beta</span>
-              <span class="tag">Managed Dashboards</span>
-            </div>
-          </aside>
-        </div>
-
-        <div class="hr"></div>
-
-        <div class="timeline" aria-label="Growth milestones">
-          <div class="milestone">
-            <h4>V1 → V2: Evaluation Wall &amp; External Proofs</h4>
-            <p>Ship public dashboards, replay seeds, and external proofs with full traces. Establish the ritual: propose → run → review → replay.</p>
           </div>
-          <div class="milestone">
-            <h4>V2 → V3: Programmable Orchestration</h4>
-            <p>Expose curriculum schedulers, entropy knobs, and solver portfolios as programmable modes. Users author proof strategies, not scripts.</p>
-          </div>
-          <div class="milestone">
-            <h4>V3 → V4: Research Copilot</h4>
-            <p>Compound engines into a copilot for conjectures, lemmas, and dataset creation. Research becomes an operational discipline.</p>
-          </div>
-        </div>
-
-        <div class="hr"></div>
-
-        <div class="accordion" aria-label="Investor FAQ">
-          <details>
-            <summary>What’s the TAM/SAM/SOM narrative?</summary>
-            <p class="muted">We enter where verifiable results are mandatory: verification, fintech risk, safety standards, and frontier math. The stack generalizes across these, creating a shared OS for truth.</p>
-          </details>
-          <details>
-            <summary>Monetization?</summary>
-            <ul class="list-dense">
-              <li>Enterprise pilots (SaaS + managed dashboards)</li>
-              <li>SDK licensing for private clouds</li>
-              <li>Usage‑linked telemetry tiers for research groups</li>
-            </ul>
-          </details>
-          <details>
-            <summary>Why now?</summary>
-            <p class="muted">Compute and observability caught up with symbolic methods. Deterministic stacks + telemetry finally compress the iteration loop for verifiable work.</p>
-          </details>
-          <details>
-            <summary>Defensibility?</summary>
-            <ul class="list-dense">
-              <li>Structured traces &amp; evaluation walls become proprietary corpora</li>
-              <li>Operational UX &amp; replay rituals compound switching costs</li>
-              <li>Hybrid deterministic/probabilistic control enables unique reliability</li>
-            </ul>
-          </details>
-          <details>
-            <summary>Risks &amp; mitigations</summary>
-            <ul class="list-dense">
-              <li>Scope creep → <em>strict orchestration modes</em> &amp; SLAs</li>
-              <li>Data sensitivity → <em>private cloud</em> + reproducible runs</li>
-              <li>Talent bottlenecks → <em>platform tooling</em> and <em>SDK</em></li>
-            </ul>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- Author -->
-    <section id="author" class="section" aria-labelledby="author-title">
-      <div class="container">
-        <div class="section-head">
-          <h2 id="author-title">Author</h2>
-          <p class="kicker">Systems, not slogans. Quiet rigor, public results.</p>
-        </div>
-
-        <div class="grid-2">
-          <article class="media" aria-label="Founder bio">
-            <div style="display:flex;gap:16px;align-items:center">
-              <img class="avatar" src="/assets/alkindi.jpg" alt="Portrait of Alkindi" loading="lazy" decoding="async" width="88" height="88" />
-              <div>
-                <h3 style="margin:0">Alkindi</h3>
-                <p class="muted" style="margin:.2rem 0 0 0">Founder &amp; Architect, ProofX</p>
-              </div>
-            </div>
-            <div class="hr"></div>
-            <p>I build <em>operator‑grade</em> symbolic systems. Trained on silence, tuned by constraints. I write code like a lab notebook—every decision logged, every result replayable. ProofX is a bet that <strong>truth deserves an operating system</strong>.</p>
-            <p class="quote">“If a path exists, we find it. If not, we wire the graph and try again—deterministically.”</p>
-            <ul class="bullets list-dense">
-              <li>UCL Engineering — AI, mathematics, verification</li>
-              <li>Research at the edge: Goodstein, Paris–Harrington, GUE</li>
-              <li>Builder bias: dashboards over decks; traces over takes</li>
-            </ul>
-            <div class="chips" style="margin-top:8px">
-              <span class="tag">Systems Thinking</span>
-              <span class="tag">Symbolic AI</span>
-              <span class="tag">Operator UX</span>
-            </div>
-          </article>
-
-          <aside class="callout" aria-label="Contact options">
-            <h3>Work with me</h3>
-            <p class="muted">Pilot a verification workflow, open a research thread, or co‑design a dashboard. High‑intensity, low‑theatre.</p>
-            <div class="actions" style="display:flex;gap:8px;flex-wrap:wrap">
-              <a class="btn primary" href="mailto:alkindi.proofx@gmail.com?subject=Pilot%20with%20ProofX">Pilot Inquiry</a>
-              <a class="btn ghost" href="mailto:alkindi.proofx@gmail.com?subject=Research%20Collaboration">Research Collab</a>
-              <a class="btn ghost" href="mailto:alkindi.proofx@gmail.com?subject=Request%20Deck">Request Deck</a>
-            </div>
-            <div class="hr"></div>
-            <div class="toc" aria-label="Quick links">
-              <a href="#systems"><span class="badge badge-cyan">→</span><span>Systems</span></a>
-              <a href="#visuals"><span class="badge badge-green">→</span><span>Visuals</span></a>
-              <a href="#unicorn"><span class="badge">→</span><span>Investor Thesis</span></a>
+          <aside class="surface card">
+            <div style="padding:16px">
+              <h3 style="margin-top:0">Reliability & Moats</h3>
+              <ul class="bullets">
+                <li>Seeded randomness & versioned runs</li>
+                <li>Artifact registry for witnesses & notebooks</li>
+                <li>Portfolio routing + backpressure under load</li>
+                <li>Evaluation wall & structured traces compound as proprietary corpora</li>
+              </ul>
             </div>
           </aside>
         </div>
       </div>
     </section>
 
-    <!-- Roadmap -->
-    <section id="roadmap" class="section section-alt" aria-labelledby="roadmap-title">
+    <!-- ============================ FAQ ================================ -->
+    <section id="faq" class="section section-tight">
       <div class="container">
-        <div class="section-head">
-          <h2 id="roadmap-title">Roadmap</h2>
-          <p class="kicker">Aggressive, testable, sequential.</p>
-        </div>
-        <div class="cards">
-          <article class="card">
-            <div class="card-top"><h3>Q3 ’25</h3><span class="badge">Now</span></div>
-            <p>Public dashboards, evaluation wall, and first external proofs with full traces.</p>
-            <ul class="bullets list-dense">
-              <li>Operator cockpit v1</li>
-              <li>Replay seeds &amp; artifact registry</li>
-              <li>External proof showcase</li>
-            </ul>
-          </article>
-          <article class="card">
-            <div class="card-top"><h3>Q4 ’25</h3><span class="badge">Next</span></div>
-            <p>Programmable orchestration modes; partner pilots in formal verification.</p>
-            <ul class="bullets list-dense">
-              <li>Curriculum schedulers as modes</li>
-              <li>Portfolio routing policies</li>
-              <li>Pilot integrations</li>
-            </ul>
-          </article>
-          <article class="card">
-            <div class="card-top"><h3>Q1 ’26</h3><span class="badge">Scale</span></div>
-            <p>Private beta: research copilot for conjectures, lemmas, and dataset creation.</p>
-            <ul class="bullets list-dense">
-              <li>Copilot loops (conjecture→lemma→dataset)</li>
-              <li>SDK for lab extensions</li>
-              <li>Usage‑linked tiers</li>
-            </ul>
-          </article>
+        <h2 style="margin:0 0 10px">FAQ</h2>
+        <div class="faq">
+          <details class="surface"><summary>Why now?</summary><p class="muted">Compute and observability caught up with symbolic methods. Deterministic stacks + telemetry compress the iteration loop for verifiable work.</p></details>
+          <details class="surface"><summary>What’s the wedge?</summary><p class="muted">Deterministic solvers + entropy‑aware scheduling + operator dashboards outperform generic stacks on verification and math.</p></details>
+          <details class="surface"><summary>Can you run air‑gapped?</summary><p class="muted">Yes. Private‑cloud & on‑prem via Docker. Seeds ensure reproducibility under restricted compute.</p></details>
+          <details class="surface"><summary>Monetization?</summary><p class="muted">Enterprise pilots (SaaS + managed dashboards), SDK licensing, and usage‑linked telemetry tiers for research groups.</p></details>
         </div>
       </div>
     </section>
 
-    <!-- FAQ -->
-    <section id="faq" class="section" aria-labelledby="faq-title">
-      <div class="container">
-        <div class="section-head">
-          <h2 id="faq-title">FAQ</h2>
-          <p class="kicker">Investor &amp; admissions quick‑read.</p>
+    <!-- ============================ CONTACT ============================ -->
+    <section id="contact" class="section section-tight">
+      <div class="container surface ring" style="padding:18px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <div>
+          <h2 style="margin:0 0 6px">Contact</h2>
+          <p class="muted" style="margin:0">Pilot, invest, or collaborate. High‑intensity, low‑theatre.</p>
         </div>
-        <div class="cards">
-          <article class="card">
-            <div class="card-top"><h3>Why now?</h3><span class="badge">Timing</span></div>
-            <p>Symbolic methods are compounding with modern infrastructure and data telemetry — enabling proof‑at‑scale and verifiable reasoning.</p>
-          </article>
-          <article class="card">
-            <div class="card-top"><h3>What’s the wedge?</h3><span class="badge">Entry</span></div>
-            <p>Deterministic solvers + entropy‑aware scheduling + live dashboards — a tighter loop than generic LLM stacks for verification and research.</p>
-          </article>
-          <article class="card">
-            <div class="card-top"><h3>How do you win?</h3><span class="badge">Moat</span></div>
-            <p>Evaluation walls, structured traces, and operator‑grade UX — turning every run into reusable, compounding intelligence.</p>
-          </article>
-        </div>
-        <div class="accordion" style="margin-top:14px">
-          <details>
-            <summary>Can you run air‑gapped?</summary>
-            <p class="muted">Yes. Private‑cloud &amp; on‑prem via Docker. Deterministic seeds ensure reproducibility under restricted compute.</p>
-          </details>
-          <details>
-            <summary>Is there a free tier?</summary>
-            <p class="muted">For academics and open dashboards, yes. Enterprise pilots are paid; private betas are case‑by‑case.</p>
-          </details>
-          <details>
-            <summary>How do I join the beta?</summary>
-            <p>Send context (<em>team, domain, timeline</em>) to <a href="mailto:alkindi.proofx@gmail.com">alkindi.proofx@gmail.com</a>. We prioritize urgency + fit.</p>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- Updates / News -->
-    <section id="updates" class="section">
-      <div class="container">
-        <div class="section-head">
-          <h2>Updates</h2>
-          <p class="kicker">News and technical notes. RSS soon.</p>
-        </div>
-        <div class="update-feed" aria-live="polite">
-          <article class="update">
-            <h4>ProofX landing v1 live</h4>
-            <p>Public launch on Vercel with domain + SSL. Subdomains for docs/dashboards next.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="section section-alt" aria-labelledby="cta-title">
-      <div class="container">
-        <div class="section-head">
-          <h2 id="cta-title">Partner, invest, or collaborate</h2>
-          <p class="kicker">We’re shipping quickly and selectively expanding pilot access.</p>
-        </div>
-        <div class="actions">
-          <a class="btn primary" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Pilot%20or%20Investment">Get in Touch</a>
-          <a class="btn ghost" href="mailto:alkindi.proofx@gmail.com?subject=Request%20ProofX%20Deck">Request Deck</a>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn primary" href="mailto:alkindi.proofx@gmail.com?subject=ofX%20—%20Inquiry" aria-label="Email ofX">Email</a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="footer" role="contentinfo">
-    <div class="container footer-inner">
-      <div class="left">
-        <span class="brand-text">ProofX</span>
-        <span class="muted">© <span id="y"></span></span>
-      </div>
-      <div class="right">
-        <a href="mailto:alkindi.proofx@gmail.com">alkindi.proofx@gmail.com</a>
-        <a href="https://www.instagram.com/proofx_org" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://www.linkedin.com/in/alkindi-network/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="#vision" class="muted">Back to top</a>
-      </div>
+  <!-- ============================ FOOTER ============================== -->
+  <footer class="section-tight" role="contentinfo" style="border-top:1px solid var(--line)">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+      <div class="mono">ofX · © <span id="y"></span></div>
+      <nav style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="muted" href="#vision">Top</a>
+        <a class="muted" href="#overview">Overview</a>
+        <a class="muted" href="#engines">Engines</a>
+        <a class="muted" href="#architecture">Architecture</a>
+        <a class="muted" href="#faq">FAQ</a>
+        <a class="muted" href="mailto:alkindi.proofx@gmail.com">Email</a>
+      </nav>
     </div>
   </footer>
 
-  <!-- Scripts (defer, a11y‑aware) -->
   <script>
-    // Perf: toggle reduced motion class once.
+    // Respect reduced‑motion users
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       document.documentElement.classList.add('prefers-reduced-motion');
     }
-
     // Year
-    document.addEventListener('DOMContentLoaded', function(){
-      var y = document.getElementById('y');
+    document.addEventListener('DOMContentLoaded', () => {
+      const y = document.getElementById('y');
       if (y) y.textContent = new Date().getFullYear();
     });
-
-    // Mobile nav
-    (function(){
-      var btn = document.querySelector('.nav-toggle');
-      var nav = document.getElementById('site-nav');
-      if (!btn || !nav) return;
-      btn.addEventListener('click', function(){
-        var open = nav.classList.toggle('open');
-        document.body.classList.toggle('nav-open', open);
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-    })();
-
-    // Tabs (Overview)
-    (function(){
-      var tabs = Array.prototype.slice.call(document.querySelectorAll('.tabbar .tab'));
-      var panes = Array.prototype.slice.call(document.querySelectorAll('.tabpanes > div'));
-      if (!tabs.length) return;
-      tabs.forEach(function(tab){
-        tab.addEventListener('click', function(){
-          tabs.forEach(function(t){ return t.setAttribute('aria-selected','false'); });
-          panes.forEach(function(p){ return p.setAttribute('aria-hidden','true'); });
-          tab.setAttribute('aria-selected','true');
-          var pane = document.getElementById(tab.getAttribute('aria-controls'));
-          if (pane) pane.setAttribute('aria-hidden','false');
-        });
-      });
-    })();
+    // Defensive: lock horizontal position in case of wheel tilt on desktop mice
+    window.addEventListener('wheel', (e) => {
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+        window.scrollBy({ top: e.deltaX, left: 0, behavior: 'auto' });
+        e.preventDefault();
+      }
+    }, { passive: false });
   </script>
 </body>
 </html>
