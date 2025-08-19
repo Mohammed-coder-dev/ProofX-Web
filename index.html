@@ -1,550 +1,257 @@
+<!-- index.html -->
 <!doctype html>
 <html lang="en">
 <head>
   <!-- =============================================================
-       ProofX — FAANG-Labs Tier / Unicorn Trajectory (Enhanced)
-       Narrative: Vision → Problem → Solution → Architecture → Engines
-                 → Reliability → Case Studies → Social Proof → Contact
+       ProofX — OpenAI-level minimal site (index.html)
+       Spec: black background, fast, accessible, investor/admissions-ready
        ============================================================= -->
-
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="dark light" />
-  <meta name="theme-color" content="#080a14" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="description" content="Proof-grade ML/Python engines. Deterministic solvers, entropy-driven search, and operator-grade observability — the fastest path from conjecture to verifiable evidence." />
+  <link rel="canonical" href="https://www.proofx.org/"/>
 
-  <title>ProofX — Symbolic AI for the Edge of Mathematics</title>
-  <meta name="description" content="ProofX builds production-grade symbolic AI for deterministic verification and operator-grade telemetry — FAANG-Labs-tier rigor with unicorn-trajectory focus." />
-  <meta name="author" content="Alkindi" />
-  <link rel="canonical" href="https://www.proofx.org/" />
-
-  <link rel="icon" href="/favicon.ico" />
-  <link rel="manifest" href="/site.webmanifest" />
-
-  <!-- Open Graph / Twitter -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="ProofX — Symbolic AI for the Edge of Mathematics">
-  <meta property="og:description" content="Deterministic proof infrastructure: multi-prover orchestration, replayable runs, operator-grade telemetry. FAANG-Labs-tier." />
+  <meta property="og:title" content="ProofX — Proof-grade ML/Python engines.">
+  <meta property="og:description" content="Deterministic solvers, entropy-driven search, operator-grade observability. Open-source non-profit built for labs and public-interest research.">
   <meta property="og:url" content="https://www.proofx.org/">
-  <meta property="og:image" content="https://www.proofx.org/assets/og-proofx.png">
-  <meta property="og:image:alt" content="ProofX: deterministic symbolic AI platform">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ProofX — Symbolic AI for the Edge of Mathematics">
-  <meta name="twitter:description" content="Deterministic verification + observability. Unicorn-trajectory ambition, one-in-a-century founder energy.">
-  <meta name="twitter:image" content="https://www.proofx.org/assets/og-proofx.png">
 
-  <!-- Performance hints -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-
-  <!-- JSON-LD (Organization + SoftwareApplication) -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":["Organization","SoftwareApplication"],
-    "name":"ProofX",
-    "url":"https://www.proofx.org/",
-    "logo":"https://www.proofx.org/assets/logo-512.png",
-    "description":"Deterministic symbolic AI for proof generation, verification, and operator-grade telemetry.",
-    "applicationCategory":"DeveloperApplication",
-    "operatingSystem":"Cross-platform",
-    "author":{"@type":"Person","name":"Alkindi"},
-    "sameAs":["https://vision.proofx.org","https://engine.proofx.org","https://cases.proofx.org","https://docs.proofx.org","https://press.proofx.org"]
-  }
-  </script>
-
-  <style>
-/* =========================
-   ProofX — Premium UI System (v3+)
-   ========================= */
-:root{color-scheme:dark light}
-:root{
-  --bg:#070a10; --bg-2:#0b1016;
-  --card:#0e1520; --card-2:#0b121c;
-  --stroke:#1b2739; --stroke-2:#22324b;
-  --text:#edf3ff; --muted:#a6b2c6;
-
-  --brand:#57c8ff; --brand-2:#3aa7e6; --accent:#9bffd1;
-
-  --success:#22c55e; --warning:#f59e0b; --danger:#ef4444; --info:#38bdf8;
-
-  --shadow-sm:0 6px 16px rgba(0,0,0,.24);
-  --shadow-md:0 10px 30px rgba(0,0,0,.28);
-  --shadow-lg:0 16px 50px rgba(0,0,0,.32);
-  --radius:14px;
-
-  --s-1:8px; --s-2:12px; --s-3:16px; --s-4:24px; --s-5:32px; --s-6:48px; --s-7:64px;
-
-  --ring:0 0 0 2px rgba(58,167,230,.6);
-
-  --fs-h1:clamp(36px,5.4vw,58px);
-  --fs-h2:28px;
-  --fs-body:17px;
-}
-:root[data-theme="light"]{
-  --bg:#f8fbff; --bg-2:#eef3fb;
-  --card:#ffffff; --card-2:#f6f9ff;
-  --stroke:#dbe5f5; --stroke-2:#c9d8ef;
-  --text:#0b1526; --muted:#51607a;
-  --brand:#0ea5e9; --brand-2:#0284c7; --accent:#22c55e;
-  --ring:0 0 0 2px rgba(2,132,199,.45);
-}
-
-/* Base */
-*{box-sizing:border-box}
-html,body{margin:0;padding:0}
-body{
-  font-family:Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans";
-  background:var(--bg); color:var(--text);
-  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-  letter-spacing:.1px; font-size:var(--fs-body);
-  transition:background-color .25s ease, color .25s ease;
-}
-a{color:inherit; text-underline-offset:2px}
-img{max-width:100%; height:auto; display:block}
-ul{padding-inline-start:1.2rem; margin:0}
-hr{border:0; height:1px; background:var(--stroke)}
-.muted{color:var(--muted)}
-.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
-::selection{background:color-mix(in oklab,var(--brand) 35%, transparent); color:#06131a}
-
-/* Motion & Focus */
-html{scroll-behavior:smooth}
-@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
-:focus{outline:none}
-:focus-visible{box-shadow:var(--ring); border-radius:10px}
-
-/* A11y */
-.sr-only{position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden}
-.skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
-.skip-link:focus{left:12px;top:12px;width:auto;height:auto;padding:8px 10px;background:#0c1624;border:1px solid var(--stroke);border-radius:10px;z-index:999}
-
-/* Background */
-.bg{position:fixed;inset:0;z-index:-1;pointer-events:none;
-  background:
-    radial-gradient(900px 520px at 80% -10%, color-mix(in oklab, var(--brand) 35%, transparent), transparent 60%),
-    radial-gradient(680px 420px at 0% 12%, color-mix(in oklab, var(--brand-2) 30%, transparent), transparent 60%),
-    linear-gradient(180deg, var(--bg), var(--bg-2));
-}
-
-/* Layout */
-.container{width:min(1080px,92%); margin-inline:auto}
-.section{padding-block:var(--s-6)}
-.section-tight{padding-block:var(--s-5)}
-.surface{background:linear-gradient(180deg, rgba(16,24,36,.72), rgba(10,14,22,.72)); border:1px solid var(--stroke); border-radius:var(--radius); box-shadow:var(--shadow-sm)}
-.ring{position:relative}
-.ring::after{content:""; position:absolute; inset:-1px; border-radius:inherit; pointer-events:none; background:conic-gradient(from 180deg at 50% 50%, rgba(87,200,255,.10), transparent 30%, transparent 70%, rgba(155,255,209,.10)); filter:blur(20px)}
-
-/* Nav */
-.nav{position:sticky; top:0; z-index:10; border-bottom:1px solid var(--stroke); background:rgba(8,12,18,.55); box-shadow:0 1px 0 rgba(255,255,255,.02)}
-@supports (backdrop-filter: blur(6px)){ .nav{backdrop-filter:saturate(125%) blur(8px)} }
-.nav-inner{display:flex; align-items:center; justify-content:space-between; padding-block:var(--s-2)}
-.brand{display:flex; align-items:center; gap:10px; text-decoration:none; white-space:nowrap}
-.brand-mark{display:grid; place-items:center; inline-size:30px; block-size:30px; border-radius:10px; background:linear-gradient(180deg,var(--brand),var(--brand-2)); color:#06131a; font-weight:800; box-shadow:var(--shadow-sm); position:relative; isolation:isolate; overflow:hidden}
-.brand-mark::after{content:""; position:absolute; inset:-40%; border-radius:50%; background:radial-gradient(circle at 50% 50%, rgba(255,255,255,.35), transparent 60%); filter:blur(10px); mix-blend:overlay; animation:brandPulse 6s ease-in-out infinite}
-@keyframes brandPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
-.brand-text{font-weight:800; letter-spacing:.2px}
-.links{display:flex; align-items:center; gap:var(--s-3)}
-.links a{color:var(--muted); text-decoration:none; padding:6px 8px; border-radius:8px; transition:background .12s ease, color .12s ease}
-.links a:hover{color:var(--text); background:rgba(255,255,255,.03)}
-.links a[aria-current="page"]{color:var(--text); background:rgba(87,200,255,.08); border:1px solid color-mix(in oklab, var(--brand) 35%, transparent)}
-.nav .btn.small{padding:8px 12px; font-size:.95rem; border-radius:999px; border:1px solid var(--stroke)}
-.nav-toggle{display:none; inline-size:38px; block-size:38px; border:0; background:transparent; color:var(--text)}
-.nav-toggle .bar{display:block; inline-size:20px; block-size:2px; background:var(--text); margin:4px auto; border-radius:2px}
-
-/* Hero */
-.hero{padding-block:var(--s-7) var(--s-5)}
-.hero .container{padding:18px}
-.hero-copy h1{font-size:var(--fs-h1); line-height:1.06; margin:0 0 var(--s-2)}
-.hero-copy .sub{color:var(--muted); max-inline-size:760px}
-.actions{margin-top:var(--s-3); display:flex; gap:var(--s-2); flex-wrap:wrap}
-.shimmer{background:linear-gradient(92deg, var(--text) 0%, color-mix(in oklab, var(--brand) 25%, var(--text)) 35%, var(--text) 70%); background-size:200% 100%; -webkit-background-clip:text; background-clip:text; color:transparent; animation:shimmerMove 6s ease-in-out infinite}
-@keyframes shimmerMove{0%{background-position:0% 0}50%{background-position:100% 0}100%{background-position:0% 0}}
-
-/* KPI / Chips */
-.kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:10px}
-.kpi{display:grid; gap:6px; padding:12px 14px; border-radius:12px; border:1px solid var(--stroke); background:linear-gradient(180deg, rgba(15,22,34,.9), rgba(10,16,26,.9))}
-.kpi .label{color:var(--muted); font-size:.88rem}
-.kpi .value{font-weight:800}
-.chips{display:flex; flex-wrap:wrap; gap:8px}
-.tag{display:inline-flex; align-items:center; gap:6px; border:1px solid var(--stroke); border-radius:999px; padding:4px 10px; font-size:.85rem; background:rgba(255,255,255,.03)}
-
-/* Cards / Grids */
-.cards{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--s-3); content-visibility:auto; contain-intrinsic-size:300px}
-@media (max-width:1100px){.cards{grid-template-columns:repeat( auto-fit, minmax(260px,1fr) )}}
-.card{position:relative; background:linear-gradient(180deg, rgba(16,24,36,.72), rgba(10,14,22,.72)); border:1px solid var(--stroke); border-radius:var(--radius); padding:var(--s-3); transition:transform .12s ease, border-color .12s ease, box-shadow .12s ease, filter .12s ease; box-shadow:var(--shadow-sm); overflow:hidden}
-.card:hover{transform:translateY(-1px); border-color:var(--stroke-2); box-shadow:var(--shadow-md); filter:saturate(1.02)}
-.card h3{margin-top:0}
-
-/* Architecture */
-.arch-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:var(--s-3)}
-
-/* Timeline/FAQ/Media */
-.timeline{display:grid; gap:var(--s-3)}
-.timeline > div{position:relative; padding-inline-start:28px; border:1px solid var(--stroke); border-radius:var(--radius); padding:var(--s-3); background:linear-gradient(180deg, rgba(18,24,36,.55), rgba(10,14,22,.55))}
-.timeline > div::before{content:""; position:absolute; inset-inline-start:12px; inset-block-start:20px; inline-size:6px; block-size:6px; border-radius:50%; background:var(--brand); box-shadow:0 0 0 4px rgba(87,200,255,.15)}
-.faq details{border:1px solid var(--stroke); border-radius:var(--radius); padding:var(--s-3); background:linear-gradient(180deg, rgba(16,24,36,.6), rgba(10,14,22,.6)); margin-bottom:12px}
-.faq summary{list-style:none; cursor:pointer; font-weight:600; outline:none}
-.faq summary::-webkit-details-marker{display:none}
-.faq details[open]{border-color:var(--stroke-2)}
-.media{border:1px solid var(--stroke); border-radius:10px; aspect-ratio:16/9; margin-bottom:10px; background:linear-gradient(180deg,var(--card),var(--card-2))}
-
-/* Footer */
-.footer{border-top:1px solid var(--stroke); padding-block:18px; background:rgba(6,10,16,.55)}
-@supports (backdrop-filter: blur(6px)){ .footer{backdrop-filter:saturate(130%) blur(8px)} }
-.footer-inner{display:flex; align-items:center; justify-content:space-between; gap:12px}
-.footer a{color:var(--muted); text-decoration:none; padding:6px 8px; border-radius:8px; transition:background .12s ease, color .12s ease}
-.footer a:hover{color:var(--text); background:rgba(255,255,255,.03)}
-
-/* Responsive */
-@media (max-width:1024px){
-  .hero-copy h1{font-size:clamp(32px,7vw,48px)}
-  .arch-grid{grid-template-columns:1fr}
-}
-@media (max-width:720px){
-  .links{display:none}
-  .links.open{display:flex; position:absolute; inset-inline-end:4%; inset-block-start:60px; background:rgba(6,10,16,.96); border:1px solid var(--stroke); border-radius:14px; padding:10px 12px; flex-direction:column; gap:10px; box-shadow:var(--shadow-lg)}
-  .nav-toggle{display:block}
-  .kpis{grid-template-columns:1fr}
-}
-
-/* Print */
-@media print{
-  body{background:#fff;color:#000}
-  .bg,.nav,.footer{display:none}
-  a{text-decoration:underline;color:#000}
-  .section,.hero{padding-block:16px}
-  .card,.media{border:1px solid #999; background:#fff; box-shadow:none}
-}
-  </style>
+  <title>ProofX — Proof-grade ML/Python engines.</title>
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-  <div class="bg" aria-hidden="true"></div>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <!-- ================================ NAV ================================ -->
+  <!-- ============================ HEADER ============================ -->
   <header class="nav" role="banner">
-    <div class="container nav-inner">
-      <a class="brand" href="#vision" aria-label="ProofX Home">
-        <span class="brand-mark mono" aria-hidden="true">PX</span>
-        <span class="brand-text">ProofX</span>
+    <div class="container nav__inner">
+      <a class="brand" href="#vision" aria-label="ProofX">
+        <span class="brand__mark" aria-hidden="true">PX</span>
+        <span class="brand__text">ProofX</span>
       </a>
-      <div style="display:flex;align-items:center;gap:10px">
-        <button id="theme-toggle" class="btn small" aria-label="Toggle theme">Theme</button>
-        <button class="nav-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-        </button>
-      </div>
-      <nav id="site-nav" class="links" role="navigation" aria-label="Primary">
+
+      <nav class="nav__links" role="navigation" aria-label="Primary">
         <a href="#vision">Vision</a>
-        <a href="#problem">Problem</a>
-        <a href="#solution">Solution</a>
-        <a href="#architecture">Architecture</a>
         <a href="#engines">Engines</a>
-        <a href="#reliability">Reliability</a>
-        <a href="#cases">Case Studies</a>
-        <a href="#social">Social Proof</a>
+        <a href="https://docs.proofx.org" target="_blank" rel="noopener">Docs</a>
         <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
-        <a href="https://vision.proofx.org">Vision Site</a>
-        <a href="https://engine.proofx.org">Engines Site</a>
-        <a href="https://cases.proofx.org">Cases Site</a>
-        <a href="https://docs.proofx.org">Docs</a>
-        <a href="https://press.proofx.org">Press</a>
       </nav>
+
+      <div class="nav__ctas" role="group" aria-label="Primary calls to action">
+        <a class="btn btn--pill" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Partner">Partner</a>
+        <a class="btn btn--pill" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Invest">Invest</a>
+        <a class="btn btn--pill" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Pilot">Pilot</a>
+      </div>
     </div>
   </header>
 
-  <main id="main" tabindex="-1">
-    <!-- ============================ HERO ================================ -->
-    <section id="vision" class="section hero">
-      <div class="container surface ring hero-copy">
-        <p class="mono muted" style="margin:0 0 8px;">ProofX Research Lab · Deterministic Symbolic AI</p>
-        <h1 class="shimmer">Symbolic AI for the Edge of Mathematics</h1>
-        <p class="sub">We compress the distance from conjecture to verified evidence with multi-prover orchestration, deterministic replay, and operator-grade telemetry.</p>
-
-        <!-- KPI Row -->
-        <div class="kpis" style="margin-top:12px">
-          <div class="kpi"><div class="label">Scope</div><div class="value">200k+ LOC · multi-engine platform</div></div>
-          <div class="kpi"><div class="label">Capability</div><div class="value">SMT · FOL · finite models · entropy scheduling</div></div>
-          <div class="kpi"><div class="label">Trajectory</div><div class="value">Unicorn-trajectory infrastructure, FAANG-Labs-tier rigor</div></div>
+  <main id="main">
+    <!-- ============================ HERO ============================ -->
+    <section class="section hero" aria-labelledby="hero-title">
+      <div class="container hero__wrap">
+        <h1 id="hero-title" class="hero__h1">Proof-grade ML/Python engines.</h1>
+        <p class="hero__sub">
+          Deterministic solvers, entropy-driven search, and operator-grade observability — the fastest path from
+          conjecture to verifiable evidence.
+        </p>
+        <div class="hero__actions" role="group" aria-label="Primary actions">
+          <a class="btn btn--primary btn--lg" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Partner">Partner</a>
+          <a class="btn btn--primary btn--lg" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Invest">Invest</a>
+          <a class="btn btn--primary btn--lg" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Pilot">Pilot</a>
         </div>
-
-        <!-- Trust / defensibility chips -->
-        <div class="chips" style="margin-top:10px">
-          <span class="tag">On-paper IP valuation: ~$18–20M</span>
-          <span class="tag">Replacement cost: $2–3M+ engineering</span>
-          <span class="tag">4+ years solo R&D</span>
-          <span class="tag">One-in-a-century founder energy</span>
-        </div>
-
-        <!-- CTA -->
-        <div class="actions">
-          <a class="btn primary" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Partner" aria-label="Partner">Partner</a>
-          <a class="btn ghost" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Invest" aria-label="Invest">Invest</a>
-          <a class="btn ghost" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Pilot" aria-label="Pilot">Pilot</a>
+        <div class="hero__links" aria-label="Secondary links">
+          <a href="https://vision.proofx.org" target="_blank" rel="noopener">Vision</a>
+          <a href="https://press.proofx.org" target="_blank" rel="noopener">Press</a>
+          <a href="https://cases.proofx.org" target="_blank" rel="noopener">Cases</a>
         </div>
       </div>
     </section>
 
-    <!-- ============================ PROBLEM ============================= -->
-    <section id="problem" class="section">
-      <div class="container">
-        <div class="surface ring" style="padding:16px">
-          <h2 style="margin:0 0 8px">Problem</h2>
-          <p class="max-w-prose">Formal discovery stalls when (1) search spaces explode, (2) results aren’t replayable, and (3) teams operate blind without telemetry.</p>
+    <!-- ====================== VISION (IN-PAGE) ======================= -->
+    <section id="vision" class="section" aria-labelledby="vision-title">
+      <div class="container card">
+        <h2 id="vision-title">Vision</h2>
+        <p>
+          ProofX compresses time-to-evidence. We engineer proof-grade reliability by unifying deterministic
+          ML/Python execution with entropy-aware search and audit-grade telemetry.
+        </p>
+        <p class="muted">
+          Open-source non-profit; not SaaS. Built for labs, operators, and public-interest research.
+          Read the long-form thesis at
+          <a href="https://vision.proofx.org" target="_blank" rel="noopener">vision.proofx.org</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- =================== PROBLEM → SOLUTION ======================== -->
+    <section class="section" aria-labelledby="ps-title">
+      <div class="container grid grid--2">
+        <div class="card">
+          <h2 id="ps-title">The problem</h2>
           <ul>
-            <li>Combinatorial proof search; heuristics drift across machines and versions.</li>
-            <li>Non-determinism blocks reproducibility, peer review, and audit trails.</li>
-            <li>Minimal observability → slow iteration, weak anomaly response.</li>
+            <li>Proof workflows are brittle, opaque, and slow to reproduce.</li>
+            <li>Search is noisy; counterexamples are hard to surface and track.</li>
+            <li>Teams lack audit-grade traces across runs and versions.</li>
+            <li>Latency to verified evidence blocks iteration and trust.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>What ProofX makes possible</h2>
+          <ul>
+            <li>Deterministic portfolios across SMT/FOL/FMC with SAT bridges.</li>
+            <li>Entropy-aware scheduling + curriculum runs to find needles fast.</li>
+            <li>First-class telemetry: traces, dashboards, anomaly flags, decay maps.</li>
+            <li>Truth-aligned latency: shortest path from conjecture to evidence.</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- ============================ SOLUTION ============================ -->
-    <section id="solution" class="section section-tight">
+    <!-- =========================== ENGINES =========================== -->
+    <section id="engines" class="section" aria-labelledby="engines-title">
       <div class="container">
-        <div class="surface ring" style="padding:16px">
-          <h2 style="margin:0 0 8px">Solution</h2>
-          <p class="max-w-prose">ProofX unifies <strong>multi-prover orchestration</strong> with <strong>deterministic replay</strong> and <strong>entropy-aware scheduling</strong>, streamed into operator dashboards that keep proofs honest and search productive.</p>
-          <div class="cards" style="margin-top:10px">
-            <article class="card"><h3>Determinism</h3><p>Seeds, routes, and solver portfolios persisted per run; identical replay across machines and time.</p></article>
-            <article class="card"><h3>Observability</h3><p>Live traces, entropy/decay overlays, anomaly flags, run diffs; SRE-style insight for symbolic systems.</p></article>
-            <article class="card"><h3>Composability</h3><p>FOL, SMT, finite models, SAT bridges — swappable, typed, and logged with proof obligations.</p></article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================ ARCHITECTURE ======================= -->
-    <section id="architecture" class="section">
-      <div class="container">
-        <h2 style="margin:0 0 10px">Architecture</h2>
-        <div class="arch-grid">
-          <div class="surface card"><div style="padding:16px">
-            <p>Deterministic solvers stacked with symbolic search and first-class observability. Every attempt becomes a data point in a growing <span class="mono">evaluation wall</span>.</p>
-            <ul>
-              <li><strong>Solvers:</strong> SMT, FOL, finite model testing, SAT bridges</li>
-              <li><strong>Search:</strong> entropy-aware scheduling, curriculum runs, counterexample harvesting</li>
-              <li><strong>Telemetry:</strong> traces, dashboards, anomaly flags, decay maps</li>
-            </ul>
-            <p class="muted">Truth-aligned latency: fastest path from conjecture to verifiable evidence.</p>
-          </div></div>
-          <aside class="surface card"><div style="padding:16px">
-            <h3 style="margin-top:0">Reliability & Moats</h3>
-            <ul>
-              <li>Seeded randomness & versioned runs</li>
-              <li>Artifact registry for witnesses & notebooks</li>
-              <li>Portfolio routing + backpressure under load</li>
-              <li>Compounding corpus: structured traces difficult to replicate</li>
-            </ul>
-            <div class="chips" style="margin-top:8px">
-              <span class="tag">FAANG-Labs-tier rigor</span>
-              <span class="tag">Security-first deploys (on-prem/air-gapped)</span>
-            </div>
-          </div></aside>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================ ENGINES ============================ -->
-    <section id="engines" class="section section-tight">
-      <div class="container">
-        <h2 style="margin:0 0 10px">Engines</h2>
-        <div class="cards">
-          <article class="surface card">
-            <div class="media" aria-hidden="true"></div>
+        <h2 id="engines-title">Engines</h2>
+        <div class="grid grid--3">
+          <article class="card engine">
             <h3>Logic Engine <span class="mono muted">/ FOL</span></h3>
-            <p>Traceable reasoning: quantifiers, skolemization, inference steps, counterexamples with witnesses.</p>
+            <p>Traceable reasoning (quantifiers, skolemization, inference steps), counterexamples with witnesses.</p>
+            <ul class="bullets">
+              <li>Quantifiers + skolemization</li>
+              <li>Inference trace with obligations</li>
+              <li>Counterexamples with witnesses</li>
+            </ul>
+            <a class="engine__link" href="https://engine.proofx.org/logic" target="_blank" rel="noopener">Explore engine →</a>
           </article>
-          <article class="surface card">
-            <div class="media" aria-hidden="true"></div>
+
+          <article class="card engine">
             <h3>Verification Kernel <span class="mono muted">/ SMT · FMC</span></h3>
-            <p>Deterministic solver portfolios, SAT bridges, property proving, typed obligations.</p>
+            <p>Deterministic portfolios, SAT bridges, property proving, typed obligations.</p>
+            <ul class="bullets">
+              <li>SMT + finite model testing</li>
+              <li>Typed properties & obligations</li>
+              <li>Replayable, versioned runs</li>
+            </ul>
+            <a class="engine__link" href="https://engine.proofx.org/verification" target="_blank" rel="noopener">Explore engine →</a>
           </article>
-          <article class="surface card">
-            <div class="media" aria-hidden="true"></div>
+
+          <article class="card engine">
             <h3>Entropy Engine <span class="mono muted">/ Search</span></h3>
-            <p>Entropy-guided scheduling, decay maps, outlier surfacing; curriculum runs at scale.</p>
+            <p>Entropy-guided scheduling, decay maps, outlier surfacing, curriculum runs at scale.</p>
+            <ul class="bullets">
+              <li>Entropy/curriculum scheduling</li>
+              <li>Decay maps & anomaly flags</li>
+              <li>Counterexample harvesting</li>
+            </ul>
+            <a class="engine__link" href="https://engine.proofx.org/entropy" target="_blank" rel="noopener">Explore engine →</a>
           </article>
-        </div>
-        <div class="actions" style="margin-top:14px">
-          <a class="btn primary" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Your%20Domain%20Applications">See applications in your domain</a>
-          <a class="btn ghost" href="#contact">Talk to us</a>
         </div>
       </div>
     </section>
 
-    <!-- ============================ RELIABILITY ======================== -->
-    <section id="reliability" class="section">
+    <!-- ======================== SOCIAL PROOF ========================= -->
+    <section class="section" aria-labelledby="social-title">
+      <div class="container card card--row">
+        <h2 id="social-title" class="sr-only">Social Proof</h2>
+        <nav class="links-row" aria-label="Outbound anchors">
+          <a href="https://press.proofx.org" target="_blank" rel="noopener">Press Kit</a>
+          <a href="https://docs.proofx.org" target="_blank" rel="noopener">Docs</a>
+          <a href="https://vision.proofx.org" target="_blank" rel="noopener">Vision</a>
+          <a href="https://engine.proofx.org" target="_blank" rel="noopener">Engines</a>
+          <a href="https://cases.proofx.org" target="_blank" rel="noopener">Cases</a>
+        </nav>
+        <div class="chips">
+          <span class="chip">Unicorn-trajectory</span>
+          <span class="chip">Founder-market fit</span>
+          <span class="chip">Audit-grade determinism</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= FAQ ============================= -->
+    <section id="faq" class="section" aria-labelledby="faq-title">
       <div class="container">
-        <h2 style="margin:0 0 10px">Reliability & Defensibility</h2>
-        <div class="surface ring" style="padding:16px">
+        <h2 id="faq-title">FAQ</h2>
+
+        <details class="card">
+          <summary>How does the architecture ensure determinism and traceability?</summary>
           <ul>
-            <li><strong>Deterministic replay:</strong> identical outputs for identical inputs — across machines and time.</li>
-            <li><strong>Observability-first:</strong> operator dashboards shrink MTTR for proof failures.</li>
-            <li><strong>Corpus moat:</strong> every run compounds into proprietary, structured traces.</li>
-            <li><strong>Deploy anywhere:</strong> private cloud & on-prem; seeds ensure replay under restricted compute.</li>
+            <li>Deterministic solvers layered with symbolic search and first-class observability.</li>
+            <li>Seeded randomness + versioned runs; identical replay across machines and time.</li>
+            <li>Typed obligations with witness artifacts; every attempt becomes part of an evaluation wall.</li>
           </ul>
-        </div>
-      </div>
-    </section>
+        </details>
 
-    <!-- ============================ CASE STUDIES ======================= -->
-    <section id="cases" class="section section-tight">
-      <div class="container">
-        <h2 style="margin:0 0 10px">Case Studies (illustrative)</h2>
-        <div class="cards">
-          <article class="surface card">
-            <div class="media" aria-hidden="true"></div>
-            <h3>Collatz@Scale</h3>
-            <p>Verifies Collatz up to <span class="mono">2^60</span> with deterministic replay and live anomaly flags.</p>
-          </article>
-          <article class="surface card">
-            <div class="media" aria-hidden="true"></div>
-            <h3>GUE Conformity</h3>
-            <p>Entropy analytics surface deviations from GUE-like distributions during numeric experiments.</p>
-          </article>
-          <article class="surface card">
-            <div class="media" aria-hidden="true"></div>
-            <h3>Portfolio Wins</h3>
-            <p>SMT+FMC portfolio reduces verification timeouts by double-digit %, with full traceability.</p>
-          </article>
-        </div>
-        <p class="muted" style="margin-top:8px">Available under NDA; reproducible with shipped seeds and notebooks.</p>
-      </div>
-    </section>
-
-    <!-- ============================ SOCIAL PROOF ======================= -->
-    <section id="social" class="section section-tight">
-      <div class="container">
-        <h2 style="margin:0 0 10px">Social Proof</h2>
-        <div class="surface ring" style="padding:16px">
+        <details class="card">
+          <summary>What’s the reliability moat?</summary>
           <ul>
-            <li><strong>Press Kit:</strong> <a href="https://press.proofx.org">press.proofx.org</a> — valuation method (replacement cost + comps), artifacts, and one-pager PDF.</li>
-            <li><strong>Docs:</strong> <a href="https://docs.proofx.org">docs.proofx.org</a> — technical overview, CLI/SDK notes, integration patterns.</li>
-            <li><strong>Vision:</strong> <a href="https://vision.proofx.org">vision.proofx.org</a> — the “why now” and research thesis.</li>
-            <li><strong>Engines:</strong> <a href="https://engine.proofx.org">engine.proofx.org</a> — deep dive per module with diagrams.</li>
-            <li><strong>Cases:</strong> <a href="https://cases.proofx.org">cases.proofx.org</a> — dashboards/screenshots; proof-of-life gallery.</li>
+            <li>Seeded runs + portfolio routing with backpressure under load.</li>
+            <li>Artifact registry for witnesses, notebooks, and traces.</li>
+            <li>Compounding corpus of structured traces that’s hard to replicate.</li>
+            <li>Security-first deploys: private cloud, on-prem, and air-gapped modes.</li>
           </ul>
-          <div class="chips" style="margin-top:8px">
-            <span class="tag">Unicorn-trajectory</span>
-            <span class="tag">Founder-market fit</span>
-            <span class="tag">Audit-grade determinism</span>
-          </div>
-        </div>
+        </details>
+
+        <details class="card">
+          <summary>Is this a SaaS?</summary>
+          <p><strong>No.</strong> ProofX is an <strong>open-source non-profit</strong>. We collaborate via
+            research partnerships, pilots, and operator support. See
+            <a href="https://press.proofx.org" target="_blank" rel="noopener">press.proofx.org</a> for positioning and valuation method.</p>
+        </details>
+
+        <details class="card">
+          <summary>Deployment & security posture?</summary>
+          <ul>
+            <li>On-prem and air-gapped ready; minimal-telemetry modes with strict retention.</li>
+            <li>Reproducible containers; seeds + manifests for verified builds.</li>
+            <li>Access controls suited for regulated & classified environments.</li>
+          </ul>
+        </details>
+
+        <details class="card">
+          <summary>Truth-aligned latency: how is time-to-evidence minimized?</summary>
+          <ul>
+            <li>Entropy-aware scheduling, curriculum runs, and counterexample harvesting.</li>
+            <li>Operator dashboards, anomaly flags, and decay maps for rapid iteration.</li>
+            <li>Portfolio selection + caching to route compute where it matters.</li>
+          </ul>
+        </details>
       </div>
     </section>
 
-    <!-- ============================ FAQ ================================ -->
-    <section id="faq" class="section section-tight">
-      <div class="container">
-        <h2 style="margin:0 0 10px">FAQ</h2>
-        <div class="faq">
-          <details class="surface"><summary>Why now?</summary><p class="muted">AI accelerates conjecture generation; reproducibility and deterministic verification become mandatory infrastructure.</p></details>
-          <details class="surface"><summary>Can you run air-gapped?</summary><p class="muted">Yes — private cloud & on-prem via Docker; seeds ensure reproducibility.</p></details>
-          <details class="surface"><summary>What’s proprietary?</summary><p class="muted">The evaluation wall and structured traces. The corpus compounds and is non-trivial to replicate.</p></details>
-          <details class="surface"><summary>Engagement model?</summary><p class="muted">Pilot (SaaS + managed dashboards), SDK licensing, and enterprise support.</p></details>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================ CONTACT ============================ -->
-    <section id="contact" class="section section-tight">
-      <div class="container surface ring" style="padding:18px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+    <!-- ============================ CONTACT =========================== -->
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <div class="container card card--row">
         <div>
-          <h2 style="margin:0 0 6px">Contact</h2>
-          <p class="muted" style="margin:0">Pilot, invest, or collaborate. High-intensity, low-theatre.</p>
+          <h2 id="contact-title">Contact</h2>
+          <p class="muted">Partners, investors, and research labs: we move fast with evidence, not theatre.</p>
         </div>
-        <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <a class="btn primary" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Inquiry" aria-label="Email ProofX">Email</a>
-          <a class="btn ghost" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Pilot%20Inquiry">Pilot</a>
-          <a class="btn ghost" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Investment%20Discussion">Invest</a>
+        <div class="contact__actions" role="group" aria-label="Contact actions">
+          <a class="btn btn--primary" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Inquiry">Email us</a>
+          <a class="btn" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Pilot">Pilot</a>
+          <a class="btn" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Invest">Invest</a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ============================ FOOTER ============================== -->
+  <!-- ============================= FOOTER ============================ -->
   <footer class="footer" role="contentinfo">
-    <div class="container footer-inner">
-      <div class="left">
-        <span class="brand-text">ProofX</span>
-        <span class="muted">© <span id="y"></span></span>
-      </div>
-      <div class="right">
-        <a href="mailto:alkindi.proofx@gmail.com">alkindi.proofx@gmail.com</a>
-        <a href="#vision" class="muted">Back to top</a>
-      </div>
+    <div class="container footer__inner">
+      <span class="muted">© 2025 ProofX</span>
+      <nav class="footer__links" aria-label="Footer">
+        <a href="https://vision.proofx.org" target="_blank" rel="noopener">Vision</a>
+        <a href="https://engine.proofx.org" target="_blank" rel="noopener">Engines</a>
+        <a href="https://docs.proofx.org" target="_blank" rel="noopener">Docs</a>
+        <a href="https://press.proofx.org" target="_blank" rel="noopener">Press</a>
+        <a href="https://cases.proofx.org" target="_blank" rel="noopener">Cases</a>
+      </nav>
     </div>
   </footer>
-
-  <!-- ============================ SCRIPTS ============================= -->
-  <script>
-    // Respect reduced-motion users
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.documentElement.classList.add('prefers-reduced-motion');
-    }
-    // Year stamp
-    document.addEventListener('DOMContentLoaded', () => {
-      const y = document.getElementById('y');
-      if (y) y.textContent = new Date().getFullYear();
-    });
-
-    // Mobile nav toggle
-    (function(){
-      const btn = document.querySelector('.nav-toggle');
-      const nav = document.getElementById('site-nav');
-      if (!btn || !nav) return;
-      btn.addEventListener('click', function(){
-        const open = nav.classList.toggle('open');
-        document.body.classList.toggle('nav-open', open);
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-    })();
-
-    // Scrollspy for active nav link
-    (function(){
-      const links = Array.from(document.querySelectorAll('#site-nav a[href^="#"]'));
-      const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-
-      function onScroll(){
-        const y = window.scrollY + 96; // offset for sticky nav
-        let current = sections[0];
-        for (const sec of sections){
-          if (sec.offsetTop <= y) current = sec;
-        }
-        links.forEach(a => {
-          a.setAttribute('aria-current', a.getAttribute('href') === '#' + (current?.id || 'vision') ? 'page' : 'false');
-        });
-      }
-      window.addEventListener('scroll', onScroll, { passive:true });
-      window.addEventListener('load', onScroll);
-      window.addEventListener('hashchange', onScroll);
-    })();
-
-    // Theme toggle with persistence
-    (function() {
-      const key = 'px-theme';
-      const root = document.documentElement;
-      const saved = localStorage.getItem(key);
-      if (saved) root.setAttribute('data-theme', saved);
-
-      const btn = document.getElementById('theme-toggle');
-      if (!btn) return;
-      btn.addEventListener('click', () => {
-        const current = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-        root.setAttribute('data-theme', current);
-        localStorage.setItem(key, current);
-      });
-    })();
-  </script>
-
-  <!-- Optional privacy-friendly analytics (uncomment and set your domain)
-  <script defer data-domain="proofx.org" src="https://plausible.io/js/script.js"></script>
-  -->
 </body>
 </html>
