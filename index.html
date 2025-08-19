@@ -2,34 +2,67 @@
 <!doctype html>
 <html lang="en">
 <head>
-  
+  <!-- ================================================================
+       ProofX — Open-source, operator-grade verification engines
+       Notes:
+       • Keep assets local; CSS at /styles.css
+       • JSON-LD for Organization/WebSite
+       • OG/Twitter cards, canonical, theme-color (dark/light)
+       • Accessibility: consistent headings, labels, skip link
+  =================================================================== -->
   <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="dark light" />
   <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-  <meta name="description" content="ProofX — open source theorem prover comparison and proof-grade ML/Python engines. Deterministic solvers, entropy-driven search, and operator-grade observability." />
-  <link rel="canonical" href="https://www.proofx.org/"/>
+  <meta name="description" content="ProofX — proof-grade ML/Python engines for verification. Deterministic portfolios, entropy-guided search, and audit-grade observability around your prover stack." />
+  <link rel="canonical" href="https://www.proofx.org/" />
+
+  <title>ProofX — proof-grade ML/Python engines</title>
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="stylesheet" href="styles.css" />
 
   <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="ProofX — open source theorem prover comparison">
-  <meta property="og:description" content="Compare open-source theorem provers with ProofX context. Deterministic ML/Python engines, entropy-guided search, and audit-grade telemetry. Open-source non-profit.">
-  <meta property="og:url" content="https://www.proofx.org/">
-  <meta property="og:site_name" content="ProofX">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="ProofX — proof-grade ML/Python engines" />
+  <meta property="og:description" content="Deterministic solvers, entropy-driven search, and operator-grade observability — the fastest path from conjecture to verifiable evidence." />
+  <meta property="og:url" content="https://www.proofx.org/" />
+  <meta property="og:site_name" content="ProofX" />
+  <meta property="og:image" content="https://www.proofx.org/assets/og.png" />
 
-  <title>ProofX — open source theorem prover comparison</title>
-  <link rel="icon" href="/favicon.ico">
-  <!-- FIX: stylesheet path for src/ structure -->
-  <link rel="stylesheet" href="styles.css">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ProofX — proof-grade ML/Python engines" />
+  <meta name="twitter:description" content="Deterministic portfolios, entropy-guided search, and audit-grade observability." />
+  <meta name="twitter:image" content="https://www.proofx.org/assets/og.png" />
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ProofX",
+    "url": "https://www.proofx.org/",
+    "logo": "https://www.proofx.org/assets/logo.png",
+    "sameAs": [
+      "https://vision.proofx.org",
+      "https://engine.proofx.org",
+      "https://docs.proofx.org",
+      "https://press.proofx.org",
+      "https://cases.proofx.org"
+    ]
+  }
+  </script>
 </head>
+
 <body>
   <a class="skip" href="#main">Skip to content</a>
 
-  <!-- ============================ HEADER ============================ -->
+  <!-- ============================== HEADER =============================== -->
   <header class="nav" role="banner">
     <div class="container nav__inner">
-      <a class="brand" href="#vision" aria-label="ProofX">
+      <a class="brand" href="#top" aria-label="ProofX home">
         <span class="brand__mark" aria-hidden="true">PX</span>
         <span class="brand__text">ProofX</span>
       </a>
@@ -41,45 +74,46 @@
         <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
       </nav>
-      <!-- Header CTAs intentionally removed for focus and clarity -->
     </div>
   </header>
 
   <main id="main">
-    <!-- ============================ HERO ============================ -->
-    <section class="section hero" aria-labelledby="hero-title">
+    <!-- =============================== HERO =============================== -->
+    <section id="top" class="section hero" aria-labelledby="hero-title">
       <div class="container hero__wrap">
         <h1 id="hero-title" class="hero__h1">Proof-grade ML/Python engines.</h1>
         <p class="hero__sub">
-          Deterministic solvers, entropy-driven search, and operator-grade observability — the fastest path from
-          conjecture to verifiable evidence.
+          Deterministic solvers, entropy-driven search, and operator-grade observability — the fastest path
+          from conjecture to verifiable evidence.
         </p>
+
         <div class="hero__actions" role="group" aria-label="Primary actions">
           <a class="btn btn--primary btn--lg" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Partner">Partner</a>
           <a class="btn btn--primary btn--lg" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Invest">Invest</a>
           <a class="btn btn--primary btn--lg" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Pilot">Pilot</a>
         </div>
-        <div class="hero__links" aria-label="Secondary links">
+
+        <nav class="hero__links" aria-label="Secondary">
           <a href="https://vision.proofx.org" target="_blank" rel="noopener">Vision</a>
           <a href="https://press.proofx.org" target="_blank" rel="noopener">Press</a>
           <a href="https://cases.proofx.org" target="_blank" rel="noopener">Cases</a>
-        </div>
+        </nav>
       </div>
     </section>
 
-    <!-- ====================== VISION (IN-PAGE) ======================= -->
+    <!-- ================================ VISION ============================= -->
     <section id="vision" class="section" aria-labelledby="vision-title">
       <div class="container card">
         <h2 id="vision-title">Vision</h2>
         <p>
           ProofX compresses time-to-evidence for mathematical and formal systems work. We fuse deterministic
-          ML/Python execution with theorem-prover style rigor and SRE-grade observability so teams can move from
-          idea → experiment → verified artifact without ambiguity.
+          ML/Python execution with theorem-prover rigor and SRE-grade observability so teams move
+          from idea → experiment → verified artifact without ambiguity.
         </p>
         <ul class="bullets bullets--tight">
           <li><strong>Mission:</strong> turn “proof of concept” into <em>proof with provenance</em> — every run replayable, every claim inspectable.</li>
           <li><strong>Why it matters:</strong> as AI increases conjecture velocity, <span class="mono">reproducibility</span> and <span class="mono">traceability</span> become existential for trust.</li>
-          <li><strong>Who it serves:</strong> research labs, operators in critical infrastructure, and public-interest math & verification projects.</li>
+          <li><strong>Who it serves:</strong> research labs, critical-infrastructure operators, and public-interest math & verification projects.</li>
         </ul>
         <p class="muted">
           Open-source non-profit; not SaaS. Read the long-form thesis at
@@ -88,71 +122,82 @@
       </div>
     </section>
 
-    <!-- =================== PROBLEM → SOLUTION ======================== -->
+    <!-- =========================== PROBLEM → SOLUTION ====================== -->
     <section class="section" aria-labelledby="ps-title">
       <div class="container grid grid--2">
-        <div class="card">
+        <article class="card">
           <h2 id="ps-title">The problem</h2>
           <ul class="bullets">
-            <li>Proof workflows are brittle, opaque, and slow to reproduce across machines and versions.</li>
-            <li>Search is noisy; counterexamples are difficult to surface, label, and track over time.</li>
-            <li>Teams lack audit-grade traces and consistent seeds, making peer review and incident response slow.</li>
+            <li>Brittle, opaque proof workflows; hard to reproduce across machines and versions.</li>
+            <li>Noisy search; counterexamples are hard to surface, label, and track over time.</li>
+            <li>Insufficient audit-grade traces and seeds; peer review and incident response drag.</li>
             <li>Latency to <em>verified</em> evidence blocks iteration, collaboration, and external confidence.</li>
           </ul>
-          <p class="muted small">Context: Our <strong>open source theorem prover comparison</strong> frames where each tool excels and where ProofX augments workflows.</p>
-        </div>
-        <div class="card">
+          <p class="muted small">
+            Context: our <strong>open-source theorem prover comparison</strong> frames where each tool excels and how ProofX augments workflows.
+          </p>
+        </article>
+
+        <article class="card">
           <h2>What ProofX makes possible</h2>
           <ul class="bullets">
-            <li>Deterministic portfolios across SMT/FOL/FMC with SAT bridges, typed obligations, and replayable seeds.</li>
-            <li>Entropy-aware scheduling and curriculum runs to prioritize promising paths and surface outliers early.</li>
-            <li>First-class telemetry: traces, dashboards, anomaly flags, decay maps, and run diffs (audit-ready).</li>
+            <li>Deterministic portfolios across SMT/FOL/FMC with SAT bridges, typed obligations, replayable seeds.</li>
+            <li>Entropy-aware scheduling + curriculum runs prioritize promising paths and surface outliers early.</li>
+            <li>First-class telemetry: traces, dashboards, anomaly flags, decay maps, run diffs (audit-ready).</li>
             <li>Truth-aligned latency: shortest path from conjecture to inspectable evidence and publishable artifacts.</li>
           </ul>
-          <p class="muted small">Output: witnesses, notebooks, and manifests pinned in an artifact registry; every attempt becomes a data point in a growing evaluation wall.</p>
-        </div>
+          <p class="muted small">
+            Output: witnesses, notebooks, and manifests pinned in an artifact registry; every attempt becomes a data point in a growing evaluation wall.
+          </p>
+        </article>
       </div>
     </section>
 
-    <!-- ===================== THEOREM PROVER COMPARISON ================ -->
+    <!-- ======================= THEOREM PROVER COMPARISON =================== -->
     <section class="section" aria-labelledby="compare-title">
       <div class="container card">
         <h2 id="compare-title">Open-source theorem prover comparison (at a glance)</h2>
-        <div class="grid grid--3 compare">
-          <div class="compare__item">
+
+        <div class="grid grid--3 compare" role="list">
+          <article class="compare__item" role="listitem">
             <h3>Lean / Coq</h3>
             <ul class="bullets bullets--tight">
               <li><strong>Strength:</strong> interactive, foundational proof development.</li>
               <li><strong>Gap:</strong> heavy lift for large search/telemetry; reproducibility tied to tactics.</li>
-              <li><strong>With ProofX:</strong> run entropy-guided searches, log traces, export obligations/witnesses.</li>
+              <li><strong>With ProofX:</strong> entropy-guided searches, full traces, export obligations/witnesses.</li>
             </ul>
-          </div>
-          <div class="compare__item">
+          </article>
+
+          <article class="compare__item" role="listitem">
             <h3>Z3 / CVC5</h3>
-            <!-- FIX: class name typo -->
             <ul class="bullets bullets--tight">
               <li><strong>Strength:</strong> industrial SMT solving.</li>
               <li><strong>Gap:</strong> portfolio orchestration and run-level provenance are ad-hoc.</li>
-              <li><strong>With ProofX:</strong> deterministic portfolios, seeded runs, dashboards, and decay maps.</li>
+              <li><strong>With ProofX:</strong> deterministic portfolios, seeded runs, dashboards, decay maps.</li>
             </ul>
-          </div>
-          <div class="compare__item">
+          </article>
+
+          <article class="compare__item" role="listitem">
             <h3>Isabelle / Agda</h3>
             <ul class="bullets bullets--tight">
               <li><strong>Strength:</strong> rich type theories and libraries.</li>
               <li><strong>Gap:</strong> limited operator telemetry for large exploratory runs.</li>
               <li><strong>With ProofX:</strong> counterexample harvesting + curriculum scheduling + artifact registry.</li>
             </ul>
-          </div>
+          </article>
         </div>
-        <p class="muted small">Goal: complement, not replace. ProofX focuses on <em>deterministic search orchestration</em> and <em>operator observability</em> around your chosen prover stack.</p>
+
+        <p class="muted small">
+          Goal: complement, not replace. ProofX focuses on <em>deterministic search orchestration</em> and <em>operator observability</em> around your chosen prover stack.
+        </p>
       </div>
     </section>
 
-    <!-- =========================== ENGINES =========================== -->
+    <!-- ================================= ENGINES =========================== -->
     <section id="engines" class="section" aria-labelledby="engines-title">
       <div class="container">
         <h2 id="engines-title">Engines</h2>
+
         <div class="grid grid--3">
           <article class="card engine">
             <h3>Logic Engine <span class="mono muted">/ FOL</span></h3>
@@ -180,21 +225,25 @@
             <h3>Entropy Engine <span class="mono muted">/ Search</span></h3>
             <p>Entropy-guided scheduling, decay maps, outlier surfacing, curriculum runs at scale.</p>
             <ul class="bullets">
-              <li>Adaptive schedulers prioritize information gain vs. cost.</li>
+              <li>Adaptive schedulers prioritize information gain vs cost.</li>
               <li>Decay/entropy overlays; anomaly flags & operator alerts.</li>
               <li>Counterexample harvesting + portfolio backpressure.</li>
             </ul>
             <a class="engine__link" href="https://engine.proofx.org/entropy" target="_blank" rel="noopener">Explore engine →</a>
           </article>
         </div>
-        <p class="muted small">Deep-dives with diagrams and APIs at <a href="https://engine.proofx.org" target="_blank" rel="noopener">engine.proofx.org</a>.</p>
+
+        <p class="muted small">
+          Deep-dives with diagrams and APIs at <a href="https://engine.proofx.org" target="_blank" rel="noopener">engine.proofx.org</a>.
+        </p>
       </div>
     </section>
 
-    <!-- ======================== SOCIAL PROOF ========================= -->
+    <!-- ================================ SOCIAL PROOF ======================= -->
     <section class="section" aria-labelledby="social-title">
       <div class="container card card--row">
         <h2 id="social-title" class="sr-only">Social Proof</h2>
+
         <nav class="links-row" aria-label="Outbound anchors">
           <a href="https://press.proofx.org" target="_blank" rel="noopener">Press Kit</a>
           <a href="https://docs.proofx.org" target="_blank" rel="noopener">Docs</a>
@@ -202,15 +251,16 @@
           <a href="https://engine.proofx.org" target="_blank" rel="noopener">Engines</a>
           <a href="https://cases.proofx.org" target="_blank" rel="noopener">Cases</a>
         </nav>
-        <div class="chips">
-          <span class="chip">Unicorn-trajectory</span>
-          <span class="chip">Founder-market fit</span>
-          <span class="chip">Audit-grade determinism</span>
+
+        <div class="chips" role="list" aria-label="Positioning chips">
+          <span class="chip" role="listitem">Unicorn-trajectory</span>
+          <span class="chip" role="listitem">Founder-market fit</span>
+          <span class="chip" role="listitem">Audit-grade determinism</span>
         </div>
       </div>
     </section>
 
-    <!-- ============================= FAQ ============================= -->
+    <!-- =================================== FAQ ============================ -->
     <section id="faq" class="section" aria-labelledby="faq-title">
       <div class="container">
         <h2 id="faq-title">FAQ</h2>
@@ -253,7 +303,7 @@
         <details class="card">
           <summary>Truth-aligned latency: how is time-to-evidence minimized?</summary>
           <ul class="bullets">
-            <li>Entropy-aware + curriculum scheduling; caching and portfolio tuning.</li>
+            <li>Entropy-aware & curriculum scheduling; caching and portfolio tuning.</li>
             <li>Operator dashboards shrink MTTR for failures and anomalies.</li>
             <li>Counterexample harvesting feeds back into priors and test suites.</li>
           </ul>
@@ -261,7 +311,7 @@
       </div>
     </section>
 
-    <!-- ============================ CONTACT =========================== -->
+    <!-- ================================= CONTACT ========================== -->
     <section id="contact" class="section" aria-labelledby="contact-title">
       <div class="container card card--row">
         <div>
@@ -277,7 +327,7 @@
     </section>
   </main>
 
-  <!-- ============================= FOOTER ============================ -->
+  <!-- ================================= FOOTER ============================ -->
   <footer class="footer" role="contentinfo">
     <div class="container footer__inner">
       <span class="muted">© 2025 ProofX</span>
@@ -288,7 +338,42 @@
         <a href="https://press.proofx.org" target="_blank" rel="noopener">Press</a>
         <a href="https://cases.proofx.org" target="_blank" rel="noopener">Cases</a>
       </nav>
+      <a class="to-top" href="#top" aria-label="Back to top">↑</a>
     </div>
   </footer>
+
+  <!-- Progressive enhancement: tiny, accessible helpers (no frameworks) -->
+  <script>
+    (function () {
+      // Smooth anchor scroll respecting reduced motion
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+          const id = a.getAttribute('href').slice(1);
+          const el = document.getElementById(id);
+          if (!el) return;
+          e.preventDefault();
+          el.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'start' });
+          // set focus for accessibility
+          el.setAttribute('tabindex', '-1');
+          el.focus({ preventScroll: true });
+        });
+      });
+
+      // Add shadow to nav on scroll for depth
+      const header = document.querySelector('.nav');
+      let last = 0;
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY || document.documentElement.scrollTop;
+        if (y > 12 && last <= 12) header.classList.add('nav--scrolled');
+        else if (y <= 12 && last > 12) header.classList.remove('nav--scrolled');
+        last = y;
+      });
+    })();
+  </script>
+
+  <noscript>
+    <p class="muted container">JavaScript is disabled. Site remains fully navigable; enhancements are optional.</p>
+  </noscript>
 </body>
 </html>
