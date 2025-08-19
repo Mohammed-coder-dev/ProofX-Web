@@ -1,0 +1,204 @@
+/* styles.css */
+/* ================================================================
+   ProofX — OpenAI-level minimal design system (vanilla CSS)
+   Tokens, layout, a11y, and component primitives
+   ================================================================ */
+
+/* ------------------------ Tokens ------------------------ */
+:root { color-scheme: dark light; }
+:root{
+  /* Palette (dark default) */
+  --bg:#000; --bg-2:#0b0b0c; --card:#0e0f11; --stroke:#1a1b1e;
+  --text:#f5f7fb; --muted:#a9afba;
+  --accent:#a3e6ff; --accent-2:#5fd3ff;
+  --success:#22c55e; --warning:#f59e0b; --danger:#ef4444;
+
+  /* Effects */
+  --shadow-sm:0 6px 18px rgba(0,0,0,.25);
+  --shadow-md:0 12px 30px rgba(0,0,0,.3);
+
+  /* Layout */
+  --max:1100px;
+  --r:20px;
+  --g:clamp(16px, 2vw, 28px);
+
+  /* Type */
+  --fs-body:clamp(18px, 1.6vw, 20px);
+  --fs-h1:clamp(40px, 6vw, 64px);
+  --fs-h2:clamp(24px, 3vw, 32px);
+}
+
+@media (prefers-color-scheme: light){
+  :root{
+    --bg:#ffffff; --bg-2:#f6f7fb; --card:#ffffff; --stroke:#e6e8ee;
+    --text:#0b0c0f; --muted:#5c6470;
+    --accent:#0ea5e9; --accent-2:#38bdf8;
+  }
+}
+
+/* ------------------------ Base ------------------------ */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:linear-gradient(180deg,var(--bg),var(--bg-2));
+  color:var(--text);
+  font-family:ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Noto Sans";
+  font-size:var(--fs-body);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+}
+h1,h2,h3{line-height:1.15;margin:0 0 calc(var(--g)/2)}
+h1{font-size:var(--fs-h1)}
+h2{font-size:var(--fs-h2)}
+p{margin:0 0 calc(var(--g)/2)}
+ul{margin:0 0 calc(var(--g)/2); padding-inline-start:1.1rem}
+a{color:inherit; text-decoration:underline; text-underline-offset:2px}
+a:hover{opacity:.92}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
+.muted{color:var(--muted)}
+.sr-only{position:absolute; width:1px; height:1px; padding:0; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;}
+.skip{position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden}
+.skip:focus{left:12px; top:12px; width:auto; height:auto; padding:8px 10px; background:var(--card); border:1px solid var(--stroke); border-radius:10px; z-index:999}
+
+/* ------------------------ Layout ------------------------ */
+.container{width:min(var(--max), 92vw); margin-inline:auto}
+.section{padding-block:clamp(36px, 8vw, 80px)}
+
+/* Grid */
+.grid{display:grid; gap:var(--g)}
+.grid--2{grid-template-columns:1fr; }
+.grid--3{grid-template-columns:1fr; }
+@media (min-width:700px){
+  .grid--2{grid-template-columns:1fr 1fr}
+}
+@media (min-width:960px){
+  .grid--3{grid-template-columns:repeat(3, 1fr)}
+}
+
+/* Card */
+.card{
+  background:linear-gradient(180deg, color-mix(in oklab, var(--card) 92%, transparent), color-mix(in oklab, var(--card) 86%, transparent));
+  border:1px solid var(--stroke);
+  border-radius:var(--r);
+  box-shadow:var(--shadow-sm);
+  padding:calc(var(--g) * .9);
+}
+.card--row{
+  display:flex; align-items:center; justify-content:space-between; gap:var(--g); flex-wrap:wrap;
+}
+
+/* ------------------------ Header ------------------------ */
+.nav{
+  position:sticky; top:0; z-index:20;
+  backdrop-filter:saturate(140%) blur(8px);
+  background:color-mix(in oklab, var(--bg) 70%, transparent);
+  border-bottom:1px solid var(--stroke);
+}
+.nav__inner{
+  display:flex; align-items:center; gap:var(--g);
+  padding-block:12px;
+}
+.brand{display:flex; align-items:center; gap:10px; text-decoration:none}
+.brand:focus-visible{outline:none; box-shadow:0 0 0 3px color-mix(in oklab, var(--accent) 45%, transparent); border-radius:12px}
+.brand__mark{
+  display:grid; place-items:center;
+  inline-size:32px; block-size:32px;
+  border-radius:10px;
+  background:linear-gradient(180deg,var(--accent),var(--accent-2));
+  color:#041018; font-weight:800;
+  box-shadow:var(--shadow-sm);
+}
+.brand__text{font-weight:700; letter-spacing:.2px}
+.nav__links{display:flex; align-items:center; gap:clamp(10px, 2vw, 20px)}
+.nav__links a{
+  text-decoration:none; color:var(--muted);
+  padding:8px 10px; border-radius:10px; border:1px solid transparent;
+}
+.nav__links a:focus-visible{outline:none; box-shadow:0 0 0 3px color-mix(in oklab, var(--accent) 45%, transparent)}
+.nav__links a:hover{color:var(--text); background:rgba(255,255,255,.03)}
+
+.nav__ctas{display:flex; align-items:center; gap:8px; flex-wrap:wrap}
+
+/* ------------------------ Buttons ------------------------ */
+.btn{
+  --pad-x:18px; --pad-y:10px;
+  display:inline-flex; align-items:center; justify-content:center;
+  gap:8px; padding:var(--pad-y) var(--pad-x);
+  border-radius:999px; text-decoration:none; font-weight:600; letter-spacing:.2px;
+  border:1px solid color-mix(in oklab, var(--accent) 35%, var(--stroke));
+  background:color-mix(in oklab, var(--card) 82%, transparent);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.02);
+}
+.btn:hover{box-shadow:0 0 0 6px color-mix(in oklab, var(--accent) 18%, transparent), var(--shadow-sm)}
+.btn:focus-visible{outline:none; box-shadow:0 0 0 3px color-mix(in oklab, var(--accent) 45%, transparent)}
+.btn--primary{
+  background:linear-gradient(180deg, color-mix(in oklab, var(--accent) 26%, var(--card)), color-mix(in oklab, var(--accent-2) 22%, var(--card)));
+  border-color:color-mix(in oklab, var(--accent) 55%, var(--stroke));
+}
+.btn--pill{padding:8px 14px}
+.btn--lg{--pad-x:22px; --pad-y:12px}
+
+/* ------------------------ Hero ------------------------ */
+.hero{padding-block:clamp(48px, 10vw, 120px)}
+.hero__wrap{display:flex; flex-direction:column; gap:clamp(14px, 2vw, 20px); align-items:flex-start}
+.hero__h1{
+  display:inline-block;
+  background:linear-gradient(92deg, #fff, color-mix(in oklab, var(--accent) 35%, #fff), #fff);
+  background-size:200% 100%;
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  animation:shimmer 9s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce){ .hero__h1{animation:none} }
+@keyframes shimmer{0%{background-position:0 0}50%{background-position:100% 0}100%{background-position:0 0}}
+.hero__sub{max-width:42ch; color:var(--muted)}
+.hero__actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:6px}
+.hero__links{display:flex; gap:16px; flex-wrap:wrap; margin-top:2px}
+.hero__links a{text-decoration:none; color:var(--muted); padding:6px 8px; border-radius:10px; border:1px solid transparent}
+.hero__links a:hover{color:var(--text); background:rgba(255,255,255,.03)}
+
+/* ------------------------ Engines ------------------------ */
+.engine .bullets{margin-top:8px; margin-bottom:10px}
+.engine__link{
+  display:inline-block; margin-top:6px; text-decoration:none;
+  border-bottom:1px solid color-mix(in oklab, var(--accent) 60%, transparent);
+}
+.engine__link:hover{border-color:var(--accent)}
+
+/* ------------------------ Links row / chips ------------------------ */
+.links-row{display:flex; gap:clamp(10px, 2vw, 22px); flex-wrap:wrap}
+.links-row a{text-decoration:none; padding:8px 10px; border-radius:10px; color:var(--muted); border:1px solid var(--stroke)}
+.links-row a:hover{color:var(--text); background:rgba(255,255,255,.03)}
+.chips{display:flex; gap:8px; flex-wrap:wrap}
+.chip{
+  display:inline-flex; align-items:center; padding:6px 10px;
+  border:1px solid var(--stroke); border-radius:999px; background:rgba(255,255,255,.03); font-size:.9rem; color:var(--muted)
+}
+
+/* ------------------------ Contact ------------------------ */
+.contact__actions{display:flex; gap:10px; flex-wrap:wrap}
+
+/* ------------------------ Footer ------------------------ */
+.footer{
+  border-top:1px solid var(--stroke);
+  background:color-mix(in oklab, var(--bg) 75%, transparent);
+  padding-block:16px;
+}
+.footer__inner{display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap}
+.footer__links{display:flex; gap:12px; flex-wrap:wrap}
+.footer__links a{text-decoration:none; color:var(--muted); padding:6px 8px; border-radius:10px}
+.footer__links a:hover{color:var(--text); background:rgba(255,255,255,.03)}
+
+/* ------------------------ Responsive polish ------------------------ */
+@media (max-width:700px){
+  .card{box-shadow:none}
+  .nav__links{display:none} /* keep header tight on phones */
+}
+
+/* ------------------------ Print ------------------------ */
+@media print{
+  *{box-shadow:none !important}
+  body{background:#fff; color:#000}
+  .nav, .footer, .hero__actions, .hero__links{display:none}
+  a{text-decoration:underline; color:#000}
+}
