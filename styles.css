@@ -1,8 +1,9 @@
-/* styles.css */
-/* ================================================================
-   ProofX — OpenAI-level minimal design system (vanilla CSS)
-   Tokens, layout, a11y, and component primitives
-   ================================================================ */
+/* styles.css — ProofX (enhanced, OpenAI-style CTAs, minimal & accessible)
+   - Black-first palette with graceful light mode
+   - Fluid type/spacing, responsive grid
+   - White pill buttons (OpenAI look)
+   - WCAG-friendly focus rings & hover states
+*/
 
 /* ------------------------ Tokens ------------------------ */
 :root { color-scheme: dark light; }
@@ -26,6 +27,9 @@
   --fs-body:clamp(18px, 1.6vw, 20px);
   --fs-h1:clamp(40px, 6vw, 64px);
   --fs-h2:clamp(24px, 3vw, 32px);
+
+  /* Focus */
+  --ring:0 0 0 3px color-mix(in oklab, var(--accent) 45%, transparent);
 }
 
 @media (prefers-color-scheme: light){
@@ -57,10 +61,13 @@ a{color:inherit; text-decoration:underline; text-underline-offset:2px}
 a:hover{opacity:.92}
 .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}
 .muted{color:var(--muted)}
-.small{font-size:0.92em}
-.sr-only{position:absolute; width:1px; height:1px; padding:0; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;}
-.skip{position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden}
-.skip:focus{left:12px; top:12px; width:auto; height:auto; padding:8px 10px; background:var(--card); border:1px solid var(--stroke); border-radius:10px; z-index:999}
+.small{font-size:.92em}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+.skip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+.skip:focus{left:12px;top:12px;width:auto;height:auto;padding:8px 10px;background:var(--card);border:1px solid var(--stroke);border-radius:10px;z-index:999}
+
+:focus-visible{outline:none;box-shadow:var(--ring);border-radius:10px}
+@media (prefers-reduced-motion: reduce){ *{transition:none!important; animation:none!important} }
 
 /* ------------------------ Layout ------------------------ */
 .container{width:min(var(--max), 92vw); margin-inline:auto}
@@ -70,12 +77,8 @@ a:hover{opacity:.92}
 .grid{display:grid; gap:var(--g)}
 .grid--2{grid-template-columns:1fr}
 .grid--3{grid-template-columns:1fr}
-@media (min-width:760px){
-  .grid--2{grid-template-columns:1fr 1fr}
-}
-@media (min-width:980px){
-  .grid--3{grid-template-columns:repeat(3, 1fr)}
-}
+@media (min-width:760px){ .grid--2{grid-template-columns:1fr 1fr} }
+@media (min-width:980px){ .grid--3{grid-template-columns:repeat(3, 1fr)} }
 
 /* Card */
 .card{
@@ -85,9 +88,11 @@ a:hover{opacity:.92}
   box-shadow:var(--shadow-sm);
   padding:calc(var(--g) * .9);
 }
-.card--row{
-  display:flex; align-items:center; justify-content:space-between; gap:var(--g); flex-wrap:wrap;
-}
+.card--row{display:flex; align-items:center; justify-content:space-between; gap:var(--g); flex-wrap:wrap}
+
+/* Content helpers */
+.bullets{margin:0 0 calc(var(--g)/2); padding-inline-start:1.1rem}
+.bullets--tight li{margin-bottom:6px}
 
 /* ------------------------ Header ------------------------ */
 .nav{
@@ -96,19 +101,13 @@ a:hover{opacity:.92}
   background:color-mix(in oklab, var(--bg) 70%, transparent);
   border-bottom:1px solid var(--stroke);
 }
-.nav__inner{
-  display:flex; align-items:center; gap:var(--g);
-  padding-block:12px;
-}
+.nav__inner{display:flex; align-items:center; justify-content:space-between; gap:var(--g); padding-block:12px}
 .brand{display:flex; align-items:center; gap:10px; text-decoration:none}
-.brand:focus-visible{outline:none; box-shadow:0 0 0 3px color-mix(in oklab, var(--accent) 45%, transparent); border-radius:12px}
+.brand:focus-visible{box-shadow:var(--ring); border-radius:12px}
 .brand__mark{
-  display:grid; place-items:center;
-  inline-size:32px; block-size:32px;
-  border-radius:10px;
-  background:linear-gradient(180deg,var(--accent),var(--accent-2));
-  color:#041018; font-weight:800;
-  box-shadow:var(--shadow-sm);
+  display:grid; place-items:center; inline-size:32px; block-size:32px;
+  border-radius:10px; background:linear-gradient(180deg,var(--accent),var(--accent-2));
+  color:#041018; font-weight:800; box-shadow:var(--shadow-sm);
 }
 .brand__text{font-weight:700; letter-spacing:.2px}
 .nav__links{display:flex; align-items:center; gap:clamp(10px, 2vw, 20px)}
@@ -116,45 +115,8 @@ a:hover{opacity:.92}
   text-decoration:none; color:var(--muted);
   padding:8px 10px; border-radius:10px; border:1px solid transparent;
 }
-.nav__links a:focus-visible{outline:none; box-shadow:0 0 0 3px color-mix(in oklab, var(--accent) 45%, transparent)}
+.nav__links a:focus-visible{box-shadow:var(--ring)}
 .nav__links a:hover{color:var(--text); background:rgba(255,255,255,.03)}
-
-/* ===================== OpenAI-style Buttons ===================== */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.7rem 1.4rem;
-  font-size: 0.95rem;
-  font-weight: 500;
-  border-radius: 9999px; /* pill shape */
-  border: 1px solid rgba(0,0,0,0.1);
-  background-color: #fff;
-  color: #111;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
-}
-
-.btn:hover {
-  background-color: #f9fafb;
-  border-color: rgba(0,0,0,0.2);
-  transform: translateY(-1px);
-}
-
-.btn:active {
-  background-color: #f3f4f6;
-  transform: translateY(0);
-}
-
-.btn--primary {
-  border: 1px solid #e5e7eb;
-}
-
-.btn--lg {
-  padding: 0.9rem 1.8rem;
-  font-size: 1rem;
-}
 
 /* ------------------------ Hero ------------------------ */
 .hero{padding-block:clamp(48px, 10vw, 120px)}
@@ -166,19 +128,14 @@ a:hover{opacity:.92}
   -webkit-background-clip:text; background-clip:text; color:transparent;
   animation:shimmer 9s ease-in-out infinite;
 }
-@media (prefers-reduced-motion: reduce){ .hero__h1{animation:none} }
 @keyframes shimmer{0%{background-position:0 0}50%{background-position:100% 0}100%{background-position:0 0}}
-.hero__sub{max-width:42ch; color:var(--muted)}
+.hero__sub{max-width:60ch; color:var(--muted)}
 .hero__actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:6px}
 .hero__links{display:flex; gap:16px; flex-wrap:wrap; margin-top:2px}
 .hero__links a{text-decoration:none; color:var(--muted); padding:6px 8px; border-radius:10px; border:1px solid transparent}
 .hero__links a:hover{color:var(--text); background:rgba(255,255,255,.03)}
 
-/* ------------------------ Content helpers ------------------------ */
-.bullets{margin:0 0 calc(var(--g)/2); padding-inline-start:1.1rem}
-.bullets--tight li{margin-bottom:6px}
-
-/* ------------------------ Compare ------------------------ */
+/* ------------------------ Comparison ------------------------ */
 .compare{align-items:start}
 .compare__item{padding:0.2rem}
 
@@ -195,10 +152,7 @@ a:hover{opacity:.92}
 .links-row a{text-decoration:none; padding:8px 10px; border-radius:10px; color:var(--muted); border:1px solid var(--stroke)}
 .links-row a:hover{color:var(--text); background:rgba(255,255,255,.03)}
 .chips{display:flex; gap:8px; flex-wrap:wrap}
-.chip{
-  display:inline-flex; align-items:center; padding:6px 10px;
-  border:1px solid var(--stroke); border-radius:999px; background:rgba(255,255,255,.03); font-size:.9rem; color:var(--muted)
-}
+.chip{display:inline-flex; align-items:center; padding:6px 10px; border:1px solid var(--stroke); border-radius:999px; background:rgba(255,255,255,.03); font-size:.9rem; color:var(--muted)}
 
 /* ------------------------ Contact ------------------------ */
 .contact__actions{display:flex; gap:10px; flex-wrap:wrap}
@@ -214,6 +168,29 @@ a:hover{opacity:.92}
 .footer__links a{text-decoration:none; color:var(--muted); padding:6px 8px; border-radius:10px}
 .footer__links a:hover{color:var(--text); background:rgba(255,255,255,.03)}
 
+/* ------------------------ Buttons (OpenAI-style white pills) -------- */
+.btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  padding:.8rem 1.6rem;
+  font-size:.95rem; font-weight:500; letter-spacing:.2px;
+  border-radius:9999px; /* pill */
+  background:#fff; color:#111;
+  border:1px solid rgba(0,0,0,.12);
+  text-decoration:none;
+  transition:transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
+  box-shadow:0 1px 2px rgba(0,0,0,.05);
+}
+.btn:hover{background:#f9fafb;border-color:rgba(0,0,0,.20);transform:translateY(-1px)}
+.btn:active{background:#f3f4f6;transform:none}
+.btn:focus-visible{box-shadow:var(--ring), 0 1px 2px rgba(0,0,0,.08)}
+.btn--primary{border-color:#e5e7eb}
+.btn--lg{padding:1rem 1.8rem;font-size:1rem}
+
+/* Ensure buttons remain white in light mode too */
+@media (prefers-color-scheme: light){
+  .btn{background:#fff;color:#111;border-color:rgba(0,0,0,.12)}
+}
+
 /* ------------------------ Responsive polish ------------------------ */
 @media (max-width:700px){
   .card{box-shadow:none}
@@ -222,8 +199,8 @@ a:hover{opacity:.92}
 
 /* ------------------------ Print ------------------------ */
 @media print{
-  *{box-shadow:none !important}
-  body{background:#fff; color:#000}
-  .nav, .footer, .hero__actions, .hero__links{display:none}
-  a{text-decoration:underline; color:#000}
+  *{box-shadow:none!important}
+  body{background:#fff;color:#000}
+  .nav,.footer,.hero__actions,.hero__links{display:none}
+  a{text-decoration:underline;color:#000}
 }
