@@ -4,23 +4,23 @@
 <head>
   <!-- =============================================================
        ProofX — OpenAI-level minimal site (index.html)
-       Spec: black background, fast, accessible, investor/admissions-ready
+       Update: no header CTAs; SEO tuned for "open source theorem prover comparison"
        ============================================================= -->
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="dark light" />
   <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
   <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-  <meta name="description" content="Proof-grade ML/Python engines. Deterministic solvers, entropy-driven search, and operator-grade observability — the fastest path from conjecture to verifiable evidence." />
+  <meta name="description" content="ProofX — open source theorem prover comparison and proof-grade ML/Python engines. Deterministic solvers, entropy-driven search, and operator-grade observability." />
   <link rel="canonical" href="https://www.proofx.org/"/>
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="ProofX — Proof-grade ML/Python engines.">
-  <meta property="og:description" content="Deterministic solvers, entropy-driven search, operator-grade observability. Open-source non-profit built for labs and public-interest research.">
+  <meta property="og:title" content="ProofX — open source theorem prover comparison">
+  <meta property="og:description" content="Compare open-source theorem provers with ProofX context. Deterministic ML/Python engines, entropy-guided search, and audit-grade telemetry. Open-source non-profit.">
   <meta property="og:url" content="https://www.proofx.org/">
 
-  <title>ProofX — Proof-grade ML/Python engines.</title>
+  <title>ProofX — open source theorem prover comparison</title>
   <link rel="icon" href="/favicon.ico">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -42,12 +42,7 @@
         <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
       </nav>
-
-      <div class="nav__ctas" role="group" aria-label="Primary calls to action">
-        <a class="btn btn--pill" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Partner">Partner</a>
-        <a class="btn btn--pill" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Invest">Invest</a>
-        <a class="btn btn--pill" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Pilot">Pilot</a>
-      </div>
+      <!-- Header CTAs intentionally removed for focus and clarity -->
     </div>
   </header>
 
@@ -78,12 +73,17 @@
       <div class="container card">
         <h2 id="vision-title">Vision</h2>
         <p>
-          ProofX compresses time-to-evidence. We engineer proof-grade reliability by unifying deterministic
-          ML/Python execution with entropy-aware search and audit-grade telemetry.
+          ProofX compresses time-to-evidence for mathematical and formal systems work. We fuse deterministic
+          ML/Python execution with theorem-prover style rigor and SRE-grade observability so teams can move from
+          idea → experiment → verified artifact without ambiguity.
         </p>
+        <ul class="bullets bullets--tight">
+          <li><strong>Mission:</strong> turn “proof of concept” into <em>proof with provenance</em> — every run replayable, every claim inspectable.</li>
+          <li><strong>Why it matters:</strong> as AI increases conjecture velocity, <span class="mono">reproducibility</span> and <span class="mono">traceability</span> become existential for trust.</li>
+          <li><strong>Who it serves:</strong> research labs, operators in critical infrastructure, and public-interest math & verification projects.</li>
+        </ul>
         <p class="muted">
-          Open-source non-profit; not SaaS. Built for labs, operators, and public-interest research.
-          Read the long-form thesis at
+          Open-source non-profit; not SaaS. Read the long-form thesis at
           <a href="https://vision.proofx.org" target="_blank" rel="noopener">vision.proofx.org</a>.
         </p>
       </div>
@@ -94,22 +94,58 @@
       <div class="container grid grid--2">
         <div class="card">
           <h2 id="ps-title">The problem</h2>
-          <ul>
-            <li>Proof workflows are brittle, opaque, and slow to reproduce.</li>
-            <li>Search is noisy; counterexamples are hard to surface and track.</li>
-            <li>Teams lack audit-grade traces across runs and versions.</li>
-            <li>Latency to verified evidence blocks iteration and trust.</li>
+          <ul class="bullets">
+            <li>Proof workflows are brittle, opaque, and slow to reproduce across machines and versions.</li>
+            <li>Search is noisy; counterexamples are difficult to surface, label, and track over time.</li>
+            <li>Teams lack audit-grade traces and consistent seeds, making peer review and incident response slow.</li>
+            <li>Latency to <em>verified</em> evidence blocks iteration, collaboration, and external confidence.</li>
           </ul>
+          <p class="muted small">Context: Our <strong>open source theorem prover comparison</strong> frames where each tool excels and where ProofX augments workflows.</p>
         </div>
         <div class="card">
           <h2>What ProofX makes possible</h2>
-          <ul>
-            <li>Deterministic portfolios across SMT/FOL/FMC with SAT bridges.</li>
-            <li>Entropy-aware scheduling + curriculum runs to find needles fast.</li>
-            <li>First-class telemetry: traces, dashboards, anomaly flags, decay maps.</li>
-            <li>Truth-aligned latency: shortest path from conjecture to evidence.</li>
+          <ul class="bullets">
+            <li>Deterministic portfolios across SMT/FOL/FMC with SAT bridges, typed obligations, and replayable seeds.</li>
+            <li>Entropy-aware scheduling and curriculum runs to prioritize promising paths and surface outliers early.</li>
+            <li>First-class telemetry: traces, dashboards, anomaly flags, decay maps, and run diffs (audit-ready).</li>
+            <li>Truth-aligned latency: shortest path from conjecture to inspectable evidence and publishable artifacts.</li>
           </ul>
+          <p class="muted small">Output: witnesses, notebooks, and manifests pinned in an artifact registry; every attempt becomes a data point in a growing evaluation wall.</p>
         </div>
+      </div>
+    </section>
+
+    <!-- ===================== THEOREM PROVER COMPARISON ================ -->
+    <section class="section" aria-labelledby="compare-title">
+      <div class="container card">
+        <h2 id="compare-title">Open-source theorem prover comparison (at a glance)</h2>
+        <div class="grid grid--3 compare">
+          <div class="compare__item">
+            <h3>Lean / Coq</h3>
+            <ul class="bullets bullets--tight">
+              <li><strong>Strength:</strong> interactive, foundational proof development.</li>
+              <li><strong>Gap:</strong> heavy lift for large search/telemetry; reproducibility tied to tactics.</li>
+              <li><strong>With ProofX:</strong> run entropy-guided searches, log traces, export obligations/witnesses.</li>
+            </ul>
+          </div>
+          <div class="compare__item">
+            <h3>Z3 / CVC5</h3>
+            <ul class="bullets bullets--tight">
+              <li><strong>Strength:</strong> industrial SMT solving.</li>
+              <li><strong>Gap:</strong> portfolio orchestration and run-level provenance are ad-hoc.</li>
+              <li><strong>With ProofX:</strong> deterministic portfolios, seeded runs, dashboards, and decay maps.</li>
+            </ul>
+          </div>
+          <div class="compare__item">
+            <h3>Isabelle / Agda</h3>
+            <ul class="bullets bullets--tight">
+              <li><strong>Strength:</strong> rich type theories and libraries.</li>
+              <li><strong>Gap:</strong> limited operator telemetry for large exploratory runs.</li>
+              <li><strong>With ProofX:</strong> counterexample harvesting + curriculum scheduling + artifact registry.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="muted small">Goal: complement, not replace. ProofX focuses on <em>deterministic search orchestration</em> and <em>operator observability</em> around your chosen prover stack.</p>
       </div>
     </section>
 
@@ -122,9 +158,9 @@
             <h3>Logic Engine <span class="mono muted">/ FOL</span></h3>
             <p>Traceable reasoning (quantifiers, skolemization, inference steps), counterexamples with witnesses.</p>
             <ul class="bullets">
-              <li>Quantifiers + skolemization</li>
-              <li>Inference trace with obligations</li>
-              <li>Counterexamples with witnesses</li>
+              <li>Quantifiers, Skolemization, CNF pipelines with typed obligations.</li>
+              <li>Per-step inference trace; diffs across runs & seeds.</li>
+              <li>Export witnesses + minimal countermodels for review.</li>
             </ul>
             <a class="engine__link" href="https://engine.proofx.org/logic" target="_blank" rel="noopener">Explore engine →</a>
           </article>
@@ -133,9 +169,9 @@
             <h3>Verification Kernel <span class="mono muted">/ SMT · FMC</span></h3>
             <p>Deterministic portfolios, SAT bridges, property proving, typed obligations.</p>
             <ul class="bullets">
-              <li>SMT + finite model testing</li>
-              <li>Typed properties & obligations</li>
-              <li>Replayable, versioned runs</li>
+              <li>Orchestrates Z3/CVC5 + finite model testing, with versioned solver configs.</li>
+              <li>Replay manifests (seeds, routes, params) for identical outputs over time.</li>
+              <li>Property templates & obligation checkers with failure triage.</li>
             </ul>
             <a class="engine__link" href="https://engine.proofx.org/verification" target="_blank" rel="noopener">Explore engine →</a>
           </article>
@@ -144,13 +180,14 @@
             <h3>Entropy Engine <span class="mono muted">/ Search</span></h3>
             <p>Entropy-guided scheduling, decay maps, outlier surfacing, curriculum runs at scale.</p>
             <ul class="bullets">
-              <li>Entropy/curriculum scheduling</li>
-              <li>Decay maps & anomaly flags</li>
-              <li>Counterexample harvesting</li>
+              <li>Adaptive schedulers prioritize information gain vs. cost.</li>
+              <li>Decay/entropy overlays; anomaly flags & operator alerts.</li>
+              <li>Counterexample harvesting + portfolio backpressure.</li>
             </ul>
             <a class="engine__link" href="https://engine.proofx.org/entropy" target="_blank" rel="noopener">Explore engine →</a>
           </article>
         </div>
+        <p class="muted small">Deep-dives with diagrams and APIs at <a href="https://engine.proofx.org" target="_blank" rel="noopener">engine.proofx.org</a>.</p>
       </div>
     </section>
 
@@ -180,19 +217,19 @@
 
         <details class="card">
           <summary>How does the architecture ensure determinism and traceability?</summary>
-          <ul>
-            <li>Deterministic solvers layered with symbolic search and first-class observability.</li>
-            <li>Seeded randomness + versioned runs; identical replay across machines and time.</li>
-            <li>Typed obligations with witness artifacts; every attempt becomes part of an evaluation wall.</li>
+          <ul class="bullets">
+            <li>Layered solver portfolios (SMT/FOL/FMC) with fixed seeds and versioned configs.</li>
+            <li>Run manifests capture seeds, routes, and parameters for byte-for-byte replay.</li>
+            <li>Traces & diffs at step and run level; obligations + witnesses are first-class artifacts.</li>
           </ul>
         </details>
 
         <details class="card">
           <summary>What’s the reliability moat?</summary>
-          <ul>
+          <ul class="bullets">
             <li>Seeded runs + portfolio routing with backpressure under load.</li>
-            <li>Artifact registry for witnesses, notebooks, and traces.</li>
-            <li>Compounding corpus of structured traces that’s hard to replicate.</li>
+            <li>Artifact registry for witnesses, notebooks, manifests, and structured traces.</li>
+            <li>Compounding corpus that improves scheduling priors and is hard to replicate.</li>
             <li>Security-first deploys: private cloud, on-prem, and air-gapped modes.</li>
           </ul>
         </details>
@@ -206,19 +243,19 @@
 
         <details class="card">
           <summary>Deployment & security posture?</summary>
-          <ul>
-            <li>On-prem and air-gapped ready; minimal-telemetry modes with strict retention.</li>
-            <li>Reproducible containers; seeds + manifests for verified builds.</li>
-            <li>Access controls suited for regulated & classified environments.</li>
+          <ul class="bullets">
+            <li>Reproducible containers with pinned dependencies and verified builds.</li>
+            <li>Strict retention + minimal telemetry modes for regulated environments.</li>
+            <li>Access controls suitable for classified or air-gapped sites.</li>
           </ul>
         </details>
 
         <details class="card">
           <summary>Truth-aligned latency: how is time-to-evidence minimized?</summary>
-          <ul>
-            <li>Entropy-aware scheduling, curriculum runs, and counterexample harvesting.</li>
-            <li>Operator dashboards, anomaly flags, and decay maps for rapid iteration.</li>
-            <li>Portfolio selection + caching to route compute where it matters.</li>
+          <ul class="bullets">
+            <li>Entropy-aware + curriculum scheduling; caching and portfolio tuning.</li>
+            <li>Operator dashboards shrink MTTR for failures and anomalies.</li>
+            <li>Counterexample harvesting feeds back into priors and test suites.</li>
           </ul>
         </details>
       </div>
