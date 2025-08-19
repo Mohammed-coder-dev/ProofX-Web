@@ -4,11 +4,6 @@
 <head>
   <!-- ================================================================
        ProofX — Open-source, operator-grade verification engines
-       Notes:
-       • Keep assets local; CSS at /styles.css
-       • JSON-LD for Organization/WebSite
-       • OG/Twitter cards, canonical, theme-color (dark/light)
-       • Accessibility: consistent headings, labels, skip link
   =================================================================== -->
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
@@ -87,17 +82,12 @@
           from conjecture to verifiable evidence.
         </p>
 
+        <!-- Simplified primary actions: white buttons only (Partner, Invest, Cases) -->
         <div class="hero__actions" role="group" aria-label="Primary actions">
-          <a class="btn btn--primary btn--lg" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Partner">Partner</a>
-          <a class="btn btn--primary btn--lg" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Invest">Invest</a>
-          <a class="btn btn--primary btn--lg" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Pilot">Pilot</a>
+          <a class="btn btn--white btn--lg" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Partner">Partner</a>
+          <a class="btn btn--white btn--lg" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Invest">Invest</a>
+          <a class="btn btn--white btn--lg" href="https://cases.proofx.org" target="_blank" rel="noopener">Cases</a>
         </div>
-
-        <nav class="hero__links" aria-label="Secondary">
-          <a href="https://vision.proofx.org" target="_blank" rel="noopener">Vision</a>
-          <a href="https://press.proofx.org" target="_blank" rel="noopener">Press</a>
-          <a href="https://cases.proofx.org" target="_blank" rel="noopener">Cases</a>
-        </nav>
       </div>
     </section>
 
@@ -239,27 +229,6 @@
       </div>
     </section>
 
-    <!-- ================================ SOCIAL PROOF ======================= -->
-    <section class="section" aria-labelledby="social-title">
-      <div class="container card card--row">
-        <h2 id="social-title" class="sr-only">Social Proof</h2>
-
-        <nav class="links-row" aria-label="Outbound anchors">
-          <a href="https://press.proofx.org" target="_blank" rel="noopener">Press Kit</a>
-          <a href="https://docs.proofx.org" target="_blank" rel="noopener">Docs</a>
-          <a href="https://vision.proofx.org" target="_blank" rel="noopener">Vision</a>
-          <a href="https://engine.proofx.org" target="_blank" rel="noopener">Engines</a>
-          <a href="https://cases.proofx.org" target="_blank" rel="noopener">Cases</a>
-        </nav>
-
-        <div class="chips" role="list" aria-label="Positioning chips">
-          <span class="chip" role="listitem">Unicorn-trajectory</span>
-          <span class="chip" role="listitem">Founder-market fit</span>
-          <span class="chip" role="listitem">Audit-grade determinism</span>
-        </div>
-      </div>
-    </section>
-
     <!-- =================================== FAQ ============================ -->
     <section id="faq" class="section" aria-labelledby="faq-title">
       <div class="container">
@@ -342,10 +311,9 @@
     </div>
   </footer>
 
-  <!-- Progressive enhancement: tiny, accessible helpers (no frameworks) -->
+  <!-- Progressive enhancement: tiny, accessible helpers -->
   <script>
     (function () {
-      // Smooth anchor scroll respecting reduced motion
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', e => {
@@ -354,13 +322,11 @@
           if (!el) return;
           e.preventDefault();
           el.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'start' });
-          // set focus for accessibility
           el.setAttribute('tabindex', '-1');
           el.focus({ preventScroll: true });
         });
       });
 
-      // Add shadow to nav on scroll for depth
       const header = document.querySelector('.nav');
       let last = 0;
       window.addEventListener('scroll', () => {
