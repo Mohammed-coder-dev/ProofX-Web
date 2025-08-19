@@ -1,5 +1,0 @@
-# Engines
-
-- Logic
-- Verification
-- Entropy
