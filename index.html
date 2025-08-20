@@ -330,7 +330,7 @@
       </div>
     </section>
 
-    <!-- ============================ COLLATZX ============================== -->
+    <!-- ============================ COLLATZX  -->
     <section id="collatzx" class="section" aria-labelledby="collatzx-title">
       <div class="container card">
         <h2 id="collatzx-title">CollatzX</h2>
@@ -355,101 +355,81 @@
       </div>
     </section>
 
-    <!-- ============================== Findings ============================== -->
-    <section id="findings" class="findings">
-      <h2>Findings</h2>
-      <p class="subtitle">Representative outputs and core diagnostics from ProofX engines.</p>
+    <!-- ================================ FINDINGS ============================ -->
+    <section id="findings" class="section" aria-labelledby="findings-title">
+      <div class="container card">
+        <h2 id="findings-title">Findings</h2>
+        <p class="muted">Representative outputs and core diagnostics from ProofX engines.</p>
 
-      <div class="gallery" aria-live="polite">
-        <!-- 1 -->
-        <figure class="finding" data-index="0">
-          <img src="assets/collatz_plot.png"
-              alt="CollatzX trajectory plot — sample diagnostic visualization"
-              loading="lazy" />
-          <figcaption>CollatzX trajectory plot — sample diagnostic visualization</figcaption>
+        <figure>
+          <img class="findings__img" src="/assets/collatz_plot.png" alt="CollatzX trajectory plot — sample diagnostic visualization" />
+          <figcaption class="muted small">CollatzX trajectory visualization — example of reproducible engine output and anomaly detection.</figcaption>
         </figure>
 
-        <!-- 2 (hidden by default) -->
-        <figure class="finding" data-index="1" hidden>
-          <img src="assets/collatz_plot.png"
-              alt="CollatzX trajectory visualization — example of reproducible engine output and anomaly detection."
-              loading="lazy" />
-          <figcaption>CollatzX trajectory visualization — example of reproducible engine output and anomaly detection.</figcaption>
-        </figure>
+        <!-- Visual uploads grid (progressive reveal) -->
+        <div id="findings-grid" class="findings__grid" aria-label="Findings gallery">
+          <div class="finding"><img src="/assets/finding2.png" alt="Finding 2" /></div>
+          <div class="finding hidden"><img src="/assets/finding3.png" alt="Finding 3" /></div>
+          <div class="finding hidden"><img src="/assets/finding4.png" alt="Finding 4" /></div>
+          <div class="finding hidden"><img src="/assets/finding5.png" alt="Finding 5" /></div>
+        </div>
 
-        <!-- 3 (hidden by default) -->
-        <figure class="finding" data-index="2" hidden>
-          <img src="assets/finding-2.png"
-              alt="Finding 2"
-              loading="lazy" />
-          <figcaption>Finding 2</figcaption>
-        </figure>
-      </div>
-
-      <div class="controls">
-        <button id="show-more" class="btn btn-more" type="button" aria-controls="findings">Show more</button>
-        <button id="show-less" class="btn btn-less" type="button" aria-controls="findings" hidden>Show less</button>
+        <div class="btn-row" role="group" aria-label="Findings controls">
+          <button id="findings-show-more" class="btn btn--white btn--pill" aria-controls="findings-grid" aria-expanded="false">Show more</button>
+          <button id="findings-show-less" class="btn btn--blue btn--pill hidden" aria-controls="findings-grid" aria-expanded="false">Show less</button>
+        </div>
+        <div id="findings-live" class="sr-only" aria-live="polite"></div>
       </div>
     </section>
 
-    <style>
-      #findings { margin: 2rem 0; }
-      #findings .subtitle { color: #9aa3af; margin: .25rem 0 1rem; }
-      #findings .gallery { display: grid; gap: 1rem; }
-      #findings .finding { margin: 0; }
-      #findings img { width: 100%; height: auto; border-radius: .75rem; display: block; }
-      #findings figcaption { font-size: .9rem; color: #cbd5e1; margin-top: .5rem; }
-
-      #findings .controls { display: flex; gap: .75rem; margin-top: 1rem; }
-      #findings .btn {
-        border-radius: .625rem; padding: .6rem 1rem; font-weight: 600; cursor: pointer;
-        border: 1px solid transparent; transition: transform .06s ease, opacity .2s ease;
-      }
-      #findings .btn:active { transform: translateY(1px); }
-      /* Show more: white button */
-      #findings .btn-more { background: #ffffff; color: #111827; border-color: #e5e7eb; }
-      /* Show less: blue button */
-      #findings .btn-less { background: #2563eb; color: #ffffff; }
-      #findings .btn[disabled] { opacity: .5; cursor: not-allowed; }
-    </style>
-
     <script>
       (function () {
-        const section = document.getElementById('findings');
-        const figures = Array.from(section.querySelectorAll('.finding'));
-        const showMore = section.querySelector('#show-more');
-        const showLess = section.querySelector('#show-less');
+        const grid = document.getElementById('findings-grid');
+        const items = Array.from(grid.querySelectorAll('.finding'));
+        const btnMore = document.getElementById('findings-show-more');
+        const btnLess = document.getElementById('findings-show-less');
+        const live = document.getElementById('findings-live');
 
-        // Start with exactly 1 image visible
-        let visibleCount = 1;
-        figures.forEach((fig, i) => { fig.hidden = i >= visibleCount; });
+        // Helper: count visible grid items
+        const visibleCount = () => items.filter(i => !i.classList.contains('hidden')).length;
 
-        function updateButtons() {
-          // Show "Show less" only when 2+ images are visible
-          showLess.hidden = visibleCount < 2;
-          // Disable "Show more" when all images are visible
-          showMore.disabled = visibleCount >= figures.length;
+        // Ensure initial state = 1 visible
+        items.forEach((el, i) => el.classList.toggle('hidden', i > 0));
+
+        function updateUI() {
+          const count = visibleCount();
+          // Show "Show less" only when 2+ grid images are visible
+          btnLess.classList.toggle('hidden', count < 2);
+          btnLess.setAttribute('aria-expanded', count >= 2 ? 'true' : 'false');
+
+          // Disable "Show more" when all grid items are visible
+          const allVisible = count >= items.length;
+          btnMore.disabled = allVisible;
+          btnMore.setAttribute('aria-expanded', allVisible ? 'true' : 'false');
+
+          // Live region announcement
+          live.textContent = `Showing ${count} ${count === 1 ? 'image' : 'images'} in the Findings grid.`;
         }
 
-        showMore.addEventListener('click', () => {
-          if (visibleCount < figures.length) {
-            figures[visibleCount].hidden = false;
-            visibleCount += 1;
-            updateButtons();
+        btnMore.addEventListener('click', () => {
+          const next = items.find(i => i.classList.contains('hidden'));
+          if (next) next.classList.remove('hidden');
+          updateUI();
+          next?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        });
+
+        btnLess.addEventListener('click', () => {
+          // Hide the last visible item, but never go below 1 visible
+          const visibles = items.filter(i => !i.classList.contains('hidden'));
+          if (visibles.length > 1) {
+            const last = visibles[visibles.length - 1];
+            last.classList.add('hidden');
+            updateUI();
+            visibles[visibles.length - 2]?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           }
         });
 
-        showLess.addEventListener('click', () => {
-          if (visibleCount > 1) {
-            visibleCount -= 1;
-            figures[visibleCount].hidden = true;
-            updateButtons();
-            // Scroll last visible into view for a clean UX
-            figures[visibleCount - 1]?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          }
-        });
-
-        updateButtons();
+        updateUI();
       })();
     </script>
 
