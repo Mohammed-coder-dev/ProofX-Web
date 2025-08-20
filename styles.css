@@ -276,7 +276,7 @@ a:hover { color: var(--accent-2); }
 /* Single-line hero across 320–1440px */
 .hero__h1 {
   /* Implementation brief spec */
-  font-size: clamp(1.75rem, 2vw + 1.25rem, 3rem);
+  font-size: clamp(2.25rem, 3vw + 1.5rem, 5rem);
   line-height: 1.05; letter-spacing: -.02em;
   background: var(--grad-ink);
   background-size: 200% auto;
