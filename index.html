@@ -366,28 +366,44 @@
           <div class="finding-text">
             <h3 class="h4">CollatzX Trajectory</h3>
             <p class="muted small">
-              Diagnostic visualization highlighting maximum sequence length (red point) and the distribution of lengths across starting values (log scale). Demonstrates anomaly detection and reproducibility.
+              Most starting values collapse quickly, but rare outliers stretch sequence lengths.
+              The red point marks the maximum observed length; reproducibility demonstrates the
+              engine’s anomaly-detection rigor.
             </p>
+            <a class="btn btn--pill btn--white small" href="/assets/collatz_plot.png" download>Download figure (PNG)</a>
           </div>
-          <div class="finding-visual">
-            <img class="findings__img" src="/assets/collatz_plot.png"
-                alt="CollatzX trajectory plot — sample diagnostic visualization" />
-            <figcaption class="muted small">
-              CollatzX trajectory visualization — example of reproducible engine output and anomaly detection.
+
+          <figure class="finding-visual">
+            <picture>
+              <!-- If you export a WebP, uncomment the next line -->
+              <!-- <source srcset="/assets/collatz_plot.webp" type="image/webp"> -->
+              <img
+                class="findings__img"
+                src="/assets/collatz_plot.png"
+                alt="CollatzX trajectory: sequence length vs. starting value (log scale); red point marks the maximum."
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+              />
+            </picture>
+            <figcaption class="muted xsmall">
+              Fig. 1 — CollatzX trajectory visualization (log-scaled x-axis). Reproducible output with labeled outlier.
             </figcaption>
-          </div>
+          </figure>
         </div>
 
-        <!-- Visual uploads (progressive reveal), each as split rows -->
+        <!-- Gallery (progressive reveal) -->
         <div id="findings-grid" class="findings__grid" aria-label="Findings gallery">
           <div class="finding finding-row">
             <div class="finding-text">
               <h3 class="h5">Finding 2</h3>
               <p class="muted small">Brief note about what this visual demonstrates.</p>
             </div>
-            <div class="finding-visual">
-              <img src="/assets/finding2.png" alt="Finding 2" />
-            </div>
+            <figure class="finding-visual">
+              <img src="/assets/finding2.png" alt="Finding 2 visualization"
+                  loading="lazy" decoding="async" />
+              <figcaption class="muted xsmall">Fig. 2 — Short caption.</figcaption>
+            </figure>
           </div>
 
           <div class="finding finding-row hidden">
@@ -395,9 +411,11 @@
               <h3 class="h5">Finding 3</h3>
               <p class="muted small">One-sentence takeaway for the reader.</p>
             </div>
-            <div class="finding-visual">
-              <img src="/assets/finding3.png" alt="Finding 3" />
-            </div>
+            <figure class="finding-visual">
+              <img src="/assets/finding3.png" alt="Finding 3 visualization"
+                  loading="lazy" decoding="async" />
+              <figcaption class="muted xsmall">Fig. 3 — Short caption.</figcaption>
+            </figure>
           </div>
 
           <div class="finding finding-row hidden">
@@ -405,9 +423,11 @@
               <h3 class="h5">Finding 4</h3>
               <p class="muted small">Key diagnostic or anomaly captured here.</p>
             </div>
-            <div class="finding-visual">
-              <img src="/assets/finding4.png" alt="Finding 4" />
-            </div>
+            <figure class="finding-visual">
+              <img src="/assets/finding4.png" alt="Finding 4 visualization"
+                  loading="lazy" decoding="async" />
+              <figcaption class="muted xsmall">Fig. 4 — Short caption.</figcaption>
+            </figure>
           </div>
 
           <div class="finding finding-row hidden">
@@ -415,32 +435,44 @@
               <h3 class="h5">Finding 5</h3>
               <p class="muted small">Short description to anchor the plot.</p>
             </div>
-            <div class="finding-visual">
-              <img src="/assets/finding5.png" alt="Finding 5" />
-            </div>
+            <figure class="finding-visual">
+              <img src="/assets/finding5.png" alt="Finding 5 visualization"
+                  loading="lazy" decoding="async" />
+              <figcaption class="muted xsmall">Fig. 5 — Short caption.</figcaption>
+            </figure>
           </div>
         </div>
 
         <div class="btn-row" role="group" aria-label="Findings controls">
-          <button id="findings-show-more" class="btn btn--white btn--pill" aria-controls="findings-grid" aria-expanded="false">Show more</button>
-          <button id="findings-show-less" class="btn btn--blue btn--pill hidden" aria-controls="findings-grid" aria-expanded="false">Show less</button>
+          <button id="findings-show-more" class="btn btn--white btn--pill"
+                  aria-controls="findings-grid" aria-expanded="false">Show more</button>
+          <button id="findings-show-less" class="btn btn--blue btn--pill hidden"
+                  aria-controls="findings-grid" aria-expanded="false">Show less</button>
         </div>
         <div id="findings-live" class="sr-only" aria-live="polite"></div>
       </div>
     </section>
 
-    <!-- Scoped styles for the split layout -->
+    <!-- Scoped styles -->
     <style>
-      #findings .finding-row {
-        display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: flex-start; margin: 1.25rem 0;
-      }
-      #findings .finding-text { flex: 1 1 280px; min-width: 240px; }
-      #findings .finding-visual { flex: 2 1 520px; min-width: 300px; }
-      #findings .finding-visual img { width: 100%; height: auto; border-radius: .75rem; display: block; }
-      /* Optional: tighten caption spacing */
-      #findings figcaption, #findings .finding-visual figcaption { margin-top: .5rem; display:block; }
-      /* Grid wrapper just stacks rows; your .hidden class still controls visibility */
-      #findings .findings__grid { display: grid; gap: 1rem; }
+      /* Layout */
+      #findings .finding-row { display:flex; flex-wrap:wrap; gap:1.25rem; align-items:flex-start; margin:1.25rem 0; }
+      #findings .finding-text  { flex:1 1 280px; min-width:240px; }
+      #findings .finding-visual{ flex:2 1 520px; min-width:300px; margin:0; }
+
+      /* Images: responsive + stable aspect (avoid CLS) */
+      #findings .findings__img,
+      #findings .finding-visual img { width:100%; height:auto; display:block; border-radius:.75rem; aspect-ratio: 16 / 9; object-fit: contain; }
+
+      /* Captions */
+      #findings figcaption { margin-top:.5rem; display:block; }
+      #findings .xsmall { font-size: .85rem; opacity:.8; }
+
+      /* Grid wrapper just stacks rows; .hidden controls visibility */
+      #findings .findings__grid { display:grid; gap:1rem; }
+
+      /* Optional: card tone for visuals */
+      #findings .finding-visual { background: var(--surface-2, transparent); border-radius: .75rem; padding: .5rem; }
     </style>
 
     <script>
@@ -451,44 +483,52 @@
         const btnLess = document.getElementById('findings-show-less');
         const live = document.getElementById('findings-live');
 
-        // Helper: count visible grid rows
-        const visibleCount = () => items.filter(i => !i.classList.contains('hidden')).length;
-
-        // Initial state: first grid row visible, others hidden
+        // Initial: show first gallery item only
         items.forEach((el, i) => el.classList.toggle('hidden', i > 0));
 
-        function updateUI() {
-          const count = visibleCount();
-          btnLess.classList.toggle('hidden', count < 2);
-          btnLess.setAttribute('aria-expanded', count >= 2 ? 'true' : 'false');
+        const countVisible = () => items.filter(i => !i.classList.contains('hidden')).length;
 
+        function updateUI() {
+          const count = countVisible();
           const allVisible = count >= items.length;
-          btnMore.disabled = allVisible;
-          btnMore.setAttribute('aria-expanded', allVisible ? 'true' : 'false');
+
+          btnMore.classList.toggle('hidden', allVisible);
+          btnMore.setAttribute('aria-expanded', String(allVisible));
+
+          btnLess.classList.toggle('hidden', count < 2);
+          btnLess.setAttribute('aria-expanded', String(count >= 2));
 
           live.textContent = `Showing ${count} ${count === 1 ? 'finding' : 'findings'} in the gallery.`;
         }
 
         btnMore.addEventListener('click', () => {
           const next = items.find(i => i.classList.contains('hidden'));
-          if (next) next.classList.remove('hidden');
+          if (next) {
+            next.classList.remove('hidden');
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+              next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+          }
           updateUI();
-          next?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         });
 
         btnLess.addEventListener('click', () => {
           const visibles = items.filter(i => !i.classList.contains('hidden'));
           if (visibles.length > 1) {
-            const last = visibles[visibles.length - 1];
+            const last = visibles.pop();
             last.classList.add('hidden');
-            updateUI();
-            visibles[visibles.length - 2]?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            const focusTarget = visibles[visibles.length - 1];
+            if (focusTarget && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+              focusTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
           }
+          updateUI();
         });
 
         updateUI();
       })();
     </script>
+
 
     <!-- =================================== FAQ ============================ -->
     <section id="faq" class="section" aria-labelledby="faq-title">
