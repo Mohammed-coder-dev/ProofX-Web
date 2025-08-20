@@ -530,7 +530,6 @@
             <p>No. ProofX is an open-source non-profit, structured around research partnerships and operator deployments.</p>
           </details>
 
-          <!-- hidden (progressive reveal up to ~20) -->
           <details class="card faq__item hidden">
             <summary class="faq__q">
               Deployment posture?
@@ -577,11 +576,11 @@
 
     <!-- FAQ icon/marker fixes (scoped) -->
     <style>
-      /* Remove native disclosure triangle/marker to prevent duplicate '+' */
-      #faq .faq__q::-webkit-details-marker { display: none; }
-      #faq .faq__q::marker { content: ""; }
+      /* Remove native disclosure marker to prevent duplicate '+' */
+      #faq summary::-webkit-details-marker { display: none; }
+      #faq summary::marker { content: none; }
 
-      /* Layout the summary so icon sits on the right */
+      /* Layout summary so text left, icon right */
       #faq .faq__q {
         list-style: none;
         display: flex;
@@ -591,17 +590,16 @@
       }
       #faq .faq__q .faq__icon {
         margin-left: auto;
-        width: 24px; height: 24px;
+        width: 24px;
+        height: 24px;
         flex: 0 0 24px;
       }
 
-      /* Animate plus → minus when open: hide vertical stroke */
+      /* Animate plus → minus when open */
       #faq details[open] .faq__icon .v { opacity: 0; }
       #faq .faq__icon .v,
       #faq .faq__icon .h { transition: opacity .15s ease; }
     </style>
-
-
 
     <!-- ================================ FOUNDER =========================== -->
     <section id="founder" class="section" aria-labelledby="founder-title">
