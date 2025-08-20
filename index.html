@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <!-- ================================================================
-       ProofX — operator-grade verification engines
+       ProofX — operator-grade verification engines (rev A)
   =================================================================== -->
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
@@ -56,6 +56,32 @@
     ]
   }
   </script>
+
+  <!-- Inline enhancements specific to this rev (keeps styles.css untouched) -->
+  <style>
+    /* Engines progressive reveal */
+    .hidden { display: none !important; }
+    #engines .engine h3 { font-weight: 700; letter-spacing: -0.01em; }
+    #engines .engine p { margin-top: .25rem; }
+    #engines .engine .engine__link { font-weight: 600; }
+    #engines-load-more { margin-top: 1rem; }
+
+    /* FAQ — OpenAI‑tier polish */
+    #faq-list details.faq__item { border: 1px solid var(--border, rgba(128,128,128,.25)); border-radius: 14px; padding: .25rem .75rem; transition: transform .15s ease, border-color .2s ease; }
+    #faq-list details.faq__item:hover { transform: translateY(-1px); border-color: var(--accent, rgba(99,102,241,.5)); }
+    #faq-list summary.faq__q { list-style: none; cursor: pointer; display: grid; grid-template-columns: 1fr auto; align-items: center; gap: .75rem; padding: .75rem .25rem; font-weight: 600; font-size: 1.05rem; }
+    #faq-list summary.faq__q::-webkit-details-marker { display: none; }
+    .faq__icon { width: 22px; height: 22px; flex: none; transition: transform .2s ease; opacity: .9; }
+    details[open] .faq__icon { transform: rotate(45deg); }
+    #load-more.btn { margin-top: 1rem; }
+
+    /* Buttons: ensure white variant visible across themes */
+    .btn.btn--white { background: #fff; color: #111; border: 1px solid rgba(0,0,0,.08); box-shadow: 0 1px 0 rgba(0,0,0,.05), 0 4px 14px rgba(0,0,0,.06); }
+    .btn.btn--white:hover { filter: brightness(.98); }
+
+    /* Contact — keep grid rhythm tight on buttons */
+    .contact__actions .btn { margin-right: .5rem; margin-bottom: .5rem; }
+  </style>
 </head>
 
 <body>
@@ -98,8 +124,8 @@
         </p>
 
         <div class="hero__actions" role="group" aria-label="Primary actions">
-          <a class="btn btn--white btn--lg btn--pill" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Partner">Partner</a>
-          <a class="btn btn--white btn--lg btn--pill" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Invest">Invest</a>
+          <a class="btn btn--white btn--lg btn--pill" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20%E2%80%94%20Partner">Partner</a>
+          <a class="btn btn--white btn--lg btn--pill" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20%E2%80%94%20Invest">Invest</a>
           <a class="btn btn--white btn--lg btn--pill" href="https://cases.proofx.org" target="_blank" rel="noopener">Cases</a>
         </div>
       </div>
@@ -125,118 +151,163 @@
       <div class="container">
         <h2 id="engines-title">Engines</h2>
 
-        <div class="grid grid--3">
-          <!-- Logic Engine -->
+        <div id="engines-grid" class="grid grid--3">
+          <!-- 20 conjecture engines; only first 3 visible, rest progressively revealed in 3s -->
+
+          <!-- 1 -->
           <article class="card engine">
-            <h3>Logic Engine</h3>
-            <p>Traceable reasoning with quantifiers and typed obligations; every inference step is auditable.</p>
-            <ul class="bullets">
-              <li>Quantifiers, skolemization, CNF pipelines.</li>
-              <li>Per-step trace and run-level diffs across seeds.</li>
-              <li>Witness export and minimal countermodels.</li>
-            </ul>
-            <a class="engine__link" href="https://engine.proofx.org/logic">Explore engine →</a>
+            <h3>CollatzX</h3>
+            <p>Parity-block descent, excursion envelopes, and witness harvesting for 3n+1 dynamics.</p>
+            <a class="engine__link" href="https://engine.proofx.org/collatzx">Explore engine →</a>
           </article>
 
-          <!-- Verification Kernel -->
+          <!-- 2 -->
           <article class="card engine">
-            <h3>Verification Kernel</h3>
-            <p>Deterministic SMT/FMC portfolios with property proving and replay-perfect manifests.</p>
-            <ul class="bullets">
-              <li>Orchestrates Z3/CVC5 + finite model testing.</li>
-              <li>Versioned solver configs + obligation templates.</li>
-              <li>Failure triage with replay manifests.</li>
-            </ul>
-            <a class="engine__link" href="https://engine.proofx.org/verification">Explore engine →</a>
+            <h3>RiemannX</h3>
+            <p>Zero statistics, GUE conformity checks, and explicit formula diagnostics on ζ(s).</p>
+            <a class="engine__link" href="https://engine.proofx.org/riemannx">Explore engine →</a>
           </article>
 
-          <!-- Entropy Engine -->
+          <!-- 3 -->
           <article class="card engine">
-            <h3>Entropy Engine</h3>
-            <p>Entropy-guided scheduling and anomaly surfacing for scalable, adaptive verification.</p>
-            <ul class="bullets">
-              <li>Adaptive schedulers balance cost vs. information gain.</li>
-              <li>Entropy overlays, operator alerts, decay maps.</li>
-              <li>Portfolio backpressure + counterexample harvesting.</li>
-            </ul>
-            <a class="engine__link" href="https://engine.proofx.org/entropy">Explore engine →</a>
+            <h3>GoldbachX</h3>
+            <p>Sieve portfolios, parity constraints, and counterexample mining on even decompositions.</p>
+            <a class="engine__link" href="https://engine.proofx.org/goldbachx">Explore engine →</a>
           </article>
 
-          <!-- Additional six mirrored in style -->
-          <article class="card engine">
-            <h3>Counterexample Engine</h3>
-            <p>Precision harvesting of counterexamples to strengthen test suites and priors.</p>
-            <ul class="bullets">
-              <li>Automated surfacing of rare and critical cases.</li>
-              <li>Witness registry for reproducible review.</li>
-              <li>Feedback loop into model scheduling.</li>
-            </ul>
-            <a class="engine__link" href="#">Explore engine →</a>
+          <!-- 4 -->
+          <article class="card engine hidden">
+            <h3>TwinPrimeX</h3>
+            <p>Prime gap analytics, parity restrictions, and admissible k-tuple scorecards.</p>
+            <a class="engine__link" href="https://engine.proofx.org/twinprimex">Explore engine →</a>
           </article>
 
-          <article class="card engine">
-            <h3>Telemetry Engine</h3>
-            <p>Operator-grade observability with full run traces and anomaly diagnostics.</p>
-            <ul class="bullets">
-              <li>Dashboards for real-time traceability.</li>
-              <li>Run diffs across seeds and solver versions.</li>
-              <li>Audit-ready manifests and artifact exports.</li>
-            </ul>
-            <a class="engine__link" href="#">Explore engine →</a>
+          <!-- 5 -->
+          <article class="card engine hidden">
+            <h3>BirchSwinnertonDyerX</h3>
+            <p>L-function traces, rank heuristics, descent ladders over elliptic curve families.</p>
+            <a class="engine__link" href="https://engine.proofx.org/bsdx">Explore engine →</a>
           </article>
 
-          <article class="card engine">
-            <h3>Portfolio Engine</h3>
-            <p>Deterministic solver routing that maximizes efficiency under heavy load.</p>
-            <ul class="bullets">
-              <li>Seeded routing across SMT, SAT, FMC families.</li>
-              <li>Replayable manifests and adaptive tuning.</li>
-              <li>Scales from lab to production-grade workloads.</li>
-            </ul>
-            <a class="engine__link" href="#">Explore engine →</a>
+          <!-- 6 -->
+          <article class="card engine hidden">
+            <h3>ABCX</h3>
+            <p>Radical bounds, quality metrics, and counterexample stress tests across integer triples.</p>
+            <a class="engine__link" href="https://engine.proofx.org/abcx">Explore engine →</a>
           </article>
 
-          <article class="card engine">
-            <h3>Curriculum Engine</h3>
-            <p>Structured exploration that prioritizes tractable, high-yield verification paths.</p>
-            <ul class="bullets">
-              <li>Curriculum scheduling with entropy heuristics.</li>
-              <li>Adaptive progression to deeper states.</li>
-              <li>Optimized throughput across long-horizon runs.</li>
-            </ul>
-            <a class="engine__link" href="#">Explore engine →</a>
+          <!-- 7 -->
+          <article class="card engine hidden">
+            <h3>BealX</h3>
+            <p>Exponent coprimality, prime factor coverage, and exhaustive search with replay manifests.</p>
+            <a class="engine__link" href="https://engine.proofx.org/bealx">Explore engine →</a>
           </article>
 
-          <article class="card engine">
-            <h3>Replay Engine</h3>
-            <p>Byte-for-byte reproducibility for long-term validation and audit trust.</p>
-            <ul class="bullets">
-              <li>Captures seeds, routes, configs for replay.</li>
-              <li>Cross-version replay validation.</li>
-              <li>Portable manifests for external verification.</li>
-            </ul>
-            <a class="engine__link" href="#">Explore engine →</a>
+          <!-- 8 -->
+          <article class="card engine hidden">
+            <h3>ErdosStrausX</h3>
+            <p>Unit-fraction decompositions of 4/n with structured residue families and witness export.</p>
+            <a class="engine__link" href="https://engine.proofx.org/erdosstrausx">Explore engine →</a>
           </article>
 
-          <article class="card engine">
-            <h3>Boundary Engine</h3>
-            <p>Systematic exploration of edge cases to detect hidden anomalies.</p>
-            <ul class="bullets">
-              <li>Boundary detection and symbolic exploration.</li>
-              <li>Stress-tests for limit behaviors.</li>
-              <li>Flags blind spots for remediation.</li>
-            </ul>
-            <a class="engine__link" href="#">Explore engine →</a>
+          <!-- 9 -->
+          <article class="card engine hidden">
+            <h3>LegendreX</h3>
+            <p>Square-gap search between consecutive squares with parity and density heuristics.</p>
+            <a class="engine__link" href="https://engine.proofx.org/legendrex">Explore engine →</a>
+          </article>
+
+          <!-- 10 -->
+          <article class="card engine hidden">
+            <h3>PolignacX</h3>
+            <p>Even-gap prime constellations with admissible pattern scoring and density tracking.</p>
+            <a class="engine__link" href="https://engine.proofx.org/polignacx">Explore engine →</a>
+          </article>
+
+          <!-- 11 -->
+          <article class="card engine hidden">
+            <h3>CramérX</h3>
+            <p>Probabilistic prime-gap envelopes, extreme-value probes, and falsifiability checks.</p>
+            <a class="engine__link" href="https://engine.proofx.org/cramerx">Explore engine →</a>
+          </article>
+
+          <!-- 12 -->
+          <article class="card engine hidden">
+            <h3>SchanuelX</h3>
+            <p>Transcendence heuristics with exponential-algebraic independence diagnostics.</p>
+            <a class="engine__link" href="https://engine.proofx.org/schanuelx">Explore engine →</a>
+          </article>
+
+          <!-- 13 -->
+          <article class="card engine hidden">
+            <h3>OddPerfectX</h3>
+            <p>Constraint drives on hypothetical odd perfect numbers with factor-structure pruning.</p>
+            <a class="engine__link" href="https://engine.proofx.org/oddperfectx">Explore engine →</a>
+          </article>
+
+          <!-- 14 -->
+          <article class="card engine hidden">
+            <h3>GoodsteinX</h3>
+            <p>Ordinal descent simulations, fast-growing hierarchy bounds, and certificate export.</p>
+            <a class="engine__link" href="https://engine.proofx.org/goodsteinx">Explore engine →</a>
+          </article>
+
+          <!-- 15 -->
+          <article class="card engine hidden">
+            <h3>ParisHarringtonX</h3>
+            <p>Independence demonstrations with finite model tests and large-number growth tracking.</p>
+            <a class="engine__link" href="https://engine.proofx.org/parisharringtonx">Explore engine →</a>
+          </article>
+
+          <!-- 16 -->
+          <article class="card engine hidden">
+            <h3>ContinuumX</h3>
+            <p>Model explorations around CH with forcing-scheme simulators and witness registries.</p>
+            <a class="engine__link" href="https://engine.proofx.org/continuumx">Explore engine →</a>
+          </article>
+
+          <!-- 17 -->
+          <article class="card engine hidden">
+            <h3>ChaitinOmegaX</h3>
+            <p>Algorithmic randomness probes with prefix-free complexity estimators.</p>
+            <a class="engine__link" href="https://engine.proofx.org/omegax">Explore engine →</a>
+          </article>
+
+          <!-- 18 -->
+          <article class="card engine hidden">
+            <h3>PvsNPX</h3>
+            <p>Lower-bound scaffolds, circuit-reduction harnesses, and oracle stress benches.</p>
+            <a class="engine__link" href="https://engine.proofx.org/pvsnpx">Explore engine →</a>
+          </article>
+
+          <!-- 19 -->
+          <article class="card engine hidden">
+            <h3>NavierStokesX</h3>
+            <p>Regularity/finite-time blow-up diagnostics over discretized flows with replay</p>
+            <a class="engine__link" href="https://engine.proofx.org/navierstokesx">Explore engine →</a>
+          </article>
+
+          <!-- 20 -->
+          <article class="card engine hidden">
+            <h3>YangMillsX</h3>
+            <p>Mass gap heuristics with lattice approximations and spectral gap estimators.</p>
+            <a class="engine__link" href="https://engine.proofx.org/yangmillsx">Explore engine →</a>
           </article>
         </div>
+
+        <button id="engines-load-more" class="btn btn--white btn--pill" aria-controls="engines-grid" aria-expanded="false">Load more</button>
+        <div id="engines-live" class="sr-only" aria-live="polite"></div>
       </div>
     </section>
 
-    <!-- ============================ COLLATZX (placeholder to keep nav valid) -->
+    <!-- ============================ COLLATZX  -->
     <section id="collatzx" class="section" aria-labelledby="collatzx-title">
       <div class="container card">
         <h2 id="collatzx-title">CollatzX</h2>
         <p class="muted">Overview available in the lab brief. Detailed materials provided on request.</p>
+        <div role="group" aria-label="CollatzX actions">
+          <a class="btn btn--primary btn--pill" href="/assets/collatzx.pdf" download>Download overview (PDF)</a>
+        </div>
       </div>
     </section>
 
@@ -268,29 +339,88 @@
         <h2 id="faq-title">FAQ</h2>
 
         <div id="faq-list">
-          <details class="card"><summary>How does ProofX ensure determinism and traceability?</summary><p>ProofX portfolios are seeded, versioned, and replayable with byte-for-byte manifests.</p></details>
-          <details class="card"><summary>What is the reliability moat?</summary><p>ProofX builds compounding corpora of runs and counterexamples that improve priors and are hard to replicate.</p></details>
-          <details class="card"><summary>Is ProofX a SaaS?</summary><p>No. ProofX is an open-source non-profit, structured around research partnerships and operator deployments.</p></details>
+          <details class="card faq__item"><summary class="faq__q">How does ProofX ensure determinism and traceability?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </summary><p>ProofX portfolios are seeded, versioned, and replayable with byte-for-byte manifests.</p></details>
+
+          <details class="card faq__item"><summary class="faq__q">What is the reliability moat?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </summary><p>ProofX builds compounding corpora of runs and counterexamples that improve priors and are hard to replicate.</p></details>
+
+          <details class="card faq__item"><summary class="faq__q">Is ProofX a SaaS?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </summary><p>No. ProofX is an open-source non-profit, structured around research partnerships and operator deployments.</p></details>
+
           <!-- hidden (progressive reveal up to ~20) -->
-          <details class="card hidden"><summary>Deployment posture?</summary><p>Containers, pinned builds, strict retention modes.</p></details>
-          <details class="card hidden"><summary>How does ProofX minimize time-to-evidence?</summary><p>Entropy-aware scheduling and replay manifests.</p></details>
-          <details class="card hidden"><summary>What does replay guarantee?</summary><p>Manifested seeds, routes, and configs guarantee byte-identical runs across environments.</p></details>
-          <details class="card hidden"><summary>How are counterexamples handled?</summary><p>Counterexamples are harvested, labeled, and pushed into a witness registry for review and regression.</p></details>
-          <details class="card hidden"><summary>What is the observability model?</summary><p>Trace capture at step/run levels, anomaly flags, and audit-ready exports.</p></details>
-          <details class="card hidden"><summary>How are portfolios tuned?</summary><p>Deterministic routing with adaptive backpressure under load.</p></details>
-          <details class="card hidden"><summary>What environments are supported?</summary><p>Private cloud, on-prem, and air-gapped deployments.</p></details>
-          <details class="card hidden"><summary>Does ProofX replace existing provers?</summary><p>ProofX orchestrates and augments existing provers with deterministic control and telemetry.</p></details>
-          <details class="card hidden"><summary>How are artifacts stored?</summary><p>Artifacts are pinned in a registry with provenance metadata.</p></details>
-          <details class="card hidden"><summary>What is the license model?</summary><p>Open-source non-profit with research and operator collaboration pathways.</p></details>
-          <details class="card hidden"><summary>What is the roadmap focus?</summary><p>Scaling reproducibility, richer parity analysis, and curriculum scheduling.</p></details>
-          <details class="card hidden"><summary>How does ProofX support peer review?</summary><p>Replayable manifests and exportable witnesses reduce review friction.</p></details>
-          <details class="card hidden"><summary>How is security handled?</summary><p>Minimal telemetry modes, strict retention, and role-scoped access controls.</p></details>
-          <details class="card hidden"><summary>What about performance regressions?</summary><p>Run diffs and decay maps surface regressions and trigger triage.</p></details>
-          <details class="card hidden"><summary>What integrations exist?</summary><p>APIs for solver backends, artifact registries, and dashboards.</p></details>
-          <details class="card hidden"><summary>How is success measured?</summary><p>Latency to verifiable evidence, replay fidelity, and defect discovery rate.</p></details>
-          <details class="card hidden"><summary>How to partner?</summary><p>Engage via research pilots and operator deployments documented on press and docs hubs.</p></details>
+          <details class="card faq__item hidden"><summary class="faq__q">Deployment posture?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </summary><p>Containers, pinned builds, strict retention modes.</p></details>
+
+          <details class="card faq__item hidden"><summary class="faq__q">How does ProofX minimize time-to-evidence?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </summary><p>Entropy-aware scheduling and replay manifests.</p></details>
+
+          <details class="card faq__item hidden"><summary class="faq__q">What does replay guarantee?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </summary><p>Manifested seeds, routes, and configs guarantee byte-identical runs across environments.</p></details>
+
+          <details class="card faq__item hidden"><summary class="faq__q">How are counterexamples handled?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </summary><p>Counterexamples are harvested, labeled, and pushed into a witness registry for review and regression.</p></details>
+
+          <details class="card faq__item hidden"><summary class="faq__q">What is the observability model?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </summary><p>Trace capture at step/run levels, anomaly flags, and audit-ready exports.</p></details>
+
+          <details class="card faq__item hidden"><summary class="faq__q">How are portfolios tuned?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </summary><p>Deterministic routing with adaptive backpressure under load.</p></details>
+
+          <details class="card faq__item hidden"><summary class="faq__q">What environments are supported?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </summary><p>Private cloud, on-prem, and air-gapped deployments.</p></details>
+
+          <details class="card faq__item hidden"><summary class="faq__q">Does ProofX replace existing provers?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </summary><p>ProofX orchestrates and augments existing provers with deterministic control and telemetry.</p></details>
+
+          <details class="card faq__item hidden"><summary class="faq__q">How are artifacts stored?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </summary><p>Artifacts are pinned in a registry with provenance metadata.</p></details>
+
+          <details class="card faq__item hidden"><summary class="faq__q">What is the license model?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </summary><p>Open-source non-profit with research and operator collaboration pathways.</p></details>
+
+          <details class="card faq__item hidden"><summary class="faq__q">What is the roadmap focus?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </summary><p>Scaling reproducibility, richer parity analysis, and curriculum scheduling.</p></details>
+
+          <details class="card faq__item hidden"><summary class="faq__q">How does ProofX support peer review?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </summary><p>Replayable manifests and exportable witnesses reduce review friction.</p></details>
+
+          <details class="card faq__item hidden"><summary class="faq__q">How is security handled?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </summary><p>Minimal telemetry modes, strict retention, and role-scoped access controls.</p></details>
+
+          <details class="card faq__item hidden"><summary class="faq__q">What about performance regressions?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </summary><p>Run diffs and decay maps surface regressions and trigger triage.</p></details>
+
+          <details class="card faq__item hidden"><summary class="faq__q">What integrations exist?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </summary><p>APIs for solver backends, artifact registries, and dashboards.</p></details>
+
+          <details class="card faq__item hidden"><summary class="faq__q">How is success measured?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </summary><p>Latency to verifiable evidence, replay fidelity, and defect discovery rate.</p></details>
+
+          <details class="card faq__item hidden"><summary class="faq__q">How to partner?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </summary><p>Engage via research pilots and operator deployments documented on press and docs hubs.</p></details>
         </div>
-        <button id="load-more" class="btn btn--pill" aria-controls="faq-list" aria-expanded="false">Load more</button>
+        <button id="load-more" class="btn btn--white btn--pill" aria-controls="faq-list" aria-expanded="false">Load more</button>
         <div id="faq-live" class="sr-only" aria-live="polite"></div>
       </div>
     </section>
@@ -310,7 +440,7 @@
             <li>Principles anchored in reproducibility, provenance, and operator trust.</li>
           </ul>
           <div class="founder__cta" role="group" aria-label="Founder contact">
-            <a class="btn btn--primary btn--pill" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Founder%20Contact">Email Alkindi</a>
+            <a class="btn btn--primary btn--pill" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20%E2%80%94%20Founder%20Contact">Email Alkindi</a>
             <a class="btn btn--pill" href="https://www.linkedin.com/in/alkindi-network" target="_blank" rel="noopener">Connect on LinkedIn</a>
           </div>
         </div>
@@ -325,9 +455,10 @@
           <p class="muted">Partners, investors, and research labs: ProofX operates with evidence, not theatre.</p>
         </div>
         <div class="contact__actions" role="group" aria-label="Contact actions">
-          <a class="btn btn--primary btn--pill" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Inquiry">Email</a>
-          <a class="btn btn--pill" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Pilot">Pilot</a>
-          <a class="btn btn--pill" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Invest">Invest</a>
+          <a class="btn btn--primary btn--pill" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20%E2%80%94%20Inquiry">Email</a>
+          <a class="btn btn--pill" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20%E2%80%94%20Pilot">Pilot</a>
+          <a class="btn btn--pill" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20%E2%80%94%20Invest">Invest</a>
+          <a class="btn btn--pill" href="https://instagram.com/proofx_org" target="_blank" rel="noopener" aria-label="Instagram @proofx_org">Instagram</a>
         </div>
       </div>
     </section>
@@ -396,27 +527,35 @@
         });
       }
 
-      // FAQ: progressive reveal with a11y announcements
-      const btn = document.getElementById('load-more');
-      const live = document.getElementById('faq-live');
-      function getHiddenFaqs() {
-        return Array.from(document.querySelectorAll('#faq-list .hidden'));
-      }
-      if (btn) {
-        btn.addEventListener('click', () => {
+      // FAQ: progressive reveal with a11y announcements (white button variant)
+      const faqBtn = document.getElementById('load-more');
+      const faqLive = document.getElementById('faq-live');
+      function getHiddenFaqs() { return Array.from(document.querySelectorAll('#faq-list .hidden')); }
+      if (faqBtn) {
+        faqBtn.addEventListener('click', () => {
           const hidden = getHiddenFaqs();
           const batchSize = 5;
-          for (let i = 0; i < batchSize && hidden[i]; i++) {
-            hidden[i].classList.remove('hidden');
-          }
+          for (let i = 0; i < batchSize && hidden[i]; i++) hidden[i].classList.remove('hidden');
           const remaining = getHiddenFaqs().length;
-          btn.setAttribute('aria-expanded', String(remaining === 0 ? true : false));
-          if (remaining === 0) {
-            btn.style.display = 'none';
-            if (live) live.textContent = 'All FAQs loaded.';
-          } else {
-            if (live) live.textContent = `${remaining} FAQs remaining.`;
-          }
+          faqBtn.setAttribute('aria-expanded', String(remaining === 0));
+          if (remaining === 0) { faqBtn.style.display = 'none'; if (faqLive) faqLive.textContent = 'All FAQs loaded.'; }
+          else { if (faqLive) faqLive.textContent = `${remaining} FAQs remaining.`; }
+        });
+      }
+
+      // ENGINES: progressive reveal 3-at-a-time (3,3,3,...) with a11y announcements
+      const engBtn = document.getElementById('engines-load-more');
+      const engLive = document.getElementById('engines-live');
+      function hiddenEngines() { return Array.from(document.querySelectorAll('#engines-grid .engine.hidden')); }
+      if (engBtn) {
+        engBtn.addEventListener('click', () => {
+          const hidden = hiddenEngines();
+          const batch = 3;
+          for (let i = 0; i < batch && hidden[i]; i++) hidden[i].classList.remove('hidden');
+          const remaining = hiddenEngines().length;
+          engBtn.setAttribute('aria-expanded', String(remaining === 0));
+          if (engLive) engLive.textContent = remaining === 0 ? 'All engines loaded.' : `${remaining} engines remaining.`;
+          if (remaining === 0) engBtn.style.display = 'none';
         });
       }
     })();
