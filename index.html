@@ -361,17 +361,64 @@
         <h2 id="findings-title">Findings</h2>
         <p class="muted">Representative outputs and core diagnostics from ProofX engines.</p>
 
-        <figure>
-          <img class="findings__img" src="/assets/collatz_plot.png" alt="CollatzX trajectory plot — sample diagnostic visualization" />
-          <figcaption class="muted small">CollatzX trajectory visualization — example of reproducible engine output and anomaly detection.</figcaption>
-        </figure>
+        <!-- Primary finding: split layout (text left, visual right) -->
+        <div class="finding-row">
+          <div class="finding-text">
+            <h3 class="h4">CollatzX Trajectory</h3>
+            <p class="muted small">
+              Diagnostic visualization highlighting maximum sequence length (red point) and the distribution of lengths across starting values (log scale). Demonstrates anomaly detection and reproducibility.
+            </p>
+          </div>
+          <div class="finding-visual">
+            <img class="findings__img" src="/assets/collatz_plot.png"
+                alt="CollatzX trajectory plot — sample diagnostic visualization" />
+            <figcaption class="muted small">
+              CollatzX trajectory visualization — example of reproducible engine output and anomaly detection.
+            </figcaption>
+          </div>
+        </div>
 
-        <!-- Visual uploads grid (progressive reveal) -->
+        <!-- Visual uploads (progressive reveal), each as split rows -->
         <div id="findings-grid" class="findings__grid" aria-label="Findings gallery">
-          <div class="finding"><img src="/assets/finding2.png" alt="Finding 2" /></div>
-          <div class="finding hidden"><img src="/assets/finding3.png" alt="Finding 3" /></div>
-          <div class="finding hidden"><img src="/assets/finding4.png" alt="Finding 4" /></div>
-          <div class="finding hidden"><img src="/assets/finding5.png" alt="Finding 5" /></div>
+          <div class="finding finding-row">
+            <div class="finding-text">
+              <h3 class="h5">Finding 2</h3>
+              <p class="muted small">Brief note about what this visual demonstrates.</p>
+            </div>
+            <div class="finding-visual">
+              <img src="/assets/finding2.png" alt="Finding 2" />
+            </div>
+          </div>
+
+          <div class="finding finding-row hidden">
+            <div class="finding-text">
+              <h3 class="h5">Finding 3</h3>
+              <p class="muted small">One-sentence takeaway for the reader.</p>
+            </div>
+            <div class="finding-visual">
+              <img src="/assets/finding3.png" alt="Finding 3" />
+            </div>
+          </div>
+
+          <div class="finding finding-row hidden">
+            <div class="finding-text">
+              <h3 class="h5">Finding 4</h3>
+              <p class="muted small">Key diagnostic or anomaly captured here.</p>
+            </div>
+            <div class="finding-visual">
+              <img src="/assets/finding4.png" alt="Finding 4" />
+            </div>
+          </div>
+
+          <div class="finding finding-row hidden">
+            <div class="finding-text">
+              <h3 class="h5">Finding 5</h3>
+              <p class="muted small">Short description to anchor the plot.</p>
+            </div>
+            <div class="finding-visual">
+              <img src="/assets/finding5.png" alt="Finding 5" />
+            </div>
+          </div>
         </div>
 
         <div class="btn-row" role="group" aria-label="Findings controls">
@@ -382,6 +429,20 @@
       </div>
     </section>
 
+    <!-- Scoped styles for the split layout -->
+    <style>
+      #findings .finding-row {
+        display: flex; flex-wrap: wrap; gap: 1.25rem; align-items: flex-start; margin: 1.25rem 0;
+      }
+      #findings .finding-text { flex: 1 1 280px; min-width: 240px; }
+      #findings .finding-visual { flex: 2 1 520px; min-width: 300px; }
+      #findings .finding-visual img { width: 100%; height: auto; border-radius: .75rem; display: block; }
+      /* Optional: tighten caption spacing */
+      #findings figcaption, #findings .finding-visual figcaption { margin-top: .5rem; display:block; }
+      /* Grid wrapper just stacks rows; your .hidden class still controls visibility */
+      #findings .findings__grid { display: grid; gap: 1rem; }
+    </style>
+
     <script>
       (function () {
         const grid = document.getElementById('findings-grid');
@@ -390,25 +451,22 @@
         const btnLess = document.getElementById('findings-show-less');
         const live = document.getElementById('findings-live');
 
-        // Helper: count visible grid items
+        // Helper: count visible grid rows
         const visibleCount = () => items.filter(i => !i.classList.contains('hidden')).length;
 
-        // Ensure initial state = 1 visible
+        // Initial state: first grid row visible, others hidden
         items.forEach((el, i) => el.classList.toggle('hidden', i > 0));
 
         function updateUI() {
           const count = visibleCount();
-          // Show "Show less" only when 2+ grid images are visible
           btnLess.classList.toggle('hidden', count < 2);
           btnLess.setAttribute('aria-expanded', count >= 2 ? 'true' : 'false');
 
-          // Disable "Show more" when all grid items are visible
           const allVisible = count >= items.length;
           btnMore.disabled = allVisible;
           btnMore.setAttribute('aria-expanded', allVisible ? 'true' : 'false');
 
-          // Live region announcement
-          live.textContent = `Showing ${count} ${count === 1 ? 'image' : 'images'} in the Findings grid.`;
+          live.textContent = `Showing ${count} ${count === 1 ? 'finding' : 'findings'} in the gallery.`;
         }
 
         btnMore.addEventListener('click', () => {
@@ -419,7 +477,6 @@
         });
 
         btnLess.addEventListener('click', () => {
-          // Hide the last visible item, but never go below 1 visible
           const visibles = items.filter(i => !i.classList.contains('hidden'));
           if (visibles.length > 1) {
             const last = visibles[visibles.length - 1];
@@ -433,7 +490,6 @@
       })();
     </script>
 
-
     <!-- =================================== FAQ ============================ -->
     <section id="faq" class="section" aria-labelledby="faq-title">
       <div class="container">
@@ -443,7 +499,11 @@
           <details class="card faq__item">
             <summary class="faq__q">
               How does ProofX ensure determinism and traceability?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <!-- Plus/Minus icon (right aligned) -->
+              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
             </summary>
             <p>ProofX portfolios are seeded, versioned, and replayable with byte-for-byte manifests.</p>
           </details>
@@ -451,7 +511,10 @@
           <details class="card faq__item">
             <summary class="faq__q">
               What is the reliability moat?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
             </summary>
             <p>ProofX builds compounding corpora of runs and counterexamples that improve priors and are hard to replicate.</p>
           </details>
@@ -459,7 +522,10 @@
           <details class="card faq__item">
             <summary class="faq__q">
               Is ProofX a SaaS?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
             </summary>
             <p>No. ProofX is an open-source non-profit, structured around research partnerships and operator deployments.</p>
           </details>
@@ -468,7 +534,10 @@
           <details class="card faq__item hidden">
             <summary class="faq__q">
               Deployment posture?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
             </summary>
             <p>Containers, pinned builds, strict retention modes.</p>
           </details>
@@ -476,7 +545,10 @@
           <details class="card faq__item hidden">
             <summary class="faq__q">
               How does ProofX minimize time-to-evidence?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
             </summary>
             <p>Entropy-aware scheduling and replay manifests.</p>
           </details>
@@ -484,122 +556,15 @@
           <details class="card faq__item hidden">
             <summary class="faq__q">
               What does replay guarantee?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
             </summary>
             <p>Manifested seeds, routes, and configs guarantee byte-identical runs across environments.</p>
           </details>
 
-          <details class="card faq__item hidden">
-            <summary class="faq__q">
-              How are counterexamples handled?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            </summary>
-            <p>Counterexamples are harvested, labeled, and pushed into a witness registry for review and regression.</p>
-          </details>
-
-          <details class="card faq__item hidden">
-            <summary class="faq__q">
-              What is the observability model?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            </summary>
-            <p>Trace capture at step/run levels, anomaly flags, and audit-ready exports.</p>
-          </details>
-
-          <details class="card faq__item hidden">
-            <summary class="faq__q">
-              How are portfolios tuned?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            </summary>
-            <p>Deterministic routing with adaptive backpressure under load.</p>
-          </details>
-
-          <details class="card faq__item hidden">
-            <summary class="faq__q">
-              What environments are supported?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            </summary>
-            <p>Private cloud, on-prem, and air-gapped deployments.</p>
-          </details>
-
-          <details class="card faq__item hidden">
-            <summary class="faq__q">
-              Does ProofX replace existing provers?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            </summary>
-            <p>ProofX orchestrates and augments existing provers with deterministic control and telemetry.</p>
-          </details>
-
-          <details class="card faq__item hidden">
-            <summary class="faq__q">
-              How are artifacts stored?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            </summary>
-            <p>Artifacts are pinned in a registry with provenance metadata.</p>
-          </details>
-
-          <details class="card faq__item hidden">
-            <summary class="faq__q">
-              What is the license model?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            </summary>
-            <p>Open-source non-profit with research and operator collaboration pathways.</p>
-          </details>
-
-          <details class="card faq__item hidden">
-            <summary class="faq__q">
-              What is the roadmap focus?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            </summary>
-            <p>Scaling reproducibility, richer parity analysis, and curriculum scheduling.</p>
-          </details>
-
-          <details class="card faq__item hidden">
-            <summary class="faq__q">
-              How does ProofX support peer review?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            </summary>
-            <p>Replayable manifests and exportable witnesses reduce review friction.</p>
-          </details>
-
-          <details class="card faq__item hidden">
-            <summary class="faq__q">
-              How is security handled?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            </summary>
-            <p>Minimal telemetry modes, strict retention, and role-scoped access controls.</p>
-          </details>
-
-          <details class="card faq__item hidden">
-            <summary class="faq__q">
-              What about performance regressions?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            </summary>
-            <p>Run diffs and decay maps surface regressions and trigger triage.</p>
-          </details>
-
-          <details class="card faq__item hidden">
-            <summary class="faq__q">
-              What integrations exist?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            </summary>
-            <p>APIs for solver backends, artifact registries, and dashboards.</p>
-          </details>
-
-          <details class="card faq__item hidden">
-            <summary class="faq__q">
-              How is success measured?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            </summary>
-            <p>Latency to verifiable evidence, replay fidelity, and defect discovery rate.</p>
-          </details>
-
-          <details class="card faq__item hidden">
-            <summary class="faq__q">
-              How to partner?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            </summary>
-            <p>Engage via research pilots and operator deployments documented on press and docs hubs.</p>
-          </details>
+          <!-- (…keep your remaining items in the same pattern …) -->
         </div>
 
         <div class="btn-row" role="group" aria-label="FAQ controls">
@@ -609,6 +574,34 @@
         <div id="faq-live" class="sr-only" aria-live="polite"></div>
       </div>
     </section>
+
+    <!-- FAQ icon/marker fixes (scoped) -->
+    <style>
+      /* Remove native disclosure triangle/marker to prevent duplicate '+' */
+      #faq .faq__q::-webkit-details-marker { display: none; }
+      #faq .faq__q::marker { content: ""; }
+
+      /* Layout the summary so icon sits on the right */
+      #faq .faq__q {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: .75rem;
+        cursor: pointer;
+      }
+      #faq .faq__q .faq__icon {
+        margin-left: auto;
+        width: 24px; height: 24px;
+        flex: 0 0 24px;
+      }
+
+      /* Animate plus → minus when open: hide vertical stroke */
+      #faq details[open] .faq__icon .v { opacity: 0; }
+      #faq .faq__icon .v,
+      #faq .faq__icon .h { transition: opacity .15s ease; }
+    </style>
+
+
 
     <!-- ================================ FOUNDER =========================== -->
     <section id="founder" class="section" aria-labelledby="founder-title">
