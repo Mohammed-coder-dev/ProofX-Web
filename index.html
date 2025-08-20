@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,14 +8,22 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="dark light" />
-  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
-  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0a0a14" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#f8f9fa" media="(prefers-color-scheme: light)" />
   <meta name="description" content="ProofX — proof-grade ML/Python engines for verification. Deterministic portfolios, entropy-guided search, audit-grade observability around your prover stack, and FAANG-tier research output." />
   <link rel="canonical" href="https://www.proofx.org/" />
 
   <title>ProofX — proof-grade ML/Python engines</title>
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Preload critical resources -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  </noscript>
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -62,12 +69,19 @@
         <span class="brand__text">ProofX</span>
       </a>
 
+      <button class="nav__toggle" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+
       <nav class="nav__links" role="navigation" aria-label="Primary">
         <a href="#vision">Vision</a>
         <a href="#engines">Engines</a>
+        <a href="#collatzx">CollatzX</a>
+        <a href="#dossier">Dossier</a>
         <a href="#research">Research</a>
         <a href="https://docs.proofx.org" target="_blank" rel="noopener">Docs</a>
         <a href="#faq">FAQ</a>
+        <a href="#founder">Founder</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -83,7 +97,6 @@
           from conjecture to verifiable evidence, built for FAANG-tier research output.
         </p>
 
-        <!-- Simplified primary actions: white buttons only (Partner, Invest, Cases) -->
         <div class="hero__actions" role="group" aria-label="Primary actions">
           <a class="btn btn--white btn--lg" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Partner">Partner</a>
           <a class="btn btn--white btn--lg" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Invest">Invest</a>
@@ -102,7 +115,7 @@
           from idea → experiment → verified artifact without ambiguity.
         </p>
         <ul class="bullets bullets--tight">
-          <li><strong>Mission:</strong> turn “proof of concept” into <em>proof with provenance</em> — every run replayable, every claim inspectable.</li>
+          <li><strong>Mission:</strong> turn "proof of concept" into <em>proof with provenance</em> — every run replayable, every claim inspectable.</li>
           <li><strong>Why it matters:</strong> as AI increases conjecture velocity, <span class="mono">reproducibility</span> and <span class="mono">traceability</span> become existential for trust.</li>
           <li><strong>Who it serves:</strong> research labs, critical-infrastructure operators, and public-interest math & verification projects.</li>
         </ul>
@@ -136,6 +149,7 @@
             <li>Entropy-aware scheduling + curriculum runs prioritize promising paths and surface outliers early.</li>
             <li>First-class telemetry: traces, dashboards, anomaly flags, decay maps, run diffs (audit-ready).</li>
             <li>Truth-aligned latency: shortest path from conjecture to inspectable evidence and publishable artifacts.</li>
+            <li class="muted small">Backed by: Deterministic Portfolios · FMC bridges · Replay Manifests.</li>
           </ul>
           <p class="muted small">
             Output: witnesses, notebooks, and manifests pinned in an artifact registry; every attempt becomes a data point in a growing evaluation wall.
@@ -147,40 +161,59 @@
     <!-- ======================= THEOREM PROVER COMPARISON =================== -->
     <section class="section" aria-labelledby="compare-title">
       <div class="container card">
-        <h2 id="compare-title">Open-source theorem prover comparison (at a glance)</h2>
+        <p class="kicker">Compare</p>
+        <h2 id="compare-title">Open-source theorem provers — at a glance</h2>
 
         <div class="grid grid--3 compare" role="list">
-          <article class="compare__item" role="listitem">
-            <h3>Lean / Coq</h3>
-            <ul class="bullets bullets--tight">
-              <li><strong>Strength:</strong> interactive, foundational proof development.</li>
-              <li><strong>Gap:</strong> heavy lift for large search/telemetry; reproducibility tied to tactics.</li>
-              <li><strong>With ProofX:</strong> entropy-guided searches, full traces, export obligations/witnesses.</li>
+          <!-- Lean / Coq -->
+          <article class="compare__item" role="listitem" aria-labelledby="leancoq-title">
+            <header class="compare__head">
+              <h3 id="leancoq-title" class="compare__title">Lean / Coq</h3>
+              <span class="pill" aria-hidden="true">interactive</span>
+            </header>
+            <ul class="compare__points">
+              <li><span class="muted label">Strength</span><span class="val">Foundational, interactive proof development.</span></li>
+              <li><span class="muted label">Gap</span><span class="val">Large-scale search & telemetry are heavy; reproducibility tied to tactics.</span></li>
+              <li class="with"><span class="label">With ProofX</span><span class="val"><strong>Entropy-guided search, full run traces, exportable obligations & witnesses.</strong></span></li>
             </ul>
           </article>
 
-          <article class="compare__item" role="listitem">
-            <h3>Z3 / CVC5</h3>
-            <ul class="bullets bullets--tight">
-              <li><strong>Strength:</strong> industrial SMT solving.</li>
-              <li><strong>Gap:</strong> portfolio orchestration and run-level provenance are ad-hoc.</li>
-              <li><strong>With ProofX:</strong> deterministic portfolios, seeded runs, dashboards, decay maps.</li>
+          <!-- Z3 / CVC5 -->
+          <article class="compare__item" role="listitem" aria-labelledby="smt-title">
+            <header class="compare__head">
+              <h3 id="smt-title" class="compare__title">Z3 / CVC5</h3>
+              <span class="pill" aria-hidden="true">SMT</span>
+            </header>
+            <ul class="compare__points">
+              <li><span class="muted label">Strength</span><span class="val">Industrial-grade SMT solving.</span></li>
+              <li><span class="muted label">Gap</span><span class="val">No native portfolio control; run-level provenance is ad-hoc.</span></li>
+              <li class="with"><span class="label">With ProofX</span><span class="val"><strong>Deterministic portfolios, seeded runs, dashboards, decay maps.</strong></span></li>
             </ul>
           </article>
 
-          <article class="compare__item" role="listitem">
-            <h3>Isabelle / Agda</h3>
-            <ul class="bullets bullets--tight">
-              <li><strong>Strength:</strong> rich type theories and libraries.</li>
-              <li><strong>Gap:</strong> limited operator telemetry for large exploratory runs.</li>
-              <li><strong>With ProofX:</strong> counterexample harvesting + curriculum scheduling + artifact registry.</li>
+          <!-- Isabelle / Agda -->
+          <article class="compare__item" role="listitem" aria-labelledby="itp-title">
+            <header class="compare__head">
+              <h3 id="itp-title" class="compare__title">Isabelle / Agda</h3>
+              <span class="pill" aria-hidden="true">type theory</span>
+            </header>
+            <ul class="compare__points">
+              <li><span class="muted label">Strength</span><span class="val">Rich type theories and libraries.</span></li>
+              <li><span class="muted label">Gap</span><span class="val">Operator-level telemetry for large exploratory runs is limited.</span></li>
+              <li class="with"><span class="label">With ProofX</span><span class="val"><strong>Counterexample harvesting, curriculum scheduling, artifact registry.</strong></span></li>
             </ul>
           </article>
         </div>
 
-        <p class="muted small">
-          Goal: complement, not replace. ProofX focuses on <em>deterministic search orchestration</em> and <em>operator observability</em> around your chosen prover stack.
-        </p>
+        <div class="compare__footer">
+          <p class="muted small">
+            Goal: complement, not replace. ProofX is the <em>control plane</em> around your provers —
+            deterministic search orchestration and operator observability.
+          </p>
+          <p class="muted small">
+            Evidence & methods: <a href="#dossier">Partial Solution Dossier</a> · <a href="#collatzx">CollatzX Lab</a>.
+          </p>
+        </div>
       </div>
     </section>
 
@@ -197,6 +230,7 @@
               <li>Quantifiers, Skolemization, CNF pipelines with typed obligations.</li>
               <li>Per-step inference trace; diffs across runs & seeds.</li>
               <li>Export witnesses + minimal countermodels for review.</li>
+              <li class="muted small">Backed by: SymbolicParityNLP · SymbolicBoundaryExplorer.</li>
             </ul>
             <a class="engine__link" href="https://engine.proofx.org/logic" target="_blank" rel="noopener">Explore engine →</a>
           </article>
@@ -208,6 +242,7 @@
               <li>Orchestrates Z3/CVC5 + finite model testing, with versioned solver configs.</li>
               <li>Replay manifests (seeds, routes, params) for identical outputs over time.</li>
               <li>Property templates & obligation checkers with failure triage.</li>
+              <li class="muted small">Backed by: Deterministic Portfolios · Replay Manifests.</li>
             </ul>
             <a class="engine__link" href="https://engine.proofx.org/verification" target="_blank" rel="noopener">Explore engine →</a>
           </article>
@@ -219,6 +254,7 @@
               <li>Adaptive schedulers prioritize information gain vs cost.</li>
               <li>Decay/entropy overlays; anomaly flags & operator alerts.</li>
               <li>Counterexample harvesting + portfolio backpressure.</li>
+              <li class="muted small">Backed by: RareEventX · TailHound · Xtractor.</li>
             </ul>
             <a class="engine__link" href="https://engine.proofx.org/entropy" target="_blank" rel="noopener">Explore engine →</a>
           </article>
@@ -227,6 +263,55 @@
         <p class="muted small">
           Deep-dives with diagrams and APIs at <a href="https://engine.proofx.org" target="_blank" rel="noopener">engine.proofx.org</a>.
         </p>
+      </div>
+    </section>
+
+    <!-- ============================ COLLATZX (spotlight) =================== -->
+    <section id="collatzx" class="section" aria-labelledby="collatzx-title">
+      <div class="container card">
+        <p class="kicker">Research Lab</p>
+        <h2 id="collatzx-title">CollatzX — Multi-paradigm analysis engine</h2>
+        <p class="muted">Deterministic simulators + graph theory + quantum/hybrid + symbolic NLP.</p>
+
+        <div class="grid grid--3">
+          <article>
+            <h3 class="mono muted">Dynamics</h3>
+            <ul class="bullets bullets--tight">
+              <li><strong>Bifurcation</strong>: universe sweeps, chaos signals.</li>
+              <li><strong>BlackHole</strong>: attractor signatures across spaces.</li>
+            </ul>
+          </article>
+          <article>
+            <h3 class="mono muted">Structure</h3>
+            <ul class="bullets bullets--tight">
+              <li><strong>PrimeAttractorGraph</strong>: basins/cycles on primes.</li>
+              <li><strong>RareEventX</strong> + <strong>TailHound</strong>: outlier TST “black swans”.</li>
+            </ul>
+          </article>
+          <article>
+            <h3 class="mono muted">Hybrid</h3>
+            <ul class="bullets bullets--tight">
+              <li><strong>QuantumCollapseMap (QCollatz)</strong>: circuit + variational hybrids.</li>
+              <li><strong>SymbolicParityNLP</strong>: parity-block descent detection.</li>
+            </ul>
+          </article>
+        </div>
+
+        <p class="muted small">Overview & module map in the lab brief. <a href="#dossier">See methods</a>.</p>
+      </div>
+    </section>
+
+    <!-- ============================== DOSSIER (methods) ==================== -->
+    <section id="dossier" class="section" aria-labelledby="dossier-title">
+      <div class="container card">
+        <p class="kicker">Methods</p>
+        <h2 id="dossier-title">Partial Solution Dossier — formal statements & checks</h2>
+        <ul class="bullets bullets--tight">
+          <li><strong>Parity-Block Descent (Theorem A):</strong> descent when even-step dominance exceeds log₂3.</li>
+          <li><strong>Bounded-Excursion Contraction (Prop. B):</strong> recurring contracting blocks ⇒ exponential envelope.</li>
+          <li><strong>Structured Residues (Lemma C):</strong> instant-descent families with short even cascades.</li>
+        </ul>
+        <p class="muted small">Reproducibility capsule: parity extraction → window tests → certificate export.</p>
       </div>
     </section>
 
@@ -259,7 +344,7 @@
         </details>
 
         <details class="card">
-          <summary>What’s the reliability moat?</summary>
+          <summary>What's the reliability moat?</summary>
           <ul class="bullets">
             <li>Seeded runs + portfolio routing with backpressure under load.</li>
             <li>Artifact registry for witnesses, notebooks, manifests, and structured traces.</li>
@@ -292,6 +377,51 @@
             <li>Counterexample harvesting feeds back into priors and test suites.</li>
           </ul>
         </details>
+      </div>
+    </section>
+
+    <!-- ================================ FOUNDER =========================== -->
+    <section id="founder" class="section" aria-labelledby="founder-title">
+      <div class="container card card--row founder">
+        <div class="founder__bio">
+          <p class="kicker">Founder</p>
+          <h2 id="founder-title">Alkindi — Founder & Chief Architect</h2>
+          <p class="muted">
+            Engineering student at UCL focused on AI, mathematics, and physics. I build systems that compress
+            time-to-evidence: formal rigor, deterministic execution, and operator-grade observability.
+          </p>
+          <ul class="bullets">
+            <li>Creator of <strong>ProofX</strong> and <strong>CollatzX</strong> — research-lab-grade symbolic AI & verification platforms.</li>
+            <li>~200k+ LOC across Python/JS/C++; modular engines for FOL/SMT, entropy-guided search, dashboards.</li>
+            <li>Cross-disciplinary: symbolic logic, number theory, topology, quantum/hybrid algorithms.</li>
+            <li>Principles: reproducibility, provenance, and impact over vanity.</li>
+          </ul>
+          <div class="founder__cta" role="group" aria-label="Founder contact">
+            <a class="btn btn--primary" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20—%20Founder%20Contact">Email Alkindi</a>
+            <a class="btn" href="https://www.linkedin.com/in/alkindi_network" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn" href="https://proofx.org" target="_blank" rel="noopener">More work</a>
+          </div>
+        </div>
+
+        <aside class="founder__meta" aria-label="Founder stats">
+          <div class="badge">
+            <span class="badge__label">Core Platforms</span>
+            <span class="badge__value">ProofX · CollatzX · GödelLab</span>
+          </div>
+          <div class="badge">
+            <span class="badge__label">Domains</span>
+            <span class="badge__value">Symbolic AI · Formal Methods · Quantum</span>
+          </div>
+          <div class="badge">
+            <span class="badge__label">Focus</span>
+            <span class="badge__value">Determinism · Telemetry · Counterexamples</span>
+          </div>
+          <div class="stats">
+            <div class="stat"><span class="stat__num">200k+</span><span class="stat__label">Lines of Code</span></div>
+            <div class="stat"><span class="stat__num">3</span><span class="stat__label">Core Engines</span></div>
+            <div class="stat"><span class="stat__num">∞</span><span class="stat__label">Curiosity</span></div>
+          </div>
+        </aside>
       </div>
     </section>
 
@@ -329,6 +459,7 @@
   <!-- Progressive enhancement: tiny, accessible helpers -->
   <script>
     (function () {
+      // Enhanced smooth scrolling with accessibility considerations
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', e => {
@@ -339,17 +470,55 @@
           el.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'start' });
           el.setAttribute('tabindex', '-1');
           el.focus({ preventScroll: true });
+          history.replaceState(null, null, '#' + id);
         });
       });
 
+      // Sticky header with requestAnimationFrame for performance
       const header = document.querySelector('.nav');
-      let last = 0;
-      window.addEventListener('scroll', () => {
+      let ticking = false;
+      function updateHeader() {
         const y = window.scrollY || document.documentElement.scrollTop;
-        if (y > 12 && last <= 12) header.classList.add('nav--scrolled');
-        else if (y <= 12 && last > 12) header.classList.remove('nav--scrolled');
-        last = y;
+        if (y > 12) header.classList.add('nav--scrolled');
+        else header.classList.remove('nav--scrolled');
+        ticking = false;
+      }
+      window.addEventListener('scroll', () => {
+        if (!ticking) { requestAnimationFrame(updateHeader); ticking = true; }
       });
+
+      // Mobile navigation toggle
+      const navToggle = document.querySelector('.nav__toggle');
+      const navLinks = document.querySelector('.nav__links');
+      if (navToggle && navLinks) {
+        navToggle.addEventListener('click', () => {
+          const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+          navToggle.setAttribute('aria-expanded', !expanded);
+          navLinks.classList.toggle('nav__links--visible');
+        });
+        document.querySelectorAll('.nav__links a').forEach(link => {
+          link.addEventListener('click', () => {
+            navToggle.setAttribute('aria-expanded', 'false');
+            navLinks.classList.remove('nav__links--visible');
+          });
+        });
+      }
+
+      // Lazy loading for non-critical resources
+      if ('IntersectionObserver' in window) {
+        const lazyImages = document.querySelectorAll('img[data-src]');
+        const imageObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              img.src = img.dataset.src;
+              img.removeAttribute('data-src');
+              imageObserver.unobserve(img);
+            }
+          });
+        });
+        lazyImages.forEach(img => imageObserver.observe(img));
+      }
     })();
   </script>
 
