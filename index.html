@@ -499,7 +499,6 @@
           <details class="card faq__item">
             <summary class="faq__q">
               How does ProofX ensure determinism and traceability?
-              <!-- Plus/Minus icon (right aligned) -->
               <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
                 <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                 <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -562,8 +561,6 @@
             </summary>
             <p>Manifested seeds, routes, and configs guarantee byte-identical runs across environments.</p>
           </details>
-
-          <!-- (…keep your remaining items in the same pattern …) -->
         </div>
 
         <div class="btn-row" role="group" aria-label="FAQ controls">
@@ -576,30 +573,37 @@
 
     <!-- FAQ icon/marker fixes (scoped) -->
     <style>
-      /* Remove native disclosure marker to prevent duplicate '+' */
-      #faq summary::-webkit-details-marker { display: none; }
-      #faq summary::marker { content: none; }
+      /* --- Nuke ALL native and theme-injected markers/icons --- */
+      #faq details > summary::-webkit-details-marker { display: none !important; }
+      #faq details > summary::marker { content: "" !important; }
+      #faq details > summary { list-style: none !important; }
+      #faq .faq__q::before,
+      #faq .faq__q::after { content: none !important; }
 
-      /* Layout summary so text left, icon right */
+      /* --- Layout: text left, single SVG icon top-right --- */
       #faq .faq__q {
-        list-style: none;
-        display: flex;
-        align-items: center;
-        gap: .75rem;
+        position: relative;
+        display: block;
+        padding-right: 36px;           /* space for icon */
         cursor: pointer;
       }
-      #faq .faq__q .faq__icon {
-        margin-left: auto;
-        width: 24px;
-        height: 24px;
-        flex: 0 0 24px;
+      #faq .faq__icon {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 24px; height: 24px;
+        pointer-events: none;          /* keep whole summary clickable */
       }
 
-      /* Animate plus → minus when open */
+      /* --- Animation: plus → minus by hiding vertical stroke --- */
+      #faq .faq__icon .h,
+      #faq .faq__icon .v { transition: opacity .15s ease; }
       #faq details[open] .faq__icon .v { opacity: 0; }
-      #faq .faq__icon .v,
-      #faq .faq__icon .h { transition: opacity .15s ease; }
     </style>
+
+
+
 
     <!-- ================================ FOUNDER =========================== -->
     <section id="founder" class="section" aria-labelledby="founder-title">
