@@ -64,8 +64,26 @@
 
   <!-- Inline enhancements specific to this rev (keeps styles.css untouched) -->
   <style>
+    /* Fix horizontal scroll issue */
+    html, body {
+      overflow-x: hidden;
+      max-width: 100%;
+    }
+    
     .hidden { display: none !important; }
 
+    /* Minimalist design enhancements */
+    .section {
+      padding: 2rem 0;
+    }
+    
+    .card {
+      padding: 1.5rem;
+      border-radius: 12px;
+      background: var(--surface-1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    
     /* Engines */
     #engines .engine h3 { font-weight: 700; letter-spacing: -0.01em; }
     #engines .engine p { margin-top: .25rem; }
@@ -123,6 +141,39 @@
       opacity: 0.7;
       font-style: italic;
     }
+    
+    /* Minimalist navigation */
+    .nav__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    /* Hero section minimalism */
+    .hero {
+      text-align: center;
+      padding: 4rem 0;
+    }
+    
+    .hero__h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .hero__sub {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      opacity: 0.8;
+    }
+    
+    /* Footer minimalism */
+    .footer__links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
   </style>
 </head>
 
@@ -142,17 +193,17 @@
       </button>
 
       <nav class="nav__links" role="navigation" aria-label="Primary">
-        <a href="#vision">Vision</a>
-        <a href="#engines">Engines</a>
-        <a href="#quantum">Quantum</a>
-        <a href="#collatzx">CollatzX</a>
-        <a href="#dossier">Dossier</a>
-        <a href="#findings">Findings</a>
-        <a href="#research">Research</a>
+        <a href="https://vision.proofx.org">Vision</a>
+        <a href="https://engine.proofx.org">Engines</a>
+        <a href="https://quantum.proofx.org">Quantum</a>
+        <a href="https://collatzx.proofx.org">CollatzX</a>
+        <a href="https://dossier.proofx.org">Dossier</a>
+        <a href="https://findings.proofx.org">Findings</a>
+        <a href="https://research.proofx.org">Research</a>
         <a href="https://docs.proofx.org" target="_blank" rel="noopener">Docs</a>
-        <a href="#faq">FAQ</a>
-        <a href="#founder">Founder</a>
-        <a href="#contact">Contact</a>
+        <a href="https://faq.proofx.org">FAQ</a>
+        <a href="https://founder.proofx.org">Founder</a>
+        <a href="https://contact.proofx.org">Contact</a>
       </nav>
     </div>
   </header>
@@ -202,140 +253,140 @@
           <article class="card engine">
             <h3>CollatzX</h3>
             <p>Parity-block descent, excursion envelopes, and witness harvesting for 3n+1 dynamics.</p>
-            <a class="engine__link" href="/conjectures/collatzx">Explore engine →</a>
+            <a class="engine__link" href="https://collatzx.proofx.org">Explore engine →</a>
           </article>
 
           <!-- 2 -->
           <article class="card engine">
             <h3>RiemannX</h3>
             <p>Zero statistics, GUE conformity checks, and explicit formula diagnostics on ζ(s).</p>
-            <a class="engine__link" href="/conjectures/riemannx">Explore engine →</a>
+            <a class="engine__link" href="https://riemannx.proofx.org">Explore engine →</a>
           </article>
 
           <!-- 3 -->
           <article class="card engine">
             <h3>GoldbachX</h3>
             <p>Sieve portfolios, parity constraints, and counterexample mining on even decompositions.</p>
-            <a class="engine__link" href="/conjectures/goldbachx">Explore engine →</a>
+            <a class="engine__link" href="https://goldbachx.proofx.org">Explore engine →</a>
           </article>
 
           <!-- 4 -->
           <article class="card engine hidden">
             <h3>TwinPrimeX</h3>
             <p>Prime gap analytics, parity restrictions, and admissible k-tuple scorecards.</p>
-            <a class="engine__link" href="/conjectures/twinprimex">Explore engine →</a>
+            <a class="engine__link" href="https://twinprimex.proofx.org">Explore engine →</a>
           </article>
 
           <!-- 5 -->
           <article class="card engine hidden">
             <h3>BirchSwinnertonDyerX</h3>
             <p>L-function traces, rank heuristics, descent ladders over elliptic curve families.</p>
-            <a class="engine__link" href="/conjectures/bsdx">Explore engine →</a>
+            <a class="engine__link" href="https://bsdx.proofx.org">Explore engine →</a>
           </article>
 
           <!-- 6 -->
           <article class="card engine hidden">
             <h3>ABCX</h3>
             <p>Radical bounds, quality metrics, and counterexample stress tests across integer triples.</p>
-            <a class="engine__link" href="/conjectures/abcx">Explore engine →</a>
+            <a class="engine__link" href="https://abcx.proofx.org">Explore engine →</a>
           </article>
 
           <!-- 7 -->
           <article class="card engine hidden">
             <h3>BealX</h3>
             <p>Exponent coprimality, prime factor coverage, and exhaustive search with replay manifests.</p>
-            <a class="engine__link" href="/conjectures/bealx">Explore engine →</a>
+            <a class="engine__link" href="https://bealx.proofx.org">Explore engine →</a>
           </article>
 
           <!-- 8 -->
           <article class="card engine hidden">
             <h3>ErdosStrausX</h3>
             <p>Unit-fraction decompositions of 4/n with structured residue families and witness export.</p>
-            <a class="engine__link" href="/conjectures/erdosstrausx">Explore engine →</a>
+            <a class="engine__link" href="https://erdosstrausx.proofx.org">Explore engine →</a>
           </article>
 
           <!-- 9 -->
           <article class="card engine hidden">
             <h3>LegendreX</h3>
             <p>Square-gap search between consecutive squares with parity and density heuristics.</p>
-            <a class="engine__link" href="/conjectures/legendrex">Explore engine →</a>
+            <a class="engine__link" href="https://legendrex.proofx.org">Explore engine →</a>
           </article>
 
           <!-- 10 -->
           <article class="card engine hidden">
             <h3>PolignacX</h3>
             <p>Even-gap prime constellations with admissible pattern scoring and density tracking.</p>
-            <a class="engine__link" href="/conjectures/polignacx">Explore engine →</a>
+            <a class="engine__link" href="https://polignacx.proofx.org">Explore engine →</a>
           </article>
 
           <!-- 11 -->
           <article class="card engine hidden">
             <h3>CramérX</h3>
             <p>Probabilistic prime-gap envelopes, extreme-value probes, and falsifiability checks.</p>
-            <a class="engine__link" href="/conjectures/cramerx">Explore engine →</a>
+            <a class="engine__link" href="https://cramerx.proofx.org">Explore engine →</a>
           </article>
 
           <!-- 12 -->
           <article class="card engine hidden">
             <h3>SchanuelX</h3>
             <p>Transcendence heuristics with exponential-algebraic independence diagnostics.</p>
-            <a class="engine__link" href="/conjectures/schanuelx">Explore engine →</a>
+            <a class="engine__link" href="https://schanuelx.proofx.org">Explore engine →</a>
           </article>
 
           <!-- 13 -->
           <article class="card engine hidden">
             <h3>OddPerfectX</h3>
             <p>Constraint drives on hypothetical odd perfect numbers with factor-structure pruning.</p>
-            <a class="engine__link" href="/conjectures/oddperfectx">Explore engine →</a>
+            <a class="engine__link" href="https://oddperfectx.proofx.org">Explore engine →</a>
           </article>
 
           <!-- 14 -->
           <article class="card engine hidden">
             <h3>GoodsteinX</h3>
             <p>Ordinal descent simulations, fast-growing hierarchy bounds, and certificate export.</p>
-            <a class="engine__link" href="/conjectures/goodsteinx">Explore engine →</a>
+            <a class="engine__link" href="https://goodsteinx.proofx.org">Explore engine →</a>
           </article>
 
           <!-- 15 -->
           <article class="card engine hidden">
             <h3>ParisHarringtonX</h3>
             <p>Independence demonstrations with finite model tests and large-number growth tracking.</p>
-            <a class="engine__link" href="/conjectures/parisharringtonx">Explore engine →</a>
+            <a class="engine__link" href="https://parisharringtonx.proofx.org">Explore engine →</a>
           </article>
 
           <!-- 16 -->
           <article class="card engine hidden">
             <h3>ContinuumX</h3>
             <p>Model explorations around CH with forcing-scheme simulators and witness registries.</p>
-            <a class="engine__link" href="/conjectures/continuumx">Explore engine →</a>
+            <a class="engine__link" href="https://continuumx.proofx.org">Explore engine →</a>
           </article>
 
           <!-- 17 -->
           <article class="card engine hidden">
             <h3>ChaitinOmegaX</h3>
             <p>Algorithmic randomness probes with prefix-free complexity estimators.</p>
-            <a class="engine__link" href="/conjectures/omegax">Explore engine →</a>
+            <a class="engine__link" href="https://omegax.proofx.org">Explore engine →</a>
           </article>
 
           <!-- 18 -->
           <article class="card engine hidden">
             <h3>PvsNPX</h3>
             <p>Lower-bound scaffolds, circuit-reduction harnesses, and oracle stress benches.</p>
-            <a class="engine__link" href="/conjectures/pvsnpx">Explore engine →</a>
+            <a class="engine__link" href="https://pvsnpx.proofx.org">Explore engine →</a>
           </article>
 
           <!-- 19 -->
           <article class="card engine hidden">
             <h3>NavierStokesX</h3>
             <p>Regularity/finite-time blow-up diagnostics over discretized flows with replay</p>
-            <a class="engine__link" href="/conjectures/navierstokesx">Explore engine →</a>
+            <a class="engine__link" href="https://navierstokesx.proofx.org">Explore engine →</a>
           </article>
 
           <!-- 20 -->
           <article class="card engine hidden">
             <h3>YangMillsX</h3>
             <p>Mass gap heuristics with lattice approximations and spectral gap estimators.</p>
-            <a class="engine__link" href="/conjectures/yangmillsx">Explore engine →</a>
+            <a class="engine__link" href="https://yangmillsx.proofx.org">Explore engine →</a>
           </article>
         </div>
 
@@ -408,7 +459,7 @@
               </ul>
             </div>
           </div>
-          <a class="engine__link" href="/quantum/collatzz">Explore Quantum Engine →</a>
+          <a class="engine__link" href="https://quantum.proofx.org/collatzz">Explore Quantum Engine →</a>
         </div>
 
         <div class="quantum-conjecture">
@@ -466,7 +517,7 @@
               </ul>
             </div>
           </div>
-          <a class="engine__link" href="/quantum/reicmannx">Explore Quantum Engine →</a>
+          <a class="engine__link" href="https://quantum.proofx.org/reicmannx">Explore Quantum Engine →</a>
         </div>
 
         <div class="quantum-conjecture">
@@ -524,7 +575,7 @@
               </ul>
             </div>
           </div>
-          <a class="engine__link" href="/quantum/godelx">Explore Quantum Engine →</a>
+          <a class="engine__link" href="https://quantum.proofx.org/godelx">Explore Quantum Engine →</a>
         </div>
 
         <div class="quantum-conjecture">
@@ -572,7 +623,7 @@
         <p class="muted">Bibliography and artifacts are curated on press and docs hubs.</p>
 
         <div role="group" aria-label="Research actions">
-          <a class="btn btn--primary btn--pill" href="/assets/proofx-overview.pdf" download>
+          <a class="btn btn--primary btn--pill" href="https://research.proofx.org/assets/proofx-overview.pdf" download>
             Download overview (PDF)
           </a>
         </div>
@@ -585,7 +636,7 @@
         <h2 id="collatzx-title">CollatzX</h2>
         <p class="muted">Overview available in the lab brief. Detailed materials provided on request.</p>
         <div role="group" aria-label="CollatzX actions">
-          <a class="btn btn--primary btn--pill" href="/assets/collatzx.pdf" download>Download overview (PDF)</a>
+          <a class="btn btn--primary btn--pill" href="https://collatzx.proofx.org/assets/collatzx.pdf" download>Download overview (PDF)</a>
         </div>
       </div>
     </section>
@@ -619,7 +670,7 @@
               The red point marks the maximum observed length; reproducibility demonstrates the
               engine's anomaly-detection rigor.
             </p>
-            <a class="btn btn--pill btn--white small" href="/assets/collatz_plot.png" download>Download figure (PNG)</a>
+            <a class="btn btn--pill btn--white small" href="https://findings.proofx.org/assets/collatz_plot.png" download>Download figure (PNG)</a>
           </div>
 
           <figure class="finding-visual">
@@ -628,7 +679,7 @@
               <!-- <source srcset="/assets/collatz_plot.webp" type="image/webp"> -->
               <img
                 class="findings__img"
-                src="/assets/collatz_plot.png"
+                src="https://findings.proofx.org/assets/collatz_plot.png"
                 alt="CollatzX trajectory: sequence length vs. starting value (log scale); red point marks the maximum."
                 loading="eager"
                 fetchpriority="high"
@@ -649,7 +700,7 @@
               <p class="muted small">Brief note about what this visual demonstrates.</p>
             </div>
             <figure class="finding-visual">
-              <img src="/assets/finding2.png" alt="Finding 2 visualization"
+              <img src="https://findings.proofx.org/assets/finding2.png" alt="Finding 2 visualization"
                   loading="lazy" decoding="async" />
               <figcaption class="muted xsmall">Fig. 2 — Short caption.</figcaption>
             </figure>
@@ -661,7 +712,7 @@
               <p class="muted small">One-sentence takeaway for the reader.</p>
             </div>
             <figure class="finding-visual">
-              <img src="/assets/finding3.png" alt="Finding 3 visualization"
+              <img src="https://findings.proofx.org/assets/finding3.png" alt="Finding 3 visualization"
                   loading="lazy" decoding="async" />
               <figcaption class="muted xsmall">Fig. 3 — Short caption.</figcaption>
             </figure>
@@ -673,7 +724,7 @@
               <p class="muted small">Key diagnostic or anomaly captured here.</p>
             </div>
             <figure class="finding-visual">
-              <img src="/assets/finding4.png" alt="Finding 4 visualization"
+              <img src="https://findings.proofx.org/assets/finding4.png" alt="Finding 4 visualization"
                   loading="lazy" decoding="async" />
               <figcaption class="muted xsmall">Fig. 4 — Short caption.</figcaption>
             </figure>
@@ -685,7 +736,7 @@
               <p class="muted small">Short description to anchor the plot.</p>
             </div>
             <figure class="finding-visual">
-              <img src="/assets/finding5.png" alt="Finding 5 visualization"
+              <img src="https://findings.proofx.org/assets/finding5.png" alt="Finding 5 visualization"
                   loading="lazy" decoding="async" />
               <figcaption class="muted xsmall">Fig. 5 — Short caption.</figcaption>
             </figure>
@@ -938,21 +989,21 @@
     <div class="container footer__inner">
       <span class="muted">© 2025 ProofX</span>
       <nav class="footer__links" aria-label="Footer">
-        <a href="/vision">Vision</a>
-        <a href="/mission">Mission</a>
-        <a href="/support">Support</a>
-        <a href="/about">About</a>
-        <a href="/founder">Founder</a>
-        <a href="/contact">Contact</a>
-        <a href="/partner">Partner</a>
-        <a href="/careers">Careers</a>
-        <a href="/media">Media</a>
-        <a href="/investors">Investors</a>
-        <a href="/community">Community</a>
-        <a href="/roadmap">Roadmap</a>
-        <a href="/demo">Demo</a>
-        <a href="/security">Security</a>
-        <a href="/findings">Findings</a>
+        <a href="https://vision.proofx.org">Vision</a>
+        <a href="https://mission.proofx.org">Mission</a>
+        <a href="https://support.proofx.org">Support</a>
+        <a href="https://about.proofx.org">About</a>
+        <a href="https://founder.proofx.org">Founder</a>
+        <a href="https://contact.proofx.org">Contact</a>
+        <a href="https://partner.proofx.org">Partner</a>
+        <a href="https://careers.proofx.org">Careers</a>
+        <a href="https://media.proofx.org">Media</a>
+        <a href="https://investors.proofx.org">Investors</a>
+        <a href="https://community.proofx.org">Community</a>
+        <a href="https://roadmap.proofx.org">Roadmap</a>
+        <a href="https://demo.proofx.org">Demo</a>
+        <a href="https://security.proofx.org">Security</a>
+        <a href="https://findings.proofx.org">Findings</a>
       </nav>
       <a class="to-top" href="#top" aria-label="Back to top">↑</a>
     </div>
