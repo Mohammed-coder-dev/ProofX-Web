@@ -93,6 +93,36 @@
     .findings__grid { display:grid; grid-template-columns: repeat(auto-fill,minmax(220px,1fr)); gap:12px; margin-top:12px; }
     .finding { overflow:hidden; border-radius:12px; }
     .finding img { width:100%; height:auto; display:block; }
+    
+    /* Quantum Computing Section */
+    .quantum-conjecture { 
+      background: var(--surface-2); 
+      border-radius: 12px; 
+      padding: 1.5rem; 
+      margin-bottom: 1.5rem; 
+      border-left: 4px solid var(--accent);
+    }
+    .test-cases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .test-case {
+      background: var(--surface-1);
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+    .test-case h4 {
+      margin-top: 0;
+      color: var(--accent);
+      font-size: 1rem;
+    }
+    .coming-soon {
+      opacity: 0.7;
+      font-style: italic;
+    }
   </style>
 </head>
 
@@ -114,6 +144,7 @@
       <nav class="nav__links" role="navigation" aria-label="Primary">
         <a href="#vision">Vision</a>
         <a href="#engines">Engines</a>
+        <a href="#quantum">Quantum</a>
         <a href="#collatzx">CollatzX</a>
         <a href="#dossier">Dossier</a>
         <a href="#findings">Findings</a>
@@ -171,140 +202,140 @@
           <article class="card engine">
             <h3>CollatzX</h3>
             <p>Parity-block descent, excursion envelopes, and witness harvesting for 3n+1 dynamics.</p>
-            <a class="engine__link" href="https://engine.proofx.org/collatzx">Explore engine →</a>
+            <a class="engine__link" href="/conjectures/collatzx">Explore engine →</a>
           </article>
 
           <!-- 2 -->
           <article class="card engine">
             <h3>RiemannX</h3>
             <p>Zero statistics, GUE conformity checks, and explicit formula diagnostics on ζ(s).</p>
-            <a class="engine__link" href="https://engine.proofx.org/riemannx">Explore engine →</a>
+            <a class="engine__link" href="/conjectures/riemannx">Explore engine →</a>
           </article>
 
           <!-- 3 -->
           <article class="card engine">
             <h3>GoldbachX</h3>
             <p>Sieve portfolios, parity constraints, and counterexample mining on even decompositions.</p>
-            <a class="engine__link" href="https://engine.proofx.org/goldbachx">Explore engine →</a>
+            <a class="engine__link" href="/conjectures/goldbachx">Explore engine →</a>
           </article>
 
           <!-- 4 -->
           <article class="card engine hidden">
             <h3>TwinPrimeX</h3>
             <p>Prime gap analytics, parity restrictions, and admissible k-tuple scorecards.</p>
-            <a class="engine__link" href="https://engine.proofx.org/twinprimex">Explore engine →</a>
+            <a class="engine__link" href="/conjectures/twinprimex">Explore engine →</a>
           </article>
 
           <!-- 5 -->
           <article class="card engine hidden">
             <h3>BirchSwinnertonDyerX</h3>
             <p>L-function traces, rank heuristics, descent ladders over elliptic curve families.</p>
-            <a class="engine__link" href="https://engine.proofx.org/bsdx">Explore engine →</a>
+            <a class="engine__link" href="/conjectures/bsdx">Explore engine →</a>
           </article>
 
           <!-- 6 -->
           <article class="card engine hidden">
             <h3>ABCX</h3>
             <p>Radical bounds, quality metrics, and counterexample stress tests across integer triples.</p>
-            <a class="engine__link" href="https://engine.proofx.org/abcx">Explore engine →</a>
+            <a class="engine__link" href="/conjectures/abcx">Explore engine →</a>
           </article>
 
           <!-- 7 -->
           <article class="card engine hidden">
             <h3>BealX</h3>
             <p>Exponent coprimality, prime factor coverage, and exhaustive search with replay manifests.</p>
-            <a class="engine__link" href="https://engine.proofx.org/bealx">Explore engine →</a>
+            <a class="engine__link" href="/conjectures/bealx">Explore engine →</a>
           </article>
 
           <!-- 8 -->
           <article class="card engine hidden">
             <h3>ErdosStrausX</h3>
             <p>Unit-fraction decompositions of 4/n with structured residue families and witness export.</p>
-            <a class="engine__link" href="https://engine.proofx.org/erdosstrausx">Explore engine →</a>
+            <a class="engine__link" href="/conjectures/erdosstrausx">Explore engine →</a>
           </article>
 
           <!-- 9 -->
           <article class="card engine hidden">
             <h3>LegendreX</h3>
             <p>Square-gap search between consecutive squares with parity and density heuristics.</p>
-            <a class="engine__link" href="https://engine.proofx.org/legendrex">Explore engine →</a>
+            <a class="engine__link" href="/conjectures/legendrex">Explore engine →</a>
           </article>
 
           <!-- 10 -->
           <article class="card engine hidden">
             <h3>PolignacX</h3>
             <p>Even-gap prime constellations with admissible pattern scoring and density tracking.</p>
-            <a class="engine__link" href="https://engine.proofx.org/polignacx">Explore engine →</a>
+            <a class="engine__link" href="/conjectures/polignacx">Explore engine →</a>
           </article>
 
           <!-- 11 -->
           <article class="card engine hidden">
             <h3>CramérX</h3>
             <p>Probabilistic prime-gap envelopes, extreme-value probes, and falsifiability checks.</p>
-            <a class="engine__link" href="https://engine.proofx.org/cramerx">Explore engine →</a>
+            <a class="engine__link" href="/conjectures/cramerx">Explore engine →</a>
           </article>
 
           <!-- 12 -->
           <article class="card engine hidden">
             <h3>SchanuelX</h3>
             <p>Transcendence heuristics with exponential-algebraic independence diagnostics.</p>
-            <a class="engine__link" href="https://engine.proofx.org/schanuelx">Explore engine →</a>
+            <a class="engine__link" href="/conjectures/schanuelx">Explore engine →</a>
           </article>
 
           <!-- 13 -->
           <article class="card engine hidden">
             <h3>OddPerfectX</h3>
             <p>Constraint drives on hypothetical odd perfect numbers with factor-structure pruning.</p>
-            <a class="engine__link" href="https://engine.proofx.org/oddperfectx">Explore engine →</a>
+            <a class="engine__link" href="/conjectures/oddperfectx">Explore engine →</a>
           </article>
 
           <!-- 14 -->
           <article class="card engine hidden">
             <h3>GoodsteinX</h3>
             <p>Ordinal descent simulations, fast-growing hierarchy bounds, and certificate export.</p>
-            <a class="engine__link" href="https://engine.proofx.org/goodsteinx">Explore engine →</a>
+            <a class="engine__link" href="/conjectures/goodsteinx">Explore engine →</a>
           </article>
 
           <!-- 15 -->
           <article class="card engine hidden">
             <h3>ParisHarringtonX</h3>
             <p>Independence demonstrations with finite model tests and large-number growth tracking.</p>
-            <a class="engine__link" href="https://engine.proofx.org/parisharringtonx">Explore engine →</a>
+            <a class="engine__link" href="/conjectures/parisharringtonx">Explore engine →</a>
           </article>
 
           <!-- 16 -->
           <article class="card engine hidden">
             <h3>ContinuumX</h3>
             <p>Model explorations around CH with forcing-scheme simulators and witness registries.</p>
-            <a class="engine__link" href="https://engine.proofx.org/continuumx">Explore engine →</a>
+            <a class="engine__link" href="/conjectures/continuumx">Explore engine →</a>
           </article>
 
           <!-- 17 -->
           <article class="card engine hidden">
             <h3>ChaitinOmegaX</h3>
             <p>Algorithmic randomness probes with prefix-free complexity estimators.</p>
-            <a class="engine__link" href="https://engine.proofx.org/omegax">Explore engine →</a>
+            <a class="engine__link" href="/conjectures/omegax">Explore engine →</a>
           </article>
 
           <!-- 18 -->
           <article class="card engine hidden">
             <h3>PvsNPX</h3>
             <p>Lower-bound scaffolds, circuit-reduction harnesses, and oracle stress benches.</p>
-            <a class="engine__link" href="https://engine.proofx.org/pvsnpx">Explore engine →</a>
+            <a class="engine__link" href="/conjectures/pvsnpx">Explore engine →</a>
           </article>
 
           <!-- 19 -->
           <article class="card engine hidden">
             <h3>NavierStokesX</h3>
             <p>Regularity/finite-time blow-up diagnostics over discretized flows with replay</p>
-            <a class="engine__link" href="https://engine.proofx.org/navierstokesx">Explore engine →</a>
+            <a class="engine__link" href="/conjectures/navierstokesx">Explore engine →</a>
           </article>
 
           <!-- 20 -->
           <article class="card engine hidden">
             <h3>YangMillsX</h3>
             <p>Mass gap heuristics with lattice approximations and spectral gap estimators.</p>
-            <a class="engine__link" href="https://engine.proofx.org/yangmillsx">Explore engine →</a>
+            <a class="engine__link" href="/conjectures/yangmillsx">Explore engine →</a>
           </article>
         </div>
 
@@ -313,6 +344,224 @@
           <button id="engines-show-less" class="btn btn--blue btn--pill hidden" aria-controls="engines-grid" aria-expanded="true">Show less</button>
         </div>
         <div id="engines-live" class="sr-only" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- ============================== QUANTUM COMPUTING =================== -->
+    <section id="quantum" class="section" aria-labelledby="quantum-title">
+      <div class="container">
+        <h2 id="quantum-title">Quantum Computing Verification</h2>
+        <p class="muted">ProofX Quantum engines leverage quantum computing to accelerate verification of complex conjectures with quantum advantage.</p>
+
+        <div class="quantum-conjecture">
+          <h3>CollatzZ Quantum Engine</h3>
+          <p>Quantum-enhanced verification of the Collatz conjecture using superposition and quantum parallelism.</p>
+          <div class="test-cases-grid">
+            <div class="test-case">
+              <h4>CoreLogic Tests</h4>
+              <ul>
+                <li>Quantum parity sequence validation</li>
+                <li>Superposition descent verification</li>
+                <li>Quantum amplitude amplification for cycle detection</li>
+                <li>Entanglement-based convergence checking</li>
+                <li>Quantum Fourier transform for sequence analysis</li>
+              </ul>
+            </div>
+            <div class="test-case">
+              <h4>ProofDiagnostics</h4>
+              <ul>
+                <li>Quantum state tomography for verification</li>
+                <li>Process fidelity measurements</li>
+                <li>Quantum circuit depth optimization</li>
+                <li>Error mitigation validation</li>
+                <li>Quantum volume benchmarking</li>
+              </ul>
+            </div>
+            <div class="test-case">
+              <h4>ConjectureBenchmarks</h4>
+              <ul>
+                <li>Execution time vs classical (10^6 elements)</li>
+                <li>Quantum advantage threshold analysis</li>
+                <li>Resource estimation for full conjecture</li>
+                <li>Noise resilience metrics</li>
+                <li>Scalability projections</li>
+              </ul>
+            </div>
+            <div class="test-case">
+              <h4>SymbolicGenerators</h4>
+              <ul>
+                <li>Quantum symbolic execution</li>
+                <li>Automated theorem circuit generation</li>
+                <li>Parameterized quantum circuit templates</li>
+                <li>Variational quantum eigensolver integration</li>
+                <li>Hybrid quantum-classical symbolic reasoning</li>
+              </ul>
+            </div>
+            <div class="test-case">
+              <h4>InferenceLayer</h4>
+              <ul>
+                <li>Quantum Bayesian inference</li>
+                <li>Amplitude estimation for probability bounds</li>
+                <li>Quantum kernel methods for pattern recognition</li>
+                <li>Quantum neural networks for conjecture evaluation</li>
+                <li>Quantum reinforcement learning for proof strategy</li>
+              </ul>
+            </div>
+          </div>
+          <a class="engine__link" href="/quantum/collatzz">Explore Quantum Engine →</a>
+        </div>
+
+        <div class="quantum-conjecture">
+          <h3>ReicmannX Quantum Engine</h3>
+          <p>Quantum algorithms for verifying properties of the Riemann zeta function and hypothesis.</p>
+          <div class="test-cases-grid">
+            <div class="test-case">
+              <h4>CoreLogic Tests</h4>
+              <ul>
+                <li>Quantum phase estimation for zeta zeros</li>
+                <li>Superposition of critical line evaluations</li>
+                <li>Quantum counting of non-trivial zeros</li>
+                <li>Entanglement-based analytic continuation</li>
+                <li>Quantum random walk on critical line</li>
+              </ul>
+            </div>
+            <div class="test-case">
+              <h4>ProofDiagnostics</h4>
+              <ul>
+                <li>Zero distribution statistical tests</li>
+                <li>Quantum process verification</li>
+                <li>Circuit depth vs precision analysis</li>
+                <li>Resource estimation for full verification</li>
+                <li>Error bounds and confidence intervals</li>
+              </ul>
+            </div>
+            <div class="test-case">
+              <h4>ConjectureBenchmarks</h4>
+              <ul>
+                <li>Time to first 1000 zeros verification</li>
+                <li>Comparison to classical algorithms</li>
+                <li>Quantum advantage demonstration</li>
+                <li>Scaling with number of qubits</li>
+                <li>Noise tolerance thresholds</li>
+              </ul>
+            </div>
+            <div class="test-case">
+              <h4>SymbolicGenerators</h4>
+              <ul>
+                <li>Quantum circuit synthesis for zeta function</li>
+                <li>Parameterized quantum circuits for hypothesis testing</li>
+                <li>Automated quantum program generation</li>
+                <li>Variational quantum algorithms for optimization</li>
+                <li>Quantum arithmetic circuits</li>
+              </ul>
+            </div>
+            <div class="test-case">
+              <h4>InferenceLayer</h4>
+              <ul>
+                <li>Quantum Bayesian hypothesis testing</li>
+                <li>Amplitude amplification for counterexample search</li>
+                <li>Quantum machine learning for pattern recognition</li>
+                <li>Quantum statistical tests</li>
+                <li>Quantum reinforcement learning for proof strategy</li>
+              </ul>
+            </div>
+          </div>
+          <a class="engine__link" href="/quantum/reicmannx">Explore Quantum Engine →</a>
+        </div>
+
+        <div class="quantum-conjecture">
+          <h3>GodelX Quantum Engine</h3>
+          <p>Quantum approaches to Gödel's incompleteness theorems and related logical frameworks.</p>
+          <div class="test-cases-grid">
+            <div class="test-case">
+              <h4>CoreLogic Tests</h4>
+              <ul>
+                <li>Quantum enumeration of proofs</li>
+                <li>Superposition of logical statements</li>
+                <li>Entanglement-based consistency checking</li>
+                <li>Quantum search for inconsistencies</li>
+                <li>Quantum random walk on proof graphs</li>
+              </ul>
+            </div>
+            <div class="test-case">
+              <h4>ProofDiagnostics</h4>
+              <ul>
+                <li>Quantum process tomography for logical operations</li>
+                <li>Fidelity measurements of quantum logical gates</li>
+                <li>Error detection and correction</li>
+                <li>Resource estimation for theorem verification</li>
+                <li>Confidence interval calculation</li>
+              </ul>
+            </div>
+            <div class="test-case">
+              <h4>ConjectureBenchmarks</h4>
+              <ul>
+                <li>Time to verify basic arithmetic consistency</li>
+                <li>Comparison to classical theorem provers</li>
+                <li>Quantum advantage for specific logical frameworks</li>
+                <li>Scaling with problem complexity</li>
+                <li>Noise resilience analysis</li>
+              </ul>
+            </div>
+            <div class="test-case">
+              <h4>SymbolicGenerators</h4>
+              <ul>
+                <li>Quantum circuit synthesis for logical operations</li>
+                <li>Automated quantum program generation for theorems</li>
+                <li>Variational quantum algorithms for optimal proof strategies</li>
+                <li>Parameterized quantum circuits for different logical systems</li>
+                <li>Quantum arithmetic and logic units</li>
+              </ul>
+            </div>
+            <div class="test-case">
+              <h4>InferenceLayer</h4>
+              <ul>
+                <li>Quantum Bayesian inference for theorem probability</li>
+                <li>Amplitude estimation for proof existence</li>
+                <li>Quantum machine learning for pattern recognition in proofs</li>
+                <li>Quantum neural networks for conjecture evaluation</li>
+                <li>Quantum reinforcement learning for proof discovery</li>
+              </ul>
+            </div>
+          </div>
+          <a class="engine__link" href="/quantum/godelx">Explore Quantum Engine →</a>
+        </div>
+
+        <div class="quantum-conjecture">
+          <h3>GoldbachX Quantum Engine</h3>
+          <p class="coming-soon">Quantum algorithm for verifying the Goldbach conjecture - Coming Soon</p>
+        </div>
+
+        <div class="quantum-conjecture">
+          <h3>TwinPrimeX Quantum Engine</h3>
+          <p class="coming-soon">Quantum approach to the twin prime conjecture - Coming Soon</p>
+        </div>
+
+        <!-- Additional quantum engines marked as coming soon -->
+        <div class="quantum-conjecture">
+          <h3>ABCX Quantum Engine</h3>
+          <p class="coming-soon">Quantum verification of the ABC conjecture - Coming Soon</p>
+        </div>
+
+        <div class="quantum-conjecture">
+          <h3>BealX Quantum Engine</h3>
+          <p class="coming-soon">Quantum approach to Beal's conjecture - Coming Soon</p>
+        </div>
+
+        <div class="quantum-conjecture">
+          <h3>NavierStokesX Quantum Engine</h3>
+          <p class="coming-soon">Quantum fluid dynamics for Navier-Stokes existence and smoothness - Coming Soon</p>
+        </div>
+
+        <div class="quantum-conjecture">
+          <h3>PvsNPX Quantum Engine</h3>
+          <p class="coming-soon">Quantum complexity theory for P vs NP - Coming Soon</p>
+        </div>
+
+        <div class="quantum-conjecture">
+          <h3>YangMillsX Quantum Engine</h3>
+          <p class="coming-soon">Quantum field theory for Yang-Mills existence and mass gap - Coming Soon</p>
+        </div>
       </div>
     </section>
 
@@ -368,7 +617,7 @@
             <p class="muted small">
               Most starting values collapse quickly, but rare outliers stretch sequence lengths.
               The red point marks the maximum observed length; reproducibility demonstrates the
-              engine’s anomaly-detection rigor.
+              engine's anomaly-detection rigor.
             </p>
             <a class="btn btn--pill btn--white small" href="/assets/collatz_plot.png" download>Download figure (PNG)</a>
           </div>
@@ -496,7 +745,7 @@
           btnMore.setAttribute('aria-expanded', String(allVisible));
 
           btnLess.classList.toggle('hidden', count < 2);
-          btnLess.setAttribute('aria-expanded', String(count >= 2));
+          btnLess.setattribute('aria-expanded', String(count >= 2));
 
           live.textContent = `Showing ${count} ${count === 1 ? 'finding' : 'findings'} in the gallery.`;
         }
@@ -689,11 +938,21 @@
     <div class="container footer__inner">
       <span class="muted">© 2025 ProofX</span>
       <nav class="footer__links" aria-label="Footer">
-        <a href="https://vision.proofx.org" target="_blank" rel="noopener">Vision</a>
-        <a href="https://engine.proofx.org" target="_blank" rel="noopener">Engines</a>
-        <a href="https://docs.proofx.org" target="_blank" rel="noopener">Docs</a>
-        <a href="https://press.proofx.org" target="_blank" rel="noopener">Press</a>
-        <a href="https://cases.proofx.org" target="_blank" rel="noopener">Cases</a>
+        <a href="/vision">Vision</a>
+        <a href="/mission">Mission</a>
+        <a href="/support">Support</a>
+        <a href="/about">About</a>
+        <a href="/founder">Founder</a>
+        <a href="/contact">Contact</a>
+        <a href="/partner">Partner</a>
+        <a href="/careers">Careers</a>
+        <a href="/media">Media</a>
+        <a href="/investors">Investors</a>
+        <a href="/community">Community</a>
+        <a href="/roadmap">Roadmap</a>
+        <a href="/demo">Demo</a>
+        <a href="/security">Security</a>
+        <a href="/findings">Findings</a>
       </nav>
       <a class="to-top" href="#top" aria-label="Back to top">↑</a>
     </div>
@@ -706,10 +965,10 @@
 
       // Smooth scroll for in-page anchors
       document.querySelectorAll('a[href^="#"]').forEach(a => {
+        const id = a.getAttribute('href').slice(1);
+        const el = document.getElementById(id);
+        if (!el) return;
         a.addEventListener('click', e => {
-          const id = a.getAttribute('href').slice(1);
-          const el = document.getElementById(id);
-          if (!el) return;
           e.preventDefault();
           el.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'start' });
           el.setAttribute('tabindex', '-1');
