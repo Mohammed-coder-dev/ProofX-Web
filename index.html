@@ -199,6 +199,77 @@
       gap: 1rem;
       justify-content: center;
     }
+    
+    /* Hamburger menu styles */
+    .nav__toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      width: 32px;
+      height: 32px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+    
+    .nav__toggle span {
+      display: block;
+      height: 2px;
+      width: 20px;
+      background: currentColor;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    
+    .nav__toggle.open span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .nav__toggle.open span:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .nav__toggle.open span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+    
+    /* Mobile navigation */
+    @media (max-width: 768px) {
+      .nav__toggle {
+        display: flex;
+      }
+      
+      .nav__links {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        height: 0;
+        overflow: hidden;
+        flex-direction: column;
+        background: var(--surface-1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: height 0.3s ease;
+        z-index: 1000;
+      }
+      
+      .nav__links.open {
+        height: auto;
+        padding: 1rem;
+        border-top: 1px solid var(--border);
+      }
+      
+      .nav__links a {
+        padding: 0.75rem 0;
+        border-bottom: 1px solid var(--border);
+      }
+      
+      .nav__links a:last-child {
+        border-bottom: none;
+      }
+    }
   </style>
 </head>
 
@@ -208,7 +279,7 @@
   <!-- ============================== HEADER =============================== -->
   <header class="nav" role="banner">
     <div class="container nav__inner">
-      <a class="brand" href="#top" aria-label="ProofX home">
+      <a class="brand" href="/" aria-label="ProofX home">
         <span class="brand__mark" aria-hidden="true">PX</span>
         <span class="brand__text">ProofX</span>
       </a>
@@ -248,21 +319,6 @@
           <a class="btn btn--white btn--lg btn--pill" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20%E2%80%94%20Invest">Invest</a>
           <a class="btn btn--white btn--lg btn--pill" href="/cases" target="_blank" rel="noopener">Cases</a>
         </div>
-      </div>
-    </section>
-
-    <!-- ================================ VISION ============================= -->
-    <section id="vision" class="section" aria-labelledby="vision-title">
-      <div class="container card">
-        <h2 id="vision-title">Vision</h2>
-        <p>
-          ProofX delivers operator-grade verification engines that compress time-to-evidence and scale reproducibility across disciplines. By uniting symbolic logic, deterministic orchestration, and entropy-aware scheduling, ProofX establishes a research-lab-grade foundation for proof-centric AI and mission-critical verification.
-        </p>
-        <ul class="bullets bullets--tight">
-          <li><strong>Impact:</strong> accelerate the path from idea to evidence with auditable runs and replayable claims.</li>
-          <li><strong>Trust:</strong> reproducibility and traceability as first-class design principles.</li>
-          <li><strong>Reach:</strong> enabling research labs, infrastructure operators, and public-interest projects worldwide.</li>
-        </ul>
       </div>
     </section>
 
@@ -693,365 +749,6 @@
       </div>
     </section>
 
-    <!-- ================================= RESEARCH ========================== -->
-    <section id="research" class="section" aria-labelledby="research-title">
-      <div class="container card">
-        <h2 id="research-title">Research</h2>
-        <p class="muted">Bibliography and artifacts are curated on press and docs hubs.</p>
-
-        <div role="group" aria-label="Research actions">
-          <a class="btn btn--primary btn--pill" href="/research/assets/proofx-overview.pdf" download>
-            Download overview (PDF)
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================ COLLATZX  -->
-    <section id="collatzx" class="section" aria-labelledby="collatzx-title">
-      <div class="container card">
-        <h2 id="collatzx-title">CollatzX</h2>
-        <p class="muted">Overview available in the lab brief. Detailed materials provided on request.</p>
-        <div role="group" aria-label="CollatzX actions">
-          <a class="btn btn--primary btn--pill" href="/conjectures/collatzx/assets/collatzx.pdf" download>Download overview (PDF)</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================== DOSSIER (methods) ==================== -->
-    <section id="dossier" class="section" aria-labelledby="dossier-title">
-      <div class="container card">
-        <p class="kicker">Methods</p>
-        <h2 id="dossier-title">Partial Solution Dossier — formal statements & checks</h2>
-        <ul class="bullets bullets--tight">
-          <li><strong>Parity-Block Descent (Theorem A):</strong> descent when even-step dominance exceeds log₂3.</li>
-          <li><strong>Bounded-Excursion Contraction (Prop. B):</strong> recurring contracting blocks imply exponential envelope.</li>
-          <li><strong>Structured Residues (Lemma C):</strong> instant-descent families with short even cascades.</li>
-        </ul>
-        <p class="muted small">Reproducibility capsule: parity extraction → window tests → certificate export. Forthcoming formal publication.</p>
-      </div>
-    </section>
-
-    <!-- ================================ FINDINGS ============================ -->
-    <section id="findings" class="section" aria-labelledby="findings-title">
-      <div class="container card">
-        <h2 id="findings-title">Findings</h2>
-        <p class="muted">Representative outputs and core diagnostics from ProofX engines.</p>
-
-        <!-- Primary finding: split layout (text left, visual right) -->
-        <div class="finding-row">
-          <div class="finding-text">
-            <h3 class="h4">CollatzX Trajectory</h3>
-            <p class="muted small">
-              Most starting values collapse quickly, but rare outliers stretch sequence lengths.
-              The red point marks the maximum observed length; reproducibility demonstrates the
-              engine's anomaly-detection rigor.
-            </p>
-            <a class="btn btn--pill btn--white small" href="/findings/assets/collatz_plot.png" download>Download figure (PNG)</a>
-          </div>
-
-          <figure class="finding-visual">
-            <picture>
-              <!-- If you export a WebP, uncomment the next line -->
-              <!-- <source srcset="/assets/collatz_plot.webp" type="image/webp"> -->
-              <img
-                class="findings__img"
-                src="/findings/assets/collatz_plot.png"
-                alt="CollatzX trajectory: sequence length vs. starting value (log scale); red point marks the maximum."
-                loading="eager"
-                fetchpriority="high"
-                decoding="async"
-              />
-            </picture>
-            <figcaption class="muted xsmall">
-              Fig. 1 — CollatzX trajectory visualization (log-scaled x-axis). Reproducible output with labeled outlier.
-            </figcaption>
-          </figure>
-        </div>
-
-        <!-- Gallery (progressive reveal) -->
-        <div id="findings-grid" class="findings__grid" aria-label="Findings gallery">
-          <div class="finding finding-row">
-            <div class="finding-text">
-              <h3 class="h5">Finding 2</h3>
-              <p class="muted small">Brief note about what this visual demonstrates.</p>
-            </div>
-            <figure class="finding-visual">
-              <img src="/findings/assets/finding2.png" alt="Finding 2 visualization"
-                  loading="lazy" decoding="async" />
-              <figcaption class="muted xsmall">Fig. 2 — Short caption.</figcaption>
-            </figure>
-          </div>
-
-          <div class="finding finding-row hidden">
-            <div class="finding-text">
-              <h3 class="h5">Finding 3</h3>
-              <p class="muted small">One-sentence takeaway for the reader.</p>
-            </div>
-            <figure class="finding-visual">
-              <img src="/findings/assets/finding3.png" alt="Finding 3 visualization"
-                  loading="lazy" decoding="async" />
-              <figcaption class="muted xsmall">Fig. 3 — Short caption.</figcaption>
-            </figure>
-          </div>
-
-          <div class="finding finding-row hidden">
-            <div class="finding-text">
-              <h3 class="h5">Finding 4</h3>
-              <p class="muted small">Key diagnostic or anomaly captured here.</p>
-            </div>
-            <figure class="finding-visual">
-              <img src="/findings/assets/finding4.png" alt="Finding 4 visualization"
-                  loading="lazy" decoding="async" />
-              <figcaption class="muted xsmall">Fig. 4 — Short caption.</figcaption>
-            </figure>
-          </div>
-
-          <div class="finding finding-row hidden">
-            <div class="finding-text">
-              <h3 class="h5">Finding 5</h3>
-              <p class="muted small">Short description to anchor the plot.</p>
-            </div>
-            <figure class="finding-visual">
-              <img src="/findings/assets/finding5.png" alt="Finding 5 visualization"
-                  loading="lazy" decoding="async" />
-              <figcaption class="muted xsmall">Fig. 5 — Short caption.</figcaption>
-            </figure>
-          </div>
-        </div>
-
-        <div class="btn-row" role="group" aria-label="Findings controls">
-          <button id="findings-show-more" class="btn btn--icon" aria-label="Show more"
-                  aria-controls="findings-grid" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-          <button id="findings-show-less" class="btn btn--blue btn--pill hidden"
-                  aria-controls="findings-grid" aria-expanded="false">Show less</button>
-        </div>
-        <div id="findings-live" class="sr-only" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <!-- Scoped styles -->
-    <style>
-      /* Layout */
-      #findings .finding-row { display:flex; flex-wrap:wrap; gap:1.25rem; align-items:flex-start; margin:1.25rem 0; }
-      #findings .finding-text  { flex:1 1 280px; min-width:240px; }
-      #findings .finding-visual{ flex:2 1 520px; min-width:300px; margin:0; }
-
-      /* Images: responsive + stable aspect (avoid CLS) */
-      #findings .findings__img,
-      #findings .finding-visual img { width:100%; height:auto; display:block; border-radius:.75rem; aspect-ratio: 16 / 9; object-fit: contain; }
-
-      /* Captions */
-      #findings figcaption { margin-top:.5rem; display:block; }
-      #findings .xsmall { font-size: .85rem; opacity:.8; }
-
-      /* Grid wrapper just stacks rows; .hidden controls visibility */
-      #findings .findings__grid { display:grid; gap:1rem; }
-
-      /* Optional: card tone for visuals */
-      #findings .finding-visual { background: var(--surface-2, transparent); border-radius: .75rem; padding: .5rem; }
-    </style>
-
-    <script>
-      (function () {
-        const grid = document.getElementById('findings-grid');
-        const items = Array.from(grid.querySelectorAll('.finding'));
-        const btnMore = document.getElementById('findings-show-more');
-        const btnLess = document.getElementById('findings-show-less');
-        const live = document.getElementById('findings-live');
-
-        // Initial: show first gallery item only
-        items.forEach((el, i) => el.classList.toggle('hidden', i > 0));
-
-        const countVisible = () => items.filter(i => !i.classList.contains('hidden')).length;
-
-        function updateUI() {
-          const count = countVisible();
-          const allVisible = count >= items.length;
-
-          btnMore.classList.toggle('hidden', allVisible);
-          btnMore.setAttribute('aria-expanded', String(allVisible));
-
-          btnLess.classList.toggle('hidden', count < 2);
-          btnLess.setattribute('aria-expanded', String(count >= 2));
-
-          live.textContent = `Showing ${count} ${count === 1 ? 'finding' : 'findings'} in the gallery.`;
-        }
-
-        btnMore.addEventListener('click', () => {
-          const next = items.find(i => i.classList.contains('hidden'));
-          if (next) {
-            next.classList.remove('hidden');
-            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-              next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
-          }
-          updateUI();
-        });
-
-        btnLess.addEventListener('click', () => {
-          const visibles = items.filter(i => !i.classList.contains('hidden'));
-          if (visibles.length > 1) {
-            const last = visibles.pop();
-            last.classList.add('hidden');
-            const focusTarget = visibles[visibles.length - 1];
-            if (focusTarget && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-              focusTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            }
-          }
-          updateUI();
-        });
-
-        updateUI();
-      })();
-    </script>
-
-
-    <!-- =================================== FAQ ============================ -->
-    <section id="faq" class="section" aria-labelledby="faq-title">
-      <div class="container">
-        <h2 id="faq-title">FAQ</h2>
-
-        <div id="faq-list">
-          <details class="card faq__item">
-            <summary class="faq__q">
-              How does ProofX ensure determinism and traceability?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </summary>
-            <p>ProofX portfolios are seeded, versioned, and replayable with byte-for-byte manifests.</p>
-          </details>
-
-          <details class="card faq__item">
-            <summary class="faq__q">
-              What is the reliability moat?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </summary>
-            <p>ProofX builds compounding corpora of runs and counterexamples that improve priors and are hard to replicate.</p>
-          </details>
-
-          <details class="card faq__item">
-            <summary class="faq__q">
-              Is ProofX a SaaS?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </summary>
-            <p>No. ProofX is an open-source non-profit, structured around research partnerships and operator deployments.</p>
-          </details>
-
-          <details class="card faq__item hidden">
-            <summary class="faq__q">
-              Deployment posture?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </summary>
-            <p>Containers, pinned builds, strict retention modes.</p>
-          </details>
-
-          <details class="card faq__item hidden">
-            <summary class="faq__q">
-              How does ProofX minimize time-to-evidence?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </summary>
-            <p>Entropy-aware scheduling and replay manifests.</p>
-          </details>
-
-          <details class="card faq__item hidden">
-            <summary class="faq__q">
-              What does replay guarantee?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </summary>
-            <p>Manifested seeds, routes, and configs guarantee byte-identical runs across environments.</p>
-          </details>
-        </div>
-
-        <div class="btn-row" role="group" aria-label="FAQ controls">
-          <button id="faq-show-more" class="btn btn--icon" aria-label="Show more" aria-controls="faq-list" aria-expanded="false">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-          <button id="faq-show-less" class="btn btn--blue btn--pill hidden" aria-controls="faq-list" aria-expanded="true">Show less</button>
-        </div>
-        <div id="faq-live" class="sr-only" aria-live="polite"></div>
-      </div>
-    </section>
-
-    <!-- FAQ icon/marker fixes (scoped) -->
-    <style>
-      /* --- Nuke ALL native and theme-injected markers/icons --- */
-      #faq details > summary::-webkit-details-marker { display: none !important; }
-      #faq details > summary::marker { content: "" !important; }
-      #faq details > summary { list-style: none !important; }
-      #faq .faq__q::before,
-      #faq .faq__q::after { content: none !important; }
-
-      /* --- Layout: text left, single SVG icon top-right --- */
-      #faq .faq__q {
-        position: relative;
-        display: block;
-        padding-right: 36px;           /* space for icon */
-        cursor: pointer;
-      }
-      #faq .faq__icon {
-        position: absolute;
-        right: 12px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 24px; height: 24px;
-        pointer-events: none;          /* keep whole summary clickable */
-      }
-
-      /* --- Animation: plus → minus by hiding vertical stroke --- */
-      #faq .faq__icon .h,
-      #faq .faq__icon .v { transition: opacity .15s ease; }
-      #faq details[open] .faq__icon .v { opacity: 0; }
-    </style>
-
-
-
-
-    <!-- ================================ FOUNDER =========================== -->
-    <section id="founder" class="section" aria-labelledby="founder-title">
-      <div class="container card card--row founder">
-        <div class="founder__bio">
-          <p class="kicker">Founder</p>
-          <h2 id="founder-title">Alkindi — Founder & Chief Architect</h2>
-          <p class="muted">
-            Founder of ProofX, architect of multi-engine verification platforms uniting symbolic AI, number theory, and operator-grade observability. Builder of 200k+ LOC lab-grade systems with measurable impact.
-          </p>
-          <ul class="bullets">
-            <li>Creator of ProofX and CollatzX — research-grade verification engines.</li>
-            <li>Cross-disciplinary architecture spanning logic, topology, quantum methods.</li>
-            <li>Principles anchored in reproducibility, provenance, and operator trust.</li>
-          </ul>
-          <div class="founder__cta" role="group" aria-label="Founder contact">
-            <a class="btn btn--primary btn--pill" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20%E2%80%94%20Founder%20Contact">Email Alkindi</a>
-            <a class="btn btn--pill" href="https://www.linkedin.com/in/alkindi-network" target="_blank" rel="noopener">Connect on LinkedIn</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- ================================= CONTACT ========================== -->
     <section id="contact" class="section" aria-labelledby="contact-title">
       <div class="container card card--row">
@@ -1132,12 +829,14 @@
         navToggle.addEventListener('click', () => {
           const expanded = navToggle.getAttribute('aria-expanded') === 'true';
           navToggle.setAttribute('aria-expanded', String(!expanded));
-          navLinks.classList.toggle('nav__links--visible');
+          navToggle.classList.toggle('open');
+          navLinks.classList.toggle('open');
         });
         navLinks.querySelectorAll('a').forEach(link => {
           link.addEventListener('click', () => {
             navToggle.setAttribute('aria-expanded', 'false');
-            navLinks.classList.remove('nav__links--visible');
+            navToggle.classList.remove('open');
+            navLinks.classList.remove('open');
           });
         });
       }
@@ -1196,26 +895,6 @@
         showLessId: 'engines-show-less',
         liveId: 'engines-live',
         batch: 3
-      });
-
-      // FAQ: reveal 5 at a time
-      setupShowMoreLess({
-        containerSelector: '#faq-list',
-        itemSelector: '.faq__item',
-        showMoreId: 'faq-show-more',
-        showLessId: 'faq-show-less',
-        liveId: 'faq-live',
-        batch: 5
-      });
-
-      // FINDINGS: reveal all remaining visuals at once
-      setupShowMoreLess({
-        containerSelector: '#findings-grid',
-        itemSelector: '.finding',
-        showMoreId: 'findings-show-more',
-        showLessId: 'findings-show-less',
-        liveId: 'findings-live',
-        batch: Infinity
       });
     })();
   </script>
