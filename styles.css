@@ -263,22 +263,8 @@ a:hover { color: var(--accent-2); }
 }
 .hero::before {
   content: ""; position: absolute; inset: 0;
-  background:
-    radial-gradient(800px 400px at 12% 88%, var(--accent-glow), transparent 60%),
-    linear-gradient(135deg, var(--accent-2), var(--accent-1), var(--accent-2));
-  background-size: 100% 100%, 200% 200%;
-  animation: hero-gradient 18s ease infinite;
+  background: radial-gradient(800px 400px at 12% 88%, var(--accent-glow), transparent 60%);
   pointer-events: none;
-}
-
-@keyframes hero-gradient {
-  0% { background-position: center, 0% 50%; }
-  50% { background-position: center, 100% 50%; }
-  100% { background-position: center, 0% 50%; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero::before { animation: none; }
 }
 /* slightly wider headline container so long single-line text fits */
 .hero__wrap { position: relative; z-index: 1; display: flex; flex-direction: column; gap: var(--space-lg); max-width: min(96vw, 1100px); }
