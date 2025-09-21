@@ -694,110 +694,112 @@
       </div>
     </section>
 
-    <!-- ================================ FINDINGS ============================ -->
-    <section id="findings" class="section" aria-labelledby="findings-title">
-      <div class="container card">
-        <h2 id="findings-title">Findings</h2>
-        <p class="muted">Representative outputs and core diagnostics from ProofX engines.</p>
-    
-        <!-- Findings Grid -->
-        <div id="findings-grid" class="findings__grid" aria-label="Findings gallery">
-          
-          <!-- Primary Finding -->
-          <div class="finding finding-row primary">
-            <div class="finding-text">
-              <h3 class="h4">CollatzX Trajectory</h3>
-              <p class="muted small">
-                Most starting values collapse quickly, but rare outliers stretch sequence lengths.
-                The red point marks the maximum observed length; reproducibility demonstrates the
-                engine's anomaly-detection rigor.
-              </p>
-              <a class="btn btn--pill btn--white small" 
-                 href="https://proofx.org/assets/collatz_plot.png" download>
-                Download figure (PNG)
-              </a>
-            </div>
-    
-            <figure class="finding-visual">
-              <picture>
-                <!-- <source srcset="https://proofx.org/assets/collatz_plot.webp" type="image/webp"> -->
-                <img
-                  class="findings__img"
-                  src="https://proofx.org/assets/collatz_plot.png"
-                  alt="CollatzX trajectory: sequence length vs. starting value (log scale); red point marks the maximum."
-                  loading="eager"
-                  fetchpriority="high"
-                  decoding="async"
-                />
-              </picture>
-              <figcaption class="muted xsmall">
-                <span class="sr-only">Caption: </span>
-                Fig. 1 — CollatzX trajectory visualization (log-scaled x-axis). Reproducible output with labeled outlier.
-              </figcaption>
-            </figure>
+  <!-- ================================ FINDINGS ============================ -->
+  <section id="findings" class="section" aria-labelledby="findings-title">
+    <div class="container card">
+      <h2 id="findings-title">Findings</h2>
+      <p class="muted">Representative outputs and core diagnostics from ProofX engines.</p>
+  
+      <!-- Findings Grid -->
+      <div id="findings-grid" class="findings__grid" aria-label="Findings gallery">
+        
+        <!-- Primary Finding -->
+        <article class="finding finding-row primary">
+          <div class="finding-text">
+            <h3 class="h4">CollatzX Trajectory</h3>
+            <p class="muted small">
+              Most starting values collapse quickly, but rare outliers stretch sequence lengths.
+              The red point marks the maximum observed length; reproducibility demonstrates the
+              engine's anomaly-detection rigor.
+            </p>
+            <a class="btn btn--pill btn--white small" 
+               href="https://proofx.org/assets/collatz_plot.png" download>
+              Download figure (PNG)
+            </a>
           </div>
-    
-          <!-- Secondary Findings -->
-          <div class="finding finding-row">
-            <div class="finding-text">
-              <h3 class="h5">Finding 2</h3>
-              <p class="muted small">Brief note about what this visual demonstrates.</p>
-            </div>
-            <figure class="finding-visual">
-              <img src="https://proofx.org/assets/finding2.png" alt="Finding 2 visualization"
-                  loading="lazy" decoding="async" />
-              <figcaption class="muted xsmall">Fig. 2 — Short caption.</figcaption>
-            </figure>
+  
+          <figure class="finding-visual">
+            <picture>
+              <source srcset="https://proofx.org/assets/collatz_plot.webp" type="image/webp">
+              <img
+                class="findings__img"
+                src="https://proofx.org/assets/collatz_plot.png"
+                alt="CollatzX trajectory: sequence length vs. starting value (log scale); red point marks the maximum."
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
+              />
+            </picture>
+            <figcaption class="muted xsmall">
+              Fig. 1 — CollatzX trajectory visualization (log-scaled x-axis). Reproducible output with labeled outlier.
+            </figcaption>
+          </figure>
+        </article>
+  
+        <!-- Secondary Findings -->
+        <article class="finding finding-row">
+          <div class="finding-text">
+            <h3 class="h5">Finding 2</h3>
+            <p class="muted small">Brief note about what this visual demonstrates.</p>
           </div>
-    
-          <div class="finding finding-row hidden">
-            <div class="finding-text">
-              <h3 class="h5">Finding 3</h3>
-              <p class="muted small">One-sentence takeaway for the reader.</p>
-            </div>
-            <figure class="finding-visual">
-              <img src="https://proofx.org/assets/finding3.png" alt="Finding 3 visualization"
-                  loading="lazy" decoding="async" />
-              <figcaption class="muted xsmall">Fig. 3 — Short caption.</figcaption>
-            </figure>
+          <figure class="finding-visual">
+            <img src="https://proofx.org/assets/finding2.png" 
+                 alt="Visualization of secondary diagnostic output"
+                 loading="lazy" decoding="async" />
+            <figcaption class="muted xsmall">Fig. 2 — Short caption.</figcaption>
+          </figure>
+        </article>
+  
+        <article class="finding finding-row hidden">
+          <div class="finding-text">
+            <h3 class="h5">Finding 3</h3>
+            <p class="muted small">One-sentence takeaway for the reader.</p>
           </div>
-    
-          <div class="finding finding-row hidden">
-            <div class="finding-text">
-              <h3 class="h5">Finding 4</h3>
-              <p class="muted small">Key diagnostic or anomaly captured here.</p>
-            </div>
-            <figure class="finding-visual">
-              <img src="https://proofx.org/assets/finding4.png" alt="Finding 4 visualization"
-                  loading="lazy" decoding="async" />
-              <figcaption class="muted xsmall">Fig. 4 — Short caption.</figcaption>
-            </figure>
+          <figure class="finding-visual">
+            <img src="https://proofx.org/assets/finding3.png" 
+                 alt="Visualization of tertiary diagnostic output"
+                 loading="lazy" decoding="async" />
+            <figcaption class="muted xsmall">Fig. 3 — Short caption.</figcaption>
+          </figure>
+        </article>
+  
+        <article class="finding finding-row hidden">
+          <div class="finding-text">
+            <h3 class="h5">Finding 4</h3>
+            <p class="muted small">Key diagnostic or anomaly captured here.</p>
           </div>
-    
-          <div class="finding finding-row hidden">
-            <div class="finding-text">
-              <h3 class="h5">Finding 5</h3>
-              <p class="muted small">Short description to anchor the plot.</p>
-            </div>
-            <figure class="finding-visual">
-              <img src="https://proofx.org/assets/finding5.png" alt="Finding 5 visualization"
-                  loading="lazy" decoding="async" />
-              <figcaption class="muted xsmall">Fig. 5 — Short caption.</figcaption>
-            </figure>
+          <figure class="finding-visual">
+            <img src="https://proofx.org/assets/finding4.png" 
+                 alt="Visualization of anomaly diagnostic"
+                 loading="lazy" decoding="async" />
+            <figcaption class="muted xsmall">Fig. 4 — Short caption.</figcaption>
+          </figure>
+        </article>
+  
+        <article class="finding finding-row hidden">
+          <div class="finding-text">
+            <h3 class="h5">Finding 5</h3>
+            <p class="muted small">Short description to anchor the plot.</p>
           </div>
-        </div>
+          <figure class="finding-visual">
+            <img src="https://proofx.org/assets/finding5.png" 
+                 alt="Visualization of supporting diagnostic output"
+                 loading="lazy" decoding="async" />
+            <figcaption class="muted xsmall">Fig. 5 — Short caption.</figcaption>
+          </figure>
+        </article>
       </div>
-    </section>
-
   
       <!-- Controls -->
       <div class="btn-row" role="group" aria-label="Findings controls">
         <button id="findings-show-more" class="btn btn--white btn--pill"
-                aria-controls="findings-grid" aria-expanded="false"
-                aria-label="Show additional findings">Show more</button>
+                aria-controls="findings-grid" aria-expanded="false">
+          Show more
+        </button>
         <button id="findings-show-less" class="btn btn--blue btn--pill hidden"
-                aria-controls="findings-grid" aria-expanded="false"
-                aria-label="Hide some findings">Show less</button>
+                aria-controls="findings-grid" aria-expanded="false">
+          Show less
+        </button>
       </div>
       <div id="findings-live" class="sr-only" aria-live="polite"></div>
     </div>
@@ -819,7 +821,7 @@
     #findings .finding-text  { flex:1 1 280px; min-width:240px; }
     #findings .finding-visual{ flex:2 1 520px; min-width:300px; margin:0; }
   
-    /* Images: responsive + stable aspect (avoid CLS) */
+    /* Images */
     #findings .findings__img,
     #findings .finding-visual img { 
       width:100%; height:auto; display:block; 
@@ -831,7 +833,7 @@
     #findings figcaption { margin-top:.5rem; display:block; }
     #findings .xsmall { font-size:.85rem; opacity:.8; }
   
-    /* Grid wrapper just stacks rows; .hidden controls visibility */
+    /* Grid wrapper */
     #findings .findings__grid { display:grid; gap:1rem; }
   
     /* Primary finding highlight */
@@ -850,58 +852,59 @@
   
   <!-- Script -->
   <script>
-    (function () {
-      const grid = document.getElementById('findings-grid');
-      const items = Array.from(grid.querySelectorAll('.finding'));
-      const btnMore = document.getElementById('findings-show-more');
-      const btnLess = document.getElementById('findings-show-less');
-      const live = document.getElementById('findings-live');
+  (function () {
+    const grid = document.getElementById('findings-grid');
+    const items = Array.from(grid.querySelectorAll('.finding'));
+    const btnMore = document.getElementById('findings-show-more');
+    const btnLess = document.getElementById('findings-show-less');
+    const live = document.getElementById('findings-live');
   
-      // Initial: show primary + first secondary
-      items.forEach((el, i) => el.classList.toggle('hidden', i > 1));
+    // Initial: show primary + first secondary
+    items.forEach((el, i) => el.classList.toggle('hidden', i > 1));
   
-      const countVisible = () => items.filter(i => !i.classList.contains('hidden')).length;
+    const getVisibleItems = () => items.filter(i => !i.classList.contains('hidden'));
   
-      function updateUI() {
-        const count = countVisible();
-        const allVisible = count >= items.length;
+    function updateUI() {
+      const visibleCount = getVisibleItems().length;
+      const allVisible = visibleCount >= items.length;
   
-        btnMore.classList.toggle('hidden', allVisible);
-        btnMore.setAttribute('aria-expanded', String(allVisible));
+      btnMore.classList.toggle('hidden', allVisible);
+      btnMore.setAttribute('aria-expanded', String(!allVisible));
   
-        btnLess.classList.toggle('hidden', count < 3);
-        btnLess.setAttribute('aria-expanded', String(count >= 3));
+      btnLess.classList.toggle('hidden', visibleCount <= 2);
+      btnLess.setAttribute('aria-expanded', String(visibleCount > 2));
   
-        live.textContent = `Showing ${count} ${count === 1 ? 'finding' : 'findings'} in the gallery.`;
+      live.textContent = `Showing ${visibleCount} ${visibleCount === 1 ? 'finding' : 'findings'} in the gallery.`;
+    }
+  
+    btnMore.addEventListener('click', () => {
+      const next = items.find(i => i.classList.contains('hidden'));
+      if (next) {
+        next.classList.remove('hidden');
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
       }
-  
-      btnMore.addEventListener('click', () => {
-        const next = items.find(i => i.classList.contains('hidden'));
-        if (next) {
-          next.classList.remove('hidden');
-          if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          }
-        }
-        updateUI();
-      });
-  
-      btnLess.addEventListener('click', () => {
-        const visibles = items.filter(i => !i.classList.contains('hidden'));
-        if (visibles.length > 2) {
-          const last = visibles.pop();
-          last.classList.add('hidden');
-          const focusTarget = visibles[visibles.length - 1];
-          if (focusTarget && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            focusTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          }
-        }
-        updateUI();
-      });
-  
       updateUI();
-    })();
+    });
+  
+    btnLess.addEventListener('click', () => {
+      const visibles = getVisibleItems();
+      if (visibles.length > 2) {
+        const last = visibles.pop();
+        last.classList.add('hidden');
+        const focusTarget = visibles[visibles.length - 1];
+        if (focusTarget && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          focusTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }
+      updateUI();
+    });
+  
+    updateUI();
+  })();
   </script>
+
 
 
     <!-- =================================== FAQ ============================ -->
