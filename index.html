@@ -905,7 +905,120 @@
   })();
   </script>
 
-
+  <!-- ============================ CASE STUDIES ============================ -->
+    <section id="case-studies" class="section" aria-labelledby="case-studies-title">
+      <div class="container card">
+        <h2 id="case-studies-title">Case Studies</h2>
+        <p class="muted">Real-world applications and validation of ProofX engines across research and operational settings.</p>
+    
+        <div id="case-studies-grid" class="findings__grid" aria-label="Case Studies gallery">
+          <!-- Example Case Study -->
+          <article class="finding">
+            <div class="finding-text">
+              <h3 class="h5">CollatzX in High-Performance Computing</h3>
+              <p class="muted small">
+                Demonstrated scalable verification of sequences up to 10^12 with full reproducibility on HPC clusters.
+              </p>
+              <a class="btn btn--pill btn--white small" href="/assets/case-collatzx.pdf" download>
+                Download Case Study (PDF)
+              </a>
+            </div>
+            <figure class="finding-visual">
+              <img src="assets/case-collatzx.png" 
+                   alt="CollatzX HPC results visualization"
+                   loading="lazy" decoding="async" />
+              <figcaption class="muted xsmall">Fig. 1 — Performance scaling and sequence verification results.</figcaption>
+            </figure>
+          </article>
+    
+          <article class="finding hidden">
+            <div class="finding-text">
+              <h3 class="h5">RiemannX Statistical Validation</h3>
+              <p class="muted small">
+                Applied to first 10,000 zeros of ζ(s), confirming GUE conformity and highlighting performance gains over classical simulations.
+              </p>
+              <a class="btn btn--pill btn--white small" href="/assets/case-riemannx.pdf" download>
+                Download Case Study (PDF)
+              </a>
+            </div>
+            <figure class="finding-visual">
+              <img src="assets/case-riemannx.png" 
+                   alt="RiemannX zero statistics visualization"
+                   loading="lazy" decoding="async" />
+              <figcaption class="muted xsmall">Fig. 2 — Statistical validation charts.</figcaption>
+            </figure>
+          </article>
+    
+          <!-- Add more case studies as needed -->
+        </div>
+    
+        <div class="btn-row" role="group" aria-label="Case Studies controls">
+          <button id="case-studies-show-more" class="btn btn--white btn--pill"
+                  aria-controls="case-studies-grid" aria-expanded="false">
+            Show more
+          </button>
+          <button id="case-studies-show-less" class="btn btn--blue btn--pill hidden"
+                  aria-controls="case-studies-grid" aria-expanded="true">
+            Show less
+          </button>
+        </div>
+        <div id="case-studies-live" class="sr-only" aria-live="polite"></div>
+      </div>
+    </section>
+    
+    <!-- Optional JS for expanding/collapsing case studies -->
+    <script>
+    (function () {
+      const grid = document.getElementById('case-studies-grid');
+      const items = Array.from(grid.querySelectorAll('.finding'));
+      const btnMore = document.getElementById('case-studies-show-more');
+      const btnLess = document.getElementById('case-studies-show-less');
+      const live = document.getElementById('case-studies-live');
+    
+      items.forEach((el, i) => el.classList.toggle('hidden', i > 0));
+    
+      const getVisibleItems = () => items.filter(i => !i.classList.contains('hidden'));
+    
+      function updateUI() {
+        const visibleCount = getVisibleItems().length;
+        const allVisible = visibleCount >= items.length;
+    
+        btnMore.classList.toggle('hidden', allVisible);
+        btnMore.setAttribute('aria-expanded', String(!allVisible));
+    
+        btnLess.classList.toggle('hidden', visibleCount <= 1);
+        btnLess.setAttribute('aria-expanded', String(visibleCount > 1));
+    
+        live.textContent = `Showing ${visibleCount} ${visibleCount === 1 ? 'case study' : 'case studies'} in the gallery.`;
+      }
+    
+      btnMore.addEventListener('click', () => {
+        const next = items.find(i => i.classList.contains('hidden'));
+        if (next) {
+          next.classList.remove('hidden');
+          if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        }
+        updateUI();
+      });
+    
+      btnLess.addEventListener('click', () => {
+        const visibles = getVisibleItems();
+        if (visibles.length > 1) {
+          const last = visibles.pop();
+          last.classList.add('hidden');
+          const focusTarget = visibles[visibles.length - 1];
+          if (focusTarget && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            focusTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          }
+        }
+        updateUI();
+      });
+    
+      updateUI();
+    })();
+    </script>
 
     <!-- =================================== FAQ ============================ -->
     <section id="faq" class="section" aria-labelledby="faq-title">
