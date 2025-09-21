@@ -325,6 +325,88 @@ a:hover { color: var(--accent-2); }
 }
 .engine__link:hover { color: var(--accent-2); gap: var(--space-sm); }
 
+/* ------------------------ Findings ------------------------ */
+/* Findings Layout */
+#findings .findings__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+#findings .finding {
+  background: var(--surface-2, #111820);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+#findings .finding:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
+/* Finding text */
+#findings .finding h3 {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--accent, #4cc9f0);
+}
+#findings .finding p {
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+  color: var(--muted, #aaa);
+}
+
+/* Images */
+#findings .finding-visual img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+#findings .finding:hover .finding-visual img {
+  transform: scale(1.02);
+}
+
+/* Captions */
+#findings figcaption {
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+  color: #888;
+  font-style: italic;
+}
+
+/* Primary finding highlight */
+#findings .finding.primary {
+  grid-column: 1 / -1; /* span full width */
+  background: linear-gradient(135deg, #1a1f2e, #111820);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Controls */
+#findings .btn-row {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+#findings .btn {
+  font-size: 0.9rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 9999px;
+  transition: all 0.2s ease;
+}
+#findings .btn--white {
+  background: #fff;
+  color: #000;
+}
+#findings .btn--blue {
+  background: #4cc9f0;
+  color: #000;
+}
+
 /* ------------------------ Founder ------------------------ */
 /* Works with or without a right-hand aside; overrides .card defaults cleanly */
 .founder.card--row { display: grid; grid-template-columns: 1fr; gap: var(--space-xl); }
