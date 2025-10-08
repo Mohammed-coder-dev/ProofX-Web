@@ -646,20 +646,6 @@
       </div>
     </section>
 
-    <!-- ============================== DOSSIER (methods) ==================== -->
-    <section id="dossier" class="section" aria-labelledby="dossier-title">
-      <div class="container card">
-        <p class="kicker">Methods</p>
-        <h2 id="dossier-title">Partial Solution Dossier — formal statements & checks</h2>
-        <ul class="bullets bullets--tight">
-          <li><strong>Parity-Block Descent (Theorem A):</strong> descent when even-step dominance exceeds log₂3.</li>
-          <li><strong>Bounded-Excursion Contraction (Prop. B):</strong> recurring contracting blocks imply exponential envelope.</li>
-          <li><strong>Structured Residues (Lemma C):</strong> instant-descent families with short even cascades.</li>
-        </ul>
-        <p class="muted small">Reproducibility capsule: parity extraction → window tests → certificate export. Forthcoming formal publication.</p>
-      </div>
-    </section>
-
   <!-- ================================ FINDINGS ============================ -->
   <section id="findings" class="section" aria-labelledby="findings-title">
     <div class="container card">
@@ -871,226 +857,218 @@
   })();
   </script>
 
-    <!-- ============================ CASE STUDIES ============================ -->
-    <section id="case-studies" class="section" aria-labelledby="case-studies-title">
-      <div class="container">
-        <h2 id="case-studies-title">Case Studies</h2>
-        <p class="muted">Real-world applications of ProofX engines driving measurable impact.</p>
-    
-        <div class="case-studies__grid" style="display:grid; gap:1.5rem; grid-template-columns:repeat(auto-fit,minmax(300px,1fr));">
-          
-          <article class="case-study card">
-            <h3>Optimizing User Onboarding</h3>
-            <dl>
-              <dt>Problem</dt>
-              <dd>High drop-off during the first week of app use.</dd>
-    
-              <dt>Approach</dt>
-              <dd>Implemented guided tutorials, streamlined signup, and personalized notifications.</dd>
-    
-              <dt>Outcome</dt>
-              <dd>
-                <ul>
-                  <li>First-week churn reduced by <strong>40%</strong></li>
-                  <li>User retention increased by <strong>25%</strong></li>
-                </ul>
-              </dd>
-            </dl>
-          </article>
-    
-          <article class="case-study card">
-            <h3>Scaling Backend Infrastructure</h3>
-            <dl>
-              <dt>Problem</dt>
-              <dd>Server crashes under high traffic during launch events.</dd>
-    
-              <dt>Approach</dt>
-              <dd>Migrated to cloud auto-scaling architecture and optimized DB queries.</dd>
-    
-              <dt>Outcome</dt>
-              <dd>
-                <ul>
-                  <li>99.99% uptime during peak traffic</li>
-                  <li>Response time improved by <strong>60%</strong></li>
-                </ul>
-              </dd>
-            </dl>
-          </article>
-    
-          <article class="case-study card">
-            <h3>Conversion Rate Improvement</h3>
-            <dl>
-              <dt>Problem</dt>
-              <dd>Low conversion on checkout page despite high traffic.</dd>
-    
-              <dt>Approach</dt>
-              <dd>A/B tested checkout flows, reduced form fields, added trust badges.</dd>
-    
-              <dt>Outcome</dt>
-              <dd>
-                <ul>
-                  <li>Conversion rate +<strong>35%</strong></li>
-                  <li>Additional ~$150K monthly revenue</li>
-                </ul>
-              </dd>
-            </dl>
-          </article>
-    
-          <article class="case-study card">
-            <h3>Streamlining Customer Support</h3>
-            <dl>
-              <dt>Problem</dt>
-              <dd>Backlogged support tickets caused slow response times.</dd>
-    
-              <dt>Approach</dt>
-              <dd>AI-assisted routing, standardized FAQs, live chat automation.</dd>
-    
-              <dt>Outcome</dt>
-              <dd>
-                <ul>
-                  <li>Average ticket resolution time down <strong>50%</strong></li>
-                  <li>Customer satisfaction rose to <strong>92%</strong></li>
-                </ul>
-              </dd>
-            </dl>
-          </article>
-    
-          <article class="case-study card">
-            <h3>Product Feature Validation</h3>
-            <dl>
-              <dt>Problem</dt>
-              <dd>Uncertainty on which feature resonates with users.</dd>
-    
-              <dt>Approach</dt>
-              <dd>Rapid prototyping with small cohort, structured feedback collection.</dd>
-    
-              <dt>Outcome</dt>
-              <dd>
-                <ul>
-                  <li>Feature adoption <strong>70%</strong> in first month</li>
-                  <li>Exceeded engagement expectations</li>
-                </ul>
-              </dd>
-            </dl>
-          </article>
-    
-        </div>
+  <!-- =================================== FAQ ============================ -->
+  <section id="faq" class="section" aria-labelledby="faq-title">
+    <div class="container">
+      <h2 id="faq-title">Frequently Asked Questions</h2>
+  
+      <div id="faq-list">
+        <!-- Technical Foundation -->
+        <details class="card faq__item">
+          <summary class="faq__q">
+            How does ProofX ensure determinism and traceability?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </summary>
+          <p>ProofX portfolios are seeded, versioned, and replayable with byte-for-byte manifests. Every computation is fully reproducible across environments with guaranteed identical results.</p>
+        </details>
+  
+        <!-- Business Model Transparency -->
+        <details class="card faq__item">
+          <summary class="faq__q">
+            What is ProofX's business model and revenue strategy?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </summary>
+          <p><strong>Current Status:</strong> ProofX operates as an open-source non-profit research organization. <strong>Future Plans:</strong> We're exploring patent licensing for novel verification algorithms and enterprise support contracts for research institutions. All core verification engines will remain open source, with potential commercial licensing for specialized enterprise features.</p>
+        </details>
+  
+        <!-- Source Code Availability -->
+        <details class="card faq__item">
+          <summary class="faq__q">
+            When will the source code be publicly available?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </summary>
+          <p><strong>Immediate Access:</strong> Basic verification frameworks and research tools are available now. <strong>Advanced Engines:</strong> Core conjecture engines (CollatzX, RiemannX, etc.) are undergoing patent review and will be released under open-source licenses once intellectual property protection is secured (estimated Q4 2024). We're committed to open research while protecting novel algorithmic innovations.</p>
+        </details>
+  
+        <!-- Intellectual Property Strategy -->
+        <details class="card faq__item">
+          <summary class="faq__q">
+            What is ProofX's approach to patents and intellectual property?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </summary>
+          <p>We're pursuing patents only for truly novel verification algorithms and architectures, not mathematical concepts themselves. Our patent strategy focuses on protecting specific computational innovations that enable faster, more reliable conjecture verification. All patented technologies will be available under fair-use research licenses, with commercial licensing reserved for enterprise applications.</p>
+        </details>
+  
+        <!-- Reliability & Competitive Advantage -->
+        <details class="card faq__item">
+          <summary class="faq__q">
+            What is ProofX's competitive advantage and reliability moat?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </summary>
+          <p>ProofX builds compounding corpora of runs and counterexamples that improve priors and are hard to replicate. Our deterministic verification architecture creates a reliability moat through: extensive validation datasets, performance-optimized algorithms, and community-tested verification pipelines that become more valuable with each use.</p>
+        </details>
+  
+        <!-- Organization Structure -->
+        <details class="card faq__item">
+          <summary class="faq__q">
+            Is ProofX a SaaS company or traditional startup?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </summary>
+          <p>No. ProofX is structured as an open-source non-profit research organization, focused on research partnerships and operator deployments rather than traditional SaaS revenue. We prioritize scientific advancement over commercial growth, with funding from research grants, institutional partnerships, and potential future licensing of patented verification technologies.</p>
+        </details>
+  
+        <!-- Deployment & Security -->
+        <details class="card faq__item">
+          <summary class="faq__q">
+            What is ProofX's deployment and security posture?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </summary>
+          <p>We use containers, pinned builds, and strict retention modes to ensure security and reproducibility. Our deployment architecture supports private cloud, on-prem, and air-gapped environments for sensitive research applications, with comprehensive audit trails and verification certificates for all computations.</p>
+        </details>
+  
+        <!-- Performance & Evidence -->
+        <details class="card faq__item">
+          <summary class="faq__q">
+            How does ProofX minimize time-to-evidence in verification?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </summary>
+          <p>Through entropy-aware scheduling and replay manifests, ProofX optimizes verification workflows to deliver statistical evidence faster. Our systems prioritize high-value computations and use predictive analytics to focus resources on the most promising verification paths.</p>
+        </details>
+  
+        <!-- Verification Guarantees -->
+        <details class="card faq__item">
+          <summary class="faq__q">
+            What guarantees does ProofX provide for verification results?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </summary>
+          <p>Manifested seeds, routes, and configs guarantee byte-identical runs across environments. We provide statistical confidence intervals for probabilistic verifications and formal verification certificates for deterministic proofs. All results include comprehensive audit trails and reproducibility guarantees.</p>
+        </details>
+  
+        <!-- Research Validation -->
+        <details class="card faq__item">
+          <summary class="faq__q">
+            How are ProofX's verification results validated by the research community?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </summary>
+          <p>All verification engines undergo peer review through academic collaborations and research partnerships. We publish verification methodologies, datasets, and reproducibility frameworks to enable independent validation. Our open-source approach allows the research community to audit, improve, and extend our verification systems.</p>
+        </details>
+  
+        <!-- Funding & Sustainability -->
+        <details class="card faq__item">
+          <summary class="faq__q">
+            How is ProofX funded and what is the long-term sustainability plan?
+            <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </summary>
+          <p><strong>Current Funding:</strong> Bootstrapped development with potential research grants and institutional partnerships. <strong>Sustainability Model:</strong> Long-term sustainability through patent licensing revenues, enterprise support contracts, and research consortium memberships. We maintain our open-source commitment while developing sustainable funding models that align with our research mission.</p>
+        </details>
       </div>
-    </section>
-
-
-    <!-- =================================== FAQ ============================ -->
-    <section id="faq" class="section" aria-labelledby="faq-title">
-      <div class="container">
-        <h2 id="faq-title">FAQ</h2>
-
-        <div id="faq-list">
-          <details class="card faq__item">
-            <summary class="faq__q">
-              How does ProofX ensure determinism and traceability?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </summary>
-            <p>ProofX portfolios are seeded, versioned, and replayable with byte-for-byte manifests.</p>
-          </details>
-
-          <details class="card faq__item">
-            <summary class="faq__q">
-              What is the reliability moat?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </summary>
-            <p>ProofX builds compounding corpora of runs and counterexamples that improve priors and are hard to replicate.</p>
-          </details>
-
-          <details class="card faq__item">
-            <summary class="faq__q">
-              Is ProofX a SaaS?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </summary>
-            <p>No. ProofX is an open-source non-profit, structured around research partnerships and operator deployments.</p>
-          </details>
-
-          <details class="card faq__item hidden">
-            <summary class="faq__q">
-              Deployment posture?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </summary>
-            <p>Containers, pinned builds, strict retention modes.</p>
-          </details>
-
-          <details class="card faq__item hidden">
-            <summary class="faq__q">
-              How does ProofX minimize time-to-evidence?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </summary>
-            <p>Entropy-aware scheduling and replay manifests.</p>
-          </details>
-
-          <details class="card faq__item hidden">
-            <summary class="faq__q">
-              What does replay guarantee?
-              <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
-                <path class="h" d="M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-            </summary>
-            <p>Manifested seeds, routes, and configs guarantee byte-identical runs across environments.</p>
-          </details>
-        </div>
-
-        <div class="btn-row" role="group" aria-label="FAQ controls">
-          <button id="faq-show-more" class="btn btn--white btn--pill" aria-controls="faq-list" aria-expanded="false">Show more</button>
-          <button id="faq-show-less" class="btn btn--blue btn--pill hidden" aria-controls="faq-list" aria-expanded="true">Show less</button>
-        </div>
-        <div id="faq-live" class="sr-only" aria-live="polite"></div>
+  
+      <div class="btn-row" role="group" aria-label="FAQ controls">
+        <button id="faq-show-more" class="btn btn--white btn--pill" aria-controls="faq-list" aria-expanded="false">Show more questions</button>
+        <button id="faq-show-less" class="btn btn--blue btn--pill hidden" aria-controls="faq-list" aria-expanded="true">Show fewer questions</button>
       </div>
-    </section>
-
-    <!-- FAQ icon/marker fixes (scoped) -->
-    <style>
-      /* --- Nuke ALL native and theme-injected markers/icons --- */
-      #faq details > summary::-webkit-details-marker { display: none !important; }
-      #faq details > summary::marker { content: "" !important; }
-      #faq details > summary { list-style: none !important; }
-      #faq .faq__q::before,
-      #faq .faq__q::after { content: none !important; }
-
-      /* --- Layout: text left, single SVG icon top-right --- */
-      #faq .faq__q {
-        position: relative;
-        display: block;
-        padding-right: 36px;           /* space for icon */
-        cursor: pointer;
-      }
-      #faq .faq__icon {
-        position: absolute;
-        right: 12px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 24px; height: 24px;
-        pointer-events: none;          /* keep whole summary clickable */
-      }
-
-      /* --- Animation: plus → minus by hiding vertical stroke --- */
-      #faq .faq__icon .h,
-      #faq .faq__icon .v { transition: opacity .15s ease; }
-      #faq details[open] .faq__icon .v { opacity: 0; }
-    </style>
-
+      <div id="faq-live" class="sr-only" aria-live="polite"></div>
+    </div>
+  </section>
+  
+  <!-- FAQ icon/marker fixes (scoped) -->
+  <style>
+    /* --- Nuke ALL native and theme-injected markers/icons --- */
+    #faq details > summary::-webkit-details-marker { display: none !important; }
+    #faq details > summary::marker { content: "" !important; }
+    #faq details > summary { list-style: none !important; }
+    #faq .faq__q::before,
+    #faq .faq__q::after { content: none !important; }
+  
+    /* --- Layout: text left, single SVG icon top-right --- */
+    #faq .faq__q {
+      position: relative;
+      display: block;
+      padding-right: 36px;           /* space for icon */
+      cursor: pointer;
+      font-weight: 600;
+    }
+    #faq .faq__icon {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px; height: 24px;
+      pointer-events: none;          /* keep whole summary clickable */
+    }
+  
+    /* --- Animation: plus → minus by hiding vertical stroke --- */
+    #faq .faq__icon .h,
+    #faq .faq__icon .v { transition: opacity .15s ease; }
+    #faq details[open] .faq__icon .v { opacity: 0; }
+  
+    /* Enhanced FAQ styling */
+    #faq .faq__item {
+      margin-bottom: 1rem;
+      border: 1px solid #e1e5e9;
+      border-radius: 8px;
+      transition: border-color 0.2s ease;
+    }
+    
+    #faq .faq__item:hover {
+      border-color: #007acc;
+    }
+    
+    #faq .faq__item[open] {
+      border-color: #007acc;
+      box-shadow: 0 2px 8px rgba(0, 122, 204, 0.1);
+    }
+    
+    #faq .faq__q {
+      padding: 1.25rem;
+      font-size: 1.1rem;
+      color: #1a365d;
+    }
+    
+    #faq .faq__item p {
+      padding: 0 1.25rem 1.25rem;
+      margin: 0;
+      line-height: 1.6;
+      color: #4a5568;
+    }
+    
+    #faq .faq__item strong {
+      color: #2d3748;
+    }
+  </style>
 
 
 
@@ -1099,12 +1077,12 @@
       <div class="container card card--row founder">
         <div class="founder__bio">
           <p class="kicker">Founder</p>
-          <h2 id="founder-title">Alkindi — Founder & Chief Architect</h2>
+          <h2 id="founder-title">Alkindi — Founder & CEO</h2>
           <p class="muted">
-            Founder of ProofX, architect of multi-engine verification platforms uniting symbolic AI, number theory, and operator-grade observability. Builder of 200k+ LOC lab-grade systems with measurable impact.
+            Founder of ProofX, architect of multi-engine verification platforms uniting number theory and operator-grade observability. Builder of 100k+ Python LOC lab-grade systems with measurable impact.
           </p>
           <ul class="bullets">
-            <li>Creator of ProofX and CollatzX — research-grade verification engines.</li>
+            <li>Creator of ProofX — research-grade verification engines.</li>
             <li>Cross-disciplinary architecture spanning logic, topology, quantum methods.</li>
             <li>Principles anchored in reproducibility, provenance, and operator trust.</li>
           </ul>
