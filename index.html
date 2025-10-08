@@ -830,32 +830,36 @@
     }
   
     btnMore.addEventListener('click', () => {
-      const next = items.find(i => i.classList.contains('hidden'));
-      if (next) {
-        next.classList.remove('hidden');
-        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          next.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
+      // Show next 3 hidden items
+      const hiddenItems = items.filter(i => i.classList.contains('hidden'));
+      hiddenItems.slice(0, 3).forEach(item => item.classList.remove('hidden'));
+  
+      // Scroll to first newly shown item
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        hiddenItems[0]?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
+  
       updateUI();
     });
   
     btnLess.addEventListener('click', () => {
       const visibles = getVisibleItems();
-      if (visibles.length > 2) {
-        const last = visibles.pop();
-        last.classList.add('hidden');
-        const focusTarget = visibles[visibles.length - 1];
-        if (focusTarget && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          focusTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        }
+      // Hide last 3 visible items, but always keep at least 2
+      const toHide = visibles.slice(-3).filter((_, idx) => visibles.length - idx - 1 > 1);
+      toHide.forEach(item => item.classList.add('hidden'));
+  
+      const focusTarget = getVisibleItems().slice(-1)[0];
+      if (focusTarget && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        focusTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
+  
       updateUI();
     });
   
     updateUI();
   })();
   </script>
+
 
   <!-- =================================== FAQ ============================ -->
   <section id="faq" class="section" aria-labelledby="faq-title">
