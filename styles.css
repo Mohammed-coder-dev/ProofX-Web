@@ -330,91 +330,84 @@ a:hover { color: var(--accent-2); }
 /* Findings Layout */
 #findings .findings__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-  gap: var(--space-lg, 1.5rem);
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: var(--space-xl, 2rem);
   margin-top: var(--space-xl, 2rem);
 }
 
 #findings .finding {
-  background: var(--bg-3, #11121a);
-  border: 1px solid var(--bd-1, #2a2b30);
-  border-radius: var(--radius-xl, 1rem);
-  padding: var(--space-lg, 1.5rem);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-  transition: all var(--t, 0.3s ease);
-  position: relative;
-  overflow: hidden;
-}
-#findings .finding::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent-1, #a3e6ff), var(--accent-2, #5fd3ff));
-  opacity: 0;
-  transition: opacity var(--t-fast, 0.15s ease);
-}
-#findings .finding:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.4);
-  border-color: var(--accent-glow, rgba(163, 230, 255, 0.3));
-}
-#findings .finding:hover::before {
-  opacity: 1;
+  background: var(--bg-card, #0e0f11);
+  border: 1px solid var(--bd-2, #191a1f);
+  border-radius: var(--radius-lg, 1rem);
+  padding: var(--space-xl, 1.5rem);
+  box-shadow: var(--shadow-md, 0 6px 18px rgba(0,0,0,0.18));
+  transition: transform var(--t, 0.25s ease), box-shadow var(--t, 0.25s ease);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-/* Finding text */
+#findings .finding:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg, 0 12px 28px rgba(0,0,0,0.25));
+  border-color: var(--bd-1, #2a2b30);
+}
+
+/* Finding content - symmetric layout */
+#findings .finding-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg, 1.5rem);
+  align-items: start;
+  flex: 1;
+}
+
+#findings .finding-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
 #findings .finding h3 {
   font-weight: var(--fw-semibold, 600);
   margin-bottom: var(--space-sm, 0.75rem);
-  color: var(--accent-2, #5fd3ff);
-  font-size: 1.2rem;
-}
-#findings .finding p {
-  margin-bottom: var(--space-md, 1rem);
-  line-height: 1.6;
-  color: var(--fg-2, #c7cddd);
+  color: var(--accent-1, #a3e6ff);
+  font-size: 1.1rem;
 }
 
-/* Images */
-#findings .finding-visual {
-  margin-top: var(--space-md, 1rem);
-  border-radius: var(--radius-md, 0.5rem);
-  overflow: hidden;
-  background: var(--bg-2, #0a0a14);
-  padding: var(--space-sm, 0.75rem);
+#findings .finding p {
+  margin-bottom: 0;
+  line-height: 1.5;
+  color: var(--fg-3, #9aa3b5);
+  flex: 1;
 }
+
+/* Images - symmetric sizing */
+#findings .finding-visual {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
 #findings .finding-visual img {
   width: 100%;
-  height: auto;
-  border-radius: var(--radius-sm, 0.375rem);
+  height: 160px; /* Fixed height for symmetry */
   object-fit: cover;
-  transition: transform var(--t-slow, 0.35s ease);
-}
-#findings .finding:hover .finding-visual img {
-  transform: scale(1.05);
+  border-radius: var(--radius-md, 0.5rem);
+  transition: transform var(--t, 0.3s ease);
 }
 
-/* Captions */
+#findings .finding:hover .finding-visual img {
+  transform: scale(1.03);
+}
+
+/* Captions - consistent placement */
 #findings figcaption {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   margin-top: var(--space-sm, 0.75rem);
   color: var(--fg-muted, #7b8497);
   font-style: italic;
   text-align: center;
-  padding: var(--space-xs, 0.5rem);
-  background: var(--bg-2, #0a0a14);
-  border-radius: var(--radius-sm, 0.375rem);
-}
-
-/* Primary finding highlight */
-#findings .finding.primary {
-  grid-column: 1 / -1;
-  background: linear-gradient(135deg, var(--bg-3, #11121a), var(--bg-elev, #1a1b1e));
-  border: 1px solid var(--accent-glow, rgba(163, 230, 255, 0.2));
-  box-shadow: 0 12px 32px rgba(0,0,0,0.45);
 }
 
 /* Controls */
@@ -425,31 +418,34 @@ a:hover { color: var(--accent-2); }
   justify-content: center;
   flex-wrap: wrap;
 }
+
 #findings .btn {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   padding: var(--space-md, 1rem) var(--space-lg, 1.5rem);
   border-radius: var(--radius-full, 9999px);
   transition: all var(--t, 0.25s ease);
-  font-weight: var(--fw-medium, 500);
 }
+
 #findings .btn--white {
-  background: var(--bg-1, #ffffff);
-  color: var(--fg-1, #0b0c0f);
-  border: 1px solid var(--bd-1, #2a2b30);
+  background: #fff;
+  color: #000;
 }
-#findings .btn--white:hover {
-  background: var(--accent-1, #a3e6ff);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px var(--accent-glow, rgba(163, 230, 255, 0.3));
-}
+
 #findings .btn--blue {
-  background: linear-gradient(135deg, var(--accent-1, #a3e6ff), var(--accent-2, #5fd3ff));
-  color: #001018;
-  border: none;
+  background: #4cc9f0;
+  color: #000;
 }
-#findings .btn--blue:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px var(--accent-glow, rgba(163, 230, 255, 0.4));
+
+/* Responsive: stack on mobile */
+@media (max-width: 768px) {
+  #findings .finding-content {
+    grid-template-columns: 1fr;
+    gap: var(--space-md, 1rem);
+  }
+  
+  #findings .finding-visual img {
+    height: 140px;
+  }
 }
 
 /* ------------------------ Founder ------------------------ */
