@@ -646,220 +646,196 @@
       </div>
     </section>
 
-  <!-- ================================ FINDINGS ============================ -->
-  <section id="findings" class="section" aria-labelledby="findings-title">
-    <div class="container card">
-      <h2 id="findings-title">Findings</h2>
-      <p class="muted">Representative outputs and core diagnostics from ProofX engines.</p>
-  
-      <!-- Findings Grid -->
-      <div id="findings-grid" class="findings__grid" aria-label="Findings gallery">
-  
-        <!-- Primary Finding -->
-        <article class="finding finding-row primary">
-          <div class="finding-text">
-            <h3 class="h4">CollatzX Trajectory</h3>
-            <p class="muted small">
-              Most starting values collapse quickly, but rare outliers stretch sequence lengths.
-              The red point marks the maximum observed length; reproducibility demonstrates the
-              engine's anomaly-detection rigor.
-            </p>
-            <a class="btn btn--pill btn--white small" 
-               href="assets/collatz_plot.png" download>
-              Download figure (PNG)
-            </a>
-          </div>
-  
-          <figure class="finding-visual">
-            <picture>
-              <source srcset="https://proofx.org/assets/collatz_plot.webp" type="image/webp">
-              <img
-                class="findings__img"
-                src="assets/collatz_plot.png"
-                alt="CollatzX trajectory: sequence length vs. starting value (log scale); red point marks the maximum."
-                loading="eager"
-                fetchpriority="high"
-                decoding="async"
-              />
-            </picture>
-            <figcaption class="muted xsmall">
-              Fig. 1 — CollatzX trajectory visualization (log-scaled x-axis). Reproducible output with labeled outlier.
-            </figcaption>
-          </figure>
-        </article>
-  
-        <!-- Secondary Findings -->
-        <article class="finding finding-row">
-          <div class="finding-text">
-            <h3 class="h5">Finding 2</h3>
-            <p class="muted small">Brief note about what this visual demonstrates.</p>
-          </div>
-          <figure class="finding-visual">
-            <img src="assets/finding2.png" 
-                 alt="Visualization of secondary diagnostic output"
-                 loading="lazy" decoding="async" />
-            <figcaption class="muted xsmall">Fig. 2 — Short caption.</figcaption>
-          </figure>
-        </article>
-  
-        <article class="finding finding-row hidden">
-          <div class="finding-text">
-            <h3 class="h5">Finding 3</h3>
-            <p class="muted small">One-sentence takeaway for the reader.</p>
-          </div>
-          <figure class="finding-visual">
-            <img src="assets/finding3.png" 
-                 alt="Visualization of tertiary diagnostic output"
-                 loading="lazy" decoding="async" />
-            <figcaption class="muted xsmall">Fig. 3 — Short caption.</figcaption>
-          </figure>
-        </article>
-  
-        <article class="finding finding-row hidden">
-          <div class="finding-text">
-            <h3 class="h5">Finding 4</h3>
-            <p class="muted small">Key diagnostic or anomaly captured here.</p>
-          </div>
-          <figure class="finding-visual">
-            <img src="assets/finding4.png" 
-                 alt="Visualization of anomaly diagnostic"
-                 loading="lazy" decoding="async" />
-            <figcaption class="muted xsmall">Fig. 4 — Short caption.</figcaption>
-          </figure>
-        </article>
-  
-        <article class="finding finding-row hidden">
-          <div class="finding-text">
-            <h3 class="h5">Finding 5</h3>
-            <p class="muted small">Short description to anchor the plot.</p>
-          </div>
-          <figure class="finding-visual">
-            <img src="assets/finding5.png" 
-                 alt="Visualization of supporting diagnostic output"
-                 loading="lazy" decoding="async" />
-            <figcaption class="muted xsmall">Fig. 5 — Short caption.</figcaption>
-          </figure>
-        </article>
-      </div>
-  
-      <!-- Controls -->
-      <div class="btn-row" role="group" aria-label="Findings controls">
-        <button id="findings-show-more" class="btn btn--white btn--pill"
-                aria-controls="findings-grid" aria-expanded="false">
-          Show more
-        </button>
-        <button id="findings-show-less" class="btn btn--blue btn--pill hidden"
-                aria-controls="findings-grid" aria-expanded="false">
-          Show less
-        </button>
-      </div>
-      <div id="findings-live" class="sr-only" aria-live="polite"></div>
+<!-- ================================ FINDINGS ============================ -->
+<section id="findings" class="section" aria-labelledby="findings-title">
+  <div class="container card">
+    <h2 id="findings-title">Findings</h2>
+    <p class="muted">Representative outputs and core diagnostics from ProofX engines.</p>
+
+    <!-- Findings Grid -->
+    <div id="findings-grid" class="findings__grid" aria-label="Findings gallery">
+
+      <article class="finding finding-row">
+        <div class="finding-text">
+          <h3 class="h5">Finding 1</h3>
+          <p class="muted small">Most starting values collapse quickly, but rare outliers stretch sequence lengths.</p>
+        </div>
+        <figure class="finding-visual">
+          <img src="assets/finding1.png" 
+               alt="Visualization of first finding"
+               loading="lazy" decoding="async" />
+          <figcaption class="muted xsmall">Fig. 1 — Caption.</figcaption>
+        </figure>
+      </article>
+
+      <article class="finding finding-row">
+        <div class="finding-text">
+          <h3 class="h5">Finding 2</h3>
+          <p class="muted small">Brief note about what this visual demonstrates.</p>
+        </div>
+        <figure class="finding-visual">
+          <img src="assets/finding2.png" 
+               alt="Visualization of second finding"
+               loading="lazy" decoding="async" />
+          <figcaption class="muted xsmall">Fig. 2 — Caption.</figcaption>
+        </figure>
+      </article>
+
+      <article class="finding finding-row hidden">
+        <div class="finding-text">
+          <h3 class="h5">Finding 3</h3>
+          <p class="muted small">One-sentence takeaway for the reader.</p>
+        </div>
+        <figure class="finding-visual">
+          <img src="assets/finding3.png" 
+               alt="Visualization of third finding"
+               loading="lazy" decoding="async" />
+          <figcaption class="muted xsmall">Fig. 3 — Caption.</figcaption>
+        </figure>
+      </article>
+
+      <article class="finding finding-row hidden">
+        <div class="finding-text">
+          <h3 class="h5">Finding 4</h3>
+          <p class="muted small">Key diagnostic or anomaly captured here.</p>
+        </div>
+        <figure class="finding-visual">
+          <img src="assets/finding4.png" 
+               alt="Visualization of fourth finding"
+               loading="lazy" decoding="async" />
+          <figcaption class="muted xsmall">Fig. 4 — Caption.</figcaption>
+        </figure>
+      </article>
+
+      <article class="finding finding-row hidden">
+        <div class="finding-text">
+          <h3 class="h5">Finding 5</h3>
+          <p class="muted small">Short description to anchor the plot.</p>
+        </div>
+        <figure class="finding-visual">
+          <img src="assets/finding5.png" 
+               alt="Visualization of fifth finding"
+               loading="lazy" decoding="async" />
+          <figcaption class="muted xsmall">Fig. 5 — Caption.</figcaption>
+        </figure>
+      </article>
+
     </div>
-  </section>
-  
-  <!-- Scoped styles -->
-  <style>
-    #findings .findings__grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-  
-    #findings .finding-row {
-      display: flex;
-      flex-direction: column;
-      background: var(--surface-3, #fafafa);
-      border-radius: 1rem;
-      padding: 1rem;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.4s ease, transform 0.4s ease;
-    }
-    #findings .finding-row:not(.hidden) {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  
-    #findings .finding-text { margin-bottom: 0.5rem; }
-  
-    #findings .finding-visual {
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-      border-radius: 0.75rem;
-    }
-  
-    #findings .finding-visual img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-  
-    #findings figcaption {
-      margin-top: 0.5rem;
-      font-size: 0.85rem;
-      opacity: 0.8;
-    }
-  
-    #findings .btn-row { margin-top: 1rem; display: flex; gap: 0.75rem; }
-  
-    #findings .btn:hover,
-    #findings .btn:focus-visible {
-      filter: brightness(1.1);
-      transform: translateY(-1px);
-      transition: all 0.2s ease;
-    }
-  </style>
-  
-  <!-- Script -->
-  <script>
-  (function() {
-    const items = Array.from(document.querySelectorAll('#findings-grid .finding'));
-    const btnMore = document.getElementById('findings-show-more');
-    const btnLess = document.getElementById('findings-show-less');
-    const live = document.getElementById('findings-live');
-  
-    const INITIAL_VISIBLE = 3;
-    const STEP = 3;
-  
-    // Initial visibility
-    items.forEach((el, i) => el.classList.toggle('hidden', i >= INITIAL_VISIBLE));
-  
-    const getVisibleItems = () => items.filter(i => !i.classList.contains('hidden'));
-  
-    function updateUI() {
-      const visibleCount = getVisibleItems().length;
-      btnMore.classList.toggle('hidden', visibleCount >= items.length);
-      btnLess.classList.toggle('hidden', visibleCount <= INITIAL_VISIBLE);
-      live.textContent = `Showing ${visibleCount} ${visibleCount === 1 ? 'finding' : 'findings'} in the gallery.`;
-    }
-  
-    btnMore.addEventListener('click', () => {
-      const hiddenItems = items.filter(i => i.classList.contains('hidden'));
-      hiddenItems.slice(0, STEP).forEach(item => item.classList.remove('hidden'));
-      updateUI();
-      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        hiddenItems[0]?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
-    });
-  
-    btnLess.addEventListener('click', () => {
-      const visibles = getVisibleItems();
-      const toHide = visibles.slice(-STEP).filter((_, idx) => visibles.length - idx - 1 >= INITIAL_VISIBLE);
-      toHide.forEach(item => item.classList.add('hidden'));
-      updateUI();
-      const focusTarget = getVisibleItems().slice(-1)[0];
-      if (focusTarget && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        focusTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
-    });
-  
+
+    <!-- Controls -->
+    <div class="btn-row" role="group" aria-label="Findings controls">
+      <button id="findings-show-more" class="btn btn--white btn--pill"
+              aria-controls="findings-grid" aria-expanded="false">
+        Show more
+      </button>
+      <button id="findings-show-less" class="btn btn--blue btn--pill hidden"
+              aria-controls="findings-grid" aria-expanded="false">
+        Show less
+      </button>
+    </div>
+    <div id="findings-live" class="sr-only" aria-live="polite"></div>
+  </div>
+</section>
+
+<style>
+  #findings .findings__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  #findings .finding-row {
+    display: flex;
+    flex-direction: column;
+    background: var(--surface-3, #fafafa);
+    border-radius: 1rem;
+    padding: 1rem;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  #findings .finding-row:not(.hidden) {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  #findings .finding-text { margin-bottom: 0.5rem; }
+
+  #findings .finding-visual {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 0.75rem;
+  }
+
+  #findings .finding-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #findings figcaption {
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    opacity: 0.8;
+  }
+
+  #findings .btn-row { margin-top: 1rem; display: flex; gap: 0.75rem; }
+
+  #findings .btn:hover,
+  #findings .btn:focus-visible {
+    filter: brightness(1.1);
+    transform: translateY(-1px);
+    transition: all 0.2s ease;
+  }
+</style>
+
+<script>
+(function() {
+  const items = Array.from(document.querySelectorAll('#findings-grid .finding'));
+  const btnMore = document.getElementById('findings-show-more');
+  const btnLess = document.getElementById('findings-show-less');
+  const live = document.getElementById('findings-live');
+
+  const INITIAL_VISIBLE = 3;
+  const STEP = 3;
+
+  // Initial visibility
+  items.forEach((el, i) => el.classList.toggle('hidden', i >= INITIAL_VISIBLE));
+
+  const getVisibleItems = () => items.filter(i => !i.classList.contains('hidden'));
+
+  function updateUI() {
+    const visibleCount = getVisibleItems().length;
+    btnMore.classList.toggle('hidden', visibleCount >= items.length);
+    btnLess.classList.toggle('hidden', visibleCount <= INITIAL_VISIBLE);
+    live.textContent = `Showing ${visibleCount} ${visibleCount === 1 ? 'finding' : 'findings'} in the gallery.`;
+  }
+
+  btnMore.addEventListener('click', () => {
+    const hiddenItems = items.filter(i => i.classList.contains('hidden'));
+    hiddenItems.slice(0, STEP).forEach(item => item.classList.remove('hidden'));
     updateUI();
-  })();
-  </script>
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      hiddenItems[0]?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  });
 
+  btnLess.addEventListener('click', () => {
+    const visibles = getVisibleItems();
+    const toHide = visibles.slice(-STEP).filter((_, idx) => visibles.length - idx - 1 >= INITIAL_VISIBLE);
+    toHide.forEach(item => item.classList.add('hidden'));
+    updateUI();
+    const focusTarget = getVisibleItems().slice(-1)[0];
+    if (focusTarget && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      focusTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  });
 
+  updateUI();
+})();
+</script>
 
   <!-- =================================== FAQ ============================ -->
   <section id="faq" class="section" aria-labelledby="faq-title">
