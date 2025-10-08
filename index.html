@@ -654,7 +654,7 @@
   
       <!-- Findings Grid -->
       <div id="findings-grid" class="findings__grid" aria-label="Findings gallery">
-        
+  
         <!-- Primary Finding -->
         <article class="finding finding-row primary">
           <div class="finding-text">
@@ -759,106 +759,106 @@
   
   <!-- Scoped styles -->
   <style>
-    /* Layout */
-    #findings .finding-row { 
-      display:flex; flex-wrap:wrap; gap:1.25rem; 
-      align-items:flex-start; margin:1.25rem 0; 
-      opacity:0; transform:translateY(10px);
-      transition:opacity .4s ease, transform .4s ease;
-    }
-    #findings .finding-row:not(.hidden) { 
-      opacity:1; transform:translateY(0); 
+    #findings .findings__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
     }
   
-    #findings .finding-text  { flex:1 1 280px; min-width:240px; }
-    #findings .finding-visual{ flex:2 1 520px; min-width:300px; margin:0; }
-  
-    /* Images */
-    #findings .findings__img,
-    #findings .finding-visual img { 
-      width:100%; height:auto; display:block; 
-      border-radius:.75rem; aspect-ratio: 16 / 9; 
-      object-fit: contain; 
+    #findings .finding-row {
+      display: flex;
+      flex-direction: column;
+      background: var(--surface-3, #fafafa);
+      border-radius: 1rem;
+      padding: 1rem;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    #findings .finding-row:not(.hidden) {
+      opacity: 1;
+      transform: translateY(0);
     }
   
-    /* Captions */
-    #findings figcaption { margin-top:.5rem; display:block; }
-    #findings .xsmall { font-size:.85rem; opacity:.8; }
+    #findings .finding-text { margin-bottom: 0.5rem; }
   
-    /* Grid wrapper */
-    #findings .findings__grid { display:grid; gap:1rem; }
-  
-    /* Primary finding highlight */
-    #findings .finding.primary { 
-      background: var(--surface-3, #fafafa); 
-      border-radius:1rem; padding:1rem; 
+    #findings .finding-visual {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 0.75rem;
     }
   
-    /* Hover / focus feedback */
-    #findings .btn:hover, 
-    #findings .btn:focus-visible { 
-      filter:brightness(1.1); transform:translateY(-1px); 
-      transition:all .2s ease; 
+    #findings .finding-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  
+    #findings figcaption {
+      margin-top: 0.5rem;
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+  
+    #findings .btn-row { margin-top: 1rem; display: flex; gap: 0.75rem; }
+  
+    #findings .btn:hover,
+    #findings .btn:focus-visible {
+      filter: brightness(1.1);
+      transform: translateY(-1px);
+      transition: all 0.2s ease;
     }
   </style>
   
   <!-- Script -->
   <script>
-  (function () {
-    const grid = document.getElementById('findings-grid');
-    const items = Array.from(grid.querySelectorAll('.finding'));
+  (function() {
+    const items = Array.from(document.querySelectorAll('#findings-grid .finding'));
     const btnMore = document.getElementById('findings-show-more');
     const btnLess = document.getElementById('findings-show-less');
     const live = document.getElementById('findings-live');
   
-    // Initial: show primary + first secondary
-    items.forEach((el, i) => el.classList.toggle('hidden', i > 1));
+    const INITIAL_VISIBLE = 3;
+    const STEP = 3;
+  
+    // Initial visibility
+    items.forEach((el, i) => el.classList.toggle('hidden', i >= INITIAL_VISIBLE));
   
     const getVisibleItems = () => items.filter(i => !i.classList.contains('hidden'));
   
     function updateUI() {
       const visibleCount = getVisibleItems().length;
-      const allVisible = visibleCount >= items.length;
-  
-      btnMore.classList.toggle('hidden', allVisible);
-      btnMore.setAttribute('aria-expanded', String(!allVisible));
-  
-      btnLess.classList.toggle('hidden', visibleCount <= 2);
-      btnLess.setAttribute('aria-expanded', String(visibleCount > 2));
-  
+      btnMore.classList.toggle('hidden', visibleCount >= items.length);
+      btnLess.classList.toggle('hidden', visibleCount <= INITIAL_VISIBLE);
       live.textContent = `Showing ${visibleCount} ${visibleCount === 1 ? 'finding' : 'findings'} in the gallery.`;
     }
   
     btnMore.addEventListener('click', () => {
-      // Show next 3 hidden items
       const hiddenItems = items.filter(i => i.classList.contains('hidden'));
-      hiddenItems.slice(0, 3).forEach(item => item.classList.remove('hidden'));
-  
-      // Scroll to first newly shown item
+      hiddenItems.slice(0, STEP).forEach(item => item.classList.remove('hidden'));
+      updateUI();
       if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         hiddenItems[0]?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
-  
-      updateUI();
     });
   
     btnLess.addEventListener('click', () => {
       const visibles = getVisibleItems();
-      // Hide last 3 visible items, but always keep at least 2
-      const toHide = visibles.slice(-3).filter((_, idx) => visibles.length - idx - 1 > 1);
+      const toHide = visibles.slice(-STEP).filter((_, idx) => visibles.length - idx - 1 >= INITIAL_VISIBLE);
       toHide.forEach(item => item.classList.add('hidden'));
-  
+      updateUI();
       const focusTarget = getVisibleItems().slice(-1)[0];
       if (focusTarget && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         focusTarget.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }
-  
-      updateUI();
     });
   
     updateUI();
   })();
   </script>
+
 
 
   <!-- =================================== FAQ ============================ -->
@@ -867,7 +867,7 @@
       <h2 id="faq-title">Frequently Asked Questions</h2>
   
       <div id="faq-list">
-        <!-- Technical Foundation -->
+        <!-- First 3 questions always visible -->
         <details class="card faq__item">
           <summary class="faq__q">
             How does ProofX ensure determinism and traceability?
@@ -879,7 +879,6 @@
           <p>ProofX portfolios are seeded, versioned, and replayable with byte-for-byte manifests. Every computation is fully reproducible across environments with guaranteed identical results.</p>
         </details>
   
-        <!-- Business Model Transparency -->
         <details class="card faq__item">
           <summary class="faq__q">
             What is ProofX's business model and revenue strategy?
@@ -888,10 +887,9 @@
               <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </summary>
-          <p><strong>Current Status:</strong> ProofX operates as an open-source non-profit research organization. <strong>Future Plans:</strong> We're exploring patent licensing for novel verification algorithms and enterprise support contracts for research institutions. All core verification engines will remain open source, with potential commercial licensing for specialized enterprise features.</p>
+          <p><strong>Current Status:</strong> ProofX operates as an open-source non-profit research organization. <strong>Future Plans:</strong> We're exploring patent licensing for novel verification algorithms and enterprise support contracts for research institutions.</p>
         </details>
   
-        <!-- Source Code Availability -->
         <details class="card faq__item">
           <summary class="faq__q">
             When will the source code be publicly available?
@@ -900,11 +898,11 @@
               <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </summary>
-          <p><strong>Immediate Access:</strong> Basic verification frameworks and research tools are available now. <strong>Advanced Engines:</strong> Core conjecture engines (CollatzX, RiemannX, etc.) are undergoing patent review and will be released under open-source licenses once intellectual property protection is secured (estimated Q4 2024). We're committed to open research while protecting novel algorithmic innovations.</p>
+          <p><strong>Immediate Access:</strong> Basic verification frameworks are available now. <strong>Advanced Engines:</strong> Core conjecture engines are undergoing patent review and will be released under open-source licenses once intellectual property protection is secured.</p>
         </details>
   
-        <!-- Intellectual Property Strategy -->
-        <details class="card faq__item">
+        <!-- Hidden questions (4-6) -->
+        <details class="card faq__item faq-hidden">
           <summary class="faq__q">
             What is ProofX's approach to patents and intellectual property?
             <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -912,11 +910,10 @@
               <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </summary>
-          <p>We're pursuing patents only for truly novel verification algorithms and architectures, not mathematical concepts themselves. Our patent strategy focuses on protecting specific computational innovations that enable faster, more reliable conjecture verification. All patented technologies will be available under fair-use research licenses, with commercial licensing reserved for enterprise applications.</p>
+          <p>We're pursuing patents only for novel verification algorithms, not mathematical concepts. All patented technologies will be available under fair-use research licenses, with commercial licensing for enterprise applications.</p>
         </details>
   
-        <!-- Reliability & Competitive Advantage -->
-        <details class="card faq__item">
+        <details class="card faq__item faq-hidden">
           <summary class="faq__q">
             What is ProofX's competitive advantage and reliability moat?
             <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -924,11 +921,10 @@
               <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </summary>
-          <p>ProofX builds compounding corpora of runs and counterexamples that improve priors and are hard to replicate. Our deterministic verification architecture creates a reliability moat through: extensive validation datasets, performance-optimized algorithms, and community-tested verification pipelines that become more valuable with each use.</p>
+          <p>ProofX builds compounding corpora of runs and counterexamples that improve priors and are hard to replicate. Our deterministic verification architecture creates reliability through extensive validation datasets and performance-optimized algorithms.</p>
         </details>
   
-        <!-- Organization Structure -->
-        <details class="card faq__item">
+        <details class="card faq__item faq-hidden">
           <summary class="faq__q">
             Is ProofX a SaaS company or traditional startup?
             <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -936,11 +932,11 @@
               <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </summary>
-          <p>No. ProofX is structured as an open-source non-profit research organization, focused on research partnerships and operator deployments rather than traditional SaaS revenue. We prioritize scientific advancement over commercial growth, with funding from research grants, institutional partnerships, and potential future licensing of patented verification technologies.</p>
+          <p>No. ProofX is structured as an open-source non-profit research organization, focused on research partnerships and operator deployments rather than traditional SaaS revenue.</p>
         </details>
   
-        <!-- Deployment & Security -->
-        <details class="card faq__item">
+        <!-- Hidden questions (7-9) -->
+        <details class="card faq__item faq-hidden">
           <summary class="faq__q">
             What is ProofX's deployment and security posture?
             <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -948,11 +944,10 @@
               <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </summary>
-          <p>We use containers, pinned builds, and strict retention modes to ensure security and reproducibility. Our deployment architecture supports private cloud, on-prem, and air-gapped environments for sensitive research applications, with comprehensive audit trails and verification certificates for all computations.</p>
+          <p>We use containers, pinned builds, and strict retention modes to ensure security and reproducibility. Our deployment architecture supports private cloud, on-prem, and air-gapped environments.</p>
         </details>
   
-        <!-- Performance & Evidence -->
-        <details class="card faq__item">
+        <details class="card faq__item faq-hidden">
           <summary class="faq__q">
             How does ProofX minimize time-to-evidence in verification?
             <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -960,11 +955,10 @@
               <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </summary>
-          <p>Through entropy-aware scheduling and replay manifests, ProofX optimizes verification workflows to deliver statistical evidence faster. Our systems prioritize high-value computations and use predictive analytics to focus resources on the most promising verification paths.</p>
+          <p>Through entropy-aware scheduling and replay manifests, ProofX optimizes verification workflows to deliver statistical evidence faster.</p>
         </details>
   
-        <!-- Verification Guarantees -->
-        <details class="card faq__item">
+        <details class="card faq__item faq-hidden">
           <summary class="faq__q">
             What guarantees does ProofX provide for verification results?
             <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -972,11 +966,11 @@
               <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </summary>
-          <p>Manifested seeds, routes, and configs guarantee byte-identical runs across environments. We provide statistical confidence intervals for probabilistic verifications and formal verification certificates for deterministic proofs. All results include comprehensive audit trails and reproducibility guarantees.</p>
+          <p>Manifested seeds, routes, and configs guarantee byte-identical runs across environments. We provide statistical confidence intervals and formal verification certificates.</p>
         </details>
   
-        <!-- Research Validation -->
-        <details class="card faq__item">
+        <!-- Hidden questions (10-12) -->
+        <details class="card faq__item faq-hidden">
           <summary class="faq__q">
             How are ProofX's verification results validated by the research community?
             <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -984,11 +978,10 @@
               <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </summary>
-          <p>All verification engines undergo peer review through academic collaborations and research partnerships. We publish verification methodologies, datasets, and reproducibility frameworks to enable independent validation. Our open-source approach allows the research community to audit, improve, and extend our verification systems.</p>
+          <p>All verification engines undergo peer review through academic collaborations. We publish verification methodologies and datasets to enable independent validation.</p>
         </details>
   
-        <!-- Funding & Sustainability -->
-        <details class="card faq__item">
+        <details class="card faq__item faq-hidden">
           <summary class="faq__q">
             How is ProofX funded and what is the long-term sustainability plan?
             <svg class="faq__icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -996,17 +989,77 @@
               <path class="v" d="M12 5v14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
             </svg>
           </summary>
-          <p><strong>Current Funding:</strong> Bootstrapped development with potential research grants and institutional partnerships. <strong>Sustainability Model:</strong> Long-term sustainability through patent licensing revenues, enterprise support contracts, and research consortium memberships. We maintain our open-source commitment while developing sustainable funding models that align with our research mission.</p>
+          <p><strong>Current Funding:</strong> Bootstrapped development with research grants. <strong>Sustainability Model:</strong> Long-term sustainability through patent licensing and enterprise support contracts while maintaining open-source commitment.</p>
         </details>
       </div>
   
       <div class="btn-row" role="group" aria-label="FAQ controls">
-        <button id="faq-show-more" class="btn btn--white btn--pill" aria-controls="faq-list" aria-expanded="false">Show more questions</button>
-        <button id="faq-show-less" class="btn btn--blue btn--pill hidden" aria-controls="faq-list" aria-expanded="true">Show fewer questions</button>
+        <button id="faq-show-more" class="btn btn--white btn--pill" aria-controls="faq-list" aria-expanded="false">Show 3 more questions</button>
+        <button id="faq-show-less" class="btn btn--blue btn--pill hidden" aria-controls="faq-list" aria-expanded="true">Show 3 fewer questions</button>
       </div>
       <div id="faq-live" class="sr-only" aria-live="polite"></div>
     </div>
   </section>
+  
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const faqList = document.getElementById('faq-list');
+    const showMoreBtn = document.getElementById('faq-show-more');
+    const showLessBtn = document.getElementById('faq-show-less');
+    const faqLive = document.getElementById('faq-live');
+    
+    const hiddenItems = Array.from(document.querySelectorAll('.faq-hidden'));
+    const itemsPerStep = 3;
+    let currentVisibleCount = 3; // First 3 are always visible
+    
+    function updateFAQVisibility() {
+      // Show items up to currentVisibleCount, hide the rest
+      hiddenItems.forEach((item, index) => {
+        if (index < currentVisibleCount - 3) {
+          item.classList.remove('faq-hidden');
+        } else {
+          item.classList.add('faq-hidden');
+        }
+      });
+      
+      // Update button states
+      const totalHidden = hiddenItems.length;
+      const remainingHidden = totalHidden - (currentVisibleCount - 3);
+      
+      if (currentVisibleCount >= totalHidden + 3) {
+        showMoreBtn.classList.add('hidden');
+        showLessBtn.classList.remove('hidden');
+        showLessBtn.textContent = `Show ${Math.min(itemsPerStep, currentVisibleCount - 3)} fewer questions`;
+      } else if (currentVisibleCount > 3) {
+        showMoreBtn.classList.remove('hidden');
+        showLessBtn.classList.remove('hidden');
+        showMoreBtn.textContent = `Show ${Math.min(itemsPerStep, remainingHidden)} more questions`;
+        showLessBtn.textContent = `Show ${Math.min(itemsPerStep, currentVisibleCount - 3)} fewer questions`;
+      } else {
+        showMoreBtn.classList.remove('hidden');
+        showLessBtn.classList.add('hidden');
+        showMoreBtn.textContent = `Show ${Math.min(itemsPerStep, remainingHidden)} more questions`;
+      }
+      
+      // Update ARIA live region for screen readers
+      const visibleCount = Math.min(currentVisibleCount, totalHidden + 3);
+      faqLive.textContent = `Now showing ${visibleCount} of ${totalHidden + 3} questions`;
+    }
+    
+    showMoreBtn.addEventListener('click', function() {
+      currentVisibleCount += itemsPerStep;
+      updateFAQVisibility();
+    });
+    
+    showLessBtn.addEventListener('click', function() {
+      currentVisibleCount = Math.max(3, currentVisibleCount - itemsPerStep);
+      updateFAQVisibility();
+    });
+    
+    // Initialize visibility
+    updateFAQVisibility();
+  });
+  </script>
   
   <!-- FAQ icon/marker fixes (scoped) -->
   <style>
@@ -1073,30 +1126,53 @@
     #faq .faq__item strong {
       color: #ffffff; /* white for bold text */
     }
+    
+    /* Hidden FAQ items */
+    .faq-hidden {
+      display: none !important;
+    }
+    
+    /* Hidden utility class */
+    .hidden {
+      display: none !important;
+    }
+    
+    /* Screen reader only */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
   </style>
 
 
-    <!-- ================================ FOUNDER =========================== -->
-    <section id="founder" class="section" aria-labelledby="founder-title">
-      <div class="container card card--row founder">
-        <div class="founder__bio">
-          <p class="kicker">Founder</p>
-          <h2 id="founder-title">Alkindi — Founder & CEO</h2>
-          <p class="muted">
-            Founder of ProofX, architect of multi-engine verification platforms uniting number theory and operator-grade observability. Builder of 100k+ Python LOC lab-grade systems with measurable impact.
-          </p>
-          <ul class="bullets">
-            <li>Creator of ProofX — research-grade verification engines.</li>
-            <li>Cross-disciplinary architecture spanning logic, topology, quantum methods.</li>
-            <li>Principles anchored in reproducibility, provenance, and operator trust.</li>
-          </ul>
-          <div class="founder__cta" role="group" aria-label="Founder contact">
-            <a class="btn btn--primary btn--pill" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20%E2%80%94%20Founder%20Contact">Email Alkindi</a>
-            <a class="btn btn--pill" href="https://www.linkedin.com/in/alkindi-network" target="_blank" rel="noopener">Connect on LinkedIn</a>
-          </div>
+  <!-- ================================ FOUNDER =========================== -->
+  <section id="founder" class="section" aria-labelledby="founder-title">
+    <div class="container card card--row founder">
+      <div class="founder__bio">
+        <p class="kicker">Founder</p>
+        <h2 id="founder-title">Alkindi — Founder & CEO</h2>
+        <p class="muted">
+          Founder of ProofX, building computational systems that help mathematicians test unsolved problems with verifiable evidence. Developed specialized engines that analyze number patterns, verify conjectures, and provide reproducible results for mathematical research.
+        </p>
+        <ul class="bullets">
+          <li>Created ProofX verification engines that systematically test famous mathematical conjectures</li>
+          <li>Built computational architecture spanning logic systems, pattern analysis, and verification methods</li>
+          <li>Focused on reproducible research, reliable evidence, and trustworthy computational results</li>
+        </ul>
+        <div class="founder__cta" role="group" aria-label="Founder contact">
+          <a class="btn btn--primary btn--pill" href="mailto:alkindi.proofx@gmail.com?subject=ProofX%20%E2%80%94%20Founder%20Contact">Email Alkindi</a>
+          <a class="btn btn--pill" href="https://www.linkedin.com/in/alkindi-network" target="_blank" rel="noopener">Connect on LinkedIn</a>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
     <!-- ================================= CONTACT ========================== -->
     <section id="contact" class="section" aria-labelledby="contact-title">
