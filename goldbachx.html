@@ -33,6 +33,79 @@
         </div>
       </div>
     </section>
+    
+<!-- ================================ FINDINGS ============================ -->
+  <section id="findings-riemann" class="section" aria-labelledby="findings-title-riemann">
+    <div class="container card">
+      <h2 id="findings-title-riemann">Findings — RiemannX</h2>
+      <p class="muted">Representative outputs and diagnostics from RiemannX engine.</p>
+  
+      <div id="findings-grid-riemann" class="findings__grid" aria-label="Findings gallery">
+        <article class="finding finding-row">
+          <div class="finding-text">
+            <h3 class="h5">Finding 1</h3>
+            <p class="muted small">Zeros of the zeta function show symmetric distribution along the critical line.</p>
+          </div>
+          <figure class="finding-visual">
+            <img src="assets/riemann1.png" alt="Riemann zeta zeros" loading="lazy" decoding="async"/>
+            <figcaption class="muted xsmall">Fig. 1 — Riemann zeta zeros visualization.</figcaption>
+          </figure>
+        </article>
+  
+        <article class="finding finding-row hidden">
+          <div class="finding-text">
+            <h3 class="h5">Finding 2</h3>
+            <p class="muted small">Histogram of gaps between zeros reveals local fluctuations.</p>
+          </div>
+          <figure class="finding-visual">
+            <img src="assets/riemann2.png" alt="Riemann zero gaps" loading="lazy" decoding="async"/>
+            <figcaption class="muted xsmall">Fig. 2 — Zero gaps histogram.</figcaption>
+          </figure>
+        </article>
+      </div>
+  
+      <div class="btn-row" role="group">
+        <button id="findings-show-more-riemann" class="btn btn--white btn--pill" aria-controls="findings-grid-riemann" aria-expanded="false">Show more</button>
+        <button id="findings-show-less-riemann" class="btn btn--blue btn--pill hidden" aria-controls="findings-grid-riemann" aria-expanded="false">Show less</button>
+      </div>
+      <div id="findings-live-riemann" class="sr-only" aria-live="polite"></div>
+    </div>
+  </section>
+  
+  <style>
+  #findings-riemann .findings__grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.5rem; }
+  #findings-riemann .finding-row { display:flex; flex-direction:column; background:var(--surface-3,#fafafa); border-radius:1rem; padding:1rem; opacity:0; transform:translateY(10px); transition:opacity 0.4s ease, transform 0.4s ease;}
+  #findings-riemann .finding-row:not(.hidden){opacity:1; transform:translateY(0);}
+  #findings-riemann .finding-text{margin-bottom:0.5rem;}
+  #findings-riemann .finding-visual{width:100%; aspect-ratio:16/9; overflow:hidden; border-radius:0.75rem;}
+  #findings-riemann .finding-visual img{width:100%; height:100%; object-fit:cover; display:block;}
+  #findings-riemann figcaption{margin-top:0.5rem; font-size:0.85rem; opacity:0.8;}
+  #findings-riemann .btn-row{margin-top:1rem; display:flex; gap:0.75rem;}
+  #findings-riemann .btn:hover,#findings-riemann .btn:focus-visible{filter:brightness(1.1); transform:translateY(-1px); transition:all 0.2s ease;}
+  </style>
+  
+  <script>
+  (function(){
+    const items = Array.from(document.querySelectorAll('#findings-grid-riemann .finding'));
+    const btnMore = document.getElementById('findings-show-more-riemann');
+    const btnLess = document.getElementById('findings-show-less-riemann');
+    const live = document.getElementById('findings-live-riemann');
+    const INITIAL_VISIBLE = 1;
+    const STEP = 1;
+    items.forEach((el,i)=>el.classList.toggle('hidden',i>=INITIAL_VISIBLE));
+    const getVisibleItems = ()=>items.filter(i=>!i.classList.contains('hidden'));
+    function updateUI(){
+      const visibleCount=getVisibleItems().length;
+      btnMore.classList.toggle('hidden',visibleCount>=items.length);
+      btnLess.classList.toggle('hidden',visibleCount<=INITIAL_VISIBLE);
+      live.textContent=`Showing ${visibleCount} ${visibleCount===1?'finding':'findings'} in the gallery.`;
+    }
+    btnMore.addEventListener('click',()=>{items.filter(i=>i.classList.contains('hidden')).slice(0,STEP).forEach(i=>i.classList.remove('hidden'));updateUI();items.find(i=>!i.classList.contains('hidden'))?.scrollIntoView({behavior:'smooth',block:'nearest'});});
+    btnLess.addEventListener('click',()=>{const visibles=getVisibleItems();visibles.slice(-STEP).filter((_,idx)=>visibles.length-idx-1>=INITIAL_VISIBLE).forEach(i=>i.classList.add('hidden'));updateUI();getVisibleItems().slice(-1)[0]?.scrollIntoView({behavior:'smooth',block:'nearest'});});
+    updateUI();
+  })();
+  </script>
+
 
     <!-- ================================ CAPABILITIES ============================= -->
     <section id="capabilities" class="section" aria-labelledby="capabilities-title">
