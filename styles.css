@@ -1,10 +1,3 @@
-/* =========================================================
-   ProofX — Enhanced Styles (v2.1)
-   - Hero one-line, no clipping
-   - Founder layout hardened
-   - Pill CTAs + a11y preserved
-   ========================================================= */
-
 /* ------------------------ Design Tokens ------------------------ */
 :root {
   color-scheme: dark light;
@@ -326,7 +319,6 @@ a:hover { color: var(--accent-2); }
 .engine__link:hover { color: var(--accent-2); gap: var(--space-sm); }
 
 /* ------------------------ Findings ------------------------ */
-/* ------------------------ Findings ------------------------ */
 /* Findings Layout */
 #findings .findings__grid {
   display: grid;
@@ -449,7 +441,6 @@ a:hover { color: var(--accent-2); }
 }
 
 /* ------------------------ Founder ------------------------ */
-/* Works with or without a right-hand aside; overrides .card defaults cleanly */
 .founder.card--row { display: grid; grid-template-columns: 1fr; gap: var(--space-xl); }
 @media (min-width: 1024px) {
   .founder.card--row { grid-template-columns: minmax(420px, 640px) 1fr; align-items: start; }
