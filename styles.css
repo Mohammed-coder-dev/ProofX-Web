@@ -318,7 +318,7 @@ a:hover { color: var(--accent-2); }
 }
 .engine__link:hover { color: var(--accent-2); gap: var(--space-sm); }
 
-/* ------------------------ Findings ------------------------ */
+//* ------------------------ Findings ------------------------ */
 /* Findings Layout */
 #findings .findings__grid {
   display: grid;
@@ -438,6 +438,17 @@ a:hover { color: var(--accent-2); }
   #findings .finding-visual img {
     height: 140px;
   }
+}
+
+
+/* -------- Collatz-specific centering overrides -------- */
+#findings-collatz .findings__grid {
+  justify-items: center;
+}
+
+#findings-collatz .finding-row {
+  align-items: center;
+  text-align: center;
 }
 
 /* ------------------------ Founder ------------------------ */
