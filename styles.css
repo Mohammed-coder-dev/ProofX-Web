@@ -451,6 +451,27 @@ a:hover { color: var(--accent-2); }
   text-align: center;
 }
 
+/* -------- RiemannX centering overrides -------- */
+#findings-riemann .findings__grid {
+  justify-items: center;
+}
+
+#findings-riemann .finding-row {
+  align-items: center;
+  text-align: center;
+}
+
+
+/* -------- GoldbachX centering overrides -------- */
+#findings-goldbach .findings__grid {
+  justify-items: center;
+}
+
+#findings-goldbach .finding-row {
+  align-items: center;
+  text-align: center;
+}
+
 /* ------------------------ Founder ------------------------ */
 .founder.card--row { display: grid; grid-template-columns: 1fr; gap: var(--space-xl); }
 @media (min-width: 1024px) {
